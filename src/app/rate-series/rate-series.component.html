@@ -1,0 +1,256 @@
+<head>
+    <title>Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left-side">
+            <div class="rating-questions">
+                <p class="rating-question">Rate the movie on the following aspects</p>
+                <div class="rating-criteria">
+                    <p class="acting-title" (mouseenter)="onHoverActing()" (mouseleave)="onHoverActing()">Acting: </p>
+                    <div class="ratings">
+                        <a class="acting-1" href="javascript:void(0)" (click)="toggleActingChoice('.acting-1 .rating-choice')">
+                            <p class="rating-choice">1</p>
+                        </a>
+                        <a class="acting-2" href="javascript:void(0)" (click)="toggleActingChoice('.acting-2 .rating-choice')">
+                            <p class="rating-choice">2</p>
+                        </a>
+                        <a class="acting-3" href="javascript:void(0)" (click)="toggleActingChoice('.acting-3 .rating-choice')">
+                            <p class="rating-choice">3</p>
+                        </a>
+                        <a class="acting-4" href="javascript:void(0)" (click)="toggleActingChoice('.acting-4 .rating-choice')">
+                            <p class="rating-choice">4</p>
+                        </a>
+                        <a class="acting-5" href="javascript:void(0)" (click)="toggleActingChoice('.acting-5 .rating-choice')">
+                            <p class="rating-choice">5</p>
+                        </a>
+                        <a class="acting-6" href="javascript:void(0)" (click)="toggleActingChoice('.acting-6 .rating-choice')">
+                            <p class="rating-choice">6</p>
+                        </a>
+                        <a class="acting-7" href="javascript:void(0)" (click)="toggleActingChoice('.acting-7 .rating-choice')">
+                            <p class="rating-choice">7</p>
+                        </a>
+                        <a class="acting-8" href="javascript:void(0)" (click)="toggleActingChoice('.acting-8 .rating-choice')">
+                            <p class="rating-choice">8</p>
+                        </a>
+                        <a class="acting-9" href="javascript:void(0)" (click)="toggleActingChoice('.acting-9 .rating-choice')">
+                            <p class="rating-choice">9</p>
+                        </a>
+                        <a class="acting-10" href="javascript:void(0)" (click)="toggleActingChoice('.acting-10 .rating-choice')">
+                            <p class="rating-choice">10</p>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="acting-explanation">How would you rate the level of acting in this movie?</p>
+        
+                <div class="rating-criteria">
+                    <p class="visuals-title" (mouseenter)="onHoverVisuals()" (mouseleave)="onHoverVisuals()">Visuals: </p>
+                    <div class="ratings">
+                        <a class="visuals-1" href="javascript:void(0)" (click)="toggleVisualsChoice('.visuals-1 .rating-choice')">
+                            <p class="rating-choice">1</p>
+                        </a>
+                        <a class="visuals-2" href="javascript:void(0)" (click)="toggleVisualsChoice('.visuals-2 .rating-choice')">
+                            <p class="rating-choice">2</p>
+                        </a>
+                        <a class="visuals-3" href="javascript:void(0)" (click)="toggleVisualsChoice('.visuals-3 .rating-choice')">
+                            <p class="rating-choice">3</p>
+                        </a>
+                        <a class="visuals-4" href="javascript:void(0)" (click)="toggleVisualsChoice('.visuals-4 .rating-choice')">
+                            <p class="rating-choice">4</p>
+                        </a>
+                        <a class="visuals-5" href="javascript:void(0)" (click)="toggleVisualsChoice('.visuals-5 .rating-choice')">
+                            <p class="rating-choice">5</p>
+                        </a>
+                        <a class="visuals-6" href="javascript:void(0)" (click)="toggleVisualsChoice('.visuals-6 .rating-choice')">
+                            <p class="rating-choice">6</p>
+                        </a>
+                        <a class="visuals-7" href="javascript:void(0)" (click)="toggleVisualsChoice('.visuals-7 .rating-choice')">
+                            <p class="rating-choice">7</p>
+                        </a>
+                        <a class="visuals-8" href="javascript:void(0)" (click)="toggleVisualsChoice('.visuals-8 .rating-choice')">
+                            <p class="rating-choice">8</p>
+                        </a>
+                        <a class="visuals-9" href="javascript:void(0)" (click)="toggleVisualsChoice('.visuals-9 .rating-choice')">
+                            <p class="rating-choice">9</p>
+                        </a>
+                        <a class="visuals-10" href="javascript:void(0)" (click)="toggleVisualsChoice('.visuals-10 .rating-choice')">
+                            <p class="rating-choice">10</p>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="visuals-explanation">How captivating were the visuals this movie offered?</p>
+        
+                <div class="rating-criteria">
+                    <p class="story-title" (mouseenter)="onHoverStory()" (mouseleave)="onHoverStory()">Story: </p>
+                    <div class="ratings">
+                        <a class="story-1" href="javascript:void(0)" (click)="toggleStoryChoice('.story-1 .rating-choice')">
+                            <p class="rating-choice">1</p>
+                        </a>
+                        <a class="story-2" href="javascript:void(0)" (click)="toggleStoryChoice('.story-2 .rating-choice')">
+                            <p class="rating-choice">2</p>
+                        </a>
+                        <a class="story-3" href="javascript:void(0)" (click)="toggleStoryChoice('.story-3 .rating-choice')">
+                            <p class="rating-choice">3</p>
+                        </a>
+                        <a class="story-4" href="javascript:void(0)" (click)="toggleStoryChoice('.story-4 .rating-choice')">
+                            <p class="rating-choice">4</p>
+                        </a>
+                        <a class="story-5" href="javascript:void(0)" (click)="toggleStoryChoice('.story-5 .rating-choice')">
+                            <p class="rating-choice">5</p>
+                        </a>
+                        <a class="story-6" href="javascript:void(0)" (click)="toggleStoryChoice('.story-6 .rating-choice')">
+                            <p class="rating-choice">6</p>
+                        </a>
+                        <a class="story-7" href="javascript:void(0)" (click)="toggleStoryChoice('.story-7 .rating-choice')">
+                            <p class="rating-choice">7</p>
+                        </a>
+                        <a class="story-8" href="javascript:void(0)" (click)="toggleStoryChoice('.story-8 .rating-choice')">
+                            <p class="rating-choice">8</p>
+                        </a>
+                        <a class="story-9" href="javascript:void(0)" (click)="toggleStoryChoice('.story-9 .rating-choice')">
+                            <p class="rating-choice">9</p>
+                        </a>
+                        <a class="story-10" href="javascript:void(0)" (click)="toggleStoryChoice('.story-10 .rating-choice')">
+                            <p class="rating-choice">10</p>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="story-explanation">How well written was the story this movie told?</p>
+        
+                <div class="rating-criteria">
+                    <p class="pacing-title" (mouseenter)="onHoverPacing()" (mouseleave)="onHoverPacing()">Pacing: </p>
+                    <div class="ratings">
+                        <a class="pacing-1" href="javascript:void(0)" (click)="togglePacingChoice('.pacing-1 .rating-choice')">
+                            <p class="rating-choice">1</p>
+                        </a>
+                        <a class="pacing-2" href="javascript:void(0)" (click)="togglePacingChoice('.pacing-2 .rating-choice')">
+                            <p class="rating-choice">2</p>
+                        </a>
+                        <a class="pacing-3" href="javascript:void(0)" (click)="togglePacingChoice('.pacing-3 .rating-choice')">
+                            <p class="rating-choice">3</p>
+                        </a>
+                        <a class="pacing-4" href="javascript:void(0)" (click)="togglePacingChoice('.pacing-4 .rating-choice')">
+                            <p class="rating-choice">4</p>
+                        </a>
+                        <a class="pacing-5" href="javascript:void(0)" (click)="togglePacingChoice('.pacing-5 .rating-choice')">
+                            <p class="rating-choice">5</p>
+                        </a>
+                        <a class="pacing-6" href="javascript:void(0)" (click)="togglePacingChoice('.pacing-6 .rating-choice')">
+                            <p class="rating-choice">6</p>
+                        </a>
+                        <a class="pacing-7" href="javascript:void(0)" (click)="togglePacingChoice('.pacing-7 .rating-choice')">
+                            <p class="rating-choice">7</p>
+                        </a>
+                        <a class="pacing-8" href="javascript:void(0)" (click)="togglePacingChoice('.pacing-8 .rating-choice')">
+                            <p class="rating-choice">8</p>
+                        </a>
+                        <a class="pacing-9" href="javascript:void(0)" (click)="togglePacingChoice('.pacing-9 .rating-choice')">
+                            <p class="rating-choice">9</p>
+                        </a>
+                        <a class="pacing-10" href="javascript:void(0)" (click)="togglePacingChoice('.pacing-10 .rating-choice')">
+                            <p class="rating-choice">10</p>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="pacing-explanation">How did the pacing feel throughout this movie?</p>
+        
+                <div class="rating-criteria">
+                    <p class="length-title" (mouseenter)="onHoverLength()" (mouseleave)="onHoverLength()">Length: </p>
+                    <div class="ratings">
+                        <a class="length-1" href="javascript:void(0)" (click)="toggleLengthChoice('.length-1 .rating-choice')">
+                            <p class="rating-choice">1</p>
+                        </a>
+                        <a class="length-2" href="javascript:void(0)" (click)="toggleLengthChoice('.length-2 .rating-choice')">
+                            <p class="rating-choice">2</p>
+                        </a>
+                        <a class="length-3" href="javascript:void(0)" (click)="toggleLengthChoice('.length-3 .rating-choice')">
+                            <p class="rating-choice">3</p>
+                        </a>
+                        <a class="length-4" href="javascript:void(0)" (click)="toggleLengthChoice('.length-4 .rating-choice')">
+                            <p class="rating-choice">4</p>
+                        </a>
+                        <a class="length-5" href="javascript:void(0)" (click)="toggleLengthChoice('.length-5 .rating-choice')">
+                            <p class="rating-choice">5</p>
+                        </a>
+                        <a class="length-6" href="javascript:void(0)" (click)="toggleLengthChoice('.length-6 .rating-choice')">
+                            <p class="rating-choice">6</p>
+                        </a>
+                        <a class="length-7" href="javascript:void(0)" (click)="toggleLengthChoice('.length-7 .rating-choice')">
+                            <p class="rating-choice">7</p>
+                        </a>
+                        <a class="length-8" href="javascript:void(0)" (click)="toggleLengthChoice('.length-8 .rating-choice')">
+                            <p class="rating-choice">8</p>
+                        </a>
+                        <a class="length-9" href="javascript:void(0)" (click)="toggleLengthChoice('.length-9 .rating-choice')">
+                            <p class="rating-choice">9</p>
+                        </a>
+                        <a class="length-10" href="javascript:void(0)" (click)="toggleLengthChoice('.length-10 .rating-choice')">
+                            <p class="rating-choice">10</p>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="length-explanation">How would you rate the show's length? Did it feel too long?</p>
+        
+                <div class="rating-criteria">
+                    <p class="ending-title" (mouseenter)="onHoverEnding()" (mouseleave)="onHoverEnding()">Ending: </p>
+                    <div class="ratings">
+                        <a class="ending-1" href="javascript:void(0)" (click)="toggleEndingChoice('.ending-1 .rating-choice')">
+                            <p class="rating-choice">1</p>
+                        </a>
+                        <a class="ending-2" href="javascript:void(0)" (click)="toggleEndingChoice('.ending-2 .rating-choice')">
+                            <p class="rating-choice">2</p>
+                        </a>
+                        <a class="ending-3" href="javascript:void(0)" (click)="toggleEndingChoice('.ending-3 .rating-choice')">
+                            <p class="rating-choice">3</p>
+                        </a>
+                        <a class="ending-4" href="javascript:void(0)" (click)="toggleEndingChoice('.ending-4 .rating-choice')">
+                            <p class="rating-choice">4</p>
+                        </a>
+                        <a class="ending-5" href="javascript:void(0)" (click)="toggleEndingChoice('.ending-5 .rating-choice')">
+                            <p class="rating-choice">5</p>
+                        </a>
+                        <a class="ending-6" href="javascript:void(0)" (click)="toggleEndingChoice('.ending-6 .rating-choice')">
+                            <p class="rating-choice">6</p>
+                        </a>
+                        <a class="ending-7" href="javascript:void(0)" (click)="toggleEndingChoice('.ending-7 .rating-choice')">
+                            <p class="rating-choice">7</p>
+                        </a>
+                        <a class="ending-8" href="javascript:void(0)" (click)="toggleEndingChoice('.ending-8 .rating-choice')">
+                            <p class="rating-choice">8</p>
+                        </a>
+                        <a class="ending-9" href="javascript:void(0)" (click)="toggleEndingChoice('.ending-9 .rating-choice')">
+                            <p class="rating-choice">9</p>
+                        </a>
+                        <a class="ending-10" href="javascript:void(0)" (click)="toggleEndingChoice('.ending-10 .rating-choice')">
+                            <p class="rating-choice">10</p>
+                        </a>
+                    </div>
+                </div>
+
+                <p class="ending-explanation">How impactful was the ending to this story?</p>    
+            </div>
+                
+        
+        </div>
+
+        <div class="right-side">
+            <app-rate-film-template
+                *ngFor="let film of filmDetails"
+                [filmDetails]="film"
+                href="javascript:void(0)"  
+            ></app-rate-film-template>
+            <div class="button-warning">
+                <p class="warning">Must select a rating for each criteria</p>
+                <button type="submit" class="button" (click)="onRate()">Rate {{ ratingAverage }}/10</button>
+            </div>
+        </div>
+    </div>
+</body>
+

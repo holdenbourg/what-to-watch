@@ -1,0 +1,68 @@
+<head>
+    <title>Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div class="logo-menu">
+            <h2 class="logo">Account</h2>
+            <i class='bx bx-menu toggle-button' (click)="toggleActive()"></i>
+        </div>
+
+        <ul class="list">
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToHome()">
+                    <i class='bx bx-home-alt'></i>
+                    <span class="link-name" style="--i:7;">Home</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToSearchMovies()">
+                    <i class='bx bx-search'></i>
+                    <span class="link-name" style="--i:6;">Search</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToMovies()">
+                    <i class='bx bx-camera-movie'></i>
+                    <span class="link-name" style="--i:5;">Movies</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToShows()">
+                    <i class='bx bx-collection'></i>
+                    <span class="link-name" style="--i:4;">Shows</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToNews()">
+                    <i class='bx bx-news' ></i>
+                    <span class="link-name" style="--i:3;">News</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToSummary()">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name" style="--i:2;">Summary</span>
+                </a>
+            </li>
+            <li class="list-item active">
+                <a href="javascript:void(0)" (click)="navigateToAccount()">
+                    <i class='bx bx-user'></i>
+                    <span class="link-name" style="--i:1;">Account</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToSettings()">
+                    <i class='bx bx-cog'></i>
+                    <span class="link-name" style="--i:2;">Settings</span>
+                </a>
+            </li>
+            <li class="username">
+                 <p class="link-name" style="--i:3">Signed in as:</p> 
+                 <p class="link-name" style="--i:3">{{ username }}</p>
+            </li>
+        </ul>
+    </nav>
+</body>

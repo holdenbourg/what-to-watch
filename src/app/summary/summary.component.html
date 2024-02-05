@@ -1,0 +1,134 @@
+<head>
+    <title>Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div class="logo-menu">
+            <h2 class="logo">Summary</h2>
+            <i class='bx bx-menu toggle-button' (click)="toggleActive()"></i>
+        </div>
+
+        <ul class="list">
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToHome()">
+                    <i class='bx bx-home-alt'></i>
+                    <span class="link-name" style="--i:6;">Home</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToSearchMovies()">
+                    <i class='bx bx-search'></i>
+                    <span class="link-name" style="--i:5;">Search</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToMovies()">
+                    <i class='bx bx-camera-movie'></i>
+                    <span class="link-name" style="--i:4;">Movies</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToShows()">
+                    <i class='bx bx-collection'></i>
+                    <span class="link-name" style="--i:3;">Shows</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToNews()">
+                    <i class='bx bx-news' ></i>
+                    <span class="link-name" style="--i:2;">News</span>
+                </a>
+            </li>
+            <li class="list-item active">
+                <a href="javascript:void(0)" (click)="navigateToSummary()">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name" style="--i:1;">Summary</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToAccount()">
+                    <i class='bx bx-user'></i>
+                    <span class="link-name" style="--i:2;">Account</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToSettings()">
+                    <i class='bx bx-cog'></i>
+                    <span class="link-name" style="--i:3;">Settings</span>
+                </a>
+            </li>
+            <li class="username">
+                 <p class="link-name" style="--i:4">Signed in as:</p> 
+                 <p class="link-name" style="--i:4">{{ username }}</p>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="left-side">
+            <div class="favorite-container">
+                <p class="title">Favorite Movie</p>
+                <div class="favorite-film">
+                    <img class="film-poster" [src]="highestRatedMovie.poster" [attr.alt]="highestRatedMovie.title">
+                    <div class="film-information">
+                        <div class="film-text">
+                            <p class="film-title">{{ highestRatedMovie.title }}</p>
+                            <p class="film-release">{{ highestRatedMovie.releaseDate }}</p>
+                            <p class="film-type">{{ highestRatedMovie.type }}</p>
+                            <p class="film-rating">{{ highestRatedMovie.rated }}</p>
+                        </div>
+                        <div class="rating-rated">
+                            <p class="rating">Rating: {{ highestRatedMovie.rating }}</p>
+                            <p class="date-rated">Rated: {{ highestRatedMovie.dateRated }}</p>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="favorite-container">
+                <p class="title">Favorite Series</p>
+                <div class="favorite-film">
+                    <img class="film-poster" [src]="highestRatedSeries.poster" [attr.alt]="highestRatedSeries.title">
+                    <div class="film-information">
+                        <div class="film-text">
+                            <p class="film-title">{{ highestRatedSeries.title }}</p>
+                            <p class="film-release">{{ highestRatedSeries.releaseDate }}</p>
+                            <p class="film-type">{{ highestRatedSeries.type }}</p>
+                            <p class="film-rating">{{ highestRatedSeries.rated }}</p>
+                        </div>
+                        <div class="rating-rated">
+                            <p class="rating">Rating: {{ highestRatedSeries.rating }}</p>
+                            <p class="date-rated">Rated: {{ highestRatedSeries.dateRated }}</p>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <div class="stat-container">
+                <p class="title">Rated Movie Statistics</p>
+                <div class="film-stats">
+                    <p class="stat">Number of Movies Rated: {{ ratedMovieStatistics.numFilmsRated }}</p>
+                    <p class="stat">Average Movie Rating: {{ ratedMovieStatistics.averageFilmRating }}</p>
+                    <p class="stat">Most Watched Movie Rating: {{ ratedMovieStatistics.favoriteFilmRating }}</p>
+                    <p class="stat">Most Watched Genre: {{ ratedMovieStatistics.favoriteGenre }}</p>
+                    <p class="stat"></p>
+                </div>
+            </div>
+
+            <div class="stat-container">
+                <p class="title">Rated Series Statistics</p>
+                <div class="film-stats">
+                    <p class="stat">Number of Series Rated: {{ ratedSeriesStatistics.numFilmsRated }}</p>
+                    <p class="stat">Average Series Rating: {{ ratedSeriesStatistics.averageFilmRating }}</p>
+                    <p class="stat">Most Watched Series Rating: {{ ratedSeriesStatistics.favoriteFilmRating }}</p>
+                    <p class="stat">Most Watched Genre: {{ ratedSeriesStatistics.favoriteGenre }}</p>
+                    <p class="stat"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

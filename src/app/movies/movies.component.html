@@ -1,0 +1,134 @@
+<head>
+    <title>Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div class="logo-menu">
+            <h2 class="logo">Movies</h2>
+            <i class='bx bx-menu toggle-button' (click)="toggleActive()"></i>
+        </div>
+
+        <ul class="list">
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToHome()">
+                    <i class='bx bx-home-alt'></i>
+                    <span class="link-name" style="--i:3;">Home</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToSearchMovies()">
+                    <i class='bx bx-search'></i>
+                    <span class="link-name" style="--i:2;">Search</span>
+                </a>
+            </li>
+            <li class="list-item active">
+                <a href="javascript:void(0)" (click)="navigateToMovies()">
+                    <i class='bx bx-camera-movie'></i>
+                    <span class="link-name" style="--i:1;">Movies</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToShows()">
+                    <i class='bx bx-collection'></i>
+                    <span class="link-name" style="--i:2;">Shows</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToNews()">
+                    <i class='bx bx-news' ></i>
+                    <span class="link-name" style="--i:3;">News</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToSummary()">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name" style="--i:4;">Summary</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToAccount()">
+                    <i class='bx bx-user'></i>
+                    <span class="link-name" style="--i:5;">Account</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToSettings()">
+                    <i class='bx bx-cog'></i>
+                    <span class="link-name" style="--i:6;">Settings</span>
+                </a>
+            </li>
+            <li class="username">
+                 <p class="link-name" style="--i:7">Signed in as:</p> 
+                 <p class="link-name" style="--i:7">{{ username }}</p>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="left-side">
+            <div class="top-information">
+                <img class="film-poster" [src]="activeMovie?.poster" [attr.alt]="activeMovie?.title">
+                <div class="film-text">
+                    <p class="title">{{ activeMovie?.title }}</p>
+                    <p class="release">{{ fixReleaseDay(activeMovie?.releaseDate) }}</p>
+                    <p class="film-type">{{ activeMovie?.type }}</p>
+                    <p class="film-rating">{{ activeMovie?.rated }}</p>
+                </div>
+            </div>
+            <div class="bottom-information">
+                <div class="film-ratings">
+                    <div class="rating-titles">
+                        <p>Acting:</p>
+                        <p>Visuals:</p>
+                        <p>Story:</p>
+                        <p>Pacing:</p>
+                        <p>Climax:</p>
+                        <p>Ending:</p>
+                        <p>Rating:</p>
+                    </div>
+                    <div class="rating-scores">
+                        <p>{{ activeMovie?.acting }}</p>
+                        <p>{{ activeMovie?.visuals }}</p>
+                        <p>{{ activeMovie?.story }}</p>
+                        <p>{{ activeMovie?.pacing }}</p>
+                        <p>{{ activeMovie?.climax }}</p>
+                        <p>{{ activeMovie?.ending }}</p>
+                        <p>{{ activeMovie?.rating }}</p>
+                    </div>
+                </div>
+                <div class="date-rated">
+                    <button type="submit" class="button" (click)="onEdit(activeMovie)">Edit Rating</button>
+                    <p>Rated: {{ fixReleaseDay(activeMovie?.dateRated) }}</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="rated-films-container">
+            <div class="seach-bar">
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="searchInput" name="searchInput" (keyup.enter)="onSearch()" required>
+                    <a href="javascript:void(0)" (click)="onSearch()">
+                        <i class='bx bx-search'></i>
+                    </a>
+                    <label>What are you looking for?</label>
+                </div>
+            </div>
+        
+            <div class="scroll-box">
+                <div class="rated-films">
+                    <div class="rated-film" *ngFor="let movie of ratedMovies; let i = index">
+                        <app-rated-movie-template
+                            *ngIf="searchInput === '' || toLowerCase(movie.title).includes(searchInput) || movie.title.includes(searchInput)"
+                            [ratedFilm]="movie"
+                            href="javascript:void(0)" 
+                            (click)="onRatedFilmClicked(movie.title, movie.rating)" 
+                            class="rated-film-{{i}}"
+                        ></app-rated-movie-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,8 @@
+<div class="film-information">
+    <div class="film-text">
+        <p class="title">{{ filmDetails.Title }}</p>
+        <p class="release">{{ this.fixRelease(filmDetails.Released) }}</p>
+        <p class="film-type">{{ this.fixFilmType(filmDetails.Type) }}</p>
+    </div>
+    <img class="film-poster" [src]="filmDetails.Poster" [attr.alt]="filmDetails.Title">
+</div>

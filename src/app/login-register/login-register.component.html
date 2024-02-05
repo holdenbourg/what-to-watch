@@ -1,0 +1,75 @@
+<head>
+    <title>Login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="form-box login">
+            <h2>Login</h2>
+            <div class="warning">
+                <p>{{ warning }}</p>
+            </div>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon">
+                        <i class='bx bxs-user'></i>
+                    </span>
+                    <input type="text" [(ngModel)]="loginObject.username" name="userName" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <i class='bx bxs-lock-alt'></i>
+                    </span>
+                    <input type="passowrd" [(ngModel)]="loginObject.password" name="passowrd" (keyup.enter)="onLogin()" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="button" (click)="onLogin()">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="javascript:void(0)" (click)="toggleLoginRegister()" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <h2>Register</h2>
+            <div class="warning">
+                <p>{{ warning }}</p>
+            </div>
+            <form action="#">
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="registerObject.firstName" name="firstName" required>
+                    <label>First Name</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="registerObject.lastName" name="lastName" required>
+                    <label>Last Name</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="registerObject.email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="registerObject.username" name="userName" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="passowrd" [(ngModel)]="registerObject.password" name="password" (keyup.enter)="onSignUp()" required>
+                    <label>Password</label>
+                </div>
+                <div class="agree-to-terms">
+                    <label><input type="checkbox"> I agree to the terms & conditions</label>
+                    <a href="#">terms</a>
+                </div>
+                <button type="submit" class="button" (click)="onSignUp()">Register</button>
+                <div class="login-register">
+                    <p>Already have an account? <a href="javascript:void(0)" (click)="toggleLoginRegister()" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

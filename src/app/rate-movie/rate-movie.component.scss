@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url('../images/shadedBackground.jpg');
+}
+
+//container for left-side/right-side
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    width: auto;
+    height: auto;
+}
+
+//container for the rating portion
+.left-side {
+    width: 54.3%;
+}
+//all the ratings and titles
+.rating-questions {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    width: 100%;
+    height: 100%;
+    transition: .5s;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+    line-height: 3.25vw;
+}
+//rate the movie question
+.rating-question {
+    padding-left: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 2.03vw;
+    font-weight: 700;
+    color: #fff;
+}
+//rating titles and numbers
+.rating-criteria {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    justify-content: right;
+}
+//each rating number
+.rating-choice {
+    color: #fff;
+    font-size: 3.13vw;
+    font-weight: 700;
+    padding-left: .05vw;
+}
+//all rating numbers
+.ratings {
+    display: flex;
+    flex-direction: row;
+}
+.ratings a {
+    text-decoration: none;
+    padding-left: 1.04vw;
+}
+.ratings a .active {
+    color: rgb(255, 165, 0);
+}
+//criteria titles
+.rating-criteria p {
+    color: #fff;
+    font-size: 3.13vw;
+    font-weight: 600;
+}
+.rating-criteria p.active {
+    color: rgb(255, 165, 0);
+}
+
+//criteria explanations
+.acting-explanation {
+    font-size: 1.3vw;
+    font-weight: 500;
+    color: transparent;
+    margin-left: 6.5vw;
+}
+.visuals-explanation {
+    font-size: 1.3vw;
+    font-weight: 500;
+    color: transparent;
+    margin-left: 6vw;
+}
+.story-explanation {
+    font-size: 1.3vw;
+    font-weight: 500;
+    color: transparent;
+    margin-left: 9.7vw;
+}
+.pacing-explanation {
+    font-size: 1.3vw;
+    font-weight: 500;
+    color: transparent;
+    margin-left: 8.1vw;
+} 
+.climax-explanation {
+    font-size: 1.3vw;
+    font-weight: 500;
+    color: transparent;
+    margin-left: 11vw;
+} 
+.ending-explanation {
+    font-size: 1.3vw;
+    font-weight: 500;
+    color: transparent;
+    margin-left: 9.4vw;
+}
+.acting-explanation.active,
+.visuals-explanation.active,
+.story-explanation.active,
+.pacing-explanation.active,
+.climax-explanation.active,
+.ending-explanation.active {
+    color: rgb(255, 165, 0);
+}
+
+//right-side
+.right-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 43.5%;
+    height: 100%;
+}
+
+//rate button and unrated warning
+.button-warning {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.button {
+    width: 100%;
+    height: 4.1vw;
+    background: transparent;
+    border: 3px solid #fff;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.6vw;
+    color: #fff;
+    font-weight: 600;
+}
+.warning {
+    font-size: 1.4vw;
+    font-weight: 600;
+    color: transparent;
+    padding-bottom: 20px;
+    transition: .3s;
+    text-align: center;
+}
+.warning.active {
+    color: red;
+}

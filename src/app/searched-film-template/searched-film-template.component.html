@@ -1,0 +1,8 @@
+<div class="film-details-card">
+  <img class="film-poster" [src]="this.fixNoPoster(filmDetails.Poster)" [attr.alt]="filmDetails.Title">
+  <div class="film-details">
+    <p class="film-title"> {{ filmDetails.Title }} </p>
+    <p class="film-release-year"> {{ filmDetails.Year }} </p>
+    <p class="film-type"> {{ filmDetails.Type }} </p>
+  </div>
+</div>

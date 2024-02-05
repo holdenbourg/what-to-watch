@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url('../images/shadedBackground.jpg');
+}
+
+//selected film poster/title/relese-date/type/rated/ratings/date-rated
+.film-information {
+    display: flex;
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 1840px;
+    height: 470px;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+    transition: .5s;
+}
+.film-information.active {
+    left: 300px;
+    width: 800px;
+}
+//selected film title/release-date/type/rated
+.film-text {
+    flex: 1;
+    margin-top: 15px;
+    margin-left: 20px;
+    align-items: left;
+    text-align: left;
+    font-size: 35px;
+    color: #fff;
+    font-weight: 500;
+}
+//selected film poster
+.film-poster {
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 300px;
+    height: 450px;
+    border-radius: 5px;
+}
+//selected film title
+.title {
+    overflow-wrap: normal;
+    line-height: 55px;
+    font-size: 55px;
+    color: #fff;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+//container for acting/visuals/story/pacing/climax/ending/rating
+.film-ratings {
+    display: flex;
+    flex-direction: row;
+    width: 200px;
+    bottom: 0;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    font-size: 35px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 52px;
+    justify-content: space-between;
+}
+.rating-scores {
+    text-align: right;
+}
+//container for date-rated
+.date-rated {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    justify-content: right;
+    text-align: right;
+    font-size: 35px;
+    color: #fff;
+    font-weight: 500;
+    line-height: 52px;
+}
+
+//container for the ratings and the Edit Rate button
+.bottom-half {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    width: 1840px;
+    height: 340px;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+    justify-content:space-between;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+//container for the ratings
+.ratings {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #fff;
+    font-size: 50px;
+    font-weight: 600;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+//holds the left/right arrow and the rating
+.edit-ratings {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+//each rating
+.edit-ratings p {
+    transform: translateY(-5%);
+    transition: .5s;
+}
+//each left/right arrow
+.edit-ratings a i {
+    color: #fff;
+}
+//Edit Rate button
+.button {
+    width: 800px;
+    height: 60px;
+    background: transparent;
+    border: 3px solid #fff;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 600;
+    margin-left: auto;
+    margin-right: auto;
+}

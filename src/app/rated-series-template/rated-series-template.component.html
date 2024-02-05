@@ -1,0 +1,8 @@
+<div class="film-details-card">
+    <img class="film-poster" [src]="ratedFilm.poster" [attr.alt]="ratedFilm.title">
+    <div class="film-details">
+      <p class="film-title"> {{ ratedFilm.title }} </p>
+      <p class="film-release-year"> {{ ratedFilm.releaseDate.substring(ratedFilm.releaseDate.length - 4) }} </p>
+      <p class="film-rating"> {{ ratedFilm.rating }} </p>
+    </div>
+</div>

@@ -1,0 +1,106 @@
+<head>
+    <title>Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <nav class="sidebar">
+        <div class="logo-menu">
+            <h2 class="logo">Search</h2>
+            <i class='bx bx-menu toggle-button' (click)="toggleSidebarActive()"></i>
+        </div>
+
+        <ul class="list">
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToHome()">
+                    <i class='bx bx-home-alt'></i>
+                    <span class="link-name" style="--i:2;">Home</span>
+                </a>
+            </li>
+            <li class="list-item active">
+                <a href="javascript:void(0)" (click)="navigateToSearchMovies()">
+                    <i class='bx bx-search'></i>
+                    <span class="link-name" style="--i:1;">Search</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToMovies()">
+                    <i class='bx bx-camera-movie'></i>
+                    <span class="link-name" style="--i:2;">Movies</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToShows()">
+                    <i class='bx bx-collection'></i>
+                    <span class="link-name" style="--i:3;">Shows</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToNews()">
+                    <i class='bx bx-news' ></i>
+                    <span class="link-name" style="--i:4;">News</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToSummary()">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name" style="--i:5;">Summary</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToAccount()">
+                    <i class='bx bx-user'></i>
+                    <span class="link-name" style="--i:6;">Account</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a href="javascript:void(0)" (click)="navigateToSettings()">
+                    <i class='bx bx-cog'></i>
+                    <span class="link-name" style="--i:7;">Settings</span>
+                </a>
+            </li>
+            <li class="username">
+                 <p class="link-name" style="--i:8">Signed in as:</p> 
+                 <p class="link-name" style="--i:8">{{ username }}</p>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="search-bar">
+            <label class="prompt">What did you watch?</label>
+            <input class="input-enter" type="text" [(ngModel)]="searchInput" name="searchInput" (keyup.enter)="onSearch()" (focus)="toggleSearchLabel()" required>
+            <i href="javascript:void(0)" (click)="toggleMoviesActive()" class="movies">Movies</i>
+            <i href="javascript:void(0)" (click)="toggleSeriesActive()" class="series">Series</i>
+            <i href="javascript:void(0)" (click)="toggleUsersActive()" class="users">Users</i>
+            <a href="javascript:void(0)" (click)="onSearch()">
+                <i class='bx bx-search'></i>
+            </a>
+        </div>
+
+<!--    <div *ngIf="passwordHidden; else unlocked">
+            <p class="info">Password: {{ this.hidePassword(thisPassword) }}</p>
+            <a href="javascript:void(0)" (click)="changePasswordVisibility()">
+                <i class='bx bxs-lock-alt'></i>
+            </a>
+        </div>
+        <ng-template #unlocked>
+            <p class="info">Password: {{ thisPassword }}</p>
+            <a href="javascript:void(0)" (click)="changePasswordVisibility()">
+                <i class='bx bxs-lock-open-alt' ></i>
+            </a>
+        </ng-template> -->
+
+        <div class="scroll-box">
+            <div class="searched-films">
+                <app-searched-film-template
+                    *ngFor="let film of translatedMovies"
+                    [filmDetails]="film"
+                    href="javascript:void(0)" 
+                    (click)="onFilmClicked(film.Type, film.imdbID)" 
+                    class="searched-film"
+                ></app-searched-film-template>
+            </div>
+        </div>
+    </div>
+</body>

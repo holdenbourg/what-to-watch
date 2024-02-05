@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+//selected film card containg poster/title/year/type
+.film-details-card {
+  display: flex;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
+  backdrop-filter: blur(3px);
+}
+
+//selected film poster
+.film-poster {
+  width: auto;
+  height: 7.8vw;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+//selected film title
+.film-title {
+  font-size: 1.35vw;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+//selected film release year/type
+.film-release-year,
+.film-type {
+  font-size: 1.1vw;
+  color: #fff;
+}

@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="film-information">
+    <div class="film-text">
+      <p class="title">{{ mdbSeriesDetails.title }}</p>
+      <p class="type">{{ this.fixFilmType(mdbSeriesDetails.type) }}</p>
+      <p class="rated">{{ mdbSeriesDetails.certification }}</p>
+      <p class="seasons">{{ this.seasons }}</p>
+      <p class="episodes">{{ this.episodes }}</p>
+    </div>
+    <img class="film-poster" [src]="this.fixNoPoster(mdbSeriesDetails.poster)" [attr.alt]="mdbSeriesDetails.title">
+  </div>
+  <div class="streaming-on">
+    <p class="label">Streaming On:</p>
+    <div class="streaming-services" *ngIf="streamingServices.length != 0; else noStreamingServices">
+      <app-streaming-service-template
+        *ngFor="let streamingService of streamingServices"
+        [streamingService]="streamingService"
+      ></app-streaming-service-template>
+    </div>
+    <ng-template #noStreamingServices>
+      <p class="no-streaming-services">N/A</p>
+    </ng-template>
+  </div>
+</div>
