@@ -42,12 +42,20 @@ export class LoginRegisterComponent {
 
   //Send the new users info to the database
   onSignUp() {
-    if(!this.checkNameLengthMinimum(this.registerObject.firstName)) {
-      this.warning = `First name must be over 2 characters`
+    if(!this.checkAllSpecialCharacters(this.registerObject.firstName)) {
+      this.warning = `First name can't have special characters`;
+      setTimeout(() => {this.warning = ``;}, 3000);
+      return;
+    } else if(!this.checkNameLengthMinimum(this.registerObject.firstName)) {
+      this.warning = `First name must be over 2 characters`;
       setTimeout(() => {this.warning = ``;}, 3000);
       return;
     } else if(!this.checkNameLengthMaximum(this.registerObject.firstName)) {
       this.warning = `First name must be below 16 characters`;
+      setTimeout(() => {this.warning = ``;}, 3000);
+      return;
+    } else if(!this.checkAllSpecialCharacters(this.registerObject.lastName)) {
+      this.warning = `Last name can't have special characters`;
       setTimeout(() => {this.warning = ``;}, 3000);
       return;
     } else if(!this.checkNameLengthMinimum(this.registerObject.lastName)) {
@@ -72,6 +80,10 @@ export class LoginRegisterComponent {
       return;
     } else if(!this.checkEmailContainsPeriod(this.registerObject.email)) {
       this.warning = `Email must contain a '.'`;
+      setTimeout(() => {this.warning = ``;}, 3000);
+      return;
+    } else if(!this.checkSpecialCharactersEmail(this.registerObject.email)) {
+      this.warning = `Email can't contain certain characters`;
       setTimeout(() => {this.warning = ``;}, 3000);
       return;
 
@@ -333,6 +345,42 @@ export class LoginRegisterComponent {
   }
   checkEmailLengthMaximum(input: string) {
     if (input.length > 30) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  checkSpecialCharactersEmail(input: string) {
+    if(input.includes(' ') ||
+      input.includes(',') ||
+      input.includes('[') ||
+      input.includes(']') ||
+      input.includes('{') ||
+      input.includes('}') ||
+      input.includes('(') ||
+      input.includes(')') ||
+      input.includes('_') ||
+      input.includes('-') ||
+      input.includes('+') ||
+      input.includes('=') ||
+      input.includes('!') ||
+      input.includes('#') ||
+      input.includes('$') ||
+      input.includes('%') ||
+      input.includes('^') ||
+      input.includes('&') ||
+      input.includes('*') ||
+      input.includes(':') ||
+      input.includes(';') ||
+      input.includes(`'`) ||
+      input.includes(`"`) ||
+      input.includes('<') ||
+      input.includes('>') ||
+      input.includes('?') ||
+      input.includes('|') ||
+      input.includes('~') ||
+      input.includes('/') ||
+      input.includes('\\')) {
       return false;
     } else {
       return true;

@@ -67,7 +67,7 @@
     </nav>
 
     <div class="container">
-        <div class="left-side">
+        <div class="top-side">
             <div class="account-information">
                 <p class="title">Account Information</p>
                 <p class="info">First Name: {{ registerModel.firstName }}</p>
@@ -123,6 +123,50 @@
                     <label>Confirm Password</label>
                 </div>
                 <button type="submit" class="button" (click)="onChangePassword()">Submit</button>
+            </div>
+        </div>
+        <div class="bottom-side">
+            <div class="change-first">
+                <p class="title">Change First Name</p>
+                <div class="warning">
+                    <p>{{ firstNameWarning }}</p>
+                </div>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="changeFirstName" name="changeFirstName" (keyup.enter)="onChangeFirstName()" required>
+                    <a href="javascript:void(0)">
+                        <i class='bx bx-user'></i>
+                    </a>
+                    <label>First Name</label>
+                </div>
+                <button type="submit" class="button" (click)="onChangeFirstName()">Submit</button>
+            </div>
+            <div class="change-last">
+                <p class="title">Change Last Name</p>
+                <div class="warning">
+                    <p>{{ lastNameWarning }}</p>
+                </div>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="changeLastName" name="changeLastName" (keyup.enter)="onChangeLastName()" required>
+                    <a href="javascript:void(0)">
+                        <i class='bx bx-user'></i>
+                    </a>
+                    <label>Last Name</label>
+                </div>
+                <button type="submit" class="button" (click)="onChangeLastName()">Submit</button>
+            </div>
+            <div class="change-email">
+                <p class="title">Change Email</p>
+                <div class="warning">
+                    <p>{{ emailWarning }}</p>
+                </div>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="changeEmail" name="changeEmail" (keyup.enter)="onChangeEmail()" required>
+                    <a href="javascript:void(0)">
+                        <i class='bx bx-user'></i>
+                    </a>
+                    <label>Email</label>
+                </div>
+                <button type="submit" class="button" (click)="onChangeEmail()">Submit</button>
             </div>
         </div>
     </div>

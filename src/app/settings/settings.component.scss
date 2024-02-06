@@ -138,7 +138,7 @@ body {
 .container {
     position: absolute;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     left: 120px;
     right: 40px;
@@ -156,17 +156,18 @@ body {
     font-size: 30px;
     font-weight: 600;
     padding-left: 25px;
+    padding-right: 25px;
     padding-top: 10px;
     color: #fff;
 }
 
-//container for account-information and change-user-password
-.left-side {
+//container for account-information and change-user/change-password
+.top-side {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
-    width: 31.66%;
-    height: 100%;
+    width: 100%;
+    height: 49.5%;
 }
 //container for account information
 .account-information {
@@ -177,7 +178,8 @@ body {
     font-weight: 500;
     border: 3px solid #fff;
     border-radius: 5px;
-    height: 35%;
+    height: 100%;
+    width: auto;
     backdrop-filter: blur(3px);
     padding-bottom: 30px;
     justify-content: space-between;
@@ -186,6 +188,7 @@ body {
 //each criteris in account-information
 .info {
     padding-left: 40px;
+    padding-right: 25px;
 }
 //contains password and visibility button
 .locked {
@@ -204,7 +207,6 @@ body {
 
 //change-username container
 .change-username {
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     color: #fff;
@@ -212,14 +214,13 @@ body {
     font-weight: 500;
     border: 3px solid #fff;
     border-radius: 5px;
-    height: auto;
-    padding-bottom: 20px;
+    height: 100%;
+    width: auto;
     backdrop-filter: blur(3px);
 }
 
 //change-password container
 .change-password {
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     color: #fff;
@@ -227,8 +228,8 @@ body {
     font-weight: 500;
     border: 3px solid #fff;
     border-radius: 5px;
-    height: auto;
-    padding-bottom: 20px;
+    height: 100%;
+    width: auto;
     backdrop-filter: blur(3px);
 }
 //input/icon/prompt for both username and password
@@ -369,4 +370,26 @@ body {
     margin-bottom: 10px;
     font-size: 30px;
     font-weight: 600;
+}
+
+//container for account-information and change-user-password
+.bottom-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 49.5%;
+}
+
+.change-first, .change-last, .change-email {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 500;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    height: 100%;
+    width: 32.8%;
+    backdrop-filter: blur(3px);
 }

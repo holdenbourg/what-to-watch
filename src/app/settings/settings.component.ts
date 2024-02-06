@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
 })
-export class SettingsComponent  implements OnInit {
+export class SettingsComponent implements OnInit {
   private routingService: RoutingService = inject(RoutingService);
   public userInformationService: UserInformationService = inject(UserInformationService);
   public username: string = this.userInformationService.username;
@@ -21,9 +21,16 @@ export class SettingsComponent  implements OnInit {
   public changeUsername: string = '';
   public changePassword: string = '';
   public confirmChangePassword: string = '';
+  public changeFirstName: string = '';
+  public changeLastName: string = '';
+  public changeEmail: string = '';
+
 
   public usernameWarning: string = '';
   public passwordWarning: string = '';
+  public firstNameWarning: string = '';
+  public lastNameWarning: string = '';
+  public emailWarning: string = '';
 
   public registerModel: RegisterModel = {
     firstName: 'Holden',
@@ -99,7 +106,66 @@ export class SettingsComponent  implements OnInit {
       return;
     }
 
-    //if password passes all the checks change the users password in teh accounts db
+    //if password passes all the checks change the users password in the accounts db
+  }
+  onChangeFirstName() {
+    if(!this.checkAllSpecialCharacters(this.changeFirstName)) {
+      this.firstNameWarning = `First name can't have special characters`;
+      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkNameLengthMinimum(this.changeFirstName)) {
+      this.firstNameWarning = `First name must be above 2 characters`;
+      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkNameLengthMaximum(this.changeFirstName)) {
+      this.firstNameWarning = `First name must be below 16 characters`;
+      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      return;
+    }
+
+    //if first name passes all teh checks change in users db
+  }
+  onChangeLastName() {
+    if(!this.checkAllSpecialCharacters(this.changeLastName)) {
+      this.lastNameWarning = `Last name can't have special characters`;
+      setTimeout(() => {this.lastNameWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkNameLengthMinimum(this.changeLastName)) {
+      this.lastNameWarning = `Last name must be above 2 characters`;
+      setTimeout(() => {this.lastNameWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkNameLengthMaximum(this.changeLastName)) {
+      this.lastNameWarning = `Last name must be below 16 characters`;
+      setTimeout(() => {this.lastNameWarning = ``;}, 3000);
+      return;
+    }
+
+    //if last name passes all teh checks change in users db
+  }
+  onChangeEmail() {
+    if(!this.checkEmailLengthMinimum(this.changeEmail)) {
+      this.emailWarning = `Email must be above 6 characters`;
+      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkEmailLengthMaximum(this.changeEmail)) {
+      this.emailWarning = `Email must be below 30 characters`;
+      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkEmailContainsAt(this.changeEmail)) {
+      this.emailWarning = `Email must conatin an '@'`;
+      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkEmailContainsPeriod(this.changeEmail)) {
+      this.emailWarning = `Email must contain a '.'`;
+      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkSpecialCharactersEmail(this.changeEmail)) {
+      this.emailWarning = `Email can't contain certain characters`;
+      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      return;
+    }
+
+    //if email passes all the checks change the username in the accounts db
   }
 
   hidePassword(password: string) {
@@ -276,9 +342,91 @@ export class SettingsComponent  implements OnInit {
     }
   }
 
+  checkNameLengthMinimum(input: string) {
+    if (input.length < 2) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  checkNameLengthMaximum(input: string) {
+    if (input.length > 16) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  checkEmailContainsAt(input: string) {
+    if(input.includes('@')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  checkEmailContainsPeriod(input: string) {
+    if(input.includes('.')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  checkEmailLengthMinimum(input: string) {
+    if (input.length < 6) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  checkEmailLengthMaximum(input: string) {
+    if (input.length > 30) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  checkSpecialCharactersEmail(input: string) {
+    if(input.includes(' ') ||
+      input.includes(',') ||
+      input.includes('[') ||
+      input.includes(']') ||
+      input.includes('{') ||
+      input.includes('}') ||
+      input.includes('(') ||
+      input.includes(')') ||
+      input.includes('_') ||
+      input.includes('-') ||
+      input.includes('+') ||
+      input.includes('=') ||
+      input.includes('!') ||
+      input.includes('#') ||
+      input.includes('$') ||
+      input.includes('%') ||
+      input.includes('^') ||
+      input.includes('&') ||
+      input.includes('*') ||
+      input.includes(':') ||
+      input.includes(';') ||
+      input.includes(`'`) ||
+      input.includes(`"`) ||
+      input.includes('<') ||
+      input.includes('>') ||
+      input.includes('?') ||
+      input.includes('|') ||
+      input.includes('~') ||
+      input.includes('/') ||
+      input.includes('\\')) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   toggleActive() {
     const themeClass = document.querySelector('.sidebar');
     themeClass?.classList.toggle('active');
+    const container = document.querySelector('.container');
+    container?.classList.toggle('active');
   }
 
   navigateToHome() {
