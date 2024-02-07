@@ -14,6 +14,7 @@ import { EditMovieComponent } from './edit-movie/edit-movie.component';
 import { EditSeriesComponent } from './edit-series/edit-series.component';
 import { NewsComponent } from './news/news.component';
 import { SummaryComponent } from './summary/summary.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 const routes: Routes = [
   {path: '', component: LoginRegisterComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'shows/:username', component: ShowsComponent},
   {path: 'edit-movie/:input', component: EditMovieComponent},
   {path: 'edit-series/:input', component: EditSeriesComponent},
-  {path: 'settings', component: SettingsComponent},
+  {path: 'settings/account-info', component: SettingsComponent},
+  {path: 'settings/privacy', component: PrivacyComponent},
   {path: 'search/:type', component: SearchComponent},
   {path: 'search/:type/:input', component: SearchComponent},
   {path: 'film-information/:type/:imdbId', component: FilmInformationComponent},

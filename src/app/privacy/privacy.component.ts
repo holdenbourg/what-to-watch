@@ -1,18 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RoutingService } from '../services/routing/routing.service';
 import { UserInformationService } from '../services/user/user-information.service';
 import { RegisterModel } from '../services/models/login-register/register-model';
-import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-settings',
+  selector: 'app-privacy',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './settings.component.html',
-  styleUrl: './settings.component.scss'
+  templateUrl: './privacy.component.html',
+  styleUrl: './privacy.component.scss'
 })
-export class SettingsComponent implements OnInit {
+export class PrivacyComponent {
   private routingService: RoutingService = inject(RoutingService);
   public userInformationService: UserInformationService = inject(UserInformationService);
   public username: string = this.userInformationService.username;
@@ -24,13 +24,14 @@ export class SettingsComponent implements OnInit {
   public changeFirstName: string = '';
   public changeLastName: string = '';
   public changeEmail: string = '';
-
+  public changeBio: string = '';
 
   public usernameWarning: string = '';
   public passwordWarning: string = '';
   public firstNameWarning: string = '';
   public lastNameWarning: string = '';
   public emailWarning: string = '';
+  public bioWarning: string = '';
 
   public registerModel: RegisterModel = {
     firstName: 'Holden',
@@ -166,6 +167,19 @@ export class SettingsComponent implements OnInit {
     }
 
     //if email passes all the checks change the username in the accounts db
+  }
+  onChangeBio() {
+    if(!this.checkBioLengthMinimum(this.changeBio)) {
+      this.bioWarning = `Bio must be atleast 2 characters`;
+      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkBioLengthMaximum(this.changeBio)) {
+      this.bioWarning = `Bio must be atleast 2 characters`;
+      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      return;
+    }
+
+    //if bio passes the checks change it in the accounts db
   }
 
   hidePassword(password: string) {
@@ -422,9 +436,26 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  checkBioLengthMinimum(input: string) {
+    if (input.length < 2) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  checkBioLengthMaximum(input: string) {
+    if (input.length > 150) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   toggleActive() {
     const themeClass = document.querySelector('.sidebar');
     themeClass?.classList.toggle('active');
+    const settingsIcon = document.querySelector('.settings-icon');
+    settingsIcon?.classList.toggle('active');
     const container = document.querySelector('.container');
     container?.classList.toggle('active');
   }

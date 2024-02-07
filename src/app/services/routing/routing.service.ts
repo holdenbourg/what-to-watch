@@ -59,9 +59,9 @@ export class RoutingService {
     this.router.navigateByUrl(`/account/${username}`);
   }
   navigateToSettings() {
-    this.router.navigateByUrl('/settings');
+    this.router.navigateByUrl('/settings/account-info');
   }
-
-
-
+  navigateToPrivacy() {
+    this.router.navigateByUrl('/settings/privacy');
+  }
 }
