@@ -60,13 +60,13 @@
                 </a>
             </li>
             <li class="settings-item">
-                <a class="settings-icon" (click)="navigateToSettings()">
+                <a class="account-info-icon" (click)="navigateToSettings()">
                     <i class='bx bx-info-circle'></i>
                     <span class="link-name" style="--i:2;">Account Info</span>
                 </a>
             </li>
             <li class="settings-item active">
-                <a class="settings-icon" (click)="navigateToPrivacy()">
+                <a class="privacy-icon" (click)="navigateToPrivacy()">
                     <i class='bx bx-shield-quarter' ></i>
                     <span class="link-name" style="--i:2;">Privacy</span>
                 </a>
@@ -92,6 +92,13 @@
                     </a>
                     <label>Username</label>
                 </div>
+                <div class="middle-info">
+                    <p>*Username must be above 6 characters</p>
+                    <p>*Username must be below 14 characters</p>
+                    <p>*Username can't be equal to your current one</p>
+                    <p>*Username cannot contain special characters</p>
+                    <p>{{ usernameSpecialCharactersString }}</p>
+                </div>
                 <button type="submit" class="button" (click)="onChangeUsername()">Submit</button>
             </div>
             <div class="change-info">
@@ -113,6 +120,12 @@
                     </a>
                     <label>Confirm Password</label>
                 </div>
+                <div class="middle-info">
+                    <p>*Password must be above 8 and below 24 characters</p>
+                    <p>*Password can't be equal to your current one</p>
+                    <p>*Password must contain a capital letter and a number</p>
+                    <p>*Password must contain any one of {{ passwordSpecialCharactersString }}</p>
+                </div>
                 <button type="submit" class="button" (click)="onChangePassword()">Submit</button>
             </div>
             <div class="change-info">
@@ -123,9 +136,16 @@
                 <div class="input-box">
                     <input type="text" [(ngModel)]="changeEmail" name="changeEmail" (keyup.enter)="onChangeEmail()" required>
                     <a href="javascript:void(0)">
-                        <i class='bx bx-user'></i>
+                        <i class='bx bx-envelope'></i>
                     </a>
                     <label>Email</label>
+                </div>
+                <div class="middle-info">
+                    <p>*Email must be above 6 and below 30 characters</p>
+                    <p>*Email can't be equal to your current one</p>
+                    <p>*Email must contain a {{ passwordSpecialCharactersString.substring(2,3) }} and .</p>
+                    <p>*Email cannot contain special characters</p>
+                    <p>{{ usernameSpecialCharactersString }}</p>
                 </div>
                 <button type="submit" class="button" (click)="onChangeEmail()">Submit</button>
             </div>
@@ -138,10 +158,14 @@
                 </div>
                 <div class="input-box">
                     <input type="text" [(ngModel)]="changeFirstName" name="changeFirstName" (keyup.enter)="onChangeFirstName()" required>
-                    <a href="javascript:void(0)">
-                        <i class='bx bx-user'></i>
-                    </a>
                     <label>First Name</label>
+                </div>
+                <div class="middle-info">
+                    <p>*First name must be above 2 characters</p>
+                    <p>*First name must be below 16 characters</p>
+                    <p>*First name can't be equal to your current one</p>
+                    <p>*First name cannot contain special characters</p>
+                    <p>{{ usernameSpecialCharactersString }}</p>
                 </div>
                 <button type="submit" class="button" (click)="onChangeFirstName()">Submit</button>
             </div>
@@ -152,10 +176,14 @@
                 </div>
                 <div class="input-box">
                     <input type="text" [(ngModel)]="changeLastName" name="changeLastName" (keyup.enter)="onChangeLastName()" required>
-                    <a href="javascript:void(0)">
-                        <i class='bx bx-user'></i>
-                    </a>
                     <label>Last Name</label>
+                </div>
+                <div class="middle-info">
+                    <p>*Last name must be above 2 characters</p>
+                    <p>*Last name must be below 16 characters</p>
+                    <p>*Last name can't be equal to your current one</p>
+                    <p>*Last name cannot contain special characters</p>
+                    <p>{{ usernameSpecialCharactersString }}</p>
                 </div>
                 <button type="submit" class="button" (click)="onChangeLastName()">Submit</button>
             </div>
@@ -164,12 +192,12 @@
                 <div class="warning">
                     <p>{{ bioWarning }}</p>
                 </div>
-                <div class="input-box">
-                    <input type="text" [(ngModel)]="changeBio" name="changeBio" (keyup.enter)="onChangeBio()" required>
-                    <a href="javascript:void(0)">
-                        <i class='bx bx-user'></i>
-                    </a>
+                <div class="bio-input-box">
+                    <textarea type="text" [(ngModel)]="changeBio" name="changeBio" (keyup.enter)="onChangeBio()" required></textarea>
                     <label>Bio</label>
+                </div>
+                <div class="middle-info">
+                    <p>*Bio must be below 150 characters</p>
                 </div>
                 <button type="submit" class="button" (click)="onChangeBio()">Submit</button>
             </div>

@@ -132,17 +132,27 @@ body {
     border-radius: 6px;
     white-space: nowrap;
     transition: .5s;
+    cursor: pointer;
 }
-.settings-item.active a, 
-.settings-item a:hover {
-    background: rgba(255, 255, 255, .2);
+.sidebar.active .settings-item.active a, 
+.sidebar.active .settings-item a:hover {
+   background: rgba(255, 255, 255, .2);
+}
+.sidebar .settings-item.active {
+    background: transparent;
+    color: transparent;
 }
 //other page redirect icons
 .settings-item a i {
+    opacity: 0;
     min-width: 50px;
     height: 35px;
     text-align: center;
     line-height: 35px;
+    transition: .5s;
+}
+.settings-item a.active i {
+    opacity: 1;
 }
 //username at the bottom of the dashboard
 .username {

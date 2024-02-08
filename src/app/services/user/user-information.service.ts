@@ -4,4 +4,5 @@ export class UserInformationService {
   lastName: string = '';
   email: string = '';
   password: string = '';
+  bio: string = '';
 }

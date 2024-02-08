@@ -25,7 +25,6 @@ export class SettingsComponent implements OnInit {
   public changeLastName: string = '';
   public changeEmail: string = '';
 
-
   public usernameWarning: string = '';
   public passwordWarning: string = '';
   public firstNameWarning: string = '';
@@ -425,6 +424,10 @@ export class SettingsComponent implements OnInit {
   toggleActive() {
     const themeClass = document.querySelector('.sidebar');
     themeClass?.classList.toggle('active');
+    const accountInfo = document.querySelector('.account-info-icon');
+    accountInfo?.classList.toggle('active');
+    const privacy = document.querySelector('.privacy-icon');
+    privacy?.classList.toggle('active');
     const container = document.querySelector('.container');
     container?.classList.toggle('active');
   }

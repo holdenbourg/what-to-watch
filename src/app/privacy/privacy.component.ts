@@ -15,8 +15,14 @@ import { RegisterModel } from '../services/models/login-register/register-model'
 export class PrivacyComponent {
   private routingService: RoutingService = inject(RoutingService);
   public userInformationService: UserInformationService = inject(UserInformationService);
+
+  //pull all this info from the db on page initialization
   public username: string = this.userInformationService.username;
   public password: string = this.userInformationService.password;
+  public email: string = this.userInformationService.email;
+  public firstName: string = this.userInformationService.firstName;
+  public lastName: string = this.userInformationService.lastName;
+  public bio: string = this.userInformationService.bio;
 
   public changeUsername: string = '';
   public changePassword: string = '';
@@ -32,6 +38,9 @@ export class PrivacyComponent {
   public lastNameWarning: string = '';
   public emailWarning: string = '';
   public bioWarning: string = '';
+
+  public usernameSpecialCharactersString: string = `* . , [ ] { } ( ) < > _ - + = ! @ # $ % ^ & : ; ' " ? | ~ / \\`;
+  public passwordSpecialCharactersString: string = `! @ # $ % ^ & *`;
 
   public registerModel: RegisterModel = {
     firstName: 'Holden',
@@ -110,7 +119,11 @@ export class PrivacyComponent {
     //if password passes all the checks change the users password in the accounts db
   }
   onChangeFirstName() {
-    if(!this.checkAllSpecialCharacters(this.changeFirstName)) {
+    if(this.firstName == this.changeFirstName) {
+      this.firstNameWarning = `That already is your first name`;
+      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkAllSpecialCharacters(this.changeFirstName)) {
       this.firstNameWarning = `First name can't have special characters`;
       setTimeout(() => {this.firstNameWarning = ``;}, 3000);
       return;
@@ -127,7 +140,11 @@ export class PrivacyComponent {
     //if first name passes all teh checks change in users db
   }
   onChangeLastName() {
-    if(!this.checkAllSpecialCharacters(this.changeLastName)) {
+    if(this.lastName == this.changeLastName) {
+      this.lastNameWarning = `That already is your last name`;
+      setTimeout(() => {this.lastNameWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkAllSpecialCharacters(this.changeLastName)) {
       this.lastNameWarning = `Last name can't have special characters`;
       setTimeout(() => {this.lastNameWarning = ``;}, 3000);
       return;
@@ -144,38 +161,38 @@ export class PrivacyComponent {
     //if last name passes all teh checks change in users db
   }
   onChangeEmail() {
-    if(!this.checkEmailLengthMinimum(this.changeEmail)) {
+    if(this.email == this.changeEmail) {
+      this.emailWarning = `That already is your email`;
+      setTimeout(() => {this.emailWarning = ``;}, 3000);
+      return;
+    } else if(!this.checkEmailLengthMinimum(this.changeEmail)) {
       this.emailWarning = `Email must be above 6 characters`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      setTimeout(() => {this.emailWarning = ``;}, 3000);
       return;
     } else if(!this.checkEmailLengthMaximum(this.changeEmail)) {
       this.emailWarning = `Email must be below 30 characters`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      setTimeout(() => {this.emailWarning = ``;}, 3000);
       return;
     } else if(!this.checkEmailContainsAt(this.changeEmail)) {
       this.emailWarning = `Email must conatin an '@'`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      setTimeout(() => {this.emailWarning = ``;}, 3000);
       return;
     } else if(!this.checkEmailContainsPeriod(this.changeEmail)) {
       this.emailWarning = `Email must contain a '.'`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      setTimeout(() => {this.emailWarning = ``;}, 3000);
       return;
     } else if(!this.checkSpecialCharactersEmail(this.changeEmail)) {
       this.emailWarning = `Email can't contain certain characters`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+      setTimeout(() => {this.emailWarning = ``;}, 3000);
       return;
     }
 
     //if email passes all the checks change the username in the accounts db
   }
   onChangeBio() {
-    if(!this.checkBioLengthMinimum(this.changeBio)) {
-      this.bioWarning = `Bio must be atleast 2 characters`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkBioLengthMaximum(this.changeBio)) {
-      this.bioWarning = `Bio must be atleast 2 characters`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
+    if(!this.checkBioLengthMaximum(this.changeBio)) {
+      this.bioWarning = `Bio must be below 150 characters`;
+      setTimeout(() => {this.bioWarning = ``;}, 3000);
       return;
     }
 
@@ -454,8 +471,10 @@ export class PrivacyComponent {
   toggleActive() {
     const themeClass = document.querySelector('.sidebar');
     themeClass?.classList.toggle('active');
-    const settingsIcon = document.querySelector('.settings-icon');
-    settingsIcon?.classList.toggle('active');
+    const accountInfo = document.querySelector('.account-info-icon');
+    accountInfo?.classList.toggle('active');
+    const privacy = document.querySelector('.privacy-icon');
+    privacy?.classList.toggle('active');
     const container = document.querySelector('.container');
     container?.classList.toggle('active');
   }
