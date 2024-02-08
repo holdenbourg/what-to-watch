@@ -81,6 +81,7 @@ body {
     height: 50px;
     margin: 5px 0;
     line-height: 50px;
+    cursor: pointer;
 }
 .list .list-item a {
     display: flex;
@@ -123,6 +124,7 @@ body {
     height: 35px;
     margin: 5px 0;
     line-height: 30px;
+    cursor: pointer;
 }
 .settings-item a {
     display: flex;
@@ -133,7 +135,6 @@ body {
     border-radius: 6px;
     white-space: nowrap;
     transition: .5s;
-    cursor: pointer;
 }
 .sidebar.active .settings-item.active a, 
 .sidebar.active .settings-item a:hover {
@@ -203,43 +204,6 @@ body {
     width: 100%;
     height: 49.5%;
 }
-//container for account information
-.account-information {
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 500;
-    border: 3px solid #fff;
-    border-radius: 5px;
-    height: 100%;
-    width: auto;
-    backdrop-filter: blur(3px);
-    padding-bottom: 30px;
-    justify-content: space-between;
-    overflow-wrap: break-word;
-}
-//each criteris in account-information
-.info {
-    padding-left: 40px;
-    padding-right: 25px;
-}
-//contains password and visibility button
-.locked {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-right: 30px;
-}
-//visibility button
-.locked a {
-    color: #fff;
-    position: absolute;
-    right: 30px;
-    bottom: 30px;
-}
-
-
 //input/icon/prompt for both username and password
 .input-box {
     margin-left: 30px;

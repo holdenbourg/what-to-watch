@@ -14,6 +14,12 @@ import { LoginModel } from '../services/models/login-register/login-model';
   styleUrl: './login-register.component.scss'
 })
 export class LoginRegisterComponent {
+onTerms() {
+throw new Error('Method not implemented.');
+}
+onForgotPassword() {
+throw new Error('Method not implemented.');
+}
   private routingService: RoutingService = inject(RoutingService);
   private userInformationService: UserInformationService = inject(UserInformationService);
 

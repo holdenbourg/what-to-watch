@@ -12,7 +12,6 @@ import { RateSeriesComponent } from './rate-series/rate-series.component';
 import { FilmInformationComponent } from './film-information/film-information.component';
 import { EditMovieComponent } from './edit-movie/edit-movie.component';
 import { EditSeriesComponent } from './edit-series/edit-series.component';
-import { NewsComponent } from './news/news.component';
 import { SummaryComponent } from './summary/summary.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 
@@ -20,7 +19,6 @@ const routes: Routes = [
   {path: '', component: LoginRegisterComponent},
   {path: 'login', component: LoginRegisterComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'news', component: NewsComponent},
   {path: 'movies/:username', component: MoviesComponent},
   {path: 'shows/:username', component: ShowsComponent},
   {path: 'edit-movie/:input', component: EditMovieComponent},

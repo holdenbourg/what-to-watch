@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RoutingService } from '../services/routing/routing.service';
 import { UserInformationService } from '../services/user/user-information.service';
 import { RegisterModel } from '../services/models/login-register/register-model';
+import { AccountInformationModel } from '../services/models/account-information-model';
 
 @Component({
   selector: 'app-privacy',
@@ -16,21 +17,24 @@ export class PrivacyComponent {
   private routingService: RoutingService = inject(RoutingService);
   public userInformationService: UserInformationService = inject(UserInformationService);
 
-  //pull all this info from the db on page initialization
-  public username: string = this.userInformationService.username;
-  public password: string = this.userInformationService.password;
-  public email: string = this.userInformationService.email;
-  public firstName: string = this.userInformationService.firstName;
-  public lastName: string = this.userInformationService.lastName;
-  public bio: string = this.userInformationService.bio;
+  //pull all this info from the db using username on page initialization
+  public accountInformation: AccountInformationModel = {
+    //username: this.userInformationService.username,
+    username: 'HoldenBourg',
+    password: 'Captain$47',
+    email: 'holden.bourg@gmail.com',
+    firstName: 'Holden',
+    lastName: 'Bourg',
+    bio: 'I love movies'
+  }
 
-  public changeUsername: string = '';
-  public changePassword: string = '';
-  public confirmChangePassword: string = '';
-  public changeFirstName: string = '';
-  public changeLastName: string = '';
-  public changeEmail: string = '';
-  public changeBio: string = '';
+  public changeUsername: string = this.accountInformation.username;
+  public changePassword: string = this.accountInformation.password;
+  public confirmChangePassword: string = this.accountInformation.password;
+  public changeFirstName: string = this.accountInformation.firstName;
+  public changeLastName: string = this.accountInformation.lastName;
+  public changeEmail: string = this.accountInformation.email;
+  public changeBio: string = this.accountInformation.bio;
 
   public usernameWarning: string = '';
   public passwordWarning: string = '';
@@ -42,17 +46,6 @@ export class PrivacyComponent {
   public usernameSpecialCharactersString: string = `* . , [ ] { } ( ) < > _ - + = ! @ # $ % ^ & : ; ' " ? | ~ / \\`;
   public passwordSpecialCharactersString: string = `! @ # $ % ^ & *`;
 
-  public registerModel: RegisterModel = {
-    firstName: 'Holden',
-    lastName: 'Bourg',
-    email: 'holden.bourg@gmail.com',
-    username: 'HoldenBourg',
-    password: 'Captain$47'
-  }
-
-  public passwordHidden: boolean = true;
-  public thisPassword: string = this.registerModel.password;
-
   
   ngOnInit() {
     this.toggleActive()
@@ -60,7 +53,7 @@ export class PrivacyComponent {
 
   onChangeUsername() {
     //need another if to run for unique username
-    if(this.username == this.changeUsername) {
+    if(this.accountInformation.username == this.changeUsername) {
       this.usernameWarning = `That already is your username`;
       setTimeout(() => {this.usernameWarning = ``;}, 3000);
       return;
@@ -82,7 +75,7 @@ export class PrivacyComponent {
     //then change all movies rated by the old username to the new one
   }
   onChangePassword() {
-    if(this.password == this.changePassword) {
+    if(this.accountInformation.password == this.changePassword) {
       this.passwordWarning = `That already is your password`;
       setTimeout(() => {this.passwordWarning = ``;}, 3000);
       return;
@@ -119,7 +112,7 @@ export class PrivacyComponent {
     //if password passes all the checks change the users password in the accounts db
   }
   onChangeFirstName() {
-    if(this.firstName == this.changeFirstName) {
+    if(this.accountInformation.firstName == this.changeFirstName) {
       this.firstNameWarning = `That already is your first name`;
       setTimeout(() => {this.firstNameWarning = ``;}, 3000);
       return;
@@ -140,7 +133,7 @@ export class PrivacyComponent {
     //if first name passes all teh checks change in users db
   }
   onChangeLastName() {
-    if(this.lastName == this.changeLastName) {
+    if(this.accountInformation.lastName == this.changeLastName) {
       this.lastNameWarning = `That already is your last name`;
       setTimeout(() => {this.lastNameWarning = ``;}, 3000);
       return;
@@ -161,7 +154,7 @@ export class PrivacyComponent {
     //if last name passes all teh checks change in users db
   }
   onChangeEmail() {
-    if(this.email == this.changeEmail) {
+    if(this.accountInformation.email == this.changeEmail) {
       this.emailWarning = `That already is your email`;
       setTimeout(() => {this.emailWarning = ``;}, 3000);
       return;
@@ -194,23 +187,13 @@ export class PrivacyComponent {
       this.bioWarning = `Bio must be below 150 characters`;
       setTimeout(() => {this.bioWarning = ``;}, 3000);
       return;
+    } else if(this.accountInformation.bio == this.changeBio) {
+      this.bioWarning = `That already is your bio`;
+      setTimeout(() => {this.bioWarning = ``;}, 3000);
+      return;
     }
 
     //if bio passes the checks change it in the accounts db
-  }
-
-  hidePassword(password: string) {
-    let returnString: string = '';
-
-    for(let i = 0; i < password.length; i++) {
-      returnString = returnString + '*';
-    }
-
-    return returnString;
-  }
-  changePasswordVisibility() {
-    this.thisPassword = this.registerModel.password;
-    this.passwordHidden = !this.passwordHidden;
   }
 
   checkAllSpecialCharacters(input: string) {
@@ -492,19 +475,19 @@ export class PrivacyComponent {
     this.routingService.navigateToSearchSeries();
   }
   navigateToMovies() {
-    this.routingService.navigateToMovies(this.username);
+    this.routingService.navigateToMovies(this.accountInformation.username);
   }
   navigateToShows() {
-    this.routingService.navigateToShows(this.username);
+    this.routingService.navigateToShows(this.accountInformation.username);
   }
   navigateToNews() {
     this.routingService.navigateToNews();
   }
   navigateToSummary() {
-    this.routingService.navigateToSummary(this.username);
+    this.routingService.navigateToSummary(this.accountInformation.username);
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount(this.username);
+    this.routingService.navigateToAccount(this.accountInformation.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

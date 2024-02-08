@@ -2,6 +2,6 @@
     <img class="film-poster" [src]="this.fixPosterUrl(upcomingFilm.poster_path)" [attr.alt]="upcomingFilm.title">
     <div class="film-details">
       <p class="film-title"> {{ upcomingFilm.title }} </p>
-      <p class="film-release-year"> {{ this.fixRelease(upcomingFilm.release_date) }} </p>
+      <p class="film-release"> {{ this.fixRelease(upcomingFilm.release_date) }} </p>
     </div>
 </div>

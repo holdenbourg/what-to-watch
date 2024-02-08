@@ -27,11 +27,11 @@
                 </div>
                 <div class="remember-forgot">
                     <label><input type="checkbox"> Remember me</label>
-                    <a href="#">Forgot password?</a>
+                    <a (click)="onForgotPassword()">Forgot password?</a>
                 </div>
                 <button type="submit" class="button" (click)="onLogin()">Login</button>
                 <div class="login-register">
-                    <p>Don't have an account? <a href="javascript:void(0)" (click)="toggleLoginRegister()" class="register-link">Register</a></p>
+                    <p>Don't have an account? <a (click)="toggleLoginRegister()" class="register-link">Register</a></p>
                 </div>
             </form>
         </div>
@@ -63,11 +63,11 @@
                 </div>
                 <div class="agree-to-terms">
                     <label><input type="checkbox"> I agree to the terms & conditions</label>
-                    <a href="#">terms</a>
+                    <a (click)="onTerms()">terms</a>
                 </div>
                 <button type="submit" class="button" (click)="onSignUp()">Register</button>
                 <div class="login-register">
-                    <p>Already have an account? <a href="javascript:void(0)" (click)="toggleLoginRegister()" class="login-link">Login</a></p>
+                    <p>Already have an account? <a (click)="toggleLoginRegister()" class="login-link">Login</a></p>
                 </div>
             </form>
         </div>

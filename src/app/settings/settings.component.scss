@@ -81,6 +81,7 @@ body {
     height: 50px;
     margin: 5px 0;
     line-height: 50px;
+    cursor: pointer;
 }
 .list .list-item a {
     display: flex;
@@ -122,6 +123,7 @@ body {
     height: 35px;
     margin: 5px 0;
     line-height: 30px;
+    cursor: pointer;
 }
 .settings-item a {
     display: flex;
@@ -132,7 +134,6 @@ body {
     border-radius: 6px;
     white-space: nowrap;
     transition: .5s;
-    cursor: pointer;
 }
 .sidebar.active .settings-item.active a, 
 .sidebar.active .settings-item a:hover {
@@ -236,6 +237,7 @@ body {
     position: absolute;
     right: 30px;
     bottom: 30px;
+    cursor: pointer;
 }
 
 //change-username container
