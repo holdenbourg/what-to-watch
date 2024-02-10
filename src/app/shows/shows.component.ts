@@ -20,7 +20,7 @@ export class ShowsComponent  implements OnInit {
   public ratedSeriesInformationService: RatedSeriesInformationService = inject(RatedSeriesInformationService);
   public username: string = this.userInformationService.username;
 
-  /*public ratedSeries: RatedSeriesModel[] = [
+  public ratedSeries: RatedSeriesModel[] = [
     {
       title: 'Avatar',
       releaseDate: 'December 18, 2009',
@@ -181,9 +181,9 @@ export class ShowsComponent  implements OnInit {
       username: 'Holden',
       dateRated: 'January 26, 2024'
     },
-  ]; */
+  ];
 
-  public ratedSeries: RatedSeriesModel[] = [];
+  //public ratedSeries: RatedSeriesModel[] = [];
   public activeSeries: RatedSeriesModel = {
     title: '',
     releaseDate: '',

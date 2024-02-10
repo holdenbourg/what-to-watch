@@ -20,7 +20,7 @@ export class MoviesComponent  implements OnInit {
   public ratedMovieInformationService: RatedMovieInformationService = inject(RatedMovieInformationService);
   public username: string = this.userInformationService.username;
 
-  /*public ratedMovies: RatedMovieModel[] = [
+  public ratedMovies: RatedMovieModel[] = [
     {
       title: 'Avatar',
       releaseDate: 'December 08, 2009',
@@ -182,9 +182,8 @@ export class MoviesComponent  implements OnInit {
       dateRated: 'January 26, 2024'
     },
   ];
- */
   
-  public ratedMovies: RatedMovieModel[] = [];
+  //public ratedMovies: RatedMovieModel[] = [];
   public activeMovie: RatedMovieModel = {
     title: '',
     releaseDate: '',

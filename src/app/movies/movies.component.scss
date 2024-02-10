@@ -263,16 +263,15 @@ body {
 .input-box {
     margin-left: 20px;
     margin-right: 29px;
-    height: 50px;
-    border-bottom: 3px solid #fff;
+    height: 2.5vw;
+    border-bottom: .2vw solid #fff;
     transition: .5s;
 }
 //search prompt
 .input-box label {
     position: absolute;
-    top: 15px;
-    left: 90px;
-    transform: translateX(-30%);
+    margin-top: 15px;
+    left: 25px;
     font-size: .83vw;
     color: #fff;
     font-weight: 500;

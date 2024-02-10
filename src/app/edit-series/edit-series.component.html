@@ -4,94 +4,95 @@
 </head>
 
 <body>
-    <div class="film-information">
-        <img class="film-poster" [src]="activeSeries?.poster" [attr.alt]="activeSeries?.title">
-        <div class="film-text">
-            <p class="title">{{ activeSeries?.title }}</p>
-            <p class="release">{{ activeSeries?.releaseDate }}</p>
-            <p class="film-type">{{ activeSeries?.type }}</p>
-            <p class="film-rating">{{ activeSeries?.rated }}</p>
-        </div>
-        <div class="date-rated">
-            <p>Rated: {{ activeSeries?.dateRated }}</p>
-            <p>Rated By: {{ activeSeries?.username }}</p>
-        </div>
-    </div>
-    <div class="bottom-half">
-        <div class="ratings">
-            <div class="acting">
-                <p>Acting:</p>
-                <div class="edit-ratings">
-                    <a href="javascript:void(0)" (click)="onDownActing()">
-                        <i class='bx bx-chevron-left'></i>
-                    </a>
-                    <p>{{ acting }}</p>
-                    <a href="javascript:void(0)" (click)="onUpActing()">
-                        <i class='bx bx-chevron-right'></i>
-                    </a>
-                </div>
+    <div class="container">
+        <div class="film-information">
+            <img class="film-poster" [src]="activeSeries?.poster" [attr.alt]="activeSeries?.title">
+            <div class="film-text">
+                <p class="title">{{ activeSeries?.title }}</p>
+                <p class="release">{{ activeSeries?.releaseDate }}</p>
+                <p class="film-type">{{ activeSeries?.type }}</p>
+                <p class="film-rating">{{ activeSeries?.rated }}</p>
             </div>
-            <div class="visuals">
-                <p>Visuals:</p>
-                <div class="edit-ratings">
-                    <a href="javascript:void(0)" (click)="onDownVisuals()">
-                        <i class='bx bx-chevron-left'></i>
-                    </a>
-                    <p>{{ visuals }}</p>
-                    <a href="javascript:void(0)" (click)="onUpVisuals()">
-                        <i class='bx bx-chevron-right'></i>
-                    </a>
-                </div>
-            </div>
-            <div class="story">
-                <p>Story:</p>
-                <div class="edit-ratings">
-                    <a href="javascript:void(0)" (click)="onDownStory()">
-                        <i class='bx bx-chevron-left'></i>
-                    </a>
-                    <p>{{ story }}</p>
-                    <a href="javascript:void(0)" (click)="onUpStory()">
-                        <i class='bx bx-chevron-right'></i>
-                    </a>
-                </div>
-            </div>
-            <div class="pacing">
-                <p>Pacing:</p>
-                <div class="edit-ratings">
-                    <a href="javascript:void(0)" (click)="onDownPacing()">
-                        <i class='bx bx-chevron-left'></i>
-                    </a>
-                    <p>{{ pacing }}</p>
-                    <a href="javascript:void(0)" (click)="onUpPacing()">
-                        <i class='bx bx-chevron-right'></i>
-                    </a>
-                </div>
-            </div>
-            <div class="climax">
-                <p>Length:</p>
-                <div class="edit-ratings">
-                    <a href="javascript:void(0)" (click)="onDownLength()">
-                        <i class='bx bx-chevron-left'></i>
-                    </a>
-                    <p>{{ length }}</p>
-                    <a href="javascript:void(0)" (click)="onUpLength()">
-                        <i class='bx bx-chevron-right'></i>
-                    </a>
-                </div>
-            </div>
-            <div class="ending">
-                <p>Ending:</p>
-                <div class="edit-ratings">
-                    <a href="javascript:void(0)" (click)="onDownEnding()">
-                        <i class='bx bx-chevron-left'></i>
-                    </a>
-                    <p>{{ ending }}</p>
-                    <a href="javascript:void(0)" (click)="onUpEnding()">
-                        <i class='bx bx-chevron-right'></i>
-                    </a>
-                </div>
+            <div class="date-rated">
+                <p>Rated: {{ activeSeries?.dateRated }}</p>
             </div>
         </div>
-        <button type="submit" class="button" (click)="onEditRating()">Rate {{ ratingAverage }}/10</button>
+        <div class="bottom-half">
+            <div class="ratings">
+                <div class="acting">
+                    <p>Acting:</p>
+                    <div class="edit-ratings">
+                        <a href="javascript:void(0)" (click)="onDownActing()">
+                            <i class='bx bx-chevron-left'></i>
+                        </a>
+                        <p>{{ acting }}</p>
+                        <a href="javascript:void(0)" (click)="onUpActing()">
+                            <i class='bx bx-chevron-right'></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="visuals">
+                    <p>Visuals:</p>
+                    <div class="edit-ratings">
+                        <a href="javascript:void(0)" (click)="onDownVisuals()">
+                            <i class='bx bx-chevron-left'></i>
+                        </a>
+                        <p>{{ visuals }}</p>
+                        <a href="javascript:void(0)" (click)="onUpVisuals()">
+                            <i class='bx bx-chevron-right'></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="story">
+                    <p>Story:</p>
+                    <div class="edit-ratings">
+                        <a href="javascript:void(0)" (click)="onDownStory()">
+                            <i class='bx bx-chevron-left'></i>
+                        </a>
+                        <p>{{ story }}</p>
+                        <a href="javascript:void(0)" (click)="onUpStory()">
+                            <i class='bx bx-chevron-right'></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="pacing">
+                    <p>Pacing:</p>
+                    <div class="edit-ratings">
+                        <a href="javascript:void(0)" (click)="onDownPacing()">
+                            <i class='bx bx-chevron-left'></i>
+                        </a>
+                        <p>{{ pacing }}</p>
+                        <a href="javascript:void(0)" (click)="onUpPacing()">
+                            <i class='bx bx-chevron-right'></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="climax">
+                    <p>Length:</p>
+                    <div class="edit-ratings">
+                        <a href="javascript:void(0)" (click)="onDownLength()">
+                            <i class='bx bx-chevron-left'></i>
+                        </a>
+                        <p>{{ length }}</p>
+                        <a href="javascript:void(0)" (click)="onUpLength()">
+                            <i class='bx bx-chevron-right'></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ending">
+                    <p>Ending:</p>
+                    <div class="edit-ratings">
+                        <a href="javascript:void(0)" (click)="onDownEnding()">
+                            <i class='bx bx-chevron-left'></i>
+                        </a>
+                        <p>{{ ending }}</p>
+                        <a href="javascript:void(0)" (click)="onUpEnding()">
+                            <i class='bx bx-chevron-right'></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="button" (click)="onEditRating()">Rate {{ ratingAverage }}/10</button>
+        </div>
     </div>
 </body>
