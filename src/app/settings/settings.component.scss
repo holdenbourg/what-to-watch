@@ -188,7 +188,7 @@ body {
 }
 //all headers
 .title {
-    font-size: 30px;
+    font-size: 1.56vw;
     font-weight: 600;
     padding-left: 25px;
     padding-right: 25px;
@@ -213,22 +213,6 @@ body {
     border-bottom: 3px solid #fff;
     transition: .5s;
 }
-//input prompt for both username and password
-.input-box label {
-    position: absolute;
-    left: 40px;
-    font-size: 18px;
-    color: #fff;
-    font-weight: 500;
-    pointer-events: none;
-    transition: .5s;
-    padding-top: 10px;
-}
-//makes prompt disapear on click for both username and password
-.input-box input:focus~label,
-.input-box input:valid~label {
-    color: transparent;
-}
 //input boxes for both username and password
 .input-box input {
     height: 100%;
@@ -236,7 +220,7 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    font-size: 20px;
+    font-size: 1.05vw;
     color: #fff;
     font-weight: 600;
     padding: 0 35px 0 5px;
@@ -245,9 +229,9 @@ body {
 .input-box a {
     position: absolute;
     right: 32px;
-    font-size: 20px;
+    font-size: 1.1vw;
     color: #fff;
-    line-height: 57px;
+    line-height: 3vw;
     height: 40px;
 }
 //submit button for both username and password
@@ -261,19 +245,12 @@ body {
     outline: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: .9vw;
     color: #fff;
     position: absolute;
     bottom: 30px;
     left: 30px;
     right: 30px;
-    font-weight: 500;
-}
-//message that displays if rule is broken
-.warning {
-    color: red;
-    text-align: center;
-    font-size: 14px;
     font-weight: 500;
 }
 //container for bottom row of boxes
@@ -289,8 +266,6 @@ body {
     display: flex;
     flex-direction: column;
     color: #fff;
-    font-size: 25px;
-    font-weight: 500;
     border: 3px solid #fff;
     border-radius: 5px;
     height: 99%;
@@ -299,11 +274,17 @@ body {
 }
 //rules for each box
 .middle-info {
-    font-size: 15px;
+    font-size: .78vw;
     margin-left: 30px;
     margin-right: 30px;
     text-align: center;
-    line-height: 30px;
+    line-height: 1.6vw;
+}
+.middle-info p.white {
+    color: #fff;
+}
+.middle-info p.red {
+    color: red;
 }
 
 //input/prompt for bio
@@ -321,7 +302,7 @@ body {
 .bio-input-box label {
     position: absolute;
     left: 45px;
-    font-size: 18px;
+    font-size: .95vw;
     color: #fff;
     font-weight: 500;
     pointer-events: none;
@@ -340,17 +321,10 @@ body {
     background: transparent;
     border: none;
     outline: none;
-    font-size: 18px;
+    font-size: .95vw;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
     padding-left: 11.5px;
     padding-top: 10px;
     padding-right: 11.5px;
-}
-
-.middle-info p.white {
-    color: #fff;
-}
-.middle-info p.red {
-    color: red;
 }

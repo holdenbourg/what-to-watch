@@ -24,7 +24,7 @@ export class SettingsComponent implements OnInit {
     email: 'holden.bourg@gmail.com',
     firstName: 'Holden',
     lastName: 'Bourg',
-    bio: 'I love movies'
+    bio: ''
   }
 
   public changeUsername: string = this.accountInformation.username;
