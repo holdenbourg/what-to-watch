@@ -169,7 +169,7 @@ body {
     color: #fff;
 }
 
-//container for all 3 panels
+//container for top-side/bottom-side
 .container {
     position: absolute;
     display: flex;
@@ -196,7 +196,7 @@ body {
     color: #fff;
 }
 
-//container for account-information and change-user/change-password
+//container for change-user/change-password/change-email
 .top-side {
     display: flex;
     flex-direction: row;
@@ -204,16 +204,35 @@ body {
     width: 100%;
     height: 49.5%;
 }
-//input/icon/prompt for both username and password
+//container for change-first/change-last/change-bio
+.bottom-side {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 49.5%;
+}
+//container for all 6 boxes
+.change-info {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    height: 99%;
+    width: 32.8%;
+    backdrop-filter: blur(3px);
+}
+//input/icon for the input fields
 .input-box {
     margin-left: 30px;
     margin-right: 30px;
     margin-bottom: 10px;
-    height: 50px;
-    border-bottom: 3px solid #fff;
+    height: 2.5vw;
+    border-bottom: .2vw solid #fff;
     transition: .5s;
 }
-//input boxes for both username and password
+//input boxes
 .input-box input {
     height: 100%;
     width: 100%;
@@ -225,7 +244,7 @@ body {
     font-weight: 600;
     padding: 0 35px 0 5px;
 }
-//icon for both username and password
+//icon for input boxes
 .input-box a {
     position: absolute;
     right: 32px;
@@ -234,10 +253,10 @@ body {
     line-height: 3vw;
     height: 40px;
 }
-//submit button for both username and password
+//submit button for change-info boxes
 .button {
     width: auto;
-    height: 40px;
+    height: 10%;
     background: transparent;
     border: 2px solid #fff;
     backdrop-filter: blur(10px);
@@ -253,30 +272,9 @@ body {
     right: 30px;
     font-weight: 500;
 }
-//container for bottom row of boxes
-.bottom-side {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: 49.5%;
-}
-//change-info container for all boxes
-.change-info {
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    border: 3px solid #fff;
-    border-radius: 5px;
-    height: 99%;
-    width: 32.8%;
-    backdrop-filter: blur(3px);
-}
-//rules for each box
+//change criteria for each box
 .middle-info {
     font-size: .78vw;
-    margin-left: 30px;
-    margin-right: 30px;
     text-align: center;
     line-height: 1.6vw;
 }
@@ -286,7 +284,6 @@ body {
 .middle-info p.red {
     color: red;
 }
-
 //input/prompt for bio
 .bio-input-box {
     margin-left: 30px;
