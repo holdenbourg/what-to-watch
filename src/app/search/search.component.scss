@@ -25,7 +25,7 @@ body {
     height: 100%;
     background: transparent;
     backdrop-filter: blur(3px);
-    border-right: 2px solid rgba(255, 255, 255, .2);
+    border-right: .15vw solid rgba(255, 255, 255, .2);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     padding: 6px 14px;
     transition: .5s
@@ -131,7 +131,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    border: 3px solid #fff;
+    border: .2vw solid #fff;
     border-radius: 5px;
     position: absolute;
     left: 120px;
@@ -152,7 +152,7 @@ body {
     flex-direction: row;
     width: auto;
     height: 50px;
-    border-bottom: 3px solid #fff;
+    border-bottom: .2vw solid #fff;
     margin-left: 20px;
     margin-right: 21px;
     transition: .5s;
@@ -200,7 +200,7 @@ body {
     line-height: 57px;
     cursor: pointer;
     height: 40px;
-    border-bottom: 2px solid transparent;
+    border-bottom: .15vw solid transparent;
 }
 .search-bar i.active {
     margin-right: 10px;
@@ -209,7 +209,7 @@ body {
     line-height: 57px;
     cursor: pointer;
     height: 40px;
-    border-bottom: 2px solid #fff;
+    border-bottom: .15vw solid #fff;
     border-radius: 3px;
 }
 

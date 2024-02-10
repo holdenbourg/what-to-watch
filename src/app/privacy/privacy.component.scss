@@ -25,7 +25,7 @@ body {
     height: 100%;
     background: transparent;
     backdrop-filter: blur(3px);
-    border-right: 2px solid rgba(255, 255, 255, .2);
+    border-right: .15vw solid rgba(255, 255, 255, .2);
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     padding: 6px 14px;
     transition: .5s
@@ -255,7 +255,7 @@ body {
     width: auto;
     height: 40px;
     background: transparent;
-    border: 2px solid #fff;
+    border: .15vw solid #fff;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     outline: none;

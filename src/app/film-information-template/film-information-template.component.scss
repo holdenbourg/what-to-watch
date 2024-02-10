@@ -37,7 +37,7 @@ body {
     font-size: 1.9vw;
     color: #fff;
     font-weight: 600;
-    border: 3px solid #fff;
+    border: .2vw solid #fff;
     border-radius: 5px;
     backdrop-filter: blur(3px);
 }
@@ -79,7 +79,7 @@ body {
 .ratings {
     display: flex;
     flex-direction: row;
-    border: 3px solid #fff;
+    border: .2vw solid #fff;
     border-radius: 5px;
     width: 100%;
     height: 8vw;
@@ -133,7 +133,7 @@ body {
     width: 100%;
     height: 4vw;
     background: transparent;
-    border: 3px solid #fff;
+    border: .2vw solid #fff;
     backdrop-filter: blur(3px);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     outline: none;
