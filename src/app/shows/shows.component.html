@@ -62,16 +62,16 @@
 
     <div class="container">
         <div class="left-side">
-            <div class="top-information">
-                <img class="film-poster" [src]="activeSeries?.poster" [attr.alt]="activeSeries?.title">
+            <div class="top-information" *ngIf="activeSeries.dateRated != ''">
+                <img class="film-poster" [src]="activeSeries.poster" [attr.alt]="activeSeries.title">
                 <div class="film-text">
-                    <p class="title">{{ activeSeries?.title }}</p>
-                    <p class="release">{{ fixReleaseDay(activeSeries?.releaseDate) }}</p>
-                    <p class="film-type">{{ activeSeries?.type }}</p>
-                    <p class="film-rating">{{ activeSeries?.rated }}</p>
+                    <p class="title">{{ activeSeries.title }}</p>
+                    <p class="release">{{ fixReleaseDay(activeSeries.releaseDate) }}</p>
+                    <p class="film-type">{{ activeSeries.type }}</p>
+                    <p class="film-rating">{{ activeSeries.rated }}</p>
                 </div>
             </div>
-            <div class="bottom-information">
+            <div class="bottom-information" *ngIf="activeSeries.dateRated != ''">
                 <div class="film-ratings">
                     <div class="rating-titles">
                         <p>Acting:</p>
@@ -83,18 +83,18 @@
                         <p class="ovr-rating">Rating:</p>
                     </div>
                     <div class="rating-scores">
-                        <p>{{ activeSeries?.acting }}</p>
-                        <p>{{ activeSeries?.visuals }}</p>
-                        <p>{{ activeSeries?.story }}</p>
-                        <p>{{ activeSeries?.pacing }}</p>
-                        <p>{{ activeSeries?.length }}</p>
-                        <p>{{ activeSeries?.ending }}</p>
-                        <p class="ovr-rating">{{ activeSeries?.rating }}</p>
+                        <p>{{ activeSeries.acting }}</p>
+                        <p>{{ activeSeries.visuals }}</p>
+                        <p>{{ activeSeries.story }}</p>
+                        <p>{{ activeSeries.pacing }}</p>
+                        <p>{{ activeSeries.length }}</p>
+                        <p>{{ activeSeries.ending }}</p>
+                        <p class="ovr-rating">{{ activeSeries.rating }}</p>
                     </div>
                 </div>
                 <div class="date-rated">
                     <button type="submit" class="button" (click)="onEdit(activeSeries)">Edit Rating</button>
-                    <p>Rated: {{ fixReleaseDay(activeSeries?.dateRated) }}</p>
+                    <p>Rated: {{ fixReleaseDay(activeSeries.dateRated) }}</p>
                 </div>
             </div>
         </div>
@@ -102,13 +102,13 @@
         <div class="rated-films-container">
             <div class="seach-bar">
                 <div class="input-box">
-                    <input type="text" [(ngModel)]="searchInput" name="searchInput" (keyup.enter)="onSearch()" required>
+                    <input type="text" [(ngModel)]="searchInput" name="searchInput" required>
                     <label>What are you looking for?</label>
                 </div>
             </div>
         
             <div class="scroll-box">
-                <div class="rated-films">
+                <div class="rated-films" *ngIf="ratedSeries.length != 0; else noRatedSeries">
                     <div class="rated-film" *ngFor="let series of ratedSeries; let i = index">
                         <app-rated-series-template
                             *ngIf="searchInput === '' || toLowerCase(series.title).includes(searchInput) || series.title.includes(searchInput)"
@@ -118,6 +118,12 @@
                         ></app-rated-series-template>
                     </div>
                 </div>
+                <ng-template #noRatedSeries>
+                    <div class="no-rated-series">
+                        <p>You dont have any ratings yet</p>
+                        <button type="submit" (click)="navigateToSearchSeries()">Find Series To Rate</button>
+                    </div>
+                </ng-template>
             </div>
         </div>
     </div>

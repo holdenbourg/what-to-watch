@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
 import { UserInformationService } from '../services/user/user-information.service';
-import { RegisterModel } from '../services/models/login-register/register-model';
 import { FormsModule } from '@angular/forms';
+import { AccountInformationModel } from '../services/models/account-information-model';
 
 @Component({
   selector: 'app-settings',
@@ -15,170 +15,538 @@ import { FormsModule } from '@angular/forms';
 export class SettingsComponent implements OnInit {
   private routingService: RoutingService = inject(RoutingService);
   public userInformationService: UserInformationService = inject(UserInformationService);
-  public username: string = this.userInformationService.username;
-  public password: string = this.userInformationService.password;
 
-  public changeUsername: string = '';
-  public changePassword: string = '';
-  public confirmChangePassword: string = '';
-  public changeFirstName: string = '';
-  public changeLastName: string = '';
-  public changeEmail: string = '';
+  //pull all this info from the db using username on page initialization
+  public accountInformation: AccountInformationModel = {
+    //username: this.userInformationService.username,
+    username: 'HoldenBourg',
+    password: 'Captain$47',
+    email: 'holden.bourg@gmail.com',
+    firstName: 'Holden',
+    lastName: 'Bourg',
+    bio: 'I love movies'
+  }
+
+  public changeUsername: string = this.accountInformation.username;
+  public changePassword: string = this.accountInformation.password;
+  public confirmChangePassword: string = this.accountInformation.password;
+  public changeFirstName: string = this.accountInformation.firstName;
+  public changeLastName: string = this.accountInformation.lastName;
+  public changeEmail: string = this.accountInformation.email;
+  public changeBio: string = this.accountInformation.bio;
 
   public usernameWarning: string = '';
   public passwordWarning: string = '';
   public firstNameWarning: string = '';
   public lastNameWarning: string = '';
   public emailWarning: string = '';
+  public bioWarning: string = '';
 
-  public registerModel: RegisterModel = {
-    firstName: 'Holden',
-    lastName: 'Bourg',
-    email: 'holden.bourg@gmail.com',
-    username: 'HoldenBourg',
-    password: 'Captain$47'
-  }
-
-  public passwordHidden: boolean = true;
-  public thisPassword: string = this.registerModel.password;
+  public usernameSpecialCharactersString: string = `* . , [ ] { } ( ) < > _ - + = ! @ # $ % ^ & : ; ' " ? | ~ / \\`;
+  public passwordSpecialCharactersString: string = `! @ # $ % ^ & *`;
 
   
   ngOnInit() {
     this.toggleActive()
+
+    this.onChangeUsername();
+    this.onChangePassword();
+    this.onChangeEmail();
+    this.onChangeFirstName();
+    this.onChangeLastName();
+    this.onChangeBio();
   }
 
   onChangeUsername() {
-    //need another if to run for unique username
-    if(this.username == this.changeUsername) {
-      this.usernameWarning = `That already is your username`;
-      setTimeout(() => {this.usernameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkUsernameLengthMinimum(this.changeUsername)) {
-      this.usernameWarning = `Username must be above 6 characters`;
-      setTimeout(() => {this.usernameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkUsernameLengthMaximum(this.changeUsername)) {
-      this.usernameWarning = `Username must be below 14 characters`;
-      setTimeout(() => {this.usernameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkAllSpecialCharacters(this.changeUsername)) {
-      this.usernameWarning = `Username can't contain special characters`;
-      setTimeout(() => {this.usernameWarning = ``;}, 3000);
-      return;
+    //check database to see if another user with that name exists
+    if(this.accountInformation.username == this.changeUsername) {
+      const usersUnique = document.querySelector('.users-unique');
+
+      if(!usersUnique?.classList.contains('red')) {
+        usersUnique?.classList.toggle('white');
+        usersUnique?.classList.toggle('red');
+      }
+
+    } else {
+      const usersUnique = document.querySelector('.users-unique');
+
+      if(!usersUnique?.classList.contains('white')) {
+        usersUnique?.classList.toggle('red');
+        usersUnique?.classList.toggle('white');
+      }
     }
 
-    //if username passes all the checks change the username in the accounts db
-    //then change all movies rated by the old username to the new one
+    if(!this.checkUsernameLengthMinimum(this.changeUsername) || !this.checkUsernameLengthMaximum(this.changeUsername)) {
+      const userCharacterMinimum = document.querySelector('.user-character-min-max');
+
+      if(!userCharacterMinimum?.classList.contains('red')) {
+        userCharacterMinimum?.classList.toggle('white');
+        userCharacterMinimum?.classList.toggle('red');
+      }
+
+    } else {
+      const userCharacterMinimum = document.querySelector('.user-character-min-max');
+
+      if(!userCharacterMinimum?.classList.contains('white')) {
+        userCharacterMinimum?.classList.toggle('red');
+        userCharacterMinimum?.classList.toggle('white');
+      }
+    }
+
+    if(this.accountInformation.username == this.changeUsername) {
+      const usersEqual = document.querySelector('.users-equal');
+
+      if(!usersEqual?.classList.contains('red')) {
+        usersEqual?.classList.toggle('white');
+        usersEqual?.classList.toggle('red');
+      }
+
+    } else {
+      const usersEqual = document.querySelector('.users-equal');
+
+      if(!usersEqual?.classList.contains('white')) {
+        usersEqual?.classList.toggle('red');
+        usersEqual?.classList.toggle('white');
+      }
+    }
+
+    if(!this.checkAllSpecialCharacters(this.changeUsername)) {
+      const userSpecialCharacters = document.querySelector('.user-special-characters');
+      const userSpecialCharacter = document.querySelector('.user-special-character');
+
+
+      if(!userSpecialCharacters?.classList.contains('red')) {
+        userSpecialCharacters?.classList.toggle('white');
+        userSpecialCharacters?.classList.toggle('red');
+        userSpecialCharacter?.classList.toggle('white');
+        userSpecialCharacter?.classList.toggle('red');
+      }
+
+    } else {
+      const userSpecialCharacters = document.querySelector('.user-special-characters');
+      const userSpecialCharacter = document.querySelector('.user-special-character');
+
+      if(!userSpecialCharacters?.classList.contains('white')) {
+        userSpecialCharacters?.classList.toggle('red');
+        userSpecialCharacters?.classList.toggle('white');
+        userSpecialCharacter?.classList.toggle('red');
+        userSpecialCharacter?.classList.toggle('white');
+      }
+    }
   }
+  onChangeUsernameSubmit() {
+    const usersUnique = document.querySelector('.users-unique');
+    const usersEqual = document.querySelector('.users-equal');
+    const userCharacterMinMax = document.querySelector('.user-character-min-max');
+    const userSpecialCharacters = document.querySelector('.user-special-characters');
+    const userSpecialCharacter = document.querySelector('.user-special-character');
+
+    if(usersUnique?.classList.contains('white') &&
+       usersEqual?.classList.contains('white') &&
+       userCharacterMinMax?.classList.contains('white') &&
+       userSpecialCharacters?.classList.contains('white') &&
+       userSpecialCharacter?.classList.contains('white')) {
+      console.log('username changed');
+
+      //if username passes all the checks change the username in the accounts db
+      //then change all movies rated by the old username to the new one
+    }
+  }
+
   onChangePassword() {
-    if(this.password == this.changePassword) {
-      this.passwordWarning = `That already is your password`;
-      setTimeout(() => {this.passwordWarning = ``;}, 3000);
-      return;
-    } else if(this.changePassword != this.confirmChangePassword) {
-      this.passwordWarning = `These two passwords aren't equal`;
-      setTimeout(() => {this.passwordWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkPasswordLengthMinimum(this.changePassword)) {
-      this.passwordWarning = `Password must be above 8 characters`;
-      setTimeout(() => {this.passwordWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkPasswordLengthMaximum(this.changePassword)) {
-      this.passwordWarning = `Password must be below 24 characters`;
-      setTimeout(() => {this.passwordWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkSpecialCharactersPassword(this.changePassword)) {
-      this.passwordWarning = `Password can't contain certain characters`;
-      setTimeout(() => {this.passwordWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkPasswordContainsCapitalLetter(this.changePassword)) {
-      this.passwordWarning = `Password must contain a capital letter`;
-      setTimeout(() => {this.passwordWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkPasswordContainsOneNumber(this.changePassword)) {
-      this.passwordWarning = `Password must contain a number`;
-      setTimeout(() => {this.passwordWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkPasswordContainsOneSpecialCharacter(this.changePassword)) {
-      this.passwordWarning = `Password must contain !,@,#,$,%,^,&,*`;
-      setTimeout(() => {this.passwordWarning = ``;}, 3000);
-      return;
+    if(!this.checkPasswordLengthMinimum(this.changePassword) || !this.checkPasswordLengthMaximum(this.changePassword)) {
+      const passwordCharacterMinMax = document.querySelector('.password-character-min-max');
+
+      if(!passwordCharacterMinMax?.classList.contains('red')) {
+        passwordCharacterMinMax?.classList.toggle('white');
+        passwordCharacterMinMax?.classList.toggle('red');
+      }
+
+    } else {
+      const passwordCharacterMinMax = document.querySelector('.password-character-min-max');
+
+      if(!passwordCharacterMinMax?.classList.contains('white')) {
+        passwordCharacterMinMax?.classList.toggle('red');
+        passwordCharacterMinMax?.classList.toggle('white');
+      }
+    }
+
+    if(this.accountInformation.password == this.changePassword || this.accountInformation.password == this.confirmChangePassword) {
+      const passwordsEqual = document.querySelector('.passwords-equal');
+
+      if(!passwordsEqual?.classList.contains('red')) {
+        passwordsEqual?.classList.toggle('white');
+        passwordsEqual?.classList.toggle('red');
+      }
+
+    } else {
+      const passwordsEqual = document.querySelector('.passwords-equal');
+
+      if(!passwordsEqual?.classList.contains('white')) {
+        passwordsEqual?.classList.toggle('red');
+        passwordsEqual?.classList.toggle('white');
+      }
+    }
+    
+    if(this.changePassword != this.confirmChangePassword) {
+      const passwordConfirmEqual = document.querySelector('.password-confirm-equal');
+
+      if(!passwordConfirmEqual?.classList.contains('red')) {
+        passwordConfirmEqual?.classList.toggle('white');
+        passwordConfirmEqual?.classList.toggle('red');
+      }
+
+    } else {
+      const passwordConfirmEqual = document.querySelector('.password-confirm-equal');
+
+      if(!passwordConfirmEqual?.classList.contains('white')) {
+        passwordConfirmEqual?.classList.toggle('red');
+        passwordConfirmEqual?.classList.toggle('white');
+      }
+    }
+
+    if(!this.checkPasswordContainsCapitalLetter(this.changePassword) || !this.checkPasswordContainsOneNumber(this.changePassword)) {
+      const passwordCapitalNumber = document.querySelector('.password-capital-number');
+
+      if(!passwordCapitalNumber?.classList.contains('red')) {
+        passwordCapitalNumber?.classList.toggle('white');
+        passwordCapitalNumber?.classList.toggle('red');
+      }
+
+    } else {
+      const passwordCapitalNumber = document.querySelector('.password-capital-number');
+
+      if(!passwordCapitalNumber?.classList.contains('white')) {
+        passwordCapitalNumber?.classList.toggle('red');
+        passwordCapitalNumber?.classList.toggle('white');
+      }
+    }
+
+    if(!this.checkPasswordContainsOneSpecialCharacter(this.changePassword) || !this.checkSpecialCharactersPassword(this.changePassword)) {
+      const passwordSpecialCharacter = document.querySelector('.password-special-character');
+
+      if(!passwordSpecialCharacter?.classList.contains('red')) {
+        passwordSpecialCharacter?.classList.toggle('white');
+        passwordSpecialCharacter?.classList.toggle('red');
+      }
+
+    } else {
+      const passwordSpecialCharacter = document.querySelector('.password-special-character');
+
+      if(!passwordSpecialCharacter?.classList.contains('white')) {
+        passwordSpecialCharacter?.classList.toggle('red');
+        passwordSpecialCharacter?.classList.toggle('white');
+      }
     }
 
     //if password passes all the checks change the users password in the accounts db
   }
-  onChangeFirstName() {
-    if(!this.checkAllSpecialCharacters(this.changeFirstName)) {
-      this.firstNameWarning = `First name can't have special characters`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkNameLengthMinimum(this.changeFirstName)) {
-      this.firstNameWarning = `First name must be above 2 characters`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkNameLengthMaximum(this.changeFirstName)) {
-      this.firstNameWarning = `First name must be below 16 characters`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
-      return;
-    }
+  onChangePasswordSubmit() {
+    const passwordCharacterMinMax = document.querySelector('.password-character-min-max');
+    const passwordsEqual = document.querySelector('.passwords-equal');
+    const passwordConfirmEqual = document.querySelector('.password-confirm-equal');
+    const passwordCapitalNumber = document.querySelector('.password-capital-number');
+    const passwordSpecialCharacter = document.querySelector('.password-special-character');
 
-    //if first name passes all teh checks change in users db
-  }
-  onChangeLastName() {
-    if(!this.checkAllSpecialCharacters(this.changeLastName)) {
-      this.lastNameWarning = `Last name can't have special characters`;
-      setTimeout(() => {this.lastNameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkNameLengthMinimum(this.changeLastName)) {
-      this.lastNameWarning = `Last name must be above 2 characters`;
-      setTimeout(() => {this.lastNameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkNameLengthMaximum(this.changeLastName)) {
-      this.lastNameWarning = `Last name must be below 16 characters`;
-      setTimeout(() => {this.lastNameWarning = ``;}, 3000);
-      return;
-    }
+    if(passwordCharacterMinMax?.classList.contains('white') &&
+       passwordsEqual?.classList.contains('white') &&
+       passwordConfirmEqual?.classList.contains('white') &&
+       passwordCapitalNumber?.classList.contains('white') &&
+       passwordSpecialCharacter?.classList.contains('white')) {
+      console.log('password changed');
 
-    //if last name passes all teh checks change in users db
+      //if password passes all the checks change the username in the accounts db
+    }
   }
+
   onChangeEmail() {
-    if(!this.checkEmailLengthMinimum(this.changeEmail)) {
-      this.emailWarning = `Email must be above 6 characters`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkEmailLengthMaximum(this.changeEmail)) {
-      this.emailWarning = `Email must be below 30 characters`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkEmailContainsAt(this.changeEmail)) {
-      this.emailWarning = `Email must conatin an '@'`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkEmailContainsPeriod(this.changeEmail)) {
-      this.emailWarning = `Email must contain a '.'`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
-      return;
-    } else if(!this.checkSpecialCharactersEmail(this.changeEmail)) {
-      this.emailWarning = `Email can't contain certain characters`;
-      setTimeout(() => {this.firstNameWarning = ``;}, 3000);
-      return;
+    if(!this.checkEmailLengthMinimum(this.changeEmail) || !this.checkEmailLengthMaximum(this.changeEmail)) {
+      const emailCharacterMinMax = document.querySelector('.email-character-min-max');
+
+      if(!emailCharacterMinMax?.classList.contains('red')) {
+        emailCharacterMinMax?.classList.toggle('white');
+        emailCharacterMinMax?.classList.toggle('red');
+      }
+
+    } else {
+      const emailCharacterMinMax = document.querySelector('.email-character-min-max');
+
+      if(!emailCharacterMinMax?.classList.contains('white')) {
+        emailCharacterMinMax?.classList.toggle('red');
+        emailCharacterMinMax?.classList.toggle('white');
+      }
     }
 
-    //if email passes all the checks change the username in the accounts db
-  }
+    if(this.accountInformation.email == this.changeEmail) {
+      const emailEqual = document.querySelector('.email-equal');
 
-  hidePassword(password: string) {
-    let returnString: string = '';
+      if(!emailEqual?.classList.contains('red')) {
+        emailEqual?.classList.toggle('white');
+        emailEqual?.classList.toggle('red');
+      }
 
-    for(let i = 0; i < password.length; i++) {
-      returnString = returnString + '*';
+    } else {
+      const emailEqual = document.querySelector('.email-equal');
+
+      if(!emailEqual?.classList.contains('white')) {
+        emailEqual?.classList.toggle('red');
+        emailEqual?.classList.toggle('white');
+      }
+    }
+    
+    if(!this.checkEmailContainsAt(this.changeEmail) || !this.checkEmailContainsPeriod(this.changeEmail)) {
+      const emailAtPeriod = document.querySelector('.email-at-period');
+
+      if(!emailAtPeriod?.classList.contains('red')) {
+        emailAtPeriod?.classList.toggle('white');
+        emailAtPeriod?.classList.toggle('red');
+      }
+
+    } else {
+      const emailAtPeriod = document.querySelector('.email-at-period');
+
+      if(!emailAtPeriod?.classList.contains('white')) {
+        emailAtPeriod?.classList.toggle('red');
+        emailAtPeriod?.classList.toggle('white');
+      }
     }
 
-    return returnString;
+    if(!this.checkSpecialCharactersEmail(this.changeEmail)) {
+      const emailSpecialCharacters = document.querySelector('.email-special-characters');
+      const emailSpecialCharacter = document.querySelector('.email-special-character');
+
+      if(!emailSpecialCharacters?.classList.contains('red')) {
+        emailSpecialCharacters?.classList.toggle('white');
+        emailSpecialCharacters?.classList.toggle('red');
+        emailSpecialCharacter?.classList.toggle('white');
+        emailSpecialCharacter?.classList.toggle('red');
+      }
+
+    } else {
+      const emailSpecialCharacters = document.querySelector('.password-capital-number');
+      const emailSpecialCharacter = document.querySelector('.email-special-character');
+
+      if(!emailSpecialCharacters?.classList.contains('white')) {
+        emailSpecialCharacters?.classList.toggle('red');
+        emailSpecialCharacters?.classList.toggle('white');
+        emailSpecialCharacter?.classList.toggle('white');
+        emailSpecialCharacter?.classList.toggle('red');
+      }
+    }
+
   }
-  changePasswordVisibility() {
-    this.thisPassword = this.registerModel.password;
-    this.passwordHidden = !this.passwordHidden;
+  onChangeEmailSubmit() {
+    const emailCharacterMinMax = document.querySelector('.email-character-min-max');
+    const emailEqual = document.querySelector('.email-equal');
+    const emailAtPeriod = document.querySelector('.email-at-period');
+    const emailSpecialCharacters = document.querySelector('.email-special-characters');
+    const emailSpecialCharacter = document.querySelector('.email-special-character');
+
+    if(emailCharacterMinMax?.classList.contains('white') &&
+       emailEqual?.classList.contains('white') &&
+       emailAtPeriod?.classList.contains('white') &&
+       emailSpecialCharacters?.classList.contains('white') &&
+       emailSpecialCharacter?.classList.contains('white')) {
+      console.log('email changed');
+
+      //if email passes all the checks change the username in the accounts db
+    }
+  }
+
+  onChangeFirstName() {
+    if(!this.checkNameLengthMinimum(this.changeFirstName) || !this.checkNameLengthMaximum(this.changeFirstName)) {
+      const firstCharacterMin = document.querySelector('.first-character-min-max');
+
+      if(!firstCharacterMin?.classList.contains('red')) {
+        firstCharacterMin?.classList.toggle('white');
+        firstCharacterMin?.classList.toggle('red');
+      }
+
+    } else {
+      const firstCharacterMin = document.querySelector('.first-character-min-max');
+
+      if(!firstCharacterMin?.classList.contains('white')) {
+        firstCharacterMin?.classList.toggle('red');
+        firstCharacterMin?.classList.toggle('white');
+      }
+    }
+
+    if(this.accountInformation.firstName == this.changeFirstName) {
+      const firstEqual = document.querySelector('.first-equal');
+
+      if(!firstEqual?.classList.contains('red')) {
+        firstEqual?.classList.toggle('white');
+        firstEqual?.classList.toggle('red');
+      }
+
+    } else {
+      const firstEqual = document.querySelector('.first-equal');
+
+      if(!firstEqual?.classList.contains('white')) {
+        firstEqual?.classList.toggle('red');
+        firstEqual?.classList.toggle('white');
+      }
+    }
+
+    if(!this.checkAllSpecialCharacters(this.changeFirstName)) {
+      const firstSpecialCharacters = document.querySelector('.first-special-characters');
+      const firstSpecialCharacter = document.querySelector('.first-special-character');
+
+
+      if(!firstSpecialCharacters?.classList.contains('red')) {
+        firstSpecialCharacters?.classList.toggle('white');
+        firstSpecialCharacters?.classList.toggle('red');
+        firstSpecialCharacter?.classList.toggle('white');
+        firstSpecialCharacter?.classList.toggle('red');
+      }
+
+    } else {
+      const firstSpecialCharacters = document.querySelector('.first-special-characters');
+      const firstSpecialCharacter = document.querySelector('.first-special-character');
+
+      if(!firstSpecialCharacters?.classList.contains('white')) {
+        firstSpecialCharacters?.classList.toggle('red');
+        firstSpecialCharacters?.classList.toggle('white');
+        firstSpecialCharacter?.classList.toggle('red');
+        firstSpecialCharacter?.classList.toggle('white');
+      }
+    }
+  }
+  onChangeFirstNameSubmit() {
+    const firstCharacterMinMax = document.querySelector('.first-character-min-max');
+    const firstEqual = document.querySelector('.first-equal');
+    const firstSpecialCharacters = document.querySelector('.first-special-characters');
+    const firstSpecialCharacter = document.querySelector('.first-special-character');
+
+    if(firstCharacterMinMax?.classList.contains('white') &&
+       firstEqual?.classList.contains('white') &&
+       firstSpecialCharacters?.classList.contains('white') &&
+       firstSpecialCharacter?.classList.contains('white')) {
+      console.log('first name changed');
+
+      //if first name passes all teh checks change in users db
+    }
+  }
+
+  onChangeLastName() {
+    if(!this.checkNameLengthMinimum(this.changeLastName) || !this.checkNameLengthMaximum(this.changeLastName)) {
+      const lastCharacterMin = document.querySelector('.last-character-min-max');
+
+      if(!lastCharacterMin?.classList.contains('red')) {
+        lastCharacterMin?.classList.toggle('white');
+        lastCharacterMin?.classList.toggle('red');
+      }
+
+    } else {
+      const lastCharacterMin = document.querySelector('.last-character-min-max');
+
+      if(!lastCharacterMin?.classList.contains('white')) {
+        lastCharacterMin?.classList.toggle('red');
+        lastCharacterMin?.classList.toggle('white');
+      }
+    }
+
+    if(this.accountInformation.lastName == this.changeLastName) {
+      const lastEqual = document.querySelector('.last-equal');
+
+      if(!lastEqual?.classList.contains('red')) {
+        lastEqual?.classList.toggle('white');
+        lastEqual?.classList.toggle('red');
+      }
+
+    } else {
+      const lastEqual = document.querySelector('.last-equal');
+
+      if(!lastEqual?.classList.contains('white')) {
+        lastEqual?.classList.toggle('red');
+        lastEqual?.classList.toggle('white');
+      }
+    }
+
+    if(!this.checkAllSpecialCharacters(this.changeLastName)) {
+      const lastSpecialCharacters = document.querySelector('.last-special-characters');
+      const lastSpecialCharacter = document.querySelector('.last-special-character');
+
+
+      if(!lastSpecialCharacters?.classList.contains('red')) {
+        lastSpecialCharacters?.classList.toggle('white');
+        lastSpecialCharacters?.classList.toggle('red');
+        lastSpecialCharacter?.classList.toggle('white');
+        lastSpecialCharacter?.classList.toggle('red');
+      }
+
+    } else {
+      const lastSpecialCharacters = document.querySelector('.last-special-characters');
+      const lastSpecialCharacter = document.querySelector('.last-special-character');
+
+      if(!lastSpecialCharacters?.classList.contains('white')) {
+        lastSpecialCharacters?.classList.toggle('red');
+        lastSpecialCharacters?.classList.toggle('white');
+        lastSpecialCharacter?.classList.toggle('red');
+        lastSpecialCharacter?.classList.toggle('white');
+      }
+    }
+  }
+  onChangeLastNameSubmit() {
+    const lastCharacterMinMax = document.querySelector('.last-character-min-max');
+    const lastEqual = document.querySelector('.last-equal');
+    const lastSpecialCharacters = document.querySelector('.last-special-characters');
+    const lastSpecialCharacter = document.querySelector('.last-special-character');
+
+    if(lastCharacterMinMax?.classList.contains('white') &&
+       lastEqual?.classList.contains('white') &&
+       lastSpecialCharacters?.classList.contains('white') &&
+       lastSpecialCharacter?.classList.contains('white')) {
+      console.log('last name changed');
+
+      //if last name passes all teh checks change in users db
+    }
+  }
+
+  onChangeBio() {
+    if(!this.checkBioLengthMaximum(this.changeBio)) {
+      const bioCharacterMax = document.querySelector('.bio-character-max');
+
+      if(!bioCharacterMax?.classList.contains('red')) {
+        bioCharacterMax?.classList.toggle('white');
+        bioCharacterMax?.classList.toggle('red');
+      }
+
+    } else {
+      const bioCharacterMax = document.querySelector('.bio-character-max');
+
+      if(!bioCharacterMax?.classList.contains('white')) {
+        bioCharacterMax?.classList.toggle('red');
+        bioCharacterMax?.classList.toggle('white');
+      }
+    }
+
+    if(this.accountInformation.bio == this.changeBio) {
+      const bioEqual = document.querySelector('.bio-equal');
+
+      if(!bioEqual?.classList.contains('red')) {
+        bioEqual?.classList.toggle('white');
+        bioEqual?.classList.toggle('red');
+      }
+
+    } else {
+      const bioEqual = document.querySelector('.bio-equal');
+
+      if(!bioEqual?.classList.contains('white')) {
+        bioEqual?.classList.toggle('red');
+        bioEqual?.classList.toggle('white');
+      }
+    }
+  }
+  onChangeBioSubmit() {
+    const bioCharacterMax = document.querySelector('.bio-character-max');
+    const bioEqual = document.querySelector('.bio-equal');
+    
+    if(bioCharacterMax?.classList.contains('white') && bioEqual?.classList.contains('white')) {
+      console.log('bio changed');
+
+      //if bio passes the checks change it in the accounts db
+    }
   }
 
   checkAllSpecialCharacters(input: string) {
@@ -421,6 +789,21 @@ export class SettingsComponent implements OnInit {
     }
   }
 
+  checkBioLengthMinimum(input: string) {
+    if (input.length < 2) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  checkBioLengthMaximum(input: string) {
+    if (input.length > 150) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   toggleActive() {
     const themeClass = document.querySelector('.sidebar');
     themeClass?.classList.toggle('active');
@@ -445,19 +828,19 @@ export class SettingsComponent implements OnInit {
     this.routingService.navigateToSearchSeries();
   }
   navigateToMovies() {
-    this.routingService.navigateToMovies(this.username);
+    this.routingService.navigateToMovies(this.accountInformation.username);
   }
   navigateToShows() {
-    this.routingService.navigateToShows(this.username);
+    this.routingService.navigateToShows(this.accountInformation.username);
   }
   navigateToNews() {
     this.routingService.navigateToNews();
   }
   navigateToSummary() {
-    this.routingService.navigateToSummary(this.username);
+    this.routingService.navigateToSummary(this.accountInformation.username);
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount(this.username);
+    this.routingService.navigateToAccount(this.accountInformation.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

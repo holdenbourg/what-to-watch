@@ -20,7 +20,7 @@ export class ShowsComponent  implements OnInit {
   public ratedSeriesInformationService: RatedSeriesInformationService = inject(RatedSeriesInformationService);
   public username: string = this.userInformationService.username;
 
-  public ratedSeries: RatedSeriesModel[] = [
+  /*public ratedSeries: RatedSeriesModel[] = [
     {
       title: 'Avatar',
       releaseDate: 'December 18, 2009',
@@ -181,24 +181,42 @@ export class ShowsComponent  implements OnInit {
       username: 'Holden',
       dateRated: 'January 26, 2024'
     },
-  ];
+  ]; */
 
-  public activeSeries?: RatedSeriesModel = this.ratedSeries.at(0);
-  public activeSeriesClass: string = '.rated-film-0';
+  public ratedSeries: RatedSeriesModel[] = [];
+  public activeSeries: RatedSeriesModel = {
+    title: '',
+    releaseDate: '',
+    type: '',
+    rated: '',
+    poster: '',
+    acting: 0,
+    visuals: 0,
+    story: 0,
+    length: 0,
+    pacing: 0,
+    ending: 0,
+    rating: 0,
+    username: '',
+    dateRated: ''
+  };
+  public activeSeriesClass: string = '';
 
   public searchInput: string = '';
 
 
   ngOnInit() {
     this.toggleActive()
+    
+    if(this.ratedSeries.length != 0) {
+      this.activeSeries = this.ratedSeries.at(0)!;
+      this.activeSeriesClass = '.rated-film-0';
+    }
   }
 
-  onEdit(input?: RatedSeriesModel) {
+  onEdit(input: RatedSeriesModel) {
     this.ratedSeriesInformationService.filmDetails = input;
-    this.routingService.navigateToEditSeries(input?.title);
-  }
-  onSearch() {
-
+    this.routingService.navigateToEditSeries(input.title);
   }
   onRatedFilmClicked(title: string, rating: number) {
     for(let i = 0; i < this.ratedSeries.length; i++) {
@@ -213,54 +231,58 @@ export class ShowsComponent  implements OnInit {
 
   //turns the given date (18 Dec 2009) into (December 18, 2009)
   fixRelease(releaseDate?: string) {
-    const day = releaseDate?.substring(0,2);
-    let month = releaseDate?.substring(3,6);
-    const year = releaseDate?.substring(7);
-  
-    switch(month) {
-      case 'Jan':
-        month = 'January'
-        break;
-      case 'Feb':
-        month = 'February'
-        break;
-      case 'Mar':
-        month = 'March'
-        break;
-      case 'Apr':
-        month = 'April'
-        break;
-      case 'May':
-        month = 'May'
-        break;
-      case 'Jun':
-        month = 'June'
-        break;
-      case 'Jul':
-        month = 'July'
-        break;
-      case 'Aug':
-        month = 'August'
-        break;
-      case 'Sep':
-        month = 'September'
-        break;
-      case 'Oct':
-        month = 'October'
-        break;
-      case 'Nov':
-        month = 'November'
-        break;
-      case 'Dec':
-        month = 'December'
-        break;
+    if(releaseDate == '') {
+      return '';
+    } else {
+      const day = releaseDate?.substring(0,2);
+      let month = releaseDate?.substring(3,6);
+      const year = releaseDate?.substring(7);
+    
+      switch(month) {
+        case 'Jan':
+          month = 'January'
+          break;
+        case 'Feb':
+          month = 'February'
+          break;
+        case 'Mar':
+          month = 'March'
+          break;
+        case 'Apr':
+          month = 'April'
+          break;
+        case 'May':
+          month = 'May'
+          break;
+        case 'Jun':
+          month = 'June'
+          break;
+        case 'Jul':
+          month = 'July'
+          break;
+        case 'Aug':
+          month = 'August'
+          break;
+        case 'Sep':
+          month = 'September'
+          break;
+        case 'Oct':
+          month = 'October'
+          break;
+        case 'Nov':
+          month = 'November'
+          break;
+        case 'Dec':
+          month = 'December'
+          break;
+      }
+        
+      return `${month} ${day}, ${year}`
     }
-      
-    return `${month} ${day}, ${year}`
   }
   //turns 08 day into 8
   fixReleaseDay(releaseDate?: string) {
-    if(releaseDate != undefined) {
+    if(releaseDate != undefined && releaseDate != '') {
       const index = releaseDate.indexOf(' ');
 
       let day = releaseDate.substring(index + 1, index + 3);
@@ -273,7 +295,7 @@ export class ShowsComponent  implements OnInit {
 
       return `${month} ${day}, ${year}`;
     }
-    return;
+    return '';
   }
   //turns the title to lowercase for searchbar
   toLowerCase(input: string) {

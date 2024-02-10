@@ -67,33 +67,114 @@
             </li>
             <li class="username">
                  <p class="link-name" style="--i:2">Signed in as:</p> 
-                 <p class="link-name" style="--i:2">{{ username }}</p>
+                 <p class="link-name" style="--i:2">{{ accountInformation.username }}</p>
             </li>
         </ul>
     </nav>
 
     <div class="container">
         <div class="top-side">
-            <div class="account-information">
-                <p class="title">Account Information</p>
-                <p class="info">First Name: {{ registerModel.firstName }}</p>
-                <p class="info">Last Name: {{ registerModel.lastName }}</p>
-                <p class="info">Email: {{ registerModel.email }}</p>
-                <p class="info">Username: {{ registerModel.username }}</p>
-                <div class="locked">
-                    <div *ngIf="passwordHidden; else unlocked">
-                        <p class="info">Password: {{ this.hidePassword(thisPassword) }}</p>
-                        <a (click)="changePasswordVisibility()">
-                            <i class='bx bxs-lock-alt'></i>
-                        </a>
-                    </div>
-                    <ng-template #unlocked>
-                        <p class="info">Password: {{ thisPassword }}</p>
-                        <a (click)="changePasswordVisibility()">
-                            <i class='bx bxs-lock-open-alt' ></i>
-                        </a>
-                    </ng-template>
+            <div class="change-info">
+                <p class="title">Change Username</p>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="changeUsername" name="changeUsername" (keyup)="onChangeUsername()" required>
+                    <a href="javascript:void(0)">
+                        <i class='bx bx-user'></i>
+                    </a>
                 </div>
+                <div class="middle-info">
+                    <p class="users-unique white">*Username must be unique</p>
+                    <p class="users-equal white">*Username can't be equal to your current one</p>
+                    <p class="user-character-min-max white">*Username must be above 6 and below 14 characters</p>
+                    <p class="user-special-characters white">*Username cannot contain special characters</p>
+                    <p class="user-special-character white">{{ usernameSpecialCharactersString }}</p>
+                </div>
+                <button type="submit" class="button" (click)="onChangeUsernameSubmit()">Submit</button>
+            </div>
+            <div class="change-info">
+                <p class="title">Change Password</p>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="changePassword" name="changePassword" (keyup)="onChangePassword()" required>
+                    <a href="javascript:void(0)">
+                        <i class='bx bx-lock-open-alt' ></i>
+                    </a>
+                    <label>Password</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="confirmChangePassword" name="confirmChangePassword" (keyup)="onChangePassword()" required>
+                    <a href="javascript:void(0)">
+                        <i class='bx bx-lock-alt' ></i>
+                    </a>
+                    <label>Confirm Password</label>
+                </div>
+                <div class="middle-info">
+                    <p class="passwords-equal white">*Password can't be equal to your current one</p>
+                    <p class="password-character-min-max white">*Password must be above 8 and below 24 characters</p>
+                    <p class="password-confirm-equal white">*Both Passwords must be equal</p>
+                    <p class="password-capital-number white">*Password must contain a capital letter and a number</p>
+                    <p class="password-special-character white">*Password must contain one of {{ passwordSpecialCharactersString }}</p>
+                </div>
+                <button type="submit" class="button" (click)="onChangePasswordSubmit()">Submit</button>
+            </div>
+            <div class="change-info">
+                <p class="title">Change Email</p>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="changeEmail" name="changeEmail" (keyup)="onChangeEmail()" required>
+                    <a href="javascript:void(0)">
+                        <i class='bx bx-envelope'></i>
+                    </a>
+                    <label>Email</label>
+                </div>
+                <div class="middle-info">
+                    <p class="email-equal white">*Email can't be equal to your current one</p>
+                    <p class="email-character-min-max white">*Email must be above 6 and below 30 characters</p>
+                    <p class="email-at-period white">*Email must contain a {{ passwordSpecialCharactersString.substring(2,3) }} and .</p>
+                    <p class="email-special-characters white">*Email cannot contain special characters</p>
+                    <p class="email-special-character white">{{ usernameSpecialCharactersString }}</p>
+                </div>
+                <button type="submit" class="button" (click)="onChangeEmailSubmit()">Submit</button>
+            </div>
+        </div>
+        <div class="bottom-side">
+            <div class="change-info">
+                <p class="title">Change First Name</p>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="changeFirstName" name="changeFirstName" (keyup)="onChangeFirstName()" required>
+                    <label>First Name</label>
+                </div>
+                <div class="middle-info">
+                    <p class="first-equal white">*First name can't be equal to your current one</p>
+                    <p class="first-character-min-max white">*First name must be above 2 and below 16 characters</p>
+                    <p class="first-special-characters white">*First name cannot contain special characters</p>
+                    <p class="first-special-character white">{{ usernameSpecialCharactersString }}</p>
+                </div>
+                <button type="submit" class="button" (click)="onChangeFirstNameSubmit()">Submit</button>
+            </div>
+            <div class="change-info">
+                <p class="title">Change Last Name</p>
+                <div class="input-box">
+                    <input type="text" [(ngModel)]="changeLastName" name="changeLastName" (keyup)="onChangeLastName()" required>
+                    <label>Last Name</label>
+                </div>
+                <div class="middle-info">
+                    <p class="last-equal white">*Last name can't be equal to your current one</p>
+                    <p class="last-character-min-max white">*Last name must be above 2 and below 16 characters</p>
+                    <p class="last-special-characters white">*Last name cannot contain special characters</p>
+                    <p class="last-special-character white">{{ usernameSpecialCharactersString }}</p>
+                </div>
+                <button type="submit" class="button" (click)="onChangeLastNameSubmit()">Submit</button>
+            </div>
+            <div class="change-info">
+                <p class="title">Change Bio</p>
+                <div class="bio-input-box">
+                    <textarea type="text" [(ngModel)]="changeBio" name="changeBio" (keyup)="onChangeBio()" required></textarea>
+                    <label>Bio</label>
+                </div>
+                <div class="middle-info">
+                    <p class="bio-equal white">*Bio cant be equal to your current one</p>
+                    <p class="bio-character-max white">*Bio must be below 150 characters</p>
+                </div>
+                <button type="submit" class="button" (click)="onChangeBioSubmit()">Submit</button>
             </div>
         </div>
     </div>

@@ -62,16 +62,16 @@
 
     <div class="container">
         <div class="left-side">
-            <div class="top-information">
-                <img class="film-poster" [src]="activeMovie?.poster" [attr.alt]="activeMovie?.title">
+            <div class="top-information" *ngIf="activeMovie.dateRated != ''">
+                <img class="film-poster" [src]="activeMovie.poster" [attr.alt]="activeMovie.title">
                 <div class="film-text">
-                    <p class="title">{{ activeMovie?.title }}</p>
-                    <p class="release">{{ fixReleaseDay(activeMovie?.releaseDate) }}</p>
-                    <p class="film-type">{{ activeMovie?.type }}</p>
-                    <p class="film-rating">{{ activeMovie?.rated }}</p>
+                    <p class="title">{{ activeMovie.title }}</p>
+                    <p class="release">{{ fixReleaseDay(activeMovie.releaseDate) }}</p>
+                    <p class="film-type">{{ activeMovie.type }}</p>
+                    <p class="film-rating">{{ activeMovie.rated }}</p>
                 </div>
             </div>
-            <div class="bottom-information">
+            <div class="bottom-information" *ngIf="activeMovie.dateRated != ''">
                 <div class="film-ratings">
                     <div class="rating-titles">
                         <p>Acting:</p>
@@ -80,21 +80,21 @@
                         <p>Pacing:</p>
                         <p>Climax:</p>
                         <p>Ending:</p>
-                        <p>Rating:</p>
+                        <p class="ovr-rating">Rating:</p>
                     </div>
                     <div class="rating-scores">
-                        <p>{{ activeMovie?.acting }}</p>
-                        <p>{{ activeMovie?.visuals }}</p>
-                        <p>{{ activeMovie?.story }}</p>
-                        <p>{{ activeMovie?.pacing }}</p>
-                        <p>{{ activeMovie?.climax }}</p>
-                        <p>{{ activeMovie?.ending }}</p>
-                        <p>{{ activeMovie?.rating }}</p>
+                        <p>{{ activeMovie.acting }}</p>
+                        <p>{{ activeMovie.visuals }}</p>
+                        <p>{{ activeMovie.story }}</p>
+                        <p>{{ activeMovie.pacing }}</p>
+                        <p>{{ activeMovie.climax }}</p>
+                        <p>{{ activeMovie.ending }}</p>
+                        <p class="ovr-rating">{{ activeMovie.rating }}</p>
                     </div>
                 </div>
                 <div class="date-rated">
                     <button type="submit" class="button" (click)="onEdit(activeMovie)">Edit Rating</button>
-                    <p>Rated: {{ fixReleaseDay(activeMovie?.dateRated) }}</p>
+                    <p>Rated: {{ fixReleaseDay(activeMovie.dateRated) }}</p>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
             </div>
         
             <div class="scroll-box">
-                <div class="rated-films">
+                <div class="rated-films" *ngIf="ratedMovies.length != 0; else noRatedMovies">
                     <div class="rated-film" *ngFor="let movie of ratedMovies; let i = index">
                         <app-rated-movie-template
                             *ngIf="searchInput === '' || toLowerCase(movie.title).includes(searchInput) || movie.title.includes(searchInput)"
@@ -118,6 +118,12 @@
                         ></app-rated-movie-template>
                     </div>
                 </div>
+                <ng-template #noRatedMovies>
+                    <div class="no-rated-movies">
+                        <p>You dont have any ratings yet</p>
+                        <button type="submit" (click)="navigateToSearchMovies()">Find Movie To Rate</button>
+                    </div>
+                </ng-template>
             </div>
         </div>
     </div>

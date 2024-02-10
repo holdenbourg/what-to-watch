@@ -115,6 +115,7 @@ body {
     pointer-events: auto;
     transition-delay: calc(.1s * var(--i));
 }
+
 //other page redirects icon/title
 .settings-item {
     list-style: none;
@@ -203,70 +204,6 @@ body {
     width: 100%;
     height: 49.5%;
 }
-//container for account information
-.account-information {
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 500;
-    border: 3px solid #fff;
-    border-radius: 5px;
-    height: 100%;
-    width: 32.8%;
-    backdrop-filter: blur(3px);
-    padding-bottom: 30px;
-    justify-content: space-between;
-    overflow-wrap: break-word;
-}
-//each criteris in account-information
-.info {
-    padding-left: 40px;
-    padding-right: 25px;
-}
-//contains password and visibility button
-.locked {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-right: 30px;
-}
-//visibility button
-.locked a {
-    color: #fff;
-    position: absolute;
-    right: 30px;
-    bottom: 30px;
-    cursor: pointer;
-}
-
-//change-username container
-.change-username {
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    font-size: 25px;
-    font-weight: 500;
-    border: 3px solid #fff;
-    border-radius: 5px;
-    height: 100%;
-    width: 32.8%;
-    backdrop-filter: blur(3px);
-}
-
-//change-password container
-.change-password {
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    font-size: 25px;
-    font-weight: 500;
-    border: 3px solid #fff;
-    border-radius: 5px;
-    height: 100%;
-    width: 32.8%;
-    backdrop-filter: blur(3px);
-}
 //input/icon/prompt for both username and password
 .input-box {
     margin-left: 30px;
@@ -315,11 +252,8 @@ body {
 }
 //submit button for both username and password
 .button {
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 10px;
     width: auto;
-    height: 35px;
+    height: 40px;
     background: transparent;
     border: 2px solid #fff;
     backdrop-filter: blur(10px);
@@ -327,8 +261,12 @@ body {
     outline: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     color: #fff;
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
     font-weight: 500;
 }
 //message that displays if rule is broken
@@ -338,76 +276,7 @@ body {
     font-size: 14px;
     font-weight: 500;
 }
-
-
-//contains favorite movie information
-.favorite-movie {
-    display: flex;
-    flex-direction: column;
-    border: 3px solid #fff;
-    border-radius: 5px;
-    backdrop-filter: blur(3px);
-    width: 31.66%;
-    height: 100%;
-    color: #fff;
-}
-
-//contains favorite series information
-.favorite-series {
-    display: flex;
-    flex-direction: column;
-    border: 3px solid #fff;
-    border-radius: 5px;
-    backdrop-filter: blur(3px);
-    width: 31.66%;
-    height: 100%;
-    color: #fff;
-}
-//container for poster/title/release/type/rating
-.film-information {
-    display: flex;
-    flex-direction: row;
-}
-//container for title/release/type/ratings
-.film-text {
-    margin-left: 10px;
-    font-size: 22px;
-    font-weight: 500;
-}
-//poster
-.film-poster {
-    width: 50%;
-    height: 100%;
-    border-radius: 5px;
-    margin-left: 10px;
-}
-//title
-.film-title {
-    font-size: 30px;
-    font-weight: 600;
-}
-//container for rating-titles and rating-scores
-.film-ratings {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 30px;
-    font-weight: 600;
-    margin-left: 20px;
-    margin-top: 10px;
-    width: 35%;
-}
-//date the film was rated
-.date-rated {
-    position: absolute;
-    bottom: 0;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    font-size: 30px;
-    font-weight: 600;
-}
-
-//container for account-information and change-user-password
+//container for bottom row of boxes
 .bottom-side {
     display: flex;
     flex-direction: row;
@@ -415,8 +284,8 @@ body {
     width: 100%;
     height: 49.5%;
 }
-
-.change-first, .change-last, .change-email {
+//change-info container for all boxes
+.change-info {
     display: flex;
     flex-direction: column;
     color: #fff;
@@ -424,7 +293,64 @@ body {
     font-weight: 500;
     border: 3px solid #fff;
     border-radius: 5px;
-    height: 100%;
+    height: 99%;
     width: 32.8%;
     backdrop-filter: blur(3px);
+}
+//rules for each box
+.middle-info {
+    font-size: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+
+//input/prompt for bio
+.bio-input-box {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 46%;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    transition: .5s;
+}
+//input prompt for bio
+.bio-input-box label {
+    position: absolute;
+    left: 45px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+    padding-top: 10px;
+}
+//makes prompt disapear on click for both bio
+.bio-input-box textarea:focus~label,
+.bio-input-box textarea:valid~label {
+    color: transparent;
+}
+//text area for bio
+.bio-input-box textarea {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+    padding-left: 11.5px;
+    padding-top: 10px;
+    padding-right: 11.5px;
+}
+
+.middle-info p.white {
+    color: #fff;
+}
+.middle-info p.red {
+    color: red;
 }
