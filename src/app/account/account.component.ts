@@ -1,11 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
-import { UserInformationService } from '../services/user/user-information.service';
-import { RegisterModel } from '../services/models/login-register/register-model';
-import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
-import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
 import { FormsModule } from '@angular/forms';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-account',
@@ -16,9 +13,9 @@ import { FormsModule } from '@angular/forms';
 })
 export class AccountComponent  implements OnInit {
   private routingService: RoutingService = inject(RoutingService);
-  public userInformationService: UserInformationService = inject(UserInformationService);
-  
-  public username: string = this.userInformationService.username;
+  public localStorageService: LocalStorageService = inject(LocalStorageService);
+
+  public username: string = this.localStorageService.getInformation('currentUser').username;
 
 
   ngOnInit() {
@@ -38,19 +35,16 @@ export class AccountComponent  implements OnInit {
     this.routingService.navigateToSearchSeries();
   }
   navigateToMovies() {
-    this.routingService.navigateToMovies(this.username);
+    this.routingService.navigateToMovies();
   }
   navigateToShows() {
-    this.routingService.navigateToShows(this.username);
-  }
-  navigateToNews() {
-    this.routingService.navigateToNews();
+    this.routingService.navigateToShows();
   }
   navigateToSummary() {
-    this.routingService.navigateToSummary(this.username);
+    this.routingService.navigateToSummary();
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount(this.username);
+    this.routingService.navigateToAccount();
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

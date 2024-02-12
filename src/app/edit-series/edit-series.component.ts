@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
-import { RatedMovieInformationService } from '../services/film-information/rated-movie-information.service';
 import { RatedSeriesInformationService } from '../services/film-information/rated-series-information.service';
 import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-edit-series',
@@ -15,23 +15,26 @@ import { RatedSeriesModel } from '../services/models/rated-films/rated-series-mo
 export class EditSeriesComponent {
   private routingService: RoutingService = inject(RoutingService);
   public ratedSeriesInformationService: RatedSeriesInformationService = inject(RatedSeriesInformationService);
-  public activeSeries?: RatedSeriesModel = this.ratedSeriesInformationService.filmDetails;
+  public localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  public acting?: number = this.activeSeries?.acting;
-  public visuals?: number = this.activeSeries?.visuals;
-  public story?: number = this.activeSeries?.story;
-  public pacing?: number = this.activeSeries?.pacing;
-  public length?: number = this.activeSeries?.length;
-  public ending?: number = this.activeSeries?.ending;
+  public activeSeries: RatedSeriesModel = this.localStorageService.getInformation('currentEditSeries');
 
-  public ratingAverage?: number = this.getRatingsAverage();
+  public acting: number = this.activeSeries.acting;
+  public visuals: number = this.activeSeries.visuals;
+  public story: number = this.activeSeries.story;
+  public pacing: number = this.activeSeries.pacing;
+  public length: number = this.activeSeries.length;
+  public ending: number = this.activeSeries.ending;
+
+  public ratingAverage: number = this.getRatingsAverage();
 
 
   onEditRating() {
     //post updated rating to the database
 
     //then route back to shows
-    if(this.activeSeries != undefined) this.routingService.navigateToShows(this.activeSeries.username);
+    this.localStorageService.clearInformation('currentEditSeries');
+    this.routingService.navigateToShows();
   }
 
   //changes the rating up/down 1 and resets the average
@@ -86,12 +89,6 @@ export class EditSeriesComponent {
 
   //gets the average of the ratings
   getRatingsAverage() {
-    if(this.acting != undefined && this.visuals != undefined && this.story != undefined && 
-       this.pacing != undefined && this.length != undefined && this.ending != undefined) {
-      return Number(((this.acting + this.visuals + this.story + this.pacing + 
-                      this.length + this.ending) / 6).toFixed(1));
-    } else {
-      return;
-    }
+    return Number(((this.acting + this.visuals + this.story + this.pacing + this.length + this.ending) / 6).toFixed(1))
   }
 }

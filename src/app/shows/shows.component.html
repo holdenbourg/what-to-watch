@@ -55,7 +55,7 @@
             </li>
             <li class="username">
                  <p class="link-name" style="--i:5">Signed in as:</p> 
-                 <p class="link-name" style="--i:5">{{ username }}</p>
+                 <p class="link-name" style="--i:5">{{ currentUser.username }}</p>
             </li>
         </ul>
     </nav>
@@ -108,8 +108,8 @@
             </div>
         
             <div class="scroll-box">
-                <div class="rated-films" *ngIf="ratedSeries.length != 0; else noRatedSeries">
-                    <div class="rated-film" *ngFor="let series of ratedSeries; let i = index">
+                <div class="rated-films" *ngIf="usersRatedSeries.length != 0; else noRatedSeries">
+                    <div class="rated-film" *ngFor="let series of usersRatedSeries; let i = index">
                         <app-rated-series-template
                             *ngIf="searchInput === '' || toLowerCase(series.title).includes(searchInput) || series.title.includes(searchInput)"
                             [ratedFilm]="series"

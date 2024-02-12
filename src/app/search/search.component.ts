@@ -7,8 +7,8 @@ import { SearchedFilmModel } from '../services/models/omdb-api/searched-film-mod
 import { SearchedFilmTemplateComponent } from '../searched-film-template/searched-film-template.component';
 import { ActivatedRoute } from '@angular/router';
 import { UserInputService } from '../services/user/user-input.service';
-import { UserInformationService } from '../services/user/user-information.service';
 import { FilmInformationService } from '../services/film-information/film-information.service';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-search',
@@ -23,14 +23,14 @@ export class SearchComponent  implements OnInit {
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   private apiService: ApiService = inject(ApiService);
   private userInputService: UserInputService = inject(UserInputService);
-  private userInformationService: UserInformationService = inject(UserInformationService);
-  private filmInformationService: FilmInformationService = inject(FilmInformationService);
+  public localStorageService: LocalStorageService = inject(LocalStorageService);
+
+  public username: string = this.localStorageService.getInformation('currentUser').username;
 
   public currentActiveSearchType: string = '.movies';
   public searchInput: string = '';
   public input: string = '';
   public type: string = ''
-  public username: string = this.userInformationService.username;
   public translatedMovies: SearchedFilmModel[] = [];
 
 
@@ -172,9 +172,6 @@ export class SearchComponent  implements OnInit {
   navigateToHome() {
     this.routingService.navigateToHome();
   }
-  navigateToNews() {
-    this.routingService.navigateToNews();
-  }
   navigateToLogin() {
     this.routingService.navigateToLogin();
   }
@@ -185,16 +182,16 @@ export class SearchComponent  implements OnInit {
     this.routingService.navigateToSearchSeries();
   }
   navigateToMovies() {
-    this.routingService.navigateToMovies(this.username);
+    this.routingService.navigateToMovies();
   }
   navigateToShows() {
-    this.routingService.navigateToShows(this.username);
+    this.routingService.navigateToShows();
   }
   navigateToSummary() {
-    this.routingService.navigateToSummary(this.username);
+    this.routingService.navigateToSummary();
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount(this.username);
+    this.routingService.navigateToAccount();
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

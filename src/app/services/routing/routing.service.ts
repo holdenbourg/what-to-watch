@@ -40,28 +40,28 @@ export class RoutingService {
   navigateToRateSeries(imdbId?: string) {
     this.router.navigateByUrl(`/rate-series/${imdbId}`);
   }
-  navigateToMovies(username: string) {
-    this.router.navigateByUrl(`/movies/${username}`);
+  navigateToMovies() {
+    this.router.navigateByUrl(`/movies`);
   }
-  navigateToEditMovie(input?: string) {
-    this.router.navigateByUrl(`/edit-movie/${input}`);
+  navigateToEditMovie() {
+    this.router.navigateByUrl(`/edit-movie`);
   }
-  navigateToShows(username: string) {
-    this.router.navigateByUrl(`/shows/${username}`);
+  navigateToShows() {
+    this.router.navigateByUrl(`/shows`);
   }
-  navigateToEditSeries(input?: string) {
-    this.router.navigateByUrl(`/edit-series/${input}`);
+  navigateToEditSeries() {
+    this.router.navigateByUrl(`/edit-series`);
   }
-  navigateToSummary(username: string) {
-    this.router.navigateByUrl(`/summary/${username}`);
+  navigateToSummary() {
+    this.router.navigateByUrl(`/summary`);
   }
-  navigateToAccount(username: string) {
-    this.router.navigateByUrl(`/account/${username}`);
+  navigateToAccount() {
+    this.router.navigateByUrl(`/account`);
   }
   navigateToSettings() {
-    this.router.navigateByUrl('/settings/account-info');
+    this.router.navigateByUrl(`/settings/account-info`);
   }
   navigateToPrivacy() {
-    this.router.navigateByUrl('/settings/privacy');
+    this.router.navigateByUrl(`/settings/privacy`);
   }
 }

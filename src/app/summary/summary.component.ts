@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
-import { UserInformationService } from '../services/user/user-information.service';
 import { ApiService } from '../services/api/api.service';
 import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
 import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
 import { RatedFilmStatisticsModel } from '../services/models/rated-films-statistics-model';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-summary',
@@ -15,10 +15,11 @@ import { RatedFilmStatisticsModel } from '../services/models/rated-films-statist
 })
 export class SummaryComponent {
   private routingService: RoutingService = inject(RoutingService);
-  public userInformationService: UserInformationService = inject(UserInformationService);
   public apiService: ApiService = inject(ApiService);
-  public username: string = this.userInformationService.username;
+  public localStorageService: LocalStorageService = inject(LocalStorageService);
 
+  public username: string = this.localStorageService.getInformation('currentUser').username;
+  
   public highestRatedMovie: RatedMovieModel = {
     title: 'Avatar',
     releaseDate: 'December 18, 2009',
@@ -76,19 +77,16 @@ export class SummaryComponent {
     this.routingService.navigateToSearchMovies();
   }  
   navigateToMovies() {
-    this.routingService.navigateToMovies(this.username);
+    this.routingService.navigateToMovies();
   }
   navigateToShows() {
-    this.routingService.navigateToShows(this.username);
-  }
-  navigateToNews() {
-    this.routingService.navigateToNews();
+    this.routingService.navigateToShows();
   }
   navigateToSummary() {
-    this.routingService.navigateToSummary(this.username);
+    this.routingService.navigateToSummary();
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount(this.username);
+    this.routingService.navigateToAccount();
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

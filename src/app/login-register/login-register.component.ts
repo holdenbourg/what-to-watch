@@ -2,9 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RoutingService } from '../services/routing/routing.service';
-import { UserInformationService } from '../services/user/user-information.service';
 import { RegisterModel } from '../services/models/login-register/register-model';
 import { LoginModel } from '../services/models/login-register/login-model';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
+import { AccountInformationModel } from '../services/models/account-information-model';
 
 @Component({
   selector: 'app-login',
@@ -14,17 +15,63 @@ import { LoginModel } from '../services/models/login-register/login-model';
   styleUrl: './login-register.component.scss'
 })
 export class LoginRegisterComponent {
-onTerms() {
-throw new Error('Method not implemented.');
-}
-onForgotPassword() {
-throw new Error('Method not implemented.');
-}
   private routingService: RoutingService = inject(RoutingService);
-  private userInformationService: UserInformationService = inject(UserInformationService);
+  private localStorageService: LocalStorageService = inject(LocalStorageService);
 
   public warning: string = '';
-  signupUsers: any[] = [];
+
+  public mockUsersDatabase: AccountInformationModel[] = [
+    {
+      username: 'HoldenBourg',
+      password: 'Captain$47',
+      email: 'holden.bourg@gmail.com',
+      firstName: 'Holden',
+      lastName: 'Bourg',
+      bio: '',
+      followers: ['LukasGocke', 'EnriqueLeal', 'CalebHaralson'],
+      following: ['LukasGocke', 'EnriqueLeal', 'CalebHaralson'],
+      requests: ['LukasGocke', 'EnriqueLeal', 'CalebHaralson'],
+      private: true
+    },
+    {
+      username: 'LukasGocke',
+      password: 'Captain$47',
+      email: 'lukas.gocke@gmail.com',
+      firstName: 'Lukas',
+      lastName: 'Gocke',
+      bio: '',
+      followers: ['HoldenBourg', 'EnriqueLeal', 'CalebHaralson'],
+      following: ['HoldenBourg', 'EnriqueLeal', 'CalebHaralson'],
+      requests: ['HoldenBourg', 'EnriqueLeal', 'CalebHaralson'],
+      private: true
+    },
+    {      
+      username: 'EnriqueLeal',
+      password: 'Captain$47',
+      email: 'enrique.leal@gmail.com',
+      firstName: 'Enrique',
+      lastName: 'Leal',
+      bio: '',
+      followers: ['LukasGocke', 'HoldenBourg', 'CalebHaralson'],
+      following: ['LukasGocke', 'HoldenBourg', 'CalebHaralson'],
+      requests: ['LukasGocke', 'HoldenBourg', 'CalebHaralson'],
+      private: false
+    },
+    {      
+      username: 'CalebHaralson',
+      password: 'Captain$47',
+      email: 'caleb.haralson@gmail.com',
+      firstName: 'Caleb',
+      lastName: 'Haralson',
+      bio: '',
+      followers: ['LukasGocke', 'EnriqueLeal', 'HoldenBourg'],
+      following: ['LukasGocke', 'EnriqueLeal', 'HoldenBourg'],
+      requests: ['LukasGocke', 'EnriqueLeal', 'HoldenBourg'],
+      private: false
+    }
+  ]
+  public currentUser: AccountInformationModel[] = [];
+
 
   registerObject: RegisterModel = {
     firstName: '',
@@ -39,11 +86,13 @@ throw new Error('Method not implemented.');
   }; 
 
 
-  ngOnInit() {
-    const localData = localStorage.getItem('signUpUsers');
-    if(localData != null) {
-      this.signupUsers = JSON.parse(localData);
-    }
+  ngOnInit() {}
+
+  onTerms() {
+    throw new Error('Method not implemented.');
+  }
+  onForgotPassword() {
+    throw new Error('Method not implemented.');
   }
 
   //Send the new users info to the database
@@ -93,7 +142,11 @@ throw new Error('Method not implemented.');
       setTimeout(() => {this.warning = ``;}, 3000);
       return;
 
-    //need another if to run for unique username
+    //need to change the unique method to search the users database
+    } else if(!this.checkUniqueUsername(this.registerObject.username)) {
+      this.warning = `Username already exists`;
+      setTimeout(() => {this.warning = ``;}, 3000);
+      return;
     } else if(!this.checkUsernameLengthMinimum(this.registerObject.username)) {
       this.warning = `Username must be above 6 characters`;
       setTimeout(() => {this.warning = ``;}, 3000);
@@ -132,27 +185,53 @@ throw new Error('Method not implemented.');
       return;
     }
     
+    let newAccount: AccountInformationModel = {
+      username: this.registerObject.username,
+      password: this.registerObject.username,
+      email: this.registerObject.username,
+      firstName: this.registerObject.username,
+      lastName: this.registerObject.username,
+      bio: '',
+      followers: [],
+      following: [],
+      requests: [],
+      private: false
+    }
+
     //add user to the database
-    this.signupUsers.push(this.registerObject);
-    localStorage.setItem('signUpUsers', JSON.stringify(this.signupUsers));
+    this.currentUser.push(newAccount);
+    this.localStorageService.setInformation('currentUser', this.currentUser);
   }
+  
   //Login if user/password exist in database, else warning
   onLogin() {
     //run database call to see if a user with the given user/password exists
-    const userExists = this.signupUsers
-    .find(user => user.userName == this.loginObject.username && user.password == this.loginObject.password);
+    let user: AccountInformationModel;
+
+    for(let i = 0; i < this.mockUsersDatabase.length; i++) {
+      if(this.mockUsersDatabase.at(i)!.username == this.loginObject.username && this.mockUsersDatabase.at(i)!.password == this.loginObject.password) user = this.mockUsersDatabase.at(i)!;
+    }
 
     //if they exist store username for later and route to home page, else show warning
-    if(userExists != undefined) {
-      this.userInformationService.username = this.loginObject.username;
-      this.userInformationService.password = this.loginObject.password;
+    if(user! != null) {
+      this.localStorageService.setInformation('currentUser', user)
       this.routingService.navigateToHome();
+
     } else {
       this.warning = 'That username or password does not exist';
       setTimeout(() => {this.warning = ``;}, 3000);
     }
   }
 
+  checkUniqueUsername(input: string) {
+    let unique: boolean = true;
+
+    for(let i = 0; i < this.mockUsersDatabase.length; i++) {
+      if(this.mockUsersDatabase.at(i)!.username == input) unique = false;
+    }
+
+    return unique;
+  }
   checkAllSpecialCharacters(input: string) {
     if(input.includes(' ') ||
       input.includes('.') ||

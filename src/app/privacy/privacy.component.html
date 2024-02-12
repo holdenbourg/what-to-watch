@@ -67,8 +67,24 @@
             </li>
             <li class="username">
                  <p class="link-name" style="--i:2">Signed in as:</p> 
-                 <p class="link-name" style="--i:2">{{ accountInformation.username }}</p>
+                 <p class="link-name" style="--i:2">{{ username }}</p>
             </li>
         </ul>
     </nav>
+
+    <div class="container">
+        <div class="account-privacy">
+            <p class="title">Account Privacy</p>
+            <div class="public-private">
+                <div class="title-switch">
+                    <p class="privacy-mode">Public</p>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="toggle" (click)="OnSwitchPrivacy()">
+                        <label for="toggle" class="slide-toggle"></label>
+                    </div>
+                </div>
+                <p class="description">When your account is public, your profile can be viewed by anyone who finds your account. This includes the people on both your followers and following list and the posts you've posted yourself or have been tagged in.</p>
+            </div>
+        </div>
+    </div>
 </body>

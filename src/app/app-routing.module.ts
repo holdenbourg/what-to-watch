@@ -19,10 +19,10 @@ const routes: Routes = [
   {path: '', component: LoginRegisterComponent},
   {path: 'login', component: LoginRegisterComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'movies/:username', component: MoviesComponent},
-  {path: 'shows/:username', component: ShowsComponent},
-  {path: 'edit-movie/:input', component: EditMovieComponent},
-  {path: 'edit-series/:input', component: EditSeriesComponent},
+  {path: 'movies', component: MoviesComponent},
+  {path: 'shows', component: ShowsComponent},
+  {path: 'edit-movie', component: EditMovieComponent},
+  {path: 'edit-series', component: EditSeriesComponent},
   {path: 'settings/account-info', component: SettingsComponent},
   {path: 'settings/privacy', component: PrivacyComponent},
   {path: 'search/:type', component: SearchComponent},
@@ -30,8 +30,8 @@ const routes: Routes = [
   {path: 'film-information/:type/:imdbId', component: FilmInformationComponent},
   {path: 'rate-movie/:imdbId', component: RateMovieComponent},
   {path: 'rate-series/:imdbId', component: RateSeriesComponent},
-  {path: 'account/:username', component: AccountComponent},
-  {path: 'summary/:username', component: SummaryComponent}
+  {path: 'account', component: AccountComponent},
+  {path: 'summary', component: SummaryComponent}
 ];
 
 @NgModule({

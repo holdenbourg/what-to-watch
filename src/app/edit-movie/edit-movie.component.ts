@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
 import { RatedMovieInformationService } from '../services/film-information/rated-movie-information.service';
 import { RoutingService } from '../services/routing/routing.service';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-edit-movie',
@@ -14,23 +15,26 @@ import { RoutingService } from '../services/routing/routing.service';
 export class EditMovieComponent {
   private routingService: RoutingService = inject(RoutingService);
   public ratedMovieInformationService: RatedMovieInformationService = inject(RatedMovieInformationService);
-  activeMovie?: RatedMovieModel = this.ratedMovieInformationService.filmDetails;
+  public localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  public acting?: number = this.activeMovie?.acting;
-  public visuals?: number = this.activeMovie?.visuals;
-  public story?: number = this.activeMovie?.story;
-  public pacing?: number = this.activeMovie?.pacing;
-  public climax?: number = this.activeMovie?.climax;
-  public ending?: number = this.activeMovie?.ending;
+  activeMovie: RatedMovieModel = this.localStorageService.getInformation('currentEditMovie');
 
-  public ratingAverage?: number = this.getRatingsAverage();
+  public acting: number = this.activeMovie.acting;
+  public visuals: number = this.activeMovie.visuals;
+  public story: number = this.activeMovie.story;
+  public pacing: number = this.activeMovie.pacing;
+  public climax: number = this.activeMovie.climax;
+  public ending: number = this.activeMovie.ending;
+
+  public ratingAverage: number = this.getRatingsAverage();
 
 
   onEditRating() {
     //post updated rating to the database
 
     //then route back to movies
-    if(this.activeMovie != undefined) this.routingService.navigateToMovies(this.activeMovie.username);
+    this.localStorageService.clearInformation('currentEditMovie');
+    this.routingService.navigateToMovies();
   }
 
   //changes the rating up/down 1 and resets the average
@@ -85,12 +89,6 @@ export class EditMovieComponent {
 
   //gets the average of the ratings
   getRatingsAverage() {
-    if(this.acting != undefined && this.visuals != undefined && this.story != undefined && 
-       this.pacing != undefined && this.climax != undefined && this.ending != undefined) {
-      return Number(((this.acting + this.visuals + this.story + this.pacing + 
-                      this.climax + this.ending) / 6).toFixed(1));
-    } else {
-      return;
-    }
+    return Number(((this.acting + this.visuals + this.story + this.pacing + this.climax + this.ending) / 6).toFixed(1));
   }
 }

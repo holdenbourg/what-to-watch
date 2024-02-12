@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
-import { UserInformationService } from '../services/user/user-information.service';
 import { RatedSeriesInformationService } from '../services/film-information/rated-series-information.service';
 import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
 import { FormsModule } from '@angular/forms';
 import { RatedSeriesTemplateComponent } from '../rated-series-template/rated-series-template.component';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
+import { AccountInformationModel } from '../services/models/account-information-model';
 
 @Component({
   selector: 'app-shows',
@@ -16,11 +17,12 @@ import { RatedSeriesTemplateComponent } from '../rated-series-template/rated-ser
 })
 export class ShowsComponent  implements OnInit {
   private routingService: RoutingService = inject(RoutingService);
-  public userInformationService: UserInformationService = inject(UserInformationService);
   public ratedSeriesInformationService: RatedSeriesInformationService = inject(RatedSeriesInformationService);
-  public username: string = this.userInformationService.username;
+  public localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  public ratedSeries: RatedSeriesModel[] = [
+  public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
+
+  public mockRatedSeriesDatabase: RatedSeriesModel[] = [
     {
       title: 'Avatar',
       releaseDate: 'December 18, 2009',
@@ -50,7 +52,7 @@ export class ShowsComponent  implements OnInit {
       pacing: 8,
       ending: 9,
       rating: 102,
-      username: 'Holden',
+      username: 'HoldenBourg',
       dateRated: 'January 26, 2024'
     },
     {
@@ -82,7 +84,7 @@ export class ShowsComponent  implements OnInit {
       pacing: 8,
       ending: 9,
       rating: 104,
-      username: 'Holden',
+      username: 'HoldenBourg',
       dateRated: 'January 26, 2024'
     },
     {
@@ -114,7 +116,7 @@ export class ShowsComponent  implements OnInit {
       pacing: 8,
       ending: 9,
       rating: 106,
-      username: 'Holden',
+      username: 'HoldenBourg',
       dateRated: 'January 26, 2024'
     },
     {
@@ -146,7 +148,7 @@ export class ShowsComponent  implements OnInit {
       pacing: 8,
       ending: 9,
       rating: 108,
-      username: 'Holden',
+      username: 'HoldenBourg',
       dateRated: 'January 26, 2024'
     },
     {
@@ -178,12 +180,12 @@ export class ShowsComponent  implements OnInit {
       pacing: 8,
       ending: 9,
       rating: 1010,
-      username: 'Holden',
+      username: 'HoldenBourg',
       dateRated: 'January 26, 2024'
     },
   ];
 
-  //public ratedSeries: RatedSeriesModel[] = [];
+  public usersRatedSeries: RatedSeriesModel[] = [];
   public activeSeries: RatedSeriesModel = {
     title: '',
     releaseDate: '',
@@ -200,7 +202,6 @@ export class ShowsComponent  implements OnInit {
     username: '',
     dateRated: ''
   };
-  public activeSeriesClass: string = '';
 
   public searchInput: string = '';
 
@@ -208,23 +209,30 @@ export class ShowsComponent  implements OnInit {
   ngOnInit() {
     this.toggleActive()
     
-    if(this.ratedSeries.length != 0) {
-      this.activeSeries = this.ratedSeries.at(0)!;
-      this.activeSeriesClass = '.rated-film-0';
+    this.populateUsersRatedSeries();
+
+    if(this.usersRatedSeries.length != 0) {
+      this.activeSeries = this.usersRatedSeries.at(0)!;
     }
   }
 
+  //populate users ratings from the series database
+  populateUsersRatedSeries() {
+    this.usersRatedSeries = this.mockRatedSeriesDatabase.filter((series) => series.username == this.currentUser.username);
+  }
+
   onEdit(input: RatedSeriesModel) {
-    this.ratedSeriesInformationService.filmDetails = input;
-    this.routingService.navigateToEditSeries(input.title);
+    this.localStorageService.clearInformation('currentEditSeries');
+    this.localStorageService.setInformation('currentEditSeries', input);
+
+    this.routingService.navigateToEditSeries();
   }
   onRatedFilmClicked(title: string, rating: number) {
-    for(let i = 0; i < this.ratedSeries.length; i++) {
-      const currentRating = this.ratedSeries.at(i);
+    for(let i = 0; i < this.usersRatedSeries.length; i++) {
+      const currentRating = this.usersRatedSeries.at(i);
 
       if(currentRating?.title == title && currentRating?.rating == rating) {
         this.activeSeries = currentRating;
-        this.activeSeriesClass = `.rated-film-${i}`
       }
     }
   }
@@ -315,19 +323,16 @@ export class ShowsComponent  implements OnInit {
     this.routingService.navigateToSearchSeries();
   }
   navigateToMovies() {
-    this.routingService.navigateToMovies(this.username);
+    this.routingService.navigateToMovies();
   }
   navigateToShows() {
-    this.routingService.navigateToShows(this.username);
-  }
-  navigateToNews() {
-    this.routingService.navigateToNews();
+    this.routingService.navigateToShows();
   }
   navigateToSummary() {
-    this.routingService.navigateToSummary(this.username);
+    this.routingService.navigateToSummary();
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount(this.username);
+    this.routingService.navigateToAccount();
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

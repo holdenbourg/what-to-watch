@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
-import { UserInformationService } from '../services/user/user-information.service';
 import { FormsModule } from '@angular/forms';
 import { AccountInformationModel } from '../services/models/account-information-model';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-settings',
@@ -14,7 +14,9 @@ import { AccountInformationModel } from '../services/models/account-information-
 })
 export class SettingsComponent implements OnInit {
   private routingService: RoutingService = inject(RoutingService);
-  public userInformationService: UserInformationService = inject(UserInformationService);
+  public localStorageService: LocalStorageService = inject(LocalStorageService);
+
+  public username: string = this.localStorageService.getInformation('currentUser').username;
 
   //pull all this info from the db using username on page initialization
   public accountInformation: AccountInformationModel = {
@@ -24,7 +26,11 @@ export class SettingsComponent implements OnInit {
     email: 'holden.bourg@gmail.com',
     firstName: 'Holden',
     lastName: 'Bourg',
-    bio: ''
+    bio: '',
+    followers: [],
+    following: [],
+    requests: [],
+    private: false
   }
 
   public changeUsername: string = this.accountInformation.username;
@@ -828,19 +834,16 @@ export class SettingsComponent implements OnInit {
     this.routingService.navigateToSearchSeries();
   }
   navigateToMovies() {
-    this.routingService.navigateToMovies(this.accountInformation.username);
+    this.routingService.navigateToMovies();
   }
   navigateToShows() {
-    this.routingService.navigateToShows(this.accountInformation.username);
-  }
-  navigateToNews() {
-    this.routingService.navigateToNews();
+    this.routingService.navigateToShows();
   }
   navigateToSummary() {
-    this.routingService.navigateToSummary(this.accountInformation.username);
+    this.routingService.navigateToSummary();
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount(this.accountInformation.username);
+    this.routingService.navigateToAccount();
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

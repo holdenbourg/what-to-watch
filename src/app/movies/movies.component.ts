@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
+import { Component, OnInit, Output, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
-import { UserInformationService } from '../services/user/user-information.service';
 import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
 import { RatedMovieTemplateComponent } from '../rated-movie-template/rated-movie-template.component';
 import { FormsModule } from '@angular/forms';
 import { RatedMovieInformationService } from '../services/film-information/rated-movie-information.service';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
+import { AccountInformationModel } from '../services/models/account-information-model';
 
 @Component({
   selector: 'app-movies',
@@ -16,11 +17,12 @@ import { RatedMovieInformationService } from '../services/film-information/rated
 })
 export class MoviesComponent  implements OnInit {
   private routingService: RoutingService = inject(RoutingService);
-  public userInformationService: UserInformationService = inject(UserInformationService);
   public ratedMovieInformationService: RatedMovieInformationService = inject(RatedMovieInformationService);
-  public username: string = this.userInformationService.username;
+  public localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  public ratedMovies: RatedMovieModel[] = [
+  public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
+
+  public mockRatedMoviesDatabase: RatedMovieModel[] = [
     {
       title: 'Avatar',
       releaseDate: 'December 08, 2009',
@@ -34,7 +36,7 @@ export class MoviesComponent  implements OnInit {
       pacing: 8,
       ending: 9,
       rating: 101,
-      username: 'Holden',
+      username: 'HoldenBourg',
       dateRated: 'December 06, 2024'
     },
     {
@@ -66,7 +68,7 @@ export class MoviesComponent  implements OnInit {
       pacing: 8,
       ending: 9,
       rating: 103,
-      username: 'Holden',
+      username: 'HoldenBourg',
       dateRated: 'January 26, 2024'
     },
     {
@@ -98,7 +100,7 @@ export class MoviesComponent  implements OnInit {
       pacing: 8,
       ending: 9,
       rating: 105,
-      username: 'Holden',
+      username: 'HoldenBourg',
       dateRated: 'January 26, 2024'
     },
     {
@@ -130,7 +132,7 @@ export class MoviesComponent  implements OnInit {
       pacing: 8,
       ending: 9,
       rating: 107,
-      username: 'Holden',
+      username: 'HoldenBourg',
       dateRated: 'January 26, 2024'
     },
     {
@@ -162,7 +164,7 @@ export class MoviesComponent  implements OnInit {
       pacing: 8,
       ending: 9,
       rating: 109,
-      username: 'Holden',
+      username: 'HoldenBourg',
       dateRated: 'January 26, 2024'
     },
     {
@@ -183,7 +185,7 @@ export class MoviesComponent  implements OnInit {
     },
   ];
   
-  //public ratedMovies: RatedMovieModel[] = [];
+  public usersRatedMovies: RatedMovieModel[] = [];
   public activeMovie: RatedMovieModel = {
     title: '',
     releaseDate: '',
@@ -200,33 +202,39 @@ export class MoviesComponent  implements OnInit {
     username: '',
     dateRated: ''
   };
-  public activeMovieClass: string = '';
 
   public searchInput: string = '';
 
   ngOnInit() {
     this.toggleActive()
         
-    if(this.ratedMovies.length != 0) {
-      this.activeMovie = this.ratedMovies.at(0)!;
-      this.activeMovieClass = '.rated-film-0';
+    this.populateUsersRatedMovies();
+
+    if(this.usersRatedMovies.length != 0) {
+      this.activeMovie = this.usersRatedMovies.at(0)!;
     }
   }
 
-  onEdit(input?: RatedMovieModel) {
-    this.ratedMovieInformationService.filmDetails = input;
-    this.routingService.navigateToEditMovie(input?.title);
+  //populate users ratings from the series database
+  populateUsersRatedMovies() {
+    this.usersRatedMovies = this.mockRatedMoviesDatabase.filter((movie) => movie.username == this.currentUser.username);
+  }
+
+  onEdit(input: RatedMovieModel) {
+    this.localStorageService.clearInformation('currentEditMovie');
+    this.localStorageService.setInformation('currentEditMovie', input);
+
+    this.routingService.navigateToEditMovie();
   }
   onSearch() {
 
   }
   onRatedFilmClicked(title: string, rating: number) {
-    for(let i = 0; i < this.ratedMovies.length; i++) {
-      const currentRating = this.ratedMovies.at(i);
+    for(let i = 0; i < this.usersRatedMovies.length; i++) {
+      const currentRating = this.usersRatedMovies.at(i);
 
       if(currentRating?.title == title && currentRating?.rating == rating) {
         this.activeMovie = currentRating;
-        this.activeMovieClass = `.rated-film-${i}`
       }
     }
   }
@@ -317,19 +325,16 @@ export class MoviesComponent  implements OnInit {
     this.routingService.navigateToSearchSeries();
   }
   navigateToMovies() {
-    this.routingService.navigateToMovies(this.username);
+    this.routingService.navigateToMovies();
   }
   navigateToShows() {
-    this.routingService.navigateToShows(this.username);
-  }
-  navigateToNews() {
-    this.routingService.navigateToNews();
+    this.routingService.navigateToShows();
   }
   navigateToSummary() {
-    this.routingService.navigateToSummary(this.username);
+    this.routingService.navigateToSummary();
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount(this.username);
+    this.routingService.navigateToAccount();
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();
