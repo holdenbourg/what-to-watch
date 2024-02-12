@@ -31,6 +31,7 @@ export class LoginRegisterComponent {
       followers: ['LukasGocke', 'EnriqueLeal', 'CalebHaralson'],
       following: ['LukasGocke', 'EnriqueLeal', 'CalebHaralson'],
       requests: ['LukasGocke', 'EnriqueLeal', 'CalebHaralson'],
+      blocked: [],
       private: true
     },
     {
@@ -43,6 +44,7 @@ export class LoginRegisterComponent {
       followers: ['HoldenBourg', 'EnriqueLeal', 'CalebHaralson'],
       following: ['HoldenBourg', 'EnriqueLeal', 'CalebHaralson'],
       requests: ['HoldenBourg', 'EnriqueLeal', 'CalebHaralson'],
+      blocked: [],
       private: true
     },
     {      
@@ -55,6 +57,7 @@ export class LoginRegisterComponent {
       followers: ['LukasGocke', 'HoldenBourg', 'CalebHaralson'],
       following: ['LukasGocke', 'HoldenBourg', 'CalebHaralson'],
       requests: ['LukasGocke', 'HoldenBourg', 'CalebHaralson'],
+      blocked: [],
       private: false
     },
     {      
@@ -67,10 +70,11 @@ export class LoginRegisterComponent {
       followers: ['LukasGocke', 'EnriqueLeal', 'HoldenBourg'],
       following: ['LukasGocke', 'EnriqueLeal', 'HoldenBourg'],
       requests: ['LukasGocke', 'EnriqueLeal', 'HoldenBourg'],
+      blocked: [],
       private: false
     }
   ]
-  public currentUser: AccountInformationModel[] = [];
+  public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
 
   registerObject: RegisterModel = {
@@ -80,13 +84,24 @@ export class LoginRegisterComponent {
     username: '',
     password: ''
   };
+
   loginObject: LoginModel = {
     username: '',
     password: ''
   }; 
 
+  clearLocalStorage() {
+    this.localStorageService.clearInformation('currentUser');
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.currentUser != undefined) {
+      this.loginObject = {
+        username: this.currentUser.username,
+        password: this.currentUser.password
+      }
+    }
+  }
 
   onTerms() {
     throw new Error('Method not implemented.');
@@ -195,11 +210,13 @@ export class LoginRegisterComponent {
       followers: [],
       following: [],
       requests: [],
+      blocked: [],
       private: false
     }
 
     //add user to the database
-    this.currentUser.push(newAccount);
+    this.currentUser = newAccount;
+    this.localStorageService.clearInformation('currentUser');
     this.localStorageService.setInformation('currentUser', this.currentUser);
   }
   

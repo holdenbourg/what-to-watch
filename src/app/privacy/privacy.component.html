@@ -86,5 +86,27 @@
                 <p class="description">When your account is public, your profile can be viewed by anyone who finds your account. This includes the people on both your followers and following list and the posts you've posted yourself or have been tagged in.</p>
             </div>
         </div>
+
+        <div class="scroll-box">
+            <div class="blocked-accounts" *ngIf="currentUser.blocked.length != 0; else noBlockedUsers">
+                <div class="rated-film" *ngFor="let blockedAccount of currentUser.blocked; let i = index">
+                    <app-blocked-account-template
+                        [ratedFilm]="movie"
+                        (click)="onRatedFilmClicked(movie.title, movie.rating)" 
+                        class="rated-film-{{i}}"
+                    ></app-blocked-account-template>
+                </div>
+            </div>
+            <ng-template #noBlockedUsers>
+                <div class="no-rated-movies">
+                    <p>You dont have any ratings yet</p>
+                    <button type="submit" (click)="navigateToSearchMovies()">Find Movie To Rate</button>
+                </div>
+            </ng-template>
+        </div>
+        <div class="blocked-accounts">
+            <p class="title">Blocked Accounts</p>
+            </div >
+        </div> 
     </div>
 </body>

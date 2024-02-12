@@ -30,6 +30,7 @@ export class SettingsComponent implements OnInit {
     followers: [],
     following: [],
     requests: [],
+    blocked: [],
     private: false
   }
 

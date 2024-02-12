@@ -8,5 +8,6 @@ export interface AccountInformationModel {
     followers: string[],
     following: string[],
     requests: string[],
+    blocked: string[],
     private: boolean
 }

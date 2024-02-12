@@ -6,15 +6,15 @@
 <body>
     <div class="container">
         <div class="film-information">
-            <img class="film-poster" [src]="activeMovie?.poster" [attr.alt]="activeMovie?.title">
+            <img class="film-poster" [src]="activeMovie.poster" [attr.alt]="activeMovie.title">
             <div class="film-text">
-                <p class="title">{{ activeMovie?.title }}</p>
-                <p class="release">{{ activeMovie?.releaseDate }}</p>
-                <p class="film-type">{{ activeMovie?.type }}</p>
-                <p class="film-rating">{{ activeMovie?.rated }}</p>
+                <p class="title">{{ activeMovie.title }}</p>
+                <p class="release">{{ activeMovie.releaseDate }}</p>
+                <p class="film-type">{{ activeMovie.type }}</p>
+                <p class="film-rating">{{ activeMovie.rated }}</p>
             </div>
             <div class="date-rated">
-                <p>Rated: {{ activeMovie?.dateRated }}</p>
+                <p>Rated: {{ activeMovie.dateRated }}</p>
             </div>
         </div>
         <div class="bottom-half">

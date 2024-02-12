@@ -189,7 +189,7 @@ body {
 
 //all headers
 .title {
-    font-size: 1.56vw;
+    font-size: 30px;
     font-weight: 600;
     padding-left: 25px;
     padding-right: 25px;
@@ -217,7 +217,7 @@ body {
     margin-right: 50px;
 }
 .slide-toggle {
-    border: .15vw solid #fff;
+    border: 2px solid #fff;
     width: 40px;
     height: 25px;
     border-radius: 200px;
@@ -255,7 +255,8 @@ input {
 }
 .description {
     color: #fff;
-    font-size: .9vw;
+    font-size: 1vw;
+    font-weight: 400;
     margin-left: 10px;
     margin-right: 10px;
     transition: .5s;
@@ -265,7 +266,7 @@ input {
 }
 .privacy-mode {
     color: #fff;
-    font-size: 1.2vw;
+    font-size: 25px;
     font-weight: 500;
     transition: .5s;
 }
