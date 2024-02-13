@@ -1,1 +1,7 @@
-<p>blocked-account-template works!</p>
+<div class="blocked-user">
+    <div class="blocked-info">
+        <img class="profile-picture" [src]="blockedAccount.profilePicture" [attr.alt]="blockedAccount.username">
+        <p class="username">{{ blockedAccount.username }}</p>
+    </div>
+    <button type="submit" class="button" (click)="onUnblockUser(blockedAccount.username)">Unblock</button>
+</div>

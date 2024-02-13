@@ -9,6 +9,9 @@ import { FollowerModel } from '../services/models/follower-model';
   styleUrl: './blocked-account-template.component.scss'
 })
 export class BlockedAccountTemplateComponent {
+onUnblockUser(arg0: string) {
+throw new Error('Method not implemented.');
+}
   @Input()
   public blockedAccount: FollowerModel = {
     profilePicture: '',

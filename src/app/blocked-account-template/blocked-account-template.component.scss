@@ -1,0 +1,45 @@
+.blocked-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: .15vw solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.blocked-info{
+    display: flex;
+    flex-direction: row;
+}
+.profile-picture {
+    -webkit-filter: invert(100%);
+    height: 2.25vw;
+    width: 2.25vw;
+    border-radius: 2.5vw;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+}
+.username {
+    font-size: 1.1vw;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 15px;
+}
+.button {
+    width: 6vw;
+    height: 2vw;
+    background: transparent;
+    border: .15vw solid #fff;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: .85vw;
+    color: #fff;
+    font-weight: 500;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+}

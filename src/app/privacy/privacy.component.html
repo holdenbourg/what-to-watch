@@ -87,25 +87,24 @@
             </div>
         </div>
 
-        <div class="scroll-box">
-            <div class="blocked-accounts" *ngIf="currentUser.blocked.length != 0; else noBlockedUsers">
-                <div class="rated-film" *ngFor="let blockedAccount of currentUser.blocked; let i = index">
-                    <app-blocked-account-template
-                        [blockedAccount]="blockedAccount"
-                        (click)="goToAccount(blockedAccount.username)" 
-                        class="rated-film-{{i}}"
-                    ></app-blocked-account-template>
+        <div class="blocked-users">
+            <p class="blocked-accounts-title">Blocked Accounts</p>
+            <div class="scroll-box">
+                <div class="blocked-accounts" *ngIf="currentUser.blocked.length != 0; else noBlockedUsers">
+                    <div class="rated-film" *ngFor="let blockedAccount of currentUser.blocked; let i = index">
+                        <app-blocked-account-template
+                            [blockedAccount]="blockedAccount"
+                            (click)="goToAccount(blockedAccount.username)" 
+                            class="rated-film-{{i}}"
+                        ></app-blocked-account-template>
+                    </div>
                 </div>
+                <ng-template #noBlockedUsers>
+                    <div class="no-blocked-users">
+                        <p class="no-blocked-users-message">You haven't blocked any accounts as of yet</p>
+                    </div>
+                </ng-template>
             </div>
-            <ng-template #noBlockedUsers>
-                <div class="no-rated-movies">
-                    <p>You dont have any ratings yet</p>
-                    <button type="submit" (click)="navigateToSearchMovies()">Find Movie To Rate</button>
-                </div>
-            </ng-template>
         </div>
-        <div class="blocked-accounts">
-            <p class="title">Blocked Accounts</p>
-            </div >
-        </div> 
+    </div>
 </body>

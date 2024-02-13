@@ -20,61 +20,124 @@ export class LoginRegisterComponent {
 
   public warning: string = '';
 
-  /*public mockUsersDatabase: AccountInformationModel[] = [
+  public mockUsersDatabase: AccountInformationModel[] = [
     {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       password: 'Captain$47',
       email: 'holden.bourg@gmail.com',
       firstName: 'Holden',
       lastName: 'Bourg',
       bio: '',
-      followers: [],
-      following: [],
-      requests: [],
-      blocked: [],
+      followers: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      following: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      requests: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      blocked: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'},
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'},
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      posts: [],
+      postsTaggedIn: [],
       private: true
     },
     {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'LukasGocke',
       password: 'Captain$47',
       email: 'lukas.gocke@gmail.com',
       firstName: 'Lukas',
       lastName: 'Gocke',
       bio: '',
-      followers: ['HoldenBourg', 'EnriqueLeal', 'CalebHaralson'],
-      following: ['HoldenBourg', 'EnriqueLeal', 'CalebHaralson'],
-      requests: ['HoldenBourg', 'EnriqueLeal', 'CalebHaralson'],
-      blocked: [],
+      followers: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      following: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      requests: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      blocked: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      posts: [],
+      postsTaggedIn: [],
       private: true
     },
-    {      
+    {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'EnriqueLeal',
       password: 'Captain$47',
       email: 'enrique.leal@gmail.com',
       firstName: 'Enrique',
       lastName: 'Leal',
       bio: '',
-      followers: ['LukasGocke', 'HoldenBourg', 'CalebHaralson'],
-      following: ['LukasGocke', 'HoldenBourg', 'CalebHaralson'],
-      requests: ['LukasGocke', 'HoldenBourg', 'CalebHaralson'],
-      blocked: [],
+      followers: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      following: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      requests: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      blocked: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
+      posts: [],
+      postsTaggedIn: [],
       private: false
     },
-    {      
+    {  
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',    
       username: 'CalebHaralson',
       password: 'Captain$47',
       email: 'caleb.haralson@gmail.com',
       firstName: 'Caleb',
       lastName: 'Haralson',
       bio: '',
-      followers: ['LukasGocke', 'EnriqueLeal', 'HoldenBourg'],
-      following: ['LukasGocke', 'EnriqueLeal', 'HoldenBourg'],
-      requests: ['LukasGocke', 'EnriqueLeal', 'HoldenBourg'],
-      blocked: [],
+      followers: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}],
+      following: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}],
+      requests: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}],
+      blocked: [
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
+        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}],
+      posts: [],
+      postsTaggedIn: [],
       private: false
     }
-  ]*/
-  public mockUsersDatabase: AccountInformationModel[] = [];
+  ]
   public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
 
