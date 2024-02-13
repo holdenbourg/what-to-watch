@@ -5,7 +5,8 @@ import { RoutingService } from '../services/routing/routing.service';
 import { RegisterModel } from '../services/models/login-register/register-model';
 import { LoginModel } from '../services/models/login-register/login-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
-import { AccountInformationModel } from '../services/models/account-information-model';
+import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
+import { RawAccountInformationModel } from '../services/models/database-objects/raw-account-information-model';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,130 @@ export class LoginRegisterComponent {
 
   public warning: string = '';
 
-  public mockUsersDatabase: AccountInformationModel[] = [
+  public rawMockUsersDatabase: RawAccountInformationModel[] = [
+    {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      password: 'Captain$47',
+      email: 'holden.bourg@gmail.com',
+      firstName: 'Holden',
+      lastName: 'Bourg',
+      bio: '',
+      followers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      following: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      requests: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      blocked: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      posts: [
+        `1postUrl.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `2postUrl.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `3postUrl.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `4postUrl.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+      ],
+      postsTaggedIn: [],
+      private: true
+    },
+    {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'LukasGocke',
+      password: 'Captain$47',
+      email: 'lukas.gocke@gmail.com',
+      firstName: 'Lukas',
+      lastName: 'Gocke',
+      bio: '',
+      followers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      following: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      requests: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      blocked: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      posts: [],
+      postsTaggedIn: [],
+      private: true
+    },
+    {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'EnriqueLeal',
+      password: 'Captain$47',
+      email: 'enrique.leal@gmail.com',
+      firstName: 'Enrique',
+      lastName: 'Leal',
+      bio: '',
+      followers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      following: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      requests: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      blocked: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+      posts: [],
+      postsTaggedIn: [],
+      private: false
+    },
+    {  
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',    
+      username: 'CalebHaralson',
+      password: 'Captain$47',
+      email: 'caleb.haralson@gmail.com',
+      firstName: 'Caleb',
+      lastName: 'Haralson',
+      bio: '',
+      followers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
+      following: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
+      requests: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
+      blocked: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
+      posts: [],
+      postsTaggedIn: [],
+      private: false
+    }
+  ]
+  /*public mockUsersDatabase: AccountInformationModel[] = [
     {
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
@@ -137,9 +261,8 @@ export class LoginRegisterComponent {
       postsTaggedIn: [],
       private: false
     }
-  ]
+  ] */
   public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
-
 
   registerObject: RegisterModel = {
     firstName: '',
@@ -154,9 +277,6 @@ export class LoginRegisterComponent {
     password: ''
   }; 
 
-  clearLocalStorage() {
-    this.localStorageService.clearInformation('currentUser');
-  }
 
   ngOnInit() {
     if(this.currentUser != undefined) {
@@ -290,15 +410,16 @@ export class LoginRegisterComponent {
   //Login if user/password exist in database, else warning
   onLogin() {
     //run database call to see if a user with the given user/password exists
-    let user: AccountInformationModel;
+    let user: RawAccountInformationModel;
 
-    for(let i = 0; i < this.mockUsersDatabase.length; i++) {
-      if(this.mockUsersDatabase.at(i)!.username == this.loginObject.username && this.mockUsersDatabase.at(i)!.password == this.loginObject.password) user = this.mockUsersDatabase.at(i)!;
+    for(let i = 0; i < this.rawMockUsersDatabase.length; i++) {
+      if(this.rawMockUsersDatabase.at(i)!.username == this.loginObject.username && this.rawMockUsersDatabase.at(i)!.password == this.loginObject.password) user = this.rawMockUsersDatabase.at(i)!;
     }
 
     //if they exist store username for later and route to home page, else show warning
     if(user! != null) {
-      this.localStorageService.setInformation('currentUser', user)
+      this.localStorageService.clearInformation('currentUser');
+      this.localStorageService.setInformation('currentUser', user);
       this.routingService.navigateToHome();
 
     } else {
@@ -310,8 +431,8 @@ export class LoginRegisterComponent {
   checkUniqueUsername(input: string) {
     let unique: boolean = true;
 
-    for(let i = 0; i < this.mockUsersDatabase.length; i++) {
-      if(this.mockUsersDatabase.at(i)!.username == input) unique = false;
+    for(let i = 0; i < this.rawMockUsersDatabase.length; i++) {
+      if(this.rawMockUsersDatabase.at(i)!.username == input) unique = false;
     }
 
     return unique;

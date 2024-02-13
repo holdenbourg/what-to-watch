@@ -6,7 +6,7 @@ import { RatedSeriesModel } from '../services/models/rated-films/rated-series-mo
 import { FormsModule } from '@angular/forms';
 import { RatedSeriesTemplateComponent } from '../rated-series-template/rated-series-template.component';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
-import { AccountInformationModel } from '../services/models/account-information-model';
+import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 
 @Component({
   selector: 'app-shows',

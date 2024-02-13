@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
 import { FormsModule } from '@angular/forms';
-import { AccountInformationModel } from '../services/models/account-information-model';
+import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
 @Component({

@@ -3,8 +3,9 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RoutingService } from '../services/routing/routing.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
-import { AccountInformationModel } from '../services/models/account-information-model';
+import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 import { BlockedAccountTemplateComponent } from '../blocked-account-template/blocked-account-template.component';
+import { RawAccountInformationModel } from '../services/models/database-objects/raw-account-information-model';
 
 @Component({
   selector: 'app-privacy',

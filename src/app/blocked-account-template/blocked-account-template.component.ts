@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FollowerModel } from '../services/models/follower-model';
+import { FollowerModel } from '../services/models/database-objects/follower-model';
 
 @Component({
   selector: 'app-blocked-account-template',

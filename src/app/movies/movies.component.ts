@@ -6,7 +6,7 @@ import { RatedMovieTemplateComponent } from '../rated-movie-template/rated-movie
 import { FormsModule } from '@angular/forms';
 import { RatedMovieInformationService } from '../services/film-information/rated-movie-information.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
-import { AccountInformationModel } from '../services/models/account-information-model';
+import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 
 @Component({
   selector: 'app-movies',
