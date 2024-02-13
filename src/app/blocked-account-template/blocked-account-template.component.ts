@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { FollowerModel } from '../services/models/follower-model';
 
 @Component({
   selector: 'app-blocked-account-template',
@@ -9,6 +10,9 @@ import { Component } from '@angular/core';
 })
 export class BlockedAccountTemplateComponent {
   @Input()
-  public blockedAccount:
+  public blockedAccount: FollowerModel = {
+    profilePicture: '',
+    username: ''
+  }
 
 }

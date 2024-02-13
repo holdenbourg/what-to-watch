@@ -19,20 +19,7 @@ export class SettingsComponent implements OnInit {
   public username: string = this.localStorageService.getInformation('currentUser').username;
 
   //pull all this info from the db using username on page initialization
-  public accountInformation: AccountInformationModel = {
-    //username: this.userInformationService.username,
-    username: 'HoldenBourg',
-    password: 'Captain$47',
-    email: 'holden.bourg@gmail.com',
-    firstName: 'Holden',
-    lastName: 'Bourg',
-    bio: '',
-    followers: [],
-    following: [],
-    requests: [],
-    blocked: [],
-    private: false
-  }
+  public accountInformation: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
   public changeUsername: string = this.accountInformation.username;
   public changePassword: string = this.accountInformation.password;

@@ -1,13 +1,19 @@
+import { FollowerModel } from "./follower-model";
+import { UserPostModel } from "./user-post-model";
+
 export interface AccountInformationModel {
+    profilePicture: string,
     username: string,
     password: string,
     email: string,
     firstName: string,
     lastName: string,
     bio: string,
-    followers: string[],
-    following: string[],
-    requests: string[],
-    blocked: string[],
+    followers: FollowerModel[],
+    following: FollowerModel[],
+    requests: FollowerModel[],
+    blocked: FollowerModel[],
+    posts: UserPostModel[],
+    postsTaggedIn: UserPostModel[],
     private: boolean
 }

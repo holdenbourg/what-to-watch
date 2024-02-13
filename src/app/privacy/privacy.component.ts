@@ -66,6 +66,10 @@ export class PrivacyComponent {
     }
   }
 
+  goToAccount(username: string) {
+
+  }
+
   toggleActive() {
     const sidebar = document.querySelector('.sidebar');
     sidebar?.classList.toggle('active');

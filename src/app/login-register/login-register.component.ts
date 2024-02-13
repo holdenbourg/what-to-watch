@@ -20,7 +20,7 @@ export class LoginRegisterComponent {
 
   public warning: string = '';
 
-  public mockUsersDatabase: AccountInformationModel[] = [
+  /*public mockUsersDatabase: AccountInformationModel[] = [
     {
       username: 'HoldenBourg',
       password: 'Captain$47',
@@ -28,9 +28,9 @@ export class LoginRegisterComponent {
       firstName: 'Holden',
       lastName: 'Bourg',
       bio: '',
-      followers: ['LukasGocke', 'EnriqueLeal', 'CalebHaralson'],
-      following: ['LukasGocke', 'EnriqueLeal', 'CalebHaralson'],
-      requests: ['LukasGocke', 'EnriqueLeal', 'CalebHaralson'],
+      followers: [],
+      following: [],
+      requests: [],
       blocked: [],
       private: true
     },
@@ -73,7 +73,8 @@ export class LoginRegisterComponent {
       blocked: [],
       private: false
     }
-  ]
+  ]*/
+  public mockUsersDatabase: AccountInformationModel[] = [];
   public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
 
@@ -201,6 +202,7 @@ export class LoginRegisterComponent {
     }
     
     let newAccount: AccountInformationModel = {
+      profilePicture: '',
       username: this.registerObject.username,
       password: this.registerObject.username,
       email: this.registerObject.username,
@@ -211,6 +213,8 @@ export class LoginRegisterComponent {
       following: [],
       requests: [],
       blocked: [],
+      posts: [],
+      postsTaggedIn: [],
       private: false
     }
 
