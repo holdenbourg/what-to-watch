@@ -13,6 +13,9 @@
       <p class="genre">Genre: {{ combinedApiResult.genre }}</p>
       <p class="awards">Awards: {{ combinedApiResult.awards }}</p>
       <p class="summary">Summary: {{ combinedApiResult.plot }}</p>
+      <div class="trailer" *ngIf="combinedApiResult.trailer != undefined">
+        <a (click)="goToTrailer(combinedApiResult.trailer)">Trailer</a>
+      </div>
     </div>
     <div class="right-information">
       <div class="film-information">

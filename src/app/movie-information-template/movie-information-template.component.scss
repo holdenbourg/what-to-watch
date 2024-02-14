@@ -212,3 +212,23 @@ body {
 #noStreamingServices {
     margin-bottom: 100px;
 }
+
+//"Rate This Movie" button
+.trailer a {
+    position: absolute;
+    bottom: 0;
+    background: transparent;
+    border: .2vw solid #fff;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.8vw;
+    color: #fff;
+    font-weight: 600;
+    padding-left: 30px;
+    padding-right: 30px;
+    transform: translateX(230%);
+    margin-bottom: 25px;
+}

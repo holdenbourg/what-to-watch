@@ -4,7 +4,7 @@ import { StreamingServiceTemplateComponent } from '../streaming-service-template
 import { CombinedFilmApiResponseModel } from '../services/models/combined-film-api-response';
 import { RoutingService } from '../services/routing/routing.service';
 import { ApiService } from '../services/api/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { ExtensiveSearchFilmModel } from '../services/models/omdb-api/extensive-film-api-search-response-model';
 import { MovieResponseModel } from '../services/models/mdb-list-api/movie-response-model';
@@ -133,6 +133,7 @@ export class MovieInformationTemplateComponent implements OnInit {
   private routingService: RoutingService = inject(RoutingService);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
+  private router: Router = inject(Router);
 
   public streamingServices: string[] = [];
   public filmType: string = '';
@@ -143,6 +144,11 @@ export class MovieInformationTemplateComponent implements OnInit {
     this.filmType = this.localStorageService.getInformation('filmType');
 
     this.getStraightMovie();
+  }
+
+
+  goToTrailer(trailerUrl: string) {
+    window.open(trailerUrl, "_blank");
   }
 
   async getStraightMovie() {

@@ -7,6 +7,9 @@ import { LoginModel } from '../services/models/login-register/login-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 import { RawAccountInformationModel } from '../services/models/database-objects/raw-account-information-model';
+import { CommentModel } from '../services/models/database-objects/comment-model';
+import { FollowerModel } from '../services/models/database-objects/follower-model';
+import { UserPostModel } from '../services/models/database-objects/user-post-model';
 
 @Component({
   selector: 'app-login',
@@ -419,7 +422,7 @@ export class LoginRegisterComponent {
     //if they exist store username for later and route to home page, else show warning
     if(user! != null) {
       this.localStorageService.clearInformation('currentUser');
-      this.localStorageService.setInformation('currentUser', user);
+      this.localStorageService.setInformation('currentUser', this.convertRawUserToUser(user));
       this.routingService.navigateToHome();
 
     } else {
@@ -677,6 +680,99 @@ export class LoginRegisterComponent {
     }
   }
 
+  //converts the users db raw output into AccountInformationModel
+  convertRawUserToUser(rawUser: RawAccountInformationModel) {
+    let user: AccountInformationModel = {
+      profilePicture: rawUser.profilePicture,
+      username: rawUser.username,
+      password: rawUser.password,
+      email: rawUser.email,
+      firstName: rawUser.firstName,
+      lastName: rawUser.lastName,
+      bio: rawUser.bio,
+      followers: this.convertRawFollowerToFollower(rawUser.followers),
+      following: this.convertRawFollowerToFollower(rawUser.following),
+      requests: this.convertRawFollowerToFollower(rawUser.requests),
+      blocked: this.convertRawFollowerToFollower(rawUser.blocked),
+      posts: this.convertRawPostsToPosts(rawUser.posts),
+      postsTaggedIn: this.convertRawPostsToPosts(rawUser.postsTaggedIn),
+      private: rawUser.private
+    }
+
+    return user;
+  }
+  //rawFollower: profilePicture.jpg::::HoldenBourg
+  convertRawFollowerToFollower(rawFollowers: string[]) {
+    let returnArray: FollowerModel[] = [];
+
+    rawFollowers.forEach((rawFollowerString) => {
+      let splitArray = rawFollowerString.split('::::');
+
+      let follower: FollowerModel = {
+        profilePicture: splitArray.at(0)!,
+        username: splitArray.at(1)!
+      }
+
+      returnArray.push(follower);
+    })
+
+    return returnArray;
+  }
+  //rawPost: postUrl.jpg::::HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke::::CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,EnriqueLeal,CalebHaralson::::LukasGocke||||I remember being there with @CalebHaralson||||CalebHaralson
+  convertRawPostsToPosts(rawPosts: string[]) {
+    let returnArray: UserPostModel[] = [];
+
+    rawPosts.forEach((rawPostString) => {
+      let splitArray = rawPostString.split('::::');
+
+      let post: UserPostModel = {
+        postUrl: splitArray.at(0)!,
+        caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
+        tagged: splitArray.at(2)!.split(','),
+        postDate: splitArray.at(3)!,
+        likes: splitArray.at(4)!.split(','),
+        comments: this.convertRawCommentsToComments(splitArray.at(5)!)
+      }
+
+      returnArray.push(post);
+    })
+
+    return returnArray;
+  }
+  //rawComments: HoldenBourg||||Looks kinda like @LukasGocke or @EnriqueLeal||||LukasGocke,EnriqueLeal;;;;LukasGocke||||I remember being there with @CalebHaralson||||CalebHaralson
+  convertRawCommentsToComments(rawComment: string) {
+    let returnArray: CommentModel[] = [];
+
+    //comments are split by ;;;;
+    let commentsArray = rawComment.split(';;;;');
+
+    commentsArray.forEach((rawCommentString) => {
+      let splitArray = rawCommentString.split('||||');
+
+      let comment: CommentModel = {
+        username: splitArray.at(0)!,
+        comment: splitArray.at(1)!,
+        tagged: splitArray.at(2)!.split(',')
+      }
+
+      returnArray.push(comment);
+    })
+
+    return returnArray;
+  }
+  //rawCaption: HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke
+  convertRawCaptionToCaption(rawCaption: string) {
+    let splitArray = rawCaption.split('||||');
+
+    let caption: CommentModel = {
+      username: splitArray.at(0)!,
+      comment: splitArray.at(1)!,
+      tagged: splitArray.at(2)!.split(',')
+    }
+
+    return caption;
+  }
+  
   //switch between login/register form
   toggleLoginRegister() {
     const themeClass = document.querySelector('.wrapper');
