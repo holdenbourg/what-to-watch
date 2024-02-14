@@ -48,7 +48,25 @@ export class ApiService {
     return filmList;
   }
 
-  search1SeriesMdb(imdbId: string) {
+  search1FilmOmdbStraight(imdbId: string) {
+    const url: string = `${this.baseOmdbUrl}i=${imdbId}`
+
+    return this.httpClient.get<ExtensiveSearchFilmModel>(url).toPromise();
+  }
+  search1SeriesMdbStraight(imdbId: string) {
+    const url: string = `${this.baseMdbUrl}i=${imdbId}`
+
+    return this.httpClient.get<SeriesResponseModel>(url, {headers: {'X-RapidAPI-Key':'c84a0ad4d4msh30291f36f339595p1fc73bjsn35d9a65f193e',
+    'X-RapidAPI-Host':'mdblist.p.rapidapi.com'}}).toPromise();
+  }
+  search1MovieMdbStraight(imdbId: string) {
+    const url: string = `${this.baseMdbUrl}i=${imdbId}`
+
+    return this.httpClient.get<MovieResponseModel>(url, {headers: {'X-RapidAPI-Key':'c84a0ad4d4msh30291f36f339595p1fc73bjsn35d9a65f193e',
+    'X-RapidAPI-Host':'mdblist.p.rapidapi.com'}}).toPromise();
+  }
+
+  /*search1SeriesMdb(imdbId: string) {
     let seriesList: SeriesResponseModel[] = [];
     const url: string = `${this.baseMdbUrl}i=${imdbId}`;
 
@@ -71,7 +89,7 @@ export class ApiService {
     });
     
     return movieList;
-  }
+  }*/
 
   searchUpcomingFilms() {
     let upcomingFilmList: UpcomingFilmModel[] = [];

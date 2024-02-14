@@ -7,9 +7,6 @@ export class RoutingService {
   navigateToHome() {
     this.router.navigateByUrl('/home');
   }
-  navigateToNews() {
-    this.router.navigateByUrl('/news');
-  }
   navigateToLogin() {
     this.router.navigateByUrl('/login');
   }
@@ -31,8 +28,11 @@ export class RoutingService {
   navigateToSearchUsersWithInput(input: string) {
     this.router.navigateByUrl(`/search/users/${input}`);
   }
-  navigateToFilmInformation(type: string, imdbId: string) {
-    this.router.navigateByUrl(`/film-information/${type}/${imdbId}`);
+  navigateToMovieInformation(imdbId: string) {
+    this.router.navigateByUrl(`/film-information/movie/${imdbId}`);
+  }
+  navigateToSeriesInformation(imdbId: string) {
+    this.router.navigateByUrl(`/film-information/series/${imdbId}`);
   }
   navigateToRateMovie(imdbId?: string) {
     this.router.navigateByUrl(`/rate-movie/${imdbId}`);

@@ -1,24 +1,156 @@
-//conatiner for film-information/streaming-on
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url('../images/shadedBackground.jpg');
+}
+
 .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    top: 40px;
+    width: auto;
+    height: auto;
+}
+//selected film director/writer/release-date/box-office/genre/awards/summary
+.left-information {
+    display: flex;
+    flex-direction: column;
+    width: 54.3%;
+    height: 100%;
+    font-size: 1.9vw;
+    color: #fff;
+    font-weight: 600;
+    border: .2vw solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+}
+.left-information p {
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 5px;
+}
+//selected film director/writer/release-date/box-office
+
+.director {
+    padding-top: 20px;
+}
+.summary {
+    padding-bottom: 20px;
+}
+
+//selected film poster/type/rated/run-time/ratings/rate-button
+.right-information {
+    width: 43.3%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 27.3vw;
+}
+//container for ratings and rate button
+.ratings-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 14.2vw;
+}
+//container for the ratings and the company logos
+.ratings {
+    display: flex;
+    flex-direction: row;
+    border: .2vw solid #fff;
+    border-radius: 5px;
     width: 100%;
+    height: 8vw;
+    justify-content: space-between;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    backdrop-filter: blur(3px);
+} 
+//selected film rating company logos
+.imdb-img {
+    width: 6.7vw;
+}
+.rotten-tomatoes-img {
+    width: 10vw;
+}
+.metacritic-img {
+    width: 4.1vw;
+    margin-left: .2vw;
+}
+//selected film rating company logos/ratings
+.imdb-rating {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+    font-size: 1.3vw;
+    font-weight: 600;
+    margin-top: .3vw;
+}
+.rotten-tomatoes-rating {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+    font-size: 1.3vw;
+    font-weight: 600;
+    margin-top: .55vw;
+}
+.metacritic-rating {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+    font-size: 1.3vw;
+    font-weight: 600;
+}
+//"Rate This Movie" button
+.rate-button {
+    width: 100%;
+    height: 4vw;
+    background: transparent;
+    border: .2vw solid #fff;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.8vw;
+    color: #fff;
+    font-weight: 600;
 }
 //selected film poster/title/type/rated/run-time
 .film-information {
     display: flex;
     flex-direction: row;
     justify-content: right;
-    height: 17vw;
+    height: 39.5%;
     border: .2vw solid #fff;
     border-radius: 5px;
     backdrop-filter: blur(3px);
 }
 .film-text {
-    line-height: 10px;
-    transform: translateY(-12%);
+    margin-top: 10px;
 }
 //selected film poster
 .film-poster {
@@ -44,9 +176,9 @@
     padding-left: 20px;
     text-align: right;
     font-size: 1.85vw;
+    line-height: 1.85vw;
     color: #fff;
     font-weight: 500;
-    transform: translateY(-200%);
 }
 //container for the label and all streaming platforms
 .streaming-on {
@@ -69,13 +201,12 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-left: 40px;
+    margin-left: 1.25vw;
 }
 .no-streaming-services {
     font-size: 2vw;
     color: #fff;
     font-weight: 600;
-    transform: translateY(-30%);
     text-align: center;
 }
 #noStreamingServices {

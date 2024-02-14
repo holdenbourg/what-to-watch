@@ -7,7 +7,6 @@ import { SearchedFilmModel } from '../services/models/omdb-api/searched-film-mod
 import { SearchedFilmTemplateComponent } from '../searched-film-template/searched-film-template.component';
 import { ActivatedRoute } from '@angular/router';
 import { UserInputService } from '../services/user/user-input.service';
-import { FilmInformationService } from '../services/film-information/film-information.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
 @Component({
@@ -35,7 +34,8 @@ export class SearchComponent  implements OnInit {
 
 
   ngOnInit() {
-    this.toggleSidebarActive()
+    this.toggleSidebarActive();
+    this.localStorageService.clearInformation('filmType');
 
     //sets the search type/current active search type
     this.type = this.activatedRoute.snapshot.params['type'];
@@ -82,7 +82,13 @@ export class SearchComponent  implements OnInit {
 
   //if type is 'movie' route to rate-movie, else route to rate-series with film information
   onFilmClicked(type: string, imdbId: string) {
-    this.routingService.navigateToFilmInformation(type, imdbId);
+    if(type == 'movie') {
+      this.localStorageService.setInformation('filmType', type);
+      this.routingService.navigateToMovieInformation(imdbId);
+    } else if(type == 'series') {
+      this.localStorageService.setInformation('filmType', type);
+      this.routingService.navigateToSeriesInformation(imdbId);
+    }
   }
 
   //shifts specific elements to the right when dashboard is opened
@@ -100,7 +106,6 @@ export class SearchComponent  implements OnInit {
     }
   }
 
-  //only toggles active if it's already inactive
   toggleMoviesActive() {
     const activeClass = document.querySelector(this.currentActiveSearchType);
     activeClass?.classList.toggle('active');
@@ -122,8 +127,6 @@ export class SearchComponent  implements OnInit {
       this.routingService.navigateToSearchMovies();
     }
   }
-
-  //only toggles active if it's already inactive
   toggleSeriesActive() {
     const activeClass = document.querySelector(this.currentActiveSearchType);
     activeClass?.classList.toggle('active');
@@ -145,7 +148,6 @@ export class SearchComponent  implements OnInit {
       this.routingService.navigateToSearchSeries();
     }
   }
-
   toggleUsersActive() {
     const activeClass = document.querySelector(this.currentActiveSearchType);
     activeClass?.classList.toggle('active');

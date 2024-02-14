@@ -1,7 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { SeriesResponseModel } from '../services/models/mdb-list-api/series-response-model';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StreamingServiceTemplateComponent } from '../streaming-service-template/streaming-service-template.component';
+import { RoutingService } from '../services/routing/routing.service';
+import { CombinedFilmApiResponseModel } from '../services/models/combined-film-api-response';
+import { SeriesResponseModel } from '../services/models/mdb-list-api/series-response-model';
+import { ExtensiveSearchFilmModel } from '../services/models/omdb-api/extensive-film-api-search-response-model';
+import { ApiService } from '../services/api/api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-series-information-template',
@@ -11,41 +16,43 @@ import { StreamingServiceTemplateComponent } from '../streaming-service-template
   styleUrl: './series-information-template.component.scss'
 })
 export class SeriesInformationTemplateComponent implements OnInit {
+  private routingService: RoutingService = inject(RoutingService);
+  private apiService: ApiService = inject(ApiService);
+  private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+
+  public imdbId: string = '';
+  
   @Input()
-  mdbSeriesDetails: SeriesResponseModel = {
+  combinedApiResult: CombinedFilmApiResponseModel = {
     title: '',
     year: 0,
+    rated: '',
     released: '',
-    released_digital: '',
-    description: '',
-    runtime: 0,
-    score: 0,
-    score_average: 0,
-    imdbid: '',
-    traktid: 0,
-    tmdbid: 0,
-    type: '',
-    ratings: [],
-    streams: [],
-    watch_providers: [],
-    reviews: [],
-    keywords: [],
+    runTime: 0,
+    genre: '',
+    director: '',
+    writer: '',
+    actors: '',
+    plot: '',
     language: '',
-    spoken_language: '',
     country: '',
-    certification: '',
-    commonsense: 0,
-    age_rating: 0,
-    status: '',
-    trailer: '',
+    awards: '',
     poster: '',
-    backdrop: '',
-    response: false,
-    apiused: 0,
-    tvdbid: 0,
+    ratings: [],
+    metascore: 0,
+    imdbRating: 0,
+    imdbVotes: 0,
+    imdbId: '',
+    type: '',
+    dvd: '',
+    boxOffice: '',
+    production: '',
+    website: '',
+    response: '',
+    watch_providers: [],
+    trailer: '',
     seasons: []
   }
-
   public streamingServiceLogos: Map<string, string> = new Map<string, string>([
     ['Netflix', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Netflix_2015_N_logo.svg/330px-Netflix_2015_N_logo.svg.png?20221130064001'],
     ['Disney Plus', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Disney%2B_logo.svg/800px-Disney%2B_logo.svg.png?20221217204017'],
@@ -76,30 +83,172 @@ export class SeriesInformationTemplateComponent implements OnInit {
   public episodes: string = '';
 
   ngOnInit() {
+    //sets the type/imdbId for the look up from the url parameter
+    this.imdbId = this.activatedRoute.snapshot.params['imdbId'];
+
+    this.getStraightSeries();
+  }
+
+
+  async getStraightSeries() {
+    let omdbMovie = await this.apiService.search1FilmOmdbStraight(this.imdbId);
+    let mdbMovie = await this.apiService.search1SeriesMdbStraight(this.imdbId);
+
+    let combinedDetails: CombinedFilmApiResponseModel = {
+      title: omdbMovie?.Title,
+      year: omdbMovie?.Year,
+      rated: omdbMovie?.Rated,
+      released: omdbMovie?.Released,
+      runTime: mdbMovie?.runtime,
+      genre: omdbMovie?.Genre,
+      director: omdbMovie?.Director,
+      writer: omdbMovie?.Writer,
+      actors: omdbMovie?.Actors,
+      plot: omdbMovie?.Plot,
+      language: omdbMovie?.Language,
+      country: omdbMovie?.Country,
+      awards: omdbMovie?.Awards,
+      poster: omdbMovie?.Poster,
+      ratings: omdbMovie?.Ratings,
+      metascore: omdbMovie?.Metascore,
+      imdbRating: omdbMovie?.imdbRating,
+      imdbVotes: omdbMovie?.imdbVotes,
+      imdbId: omdbMovie?.imdbID,
+      type: omdbMovie?.Type,
+      dvd: omdbMovie?.DVD,
+      boxOffice: omdbMovie?.BoxOffice,
+      production: omdbMovie?.Production,
+      website: omdbMovie?.Website,
+      response: omdbMovie?.Response,
+      watch_providers: mdbMovie?.watch_providers,
+      trailer: mdbMovie?.trailer,
+      seasons: mdbMovie?.seasons
+    }
+
+    this.combinedApiResult = combinedDetails;
+    console.log(this.combinedApiResult);
+
+    //calculate seasons/episodes
+    this.combinedApiResult.seasons?.forEach((element) => {
+      this.numEpisodes = this.numEpisodes + element.episode_count;
+
+      if(element.episode_count != 0) this.numSeasons++;
+    });
+
+    if(this.numSeasons == 1) {
+      this.seasons = `${this.numSeasons} Season`;
+      this.episodes = `${this.numEpisodes} Episodes`;
+    } else {
+      this.seasons = `${this.numSeasons} Seasons`;
+      this.episodes = `${this.numEpisodes} Episodes`;
+    }
+
     //fix streaming services
-    this.mdbSeriesDetails.watch_providers.forEach((element) => {
+    this.combinedApiResult.watch_providers?.forEach((element) => {
       let logo = this.streamingServiceLogos.get(element.name);
 
-      if(logo != undefined) {
+      if(!this.streamingServices.includes(logo!) && logo != undefined) {
         this.streamingServices.push(logo);
       }
     });
+  }
+  //if the film is a movie route to rate-movie, else rate-series
+  onRateThisFilm() {
+    if(this.combinedApiResult.type === "movie") {
+      this.routingService.navigateToRateMovie(this.combinedApiResult.imdbId);
+    } else if(this.combinedApiResult.type === "series"){
+      this.routingService.navigateToRateSeries(this.combinedApiResult.imdbId);
+    }
+  }
 
-    //calculate seasons/episodes
-    this.mdbSeriesDetails.seasons.forEach((element) => {
-      this.numEpisodes = this.numEpisodes + element.episode_count;
-      this.numSeasons++;
-    });
+  //turns the given date (18 Dec 2009) into (December 18, 2009)
+  fixRelease(releaseDate: string) {
+    if(releaseDate == 'N/A') {
+      return releaseDate;
+    }
 
-    this.seasons = `${this.numSeasons} Seasons`;
-    this.episodes = `${this.numEpisodes} Episodes`;
+    const day = releaseDate.substring(0,2);
+    let month = releaseDate.substring(3,6);
+    const year = releaseDate.substring(7);
 
-    console.log(this.mdbSeriesDetails);
+    switch(month) {
+      case 'Jan':
+        month = 'January'
+        break;
+      case 'Feb':
+        month = 'February'
+        break;
+      case 'Mar':
+        month = 'March'
+        break;
+      case 'Apr':
+        month = 'April'
+        break;
+      case 'May':
+        month = 'May'
+        break;
+      case 'Jun':
+        month = 'June'
+        break;
+      case 'Jul':
+        month = 'July'
+        break;
+      case 'Aug':
+        month = 'August'
+        break;
+      case 'Sep':
+        month = 'September'
+        break;
+      case 'Oct':
+        month = 'October'
+        break;
+      case 'Nov':
+        month = 'November'
+        break;
+      case 'Dec':
+        month = 'December'
+        break;
+    }
+    
+    return `${month} ${day}, ${year}`;
+  }
+
+  //if director and writer are same person change info to Director/Writer
+  checkDirectorWriterForDirector(director: string, writer: string) {
+    if(director == writer) {
+      return `Director/Writer: ${director}`;
+    } else {
+      return `Director: ${director}`;
+    }
+  }
+  checkDirectorWriterForWriter(director: string, writer: string) {
+    if(director == writer) {
+      return '';
+    } else {
+      return `Writer: ${writer}`
+    }
+  }
+
+  //check if any of the 3 ratings are empty if so put N/A
+  checkIfRatingsEmpty(rating?: string) {
+    if(rating != undefined && rating.length > 1) {
+      return rating;
+    } else {
+      return 'N/A';
+    }
   }
 
   //changes film type from movie to Movie
   fixFilmType(filmType: string) {
     return filmType.charAt(0).toUpperCase() + filmType.slice(1).toLowerCase();
+  }
+
+  fixBoxOffice(filmType: string, boxOffice: string) {
+    if(filmType == 'movie') {
+      return `Box Office: ${boxOffice}`;
+    } else {
+      return '';
+    }
   }
 
   //if there is no poster give "no image available" poster

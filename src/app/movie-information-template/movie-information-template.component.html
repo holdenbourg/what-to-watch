@@ -1,23 +1,58 @@
-<div class="container">
-  <div class="film-information">
-    <div class="film-text">
-      <p class="title">{{ mdbMovieDetails.title }}</p>
-      <p class="type">{{ this.fixFilmType(mdbMovieDetails.type) }}</p>
-      <p class="rated">{{ mdbMovieDetails.certification }}</p>
-      <p class="run-time">{{ this.fixRuntime(mdbMovieDetails.runtime) }}</p>
+<head>
+  <title>Home</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+  <div class="container">
+    <div class="left-information">
+      <p class="director">{{ this.checkDirectorWriterForDirector(combinedApiResult.director!, combinedApiResult.writer!) }}</p>
+      <p class="writer">{{ this.checkDirectorWriterForWriter(combinedApiResult.director!, combinedApiResult.writer!) }}</p>
+      <p class="release-date">Release Date: {{ this.fixRelease(combinedApiResult.released!) }}</p>
+      <p class="box-office">{{ this.fixBoxOffice(combinedApiResult.type!, combinedApiResult.boxOffice!) }}</p>
+      <p class="genre">Genre: {{ combinedApiResult.genre }}</p>
+      <p class="awards">Awards: {{ combinedApiResult.awards }}</p>
+      <p class="summary">Summary: {{ combinedApiResult.plot }}</p>
     </div>
-    <img class="film-poster" [src]="this.fixNoPoster(mdbMovieDetails.poster)" [attr.alt]="mdbMovieDetails.title">
-  </div>
-  <div class="streaming-on">
-    <p class="label">Streaming On:</p>
-    <div class="streaming-services" *ngIf="streamingServices.length != 0; else noStreamingServices">
-      <app-streaming-service-template
-        *ngFor="let streamingService of streamingServices"
-        [streamingService]="streamingService"
-      ></app-streaming-service-template>
+    <div class="right-information">
+      <div class="film-information">
+        <div class="film-text">
+          <p class="title">{{ combinedApiResult.title }}</p>
+          <p class="type">{{ this.fixFilmType(combinedApiResult.type!) }}</p>
+          <p class="rated">{{ combinedApiResult.rated }}</p>
+          <p class="run-time">{{ this.fixRuntime(combinedApiResult.runTime!) }}</p>
+        </div>
+        <img class="film-poster" [src]="this.fixNoPoster(combinedApiResult.poster!)" [attr.alt]="combinedApiResult.title">
+      </div>
+      <div class="streaming-on">
+        <p class="label">Streaming On:</p>
+        <div class="streaming-services" *ngIf="streamingServices.length != 0; else noStreamingServices">
+          <app-streaming-service-template
+            *ngFor="let streamingService of streamingServices"
+            [streamingService]="streamingService"
+          ></app-streaming-service-template>
+        </div>
+        <ng-template #noStreamingServices>
+          <p class="no-streaming-services">N/A</p>
+        </ng-template>
+      </div>
+      <div class="ratings-button">
+        <div class="ratings">
+          <div class="imdb-rating">
+            <img class="imdb-img" src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg" alt="Imdb">
+            <p class="imdb-score">{{ this.checkIfRatingsEmpty(combinedApiResult.ratings?.at(0)?.Value) }}</p>
+          </div>
+          <div class="rotten-tomatoes-rating">
+            <img class="rotten-tomatoes-img" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Rotten_Tomatoes_logo.svg" alt="Rotten Tomatoes">
+            <p class="rotten-tomatoes-score">{{ this.checkIfRatingsEmpty(combinedApiResult.ratings?.at(1)?.Value) }}</p>
+          </div>
+          <div class="metacritic-rating">
+            <img class="metacritic-img" src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Metacritic_logo_original.svg" alt="Metacritic">
+            <p class="metacritic-score">{{ this.checkIfRatingsEmpty(combinedApiResult.ratings?.at(2)?.Value) }}</p>
+          </div>
+        </div>
+        <button type="submit" class="rate-button" (click)="onRateThisFilm()">Rate This {{ this.fixFilmType(combinedApiResult.type!) }}</button>
+      </div>
     </div>
-    <ng-template #noStreamingServices>
-      <p class="no-streaming-services">N/A</p>
-    </ng-template>
   </div>
-</div>
+</body>

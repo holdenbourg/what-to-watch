@@ -100,9 +100,6 @@ export class PrivacyComponent {
   navigateToShows() {
     this.routingService.navigateToShows();
   }
-  navigateToNews() {
-    this.routingService.navigateToNews();
-  }
   navigateToSummary() {
     this.routingService.navigateToSummary();
   }
