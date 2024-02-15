@@ -19,15 +19,15 @@ export class SettingsComponent implements OnInit {
   public username: string = this.localStorageService.getInformation('currentUser').username;
 
   //pull all this info from the db using username on page initialization
-  public accountInformation: AccountInformationModel = this.localStorageService.getInformation('currentUser');
+  public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
-  public changeUsername: string = this.accountInformation.username;
-  public changePassword: string = this.accountInformation.password;
-  public confirmChangePassword: string = this.accountInformation.password;
-  public changeFirstName: string = this.accountInformation.firstName;
-  public changeLastName: string = this.accountInformation.lastName;
-  public changeEmail: string = this.accountInformation.email;
-  public changeBio: string = this.accountInformation.bio;
+  public changeUsername: string = this.currentUser.username;
+  public changePassword: string = this.currentUser.password;
+  public confirmChangePassword: string = this.currentUser.password;
+  public changeFirstName: string = this.currentUser.firstName;
+  public changeLastName: string = this.currentUser.lastName;
+  public changeEmail: string = this.currentUser.email;
+  public changeBio: string = this.currentUser.bio;
 
   public usernameWarning: string = '';
   public passwordWarning: string = '';
@@ -53,7 +53,7 @@ export class SettingsComponent implements OnInit {
 
   onChangeUsername() {
     //check database to see if another user with that name exists
-    if(this.accountInformation.username == this.changeUsername) {
+    if(this.currentUser.username == this.changeUsername) {
       const usersUnique = document.querySelector('.users-unique');
 
       if(!usersUnique?.classList.contains('red')) {
@@ -87,7 +87,7 @@ export class SettingsComponent implements OnInit {
       }
     }
 
-    if(this.accountInformation.username == this.changeUsername) {
+    if(this.currentUser.username == this.changeUsername) {
       const usersEqual = document.querySelector('.users-equal');
 
       if(!usersEqual?.classList.contains('red')) {
@@ -165,7 +165,7 @@ export class SettingsComponent implements OnInit {
       }
     }
 
-    if(this.accountInformation.password == this.changePassword || this.accountInformation.password == this.confirmChangePassword) {
+    if(this.currentUser.password == this.changePassword || this.currentUser.password == this.confirmChangePassword) {
       const passwordsEqual = document.querySelector('.passwords-equal');
 
       if(!passwordsEqual?.classList.contains('red')) {
@@ -271,7 +271,7 @@ export class SettingsComponent implements OnInit {
       }
     }
 
-    if(this.accountInformation.email == this.changeEmail) {
+    if(this.currentUser.email == this.changeEmail) {
       const emailEqual = document.querySelector('.email-equal');
 
       if(!emailEqual?.classList.contains('red')) {
@@ -365,7 +365,7 @@ export class SettingsComponent implements OnInit {
       }
     }
 
-    if(this.accountInformation.firstName == this.changeFirstName) {
+    if(this.currentUser.firstName == this.changeFirstName) {
       const firstEqual = document.querySelector('.first-equal');
 
       if(!firstEqual?.classList.contains('red')) {
@@ -440,7 +440,7 @@ export class SettingsComponent implements OnInit {
       }
     }
 
-    if(this.accountInformation.lastName == this.changeLastName) {
+    if(this.currentUser.lastName == this.changeLastName) {
       const lastEqual = document.querySelector('.last-equal');
 
       if(!lastEqual?.classList.contains('red')) {
@@ -515,7 +515,7 @@ export class SettingsComponent implements OnInit {
       }
     }
 
-    if(this.accountInformation.bio == this.changeBio) {
+    if(this.currentUser.bio == this.changeBio) {
       const bioEqual = document.querySelector('.bio-equal');
 
       if(!bioEqual?.classList.contains('red')) {
@@ -831,7 +831,7 @@ export class SettingsComponent implements OnInit {
     this.routingService.navigateToSummary();
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount();
+    this.routingService.navigateToAccount(this.currentUser.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

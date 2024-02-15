@@ -27,24 +27,7 @@ export class HomeComponent implements OnInit {
   public apiService: ApiService = inject(ApiService);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  public rawCurrentUser: RawAccountInformationModel = this.localStorageService.getInformation('currentUser');
-  public currentUser: AccountInformationModel = {
-    profilePicture: '',
-    username: '',
-    password: '',
-    email: '',
-    firstName: '',
-    lastName: '',
-    bio: '',
-    followers: [],
-    following: [],
-    requests: [],
-    blocked: [],
-    posts: [],
-    postsTaggedIn: [],
-    private: false
-  };
-  public username: string = this.localStorageService.getInformation('currentUser').username;
+  public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
   
   public omdbReturn: ExtensiveSearchFilmModel[] = [];
   public mdbReturn: SeriesResponseModel[] = [];
@@ -125,7 +108,7 @@ export class HomeComponent implements OnInit {
     this.routingService.navigateToSummary();
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount();
+    this.routingService.navigateToAccount(this.currentUser.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

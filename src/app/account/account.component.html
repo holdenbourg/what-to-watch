@@ -55,8 +55,18 @@
             </li>
             <li class="username">
                  <p class="link-name" style="--i:3">Signed in as:</p> 
-                 <p class="link-name" style="--i:3">{{ username }}</p>
+                 <p class="link-name" style="--i:3">{{ currentUser.username }}</p>
             </li>
         </ul>
     </nav>
+
+    <div class="container">
+        <div class="account-information">
+            <div class="posts-followers-following">
+                <p class="posts">{{ currentUser.posts.length }} posts</p>
+                <p class="followers" (click)="showFollowers()">{{ currentUser.followers.length }} followers</p>
+                <p class="following" (click)="showFollowing()">{{ currentUser.following.length }} following</p>
+            </div>
+        </div>
+    </div>
 </body>

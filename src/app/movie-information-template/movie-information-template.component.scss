@@ -213,10 +213,11 @@ body {
     margin-bottom: 100px;
 }
 
-//"Rate This Movie" button
+//"Trailer" button
 .trailer a {
     position: absolute;
     bottom: 0;
+    left: 40%;
     background: transparent;
     border: .2vw solid #fff;
     backdrop-filter: blur(3px);
@@ -227,8 +228,7 @@ body {
     font-size: 1.8vw;
     color: #fff;
     font-weight: 600;
-    padding-left: 30px;
-    padding-right: 30px;
-    transform: translateX(230%);
     margin-bottom: 25px;
+    width: 20%;
+    text-align: center;
 }

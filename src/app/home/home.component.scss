@@ -141,18 +141,6 @@ body {
     height: auto;
 }
 
-//container for upcoming films
-.scroll-box {
-    position: absolute;
-    right: 0;
-    padding-right: 6.5px;
-    height: 100%;
-    width: 25%;
-    overflow: hidden;
-    border: .2vw solid #fff;
-    border-radius: 5px;
-    backdrop-filter: blur(3px);
-}
 //upcoming films title
 .scroll-box p {
     color: #fff;
@@ -173,6 +161,18 @@ body {
     overflow-y: scroll;
     scrollbar-color: #fff transparent;
     transition: .5s;
+}
+//container for upcoming films
+.scroll-box {
+    position: absolute;
+    right: 0;
+    padding-right: 6.5px;
+    height: 100%;
+    width: 25%;
+    overflow: hidden;
+    border: .2vw solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
 }
 //scrollbar
 .upcoming-films ::-webkit-scrollbar {

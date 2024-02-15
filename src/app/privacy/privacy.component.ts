@@ -68,7 +68,7 @@ export class PrivacyComponent {
   }
 
   goToAccount(username: string) {
-
+    this.routingService.navigateToAccount(username);
   }
 
   toggleActive() {
@@ -104,7 +104,7 @@ export class PrivacyComponent {
     this.routingService.navigateToSummary();
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount();
+    this.routingService.navigateToAccount(this.currentUser.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

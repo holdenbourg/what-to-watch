@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'film-information/series/:imdbId', component: SeriesInformationTemplateComponent},
   {path: 'rate-movie/:imdbId', component: RateMovieComponent},
   {path: 'rate-series/:imdbId', component: RateSeriesComponent},
-  {path: 'account', component: AccountComponent},
+  {path: 'account/:username', component: AccountComponent},
   {path: 'summary', component: SummaryComponent}
 ];
 

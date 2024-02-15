@@ -8,6 +8,7 @@ import { SearchedFilmTemplateComponent } from '../searched-film-template/searche
 import { ActivatedRoute } from '@angular/router';
 import { UserInputService } from '../services/user/user-input.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
+import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 
 @Component({
   selector: 'app-search',
@@ -24,7 +25,7 @@ export class SearchComponent  implements OnInit {
   private userInputService: UserInputService = inject(UserInputService);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  public username: string = this.localStorageService.getInformation('currentUser').username;
+  public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
   public currentActiveSearchType: string = '.movies';
   public searchInput: string = '';
@@ -35,7 +36,6 @@ export class SearchComponent  implements OnInit {
 
   ngOnInit() {
     this.toggleSidebarActive();
-    this.localStorageService.clearInformation('filmType');
 
     //sets the search type/current active search type
     this.type = this.activatedRoute.snapshot.params['type'];
@@ -83,10 +83,8 @@ export class SearchComponent  implements OnInit {
   //if type is 'movie' route to rate-movie, else route to rate-series with film information
   onFilmClicked(type: string, imdbId: string) {
     if(type == 'movie') {
-      this.localStorageService.setInformation('filmType', type);
       this.routingService.navigateToMovieInformation(imdbId);
     } else if(type == 'series') {
-      this.localStorageService.setInformation('filmType', type);
       this.routingService.navigateToSeriesInformation(imdbId);
     }
   }
@@ -193,7 +191,7 @@ export class SearchComponent  implements OnInit {
     this.routingService.navigateToSummary();
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount();
+    this.routingService.navigateToAccount(this.currentUser.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

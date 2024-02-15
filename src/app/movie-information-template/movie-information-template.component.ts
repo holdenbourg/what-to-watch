@@ -6,8 +6,6 @@ import { RoutingService } from '../services/routing/routing.service';
 import { ApiService } from '../services/api/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
-import { ExtensiveSearchFilmModel } from '../services/models/omdb-api/extensive-film-api-search-response-model';
-import { MovieResponseModel } from '../services/models/mdb-list-api/movie-response-model';
 
 @Component({
   selector: 'app-movie-information-template',
@@ -17,6 +15,14 @@ import { MovieResponseModel } from '../services/models/mdb-list-api/movie-respon
   styleUrl: './movie-information-template.component.scss'
 })
 export class MovieInformationTemplateComponent implements OnInit {
+  private apiService: ApiService = inject(ApiService);
+  private routingService: RoutingService = inject(RoutingService);
+  private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+  public localStorageService: LocalStorageService = inject(LocalStorageService);
+
+  public streamingServices: string[] = [];
+  public imdbId: string = '';
+
   combinedApiResult: CombinedFilmApiResponseModel = {
     title: '',
     year: 0,
@@ -70,78 +76,9 @@ export class MovieInformationTemplateComponent implements OnInit {
     ['The Roku Channel', 'https://www.tvweek.com/wp-content/uploads/2015/09/roku.png']
   ]);
 
-  public omdbResult: ExtensiveSearchFilmModel = {
-    Title: '',
-    Year: 0,
-    Rated: '',
-    Released: '',
-    Runtime: '',
-    Genre: '',
-    Director: '',
-    Writer: '',
-    Actors: '',
-    Plot: '',
-    Language: '',
-    Country: '',
-    Awards: '',
-    Poster: '',
-    Ratings: [],
-    Metascore: 0,
-    imdbRating: 0,
-    imdbVotes: 0,
-    imdbID: '',
-    Type: '',
-    DVD: '',
-    BoxOffice: '',
-    Production: '',
-    Website: '',
-    Response: ''
-  }
-  public mdbResult: MovieResponseModel = {
-    title: '',
-    year: 0,
-    released: '',
-    released_digital: '',
-    description: '',
-    runtime: 0,
-    score: 0,
-    score_average: 0,
-    imdbid: '',
-    traktid: 0,
-    tmdbid: 0,
-    type: '',
-    ratings: [],
-    streams: [],
-    watch_providers: [],
-    reviews: [],
-    keywords: [],
-    language: '',
-    spoken_language: '',
-    country: '',
-    certification: '',
-    commonsense: 0,
-    age_rating: 0,
-    status: '',
-    trailer: '',
-    poster: '',
-    backdrop: '',
-    response: false,
-    apiused: 0
-  }
-
-  private apiService: ApiService = inject(ApiService);
-  private routingService: RoutingService = inject(RoutingService);
-  private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
-  public localStorageService: LocalStorageService = inject(LocalStorageService);
-  private router: Router = inject(Router);
-
-  public streamingServices: string[] = [];
-  public filmType: string = '';
-  public imdbId: string = '';
 
   ngOnInit() {
     this.imdbId = this.activatedRoute.snapshot.params['imdbId'];
-    this.filmType = this.localStorageService.getInformation('filmType');
 
     this.getStraightMovie();
   }

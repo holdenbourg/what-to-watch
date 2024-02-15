@@ -94,7 +94,6 @@
                     <div class="rated-film" *ngFor="let blockedAccount of currentUser.blocked; let i = index">
                         <app-blocked-account-template
                             [blockedAccount]="blockedAccount"
-                            (click)="goToAccount(blockedAccount.username)" 
                             class="rated-film-{{i}}"
                         ></app-blocked-account-template>
                     </div>

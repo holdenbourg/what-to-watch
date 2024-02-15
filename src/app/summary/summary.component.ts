@@ -5,6 +5,7 @@ import { RatedMovieModel } from '../services/models/rated-films/rated-movie-mode
 import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
 import { RatedFilmStatisticsModel } from '../services/models/rated-films-statistics-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
+import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 
 @Component({
   selector: 'app-summary',
@@ -18,7 +19,7 @@ export class SummaryComponent {
   public apiService: ApiService = inject(ApiService);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  public username: string = this.localStorageService.getInformation('currentUser').username;
+  public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
   
   public highestRatedMovie: RatedMovieModel = {
     title: 'Avatar',
@@ -86,7 +87,7 @@ export class SummaryComponent {
     this.routingService.navigateToSummary();
   }
   navigateToAccount() {
-    this.routingService.navigateToAccount();
+    this.routingService.navigateToAccount(this.currentUser.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

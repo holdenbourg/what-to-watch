@@ -127,3 +127,37 @@ body {
     font-weight: 500;
     color: #fff;
 }
+
+//conatiner for the search-bar/populated movies
+.container {
+    display: flex;
+    flex-direction: column;
+    border: .2vw solid #fff;
+    border-radius: 5px;
+    position: absolute;
+    left: 120px;
+    right: 40px;
+    top: 40px;
+    bottom: 40px;
+    width: auto;
+    height: auto;
+    transition: .5s;
+    backdrop-filter: blur(3px);
+}
+.container.active {
+    left: 300px;
+}
+.account-information {
+    color: #fff;
+
+}
+.posts-followers-following {
+    display: flex;
+    flex-direction: row;
+}
+.posts-followers-following p {
+    margin-left: 10px;
+}
+.followers, .following {
+    cursor: pointer;
+}

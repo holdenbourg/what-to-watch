@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { StreamingServiceTemplateComponent } from '../streaming-service-template/streaming-service-template.component';
 import { RoutingService } from '../services/routing/routing.service';
 import { CombinedFilmApiResponseModel } from '../services/models/combined-film-api-response';
-import { SeriesResponseModel } from '../services/models/mdb-list-api/series-response-model';
-import { ExtensiveSearchFilmModel } from '../services/models/omdb-api/extensive-film-api-search-response-model';
 import { ApiService } from '../services/api/api.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -20,9 +18,13 @@ export class SeriesInformationTemplateComponent implements OnInit {
   private apiService: ApiService = inject(ApiService);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
+  public streamingServices: string[] = [];
   public imdbId: string = '';
-  
-  @Input()
+  public numSeasons: number = 0;
+  public numEpisodes: number = 0;
+  public seasons: string = '';
+  public episodes: string = '';
+
   combinedApiResult: CombinedFilmApiResponseModel = {
     title: '',
     year: 0,
@@ -76,11 +78,6 @@ export class SeriesInformationTemplateComponent implements OnInit {
     ['The Roku Channel', 'https://www.tvweek.com/wp-content/uploads/2015/09/roku.png']
   ]);
 
-  public streamingServices: string[] = [];
-  public numSeasons: number = 0;
-  public numEpisodes: number = 0;
-  public seasons: string = '';
-  public episodes: string = '';
 
   ngOnInit() {
     //sets the type/imdbId for the look up from the url parameter
@@ -89,6 +86,9 @@ export class SeriesInformationTemplateComponent implements OnInit {
     this.getStraightSeries();
   }
 
+  goToTrailer(trailerUrl: string) {
+    window.open(trailerUrl, "_blank");
+  }
 
   async getStraightSeries() {
     let omdbMovie = await this.apiService.search1FilmOmdbStraight(this.imdbId);
