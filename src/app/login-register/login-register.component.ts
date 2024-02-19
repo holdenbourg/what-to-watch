@@ -32,239 +32,192 @@ export class LoginRegisterComponent {
       email: 'holden.bourg@gmail.com',
       firstName: 'Holden',
       lastName: 'Bourg',
-      bio: '',
+      bio: 'I love movies so much I love movies so much I love movies so much',
       followers: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
-      following: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
-      requests: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
-      blocked: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal',
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal',
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'AshlynnDang'
+      ],
+      following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal'],
+      requests: [],
+      blocked: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
       posts: [
-        `1postUrl.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
-        `2postUrl.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
-        `3postUrl.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
-        `4postUrl.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+      ],
+      postsTaggedIn: [],
+      private: false
+    },
+    {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'LukasGocke',
+      password: 'Captain$47',
+      email: 'lukas.gocke@gmail.com',
+      firstName: 'Lukas',
+      lastName: 'Gocke',
+      bio: 'I love movies so much I love movies so much I love movies so much',
+      followers: [],
+      following: [],
+      requests: [],
+      blocked: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
+      posts: [
+        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson::::HoldenBourg,CalebHaralson,EnriqueLeal::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson;;;;CalebHaralson||||caption's are amazing @HoldenBourg @EnriqueLeal||||HoldenBourg,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson::::HoldenBourg,CalebHaralson,EnriqueLeal::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson;;;;CalebHaralson||||caption's are amazing @HoldenBourg @EnriqueLeal||||HoldenBourg,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson::::HoldenBourg,CalebHaralson,EnriqueLeal::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson;;;;CalebHaralson||||caption's are amazing @HoldenBourg @EnriqueLeal||||HoldenBourg,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson::::HoldenBourg,CalebHaralson,EnriqueLeal::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson;;;;CalebHaralson||||caption's are amazing @HoldenBourg @EnriqueLeal||||HoldenBourg,EnriqueLeal`,
+      ],
+      postsTaggedIn: [],
+      private: false
+    },
+    {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'CalebHaralson',
+      password: 'Captain$47',
+      email: 'caleb.haralson@gmail.com',
+      firstName: 'Caleb',
+      lastName: 'Haralson',
+      bio: 'I love movies so much I love movies so much I love movies so much',
+      followers: [],
+      following: [],
+      requests: [],
+      blocked: [],
+      posts: [
+        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::LukasGocke,HoldenBourg,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::LukasGocke,HoldenBourg,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::LukasGocke,HoldenBourg,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::LukasGocke,HoldenBourg,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+      ],
+      postsTaggedIn: [],
+      private: false
+    },
+    {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'EnriqueLeal',
+      password: 'Captain$47',
+      email: 'enrique.leal@gmail.com',
+      firstName: 'Enrique',
+      lastName: 'Leal',
+      bio: 'I love movies so much I love movies so much I love movies so much',
+      followers: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
+      following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
+      requests: [],
+      blocked: [],
+      posts: [
+        `https://m.media-amazon.com/images/M/MV5BOTNkMzNlNmQtMWRlYS00MTExLWExNjgtODc0MGRjNjE1OGQwXkEyXkFqcGdeQXVyMjAwNzczNTU@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,HoldenBourg::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BOTNkMzNlNmQtMWRlYS00MTExLWExNjgtODc0MGRjNjE1OGQwXkEyXkFqcGdeQXVyMjAwNzczNTU@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,HoldenBourg::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BOTNkMzNlNmQtMWRlYS00MTExLWExNjgtODc0MGRjNjE1OGQwXkEyXkFqcGdeQXVyMjAwNzczNTU@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,HoldenBourg::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BOTNkMzNlNmQtMWRlYS00MTExLWExNjgtODc0MGRjNjE1OGQwXkEyXkFqcGdeQXVyMjAwNzczNTU@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,HoldenBourg::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+      ],
+      postsTaggedIn: [],
+      private: false
+    },
+    {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'AshlynnDang',
+      password: 'Captain$47',
+      email: 'ashlynn.dang@gmail.com',
+      firstName: 'Ashlynn',
+      lastName: 'Dang',
+      bio: 'I love movies so much I love movies so much I love movies so much',
+      followers: [],
+      following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
+      requests: [],
+      blocked: [],
+      posts: [
+        `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,HoldenBourg::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,HoldenBourg::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,HoldenBourg::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,HoldenBourg::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+      ],
+      postsTaggedIn: [],
+      private: false
+    },
+    {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'OliverQueen',
+      password: 'Captain$47',
+      email: 'oliver.queen@gmail.com',
+      firstName: 'Oliver',
+      lastName: 'Queen',
+      bio: 'I love movies so much I love movies so much I love movies so much',
+      followers: [],
+      following: [],
+      requests: [],
+      blocked: [],
+      posts: [
+        `https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg::::OliverQueen||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg::::OliverQueen||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg::::OliverQueen||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg::::OliverQueen||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
       ],
       postsTaggedIn: [],
       private: true
     },
     {
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
-      username: 'LukasGocke',
+      username: 'TommyMerlin',
       password: 'Captain$47',
-      email: 'lukas.gocke@gmail.com',
-      firstName: 'Lukas',
-      lastName: 'Gocke',
-      bio: '',
-      followers: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
-      following: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
-      requests: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
-      blocked: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
-      posts: [],
+      email: 'tommy.merlin@gmail.com',
+      firstName: 'Tommy',
+      lastName: 'Merlin',
+      bio: 'I love movies so much I love movies so much I love movies so much',
+      followers: [],
+      following: [],
+      requests: [],
+      blocked: [],
+      posts: [
+        `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg::::TommyMerlin||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg::::TommyMerlin||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg::::TommyMerlin||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg::::TommyMerlin||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+      ],
+      postsTaggedIn: [],
+      private: false
+    },
+    {
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'JohnDiggle',
+      password: 'Captain$47',
+      email: 'john.diggle@gmail.com',
+      firstName: 'John',
+      lastName: 'Diggle',
+      bio: 'I love movies so much I love movies so much I love movies so much',
+      followers: [],
+      following: [],
+      requests: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
+      blocked: [],
+      posts: [
+        `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::JohnDiggle||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::JohnDiggle||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::JohnDiggle||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::JohnDiggle||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+      ],
       postsTaggedIn: [],
       private: true
     },
     {
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
-      username: 'EnriqueLeal',
+      username: 'FelicitySmoak',
       password: 'Captain$47',
-      email: 'enrique.leal@gmail.com',
-      firstName: 'Enrique',
-      lastName: 'Leal',
-      bio: '',
-      followers: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
-      following: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
-      requests: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
-      blocked: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
-      posts: [],
-      postsTaggedIn: [],
-      private: false
-    },
-    {  
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',    
-      username: 'CalebHaralson',
-      password: 'Captain$47',
-      email: 'caleb.haralson@gmail.com',
-      firstName: 'Caleb',
-      lastName: 'Haralson',
-      bio: '',
-      followers: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
-      following: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
-      requests: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
-      blocked: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal', 
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
-      posts: [],
+      email: 'felicity.smoak@gmail.com',
+      firstName: 'Felicity',
+      lastName: 'Smoak',
+      bio: 'I love movies so much I love movies so much I love movies so much',
+      followers: [],
+      following: [],
+      requests: [],
+      blocked: [],
+      posts: [
+        `https://m.media-amazon.com/images/M/MV5BMzdlOGU2ODUtODk1YS00M2ZmLWEwNjEtODJhOGE5N2Y4ZTQyXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg::::FelicitySmoak||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMzdlOGU2ODUtODk1YS00M2ZmLWEwNjEtODJhOGE5N2Y4ZTQyXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg::::FelicitySmoak||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMzdlOGU2ODUtODk1YS00M2ZmLWEwNjEtODJhOGE5N2Y4ZTQyXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg::::FelicitySmoak||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMzdlOGU2ODUtODk1YS00M2ZmLWEwNjEtODJhOGE5N2Y4ZTQyXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg::::FelicitySmoak||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+      ],
       postsTaggedIn: [],
       private: false
     }
-  ]
-  /*public mockUsersDatabase: AccountInformationModel[] = [
-    {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
-      username: 'HoldenBourg',
-      password: 'Captain$47',
-      email: 'holden.bourg@gmail.com',
-      firstName: 'Holden',
-      lastName: 'Bourg',
-      bio: '',
-      followers: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      following: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      requests: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      blocked: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'},
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'},
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      posts: [],
-      postsTaggedIn: [],
-      private: true
-    },
-    {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
-      username: 'LukasGocke',
-      password: 'Captain$47',
-      email: 'lukas.gocke@gmail.com',
-      firstName: 'Lukas',
-      lastName: 'Gocke',
-      bio: '',
-      followers: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      following: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      requests: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      blocked: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      posts: [],
-      postsTaggedIn: [],
-      private: true
-    },
-    {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
-      username: 'EnriqueLeal',
-      password: 'Captain$47',
-      email: 'enrique.leal@gmail.com',
-      firstName: 'Enrique',
-      lastName: 'Leal',
-      bio: '',
-      followers: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      following: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      requests: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      blocked: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'CalebHaralson'}],
-      posts: [],
-      postsTaggedIn: [],
-      private: false
-    },
-    {  
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',    
-      username: 'CalebHaralson',
-      password: 'Captain$47',
-      email: 'caleb.haralson@gmail.com',
-      firstName: 'Caleb',
-      lastName: 'Haralson',
-      bio: '',
-      followers: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}],
-      following: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}],
-      requests: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}],
-      blocked: [
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'LukasGocke'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'EnriqueLeal'}, 
-        {profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png', username: 'HoldenBourg'}],
-      posts: [],
-      postsTaggedIn: [],
-      private: false
-    }
-  ] */
+  ];
   public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
   registerObject: RegisterModel = {
@@ -739,7 +692,7 @@ export class LoginRegisterComponent {
 
     return returnArray;
   }
-  //rawComments: HoldenBourg||||Looks kinda like @LukasGocke or @EnriqueLeal||||LukasGocke,EnriqueLeal;;;;LukasGocke||||I remember being there with @CalebHaralson||||CalebHaralson
+  //rawComments: HoldenBourg||||Looks kinda like @LukasGocke or @EnriqueLeal||||LukasGocke,EnriqueLeal;;;;LukasGocke||||I remember being there with @CalebHaralson||||CalebHaralson (individual comments are split by ;;;;)
   convertRawCommentsToComments(rawComment: string) {
     let returnArray: CommentModel[] = [];
 

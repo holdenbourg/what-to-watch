@@ -116,7 +116,7 @@ body {
     transition-delay: calc(.1s * var(--i));
 }
 //username at the bottom of the dashboard
-.username {
+.signed-in-as-username {
     position: absolute;
     padding-left: 10px;
     padding-right: 10px;
@@ -135,7 +135,7 @@ body {
     border: .2vw solid #fff;
     border-radius: 5px;
     position: absolute;
-    left: 120px;
+    left: 300px;
     right: 40px;
     top: 40px;
     bottom: 40px;
@@ -145,19 +145,78 @@ body {
     backdrop-filter: blur(3px);
 }
 .container.active {
-    left: 300px;
+    left: 120px;
 }
-.account-information {
-    color: #fff;
 
-}
-.posts-followers-following {
+.account-information {
     display: flex;
     flex-direction: row;
+    margin-top: 15px;
+    background: blue;
+    width: 50%;
 }
-.posts-followers-following p {
-    margin-left: 10px;
+.user-posts {
+    width: 50%;
+    background: pink;
+}
+.user-post {
+    margin-right: 10px;
+}
+.profile-picture {
+    height: 8vw;
+    width: 8vw;
+    border-radius: 8vw;
+    margin-left: 15px;
+    margin-right: 15px;
+    -webkit-filter: invert(100%);
+}
+.account-information-text {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    background: red;
+}
+.username-buttons {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+.posts-followers-following {
+    background: green;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.15vw;
 }
 .followers, .following {
     cursor: pointer;
+    margin-left: 50px;
+}
+.username-buttons button {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: auto;
+    height: 1.75vw;
+    background: transparent;
+    border: .15vw solid #fff;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: auto;
+    color: #fff;
+    font-weight: 500;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+}
+.name-bio {
+    margin-top: 15px;
+    font-size: .9vw;
+}
+.full-name {
+    font-weight: 500;
+    font-size: .95vw;
 }

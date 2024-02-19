@@ -53,20 +53,69 @@
                     <span class="link-name" style="--i:2;">Settings</span>
                 </a>
             </li>
-            <li class="username">
+            <li class="signed-in-as-username">
                  <p class="link-name" style="--i:3">Signed in as:</p> 
                  <p class="link-name" style="--i:3">{{ currentUser.username }}</p>
             </li>
         </ul>
     </nav>
 
-    <div class="container">
-        <div class="account-information">
-            <div class="posts-followers-following">
-                <p class="posts">{{ currentUser.posts.length }} posts</p>
-                <p class="followers" (click)="showFollowers()">{{ currentUser.followers.length }} followers</p>
-                <p class="following" (click)="showFollowing()">{{ currentUser.following.length }} following</p>
+    <div class="does-user-exist" *ngIf="doesUserExistResult == false">
+    
+    </div>
+    <div class="is-current-user" *ngIf="isCurrentUserResult == true">
+        <div class="container">
+            <div class="account-information">
+                <img class="profile-picture" [src]="currentUser.profilePicture" [attr.alt]="currentUser.username">
+                <div class="account-information-text">
+                    <div class="username-buttons">
+                        <p class="username">{{ currentUser.username }}</p>
+                        <button type="submit" class="edit-profile-button" (click)="onEditProfile()">Edit Profile</button>
+                        <button type="submit" class="view-archive-button" (click)="onViewArchive()">View Archive</button>
+                    </div>
+                    <div class="posts-followers-following">
+                        <p class="posts">{{ currentUser.posts.length }} posts</p>
+                        <p class="followers" (click)="showFollowers()">{{ currentUser.followers.length }} followers</p>
+                        <p class="following" (click)="showFollowing()">{{ currentUser.following.length }} following</p>
+                    </div>
+                    <div class="name-bio">
+                        <p class="full-name">{{ currentUser.firstName }} {{ currentUser.lastName }}</p>
+                        <p class="bio">{{ currentUser.bio }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="user-posts">
+                <app-user-post-template
+                    *ngFor="let post of currentUser.posts"
+                    [userPost]="post" 
+                    (click)="onPostClicked(post.postUrl)" 
+                    class="user-post"
+                ></app-user-post-template>
             </div>
         </div>
+    </div>
+    <div class="user-blocked-current-user" *ngIf="userBlockedCurrentUserResult == true">
+        
+    </div>
+    <div class="current-user-blocked-user" *ngIf="currentUserBlockedUserResult == true">
+        
+    </div>
+    <div class="current-user-follows-user" *ngIf="currentUserFollowsUserResult == true">
+        
+    </div>
+    <div class="current-user-requested-user" *ngIf="currentUserRequestedUserResult == true">
+        
+    </div>
+    <div class="user-follows-current-user" *ngIf="userFollowsCurrentUserResult == true">
+        
+    </div>
+    <div class="user-requested-current-user" *ngIf="userRequestedCurrentUserResult == true">
+        
+    </div>
+    <div class="private-user-not-followed-by-current-user" *ngIf="privateUserNotFollowedByCurrentUserResult == true">
+        
+    </div>
+    <div class="public-user-not-followed-by-current-user" *ngIf="publicUserNotFollowedByCurrentUserResult == true">
+        
     </div>
 </body>
