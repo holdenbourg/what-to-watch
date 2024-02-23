@@ -287,8 +287,15 @@ export class AccountComponent  implements OnInit {
     // console.log('user requested current user: ' + this.userRequestedCurrentUserResult);
     // console.log('private user not followed current user: ' + this.privateUserNotFollowedByCurrentUserResult);
     // console.log('public user not followed current user: ' + this.publicUserNotFollowedByCurrentUserResult);
-
+    
     this.sidebarCloseOnResize();
+
+    var width = window.innerWidth;
+
+    if(width <= 1275) { 
+      const themeClass = document.querySelector('.sidebar');
+      themeClass?.classList.toggle('active'); 
+    }
   }
 
   togglePosts() {

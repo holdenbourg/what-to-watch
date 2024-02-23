@@ -61,7 +61,9 @@
     </nav>
 
     <div class="does-user-exist" *ngIf="doesUserExistResult == false">
-    
+        <div class="container">
+            <p>User doesn't exist</p>
+        </div>
     </div>
     <div class="is-current-user" *ngIf="isCurrentUserResult == true">
         <div class="container">
@@ -109,27 +111,43 @@
         </div>
     </div>
     <div class="user-blocked-current-user" *ngIf="userBlockedCurrentUserResult == true">
-        
+        <div class="container">
+            <p>User blocked current user</p>
+        </div>
     </div>
     <div class="current-user-blocked-user" *ngIf="currentUserBlockedUserResult == true">
-        
+        <div class="container">
+            <p>Current user blocked user</p>
+        </div>
     </div>
     <div class="current-user-follows-user" *ngIf="currentUserFollowsUserResult == true">
-        
+        <div class="container">
+            <p>Current user follows user</p>
+        </div>
     </div>
     <div class="current-user-requested-user" *ngIf="currentUserRequestedUserResult == true">
-        
+        <div class="container">
+            <p>Current user requested user</p>
+        </div>
     </div>
     <div class="user-follows-current-user" *ngIf="userFollowsCurrentUserResult == true">
-        
+        <div class="container">
+            <p>User follows current user</p>
+        </div>
     </div>
     <div class="user-requested-current-user" *ngIf="userRequestedCurrentUserResult == true">
-        
+        <div class="container">
+            <p>User requested current user</p>
+        </div>
     </div>
     <div class="private-user-not-followed-by-current-user" *ngIf="privateUserNotFollowedByCurrentUserResult == true">
-        
+        <div class="container">
+            <p>Private user not followed by current user</p>
+        </div>
     </div>
     <div class="public-user-not-followed-by-current-user" *ngIf="publicUserNotFollowedByCurrentUserResult == true">
-        
+        <div class="container">
+            <p>Public user not followed by current user</p>
+        </div>
     </div>
 </body>

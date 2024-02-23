@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserPostModel } from '../services/models/database-objects/user-post-model';
 
 @Component({
@@ -23,5 +23,4 @@ export class UserPostTemplateComponent {
     likes: [],
     comments: []
   }
-
 }
