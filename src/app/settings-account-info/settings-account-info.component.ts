@@ -6,13 +6,13 @@ import { AccountInformationModel } from '../services/models/database-objects/acc
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
 @Component({
-  selector: 'app-settings',
+  selector: 'app-settings-account-info',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './settings.component.html',
-  styleUrl: './settings.component.scss'
+  templateUrl: './settings-account-info.component.html',
+  styleUrl: './settings-account-info.component.scss'
 })
-export class SettingsComponent implements OnInit {
+export class SettingsAccountInfoComponent implements OnInit {
   private routingService: RoutingService = inject(RoutingService);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
 
@@ -41,14 +41,37 @@ export class SettingsComponent implements OnInit {
 
   
   ngOnInit() {
-    this.toggleActive()
-
     this.onChangeUsername();
     this.onChangePassword();
     this.onChangeEmail();
     this.onChangeFirstName();
     this.onChangeLastName();
     this.onChangeBio();
+
+    this.sidebarCloseOnResize();
+  }
+
+  //closes/opens sidebar if screen width goes above/below 1275 pixels
+  sidebarCloseOnResize() {  
+    const themeClass = document.querySelector('.sidebar');
+    const container = document.querySelector('.container');
+    const privacy = document.querySelector('.privacy-icon');
+    const accountInfo = document.querySelector('.account-info-icon');
+
+    var width = window.innerWidth;
+
+    if(width <= 1275 && themeClass?.classList.contains('active')) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
+      accountInfo?.classList.toggle('active');
+      privacy?.classList.toggle('active');
+    }
+    if(width >= 1275 && !(themeClass?.classList.contains('active'))) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
+      accountInfo?.classList.toggle('active');
+      privacy?.classList.toggle('active');
+    }
   }
 
   onChangeUsername() {
@@ -830,8 +853,11 @@ export class SettingsComponent implements OnInit {
   navigateToSummary() {
     this.routingService.navigateToSummary();
   }
-  navigateToAccount() {
-    this.routingService.navigateToAccount(this.currentUser.username);
+  navigateToAccountsPosts() {
+    this.routingService.navigateToAccountsPosts(this.currentUser.username);
+  }
+  navigateToAccountsTagged() {
+    this.routingService.navigateToAccountsTagged(this.currentUser.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

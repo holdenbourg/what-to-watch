@@ -36,13 +36,28 @@ export class HomeComponent implements OnInit {
   public searchInput: string = '';
 
   
-  ngOnInit() {
-    this.toggleActive();
-    
+  ngOnInit() {    
     //sets information for upcoming films
     this.upcomingFilmList = this.apiService.searchUpcomingFilms();
+
+    this.sidebarCloseOnResize();
   }
   
+  //closes/opens sidebar if screen width goes above/below 1275 pixels
+  sidebarCloseOnResize() {  
+    const themeClass = document.querySelector('.sidebar');
+    const container = document.querySelector('.container');
+    var width = window.innerWidth;
+
+    if(width <= 1275 && themeClass?.classList.contains('active')) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
+    }
+    if(width >= 1275 && !(themeClass?.classList.contains('active'))) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
+    }
+  }
 
   getTaggedAccounts(comment: string) {
     let taggedAccountsString: string = '';
@@ -107,8 +122,11 @@ export class HomeComponent implements OnInit {
   navigateToSummary() {
     this.routingService.navigateToSummary();
   }
-  navigateToAccount() {
-    this.routingService.navigateToAccount(this.currentUser.username);
+  navigateToAccountsPosts() {
+    this.routingService.navigateToAccountsPosts(this.currentUser.username);
+  }
+  navigateToAccountsTagged() {
+    this.routingService.navigateToAccountsTagged(this.currentUser.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();
@@ -117,6 +135,8 @@ export class HomeComponent implements OnInit {
   toggleActive() {
     const themeClass = document.querySelector('.sidebar');
     themeClass?.classList.toggle('active');
+    const container = document.querySelector('.container');
+    container?.classList.toggle('active');
   }
 }
 

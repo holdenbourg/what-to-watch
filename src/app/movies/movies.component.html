@@ -3,8 +3,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body>
-    <nav class="sidebar">
+<body (window:resize)="sidebarCloseOnResize()">
+    <nav class="sidebar active">
         <div class="logo-menu">
             <h2 class="logo">Movies</h2>
             <i class='bx bx-menu toggle-button' (click)="toggleActive()"></i>
@@ -42,7 +42,7 @@
                 </a>
             </li>
             <li class="list-item">
-                <a (click)="navigateToAccount()">
+                <a (click)="navigateToAccountsPosts()">
                     <i class='bx bx-user'></i>
                     <span class="link-name" style="--i:4;">Account</span>
                 </a>

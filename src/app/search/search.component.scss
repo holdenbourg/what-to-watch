@@ -134,7 +134,7 @@ body {
     border: .2vw solid #fff;
     border-radius: 5px;
     position: absolute;
-    left: 120px;
+    left: 300px;
     right: 40px;
     top: 40px;
     bottom: 40px;
@@ -144,7 +144,7 @@ body {
     backdrop-filter: blur(3px);
 }
 .container.active {
-    left: 300px;
+    left: 120px;
 }
 //conatiner for input-box/movies/series/search icon
 .search-bar {
@@ -193,6 +193,7 @@ body {
     line-height: 57px;
     height: 40px;
 }
+//movies/series/users
 .search-bar i {
     margin-right: 10px;
     font-size: 1.2em;

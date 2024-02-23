@@ -132,8 +132,6 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    border: .2vw solid #fff;
-    border-radius: 5px;
     position: absolute;
     left: 300px;
     right: 40px;
@@ -142,57 +140,54 @@ body {
     width: auto;
     height: auto;
     transition: .5s;
-    backdrop-filter: blur(3px);
+    background-color: rgba(255, 0, 0, 0.2);
 }
 .container.active {
     left: 120px;
 }
 
+//container for account-information and user-posts
+.account {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border: .2vw solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+}
+
+//container for all the username/buttons/posts/followers/following/full-name/bio
 .account-information {
     display: flex;
     flex-direction: row;
-    margin-top: 15px;
-    background: blue;
-    width: 50%;
+    padding: 15px;
+    width: 100%;
 }
-.user-posts {
-    width: 50%;
-    background: pink;
-}
-.user-post {
-    margin-right: 10px;
-}
+//profile picture
 .profile-picture {
     height: 8vw;
     width: 8vw;
     border-radius: 8vw;
-    margin-left: 15px;
     margin-right: 15px;
     -webkit-filter: invert(100%);
 }
+//all the text in account-information container
 .account-information-text {
     color: #fff;
     display: flex;
     flex-direction: column;
-    background: red;
 }
+//layout for edit-profile/view-archive buttons
 .username-buttons {
     display: flex;
     flex-direction: row;
     font-size: 1.5vw;
     font-weight: 600;
 }
-.posts-followers-following {
-    background: green;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    font-size: 1.15vw;
-}
-.followers, .following {
-    cursor: pointer;
-    margin-left: 50px;
-}
+//edit-profile/view-archive buttons
 .username-buttons button {
     padding-left: 15px;
     padding-right: 15px;
@@ -205,18 +200,89 @@ body {
     outline: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: auto;
+    font-size: .75vw;
     color: #fff;
     font-weight: 500;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 15px;
 }
+//the number of the user's post/followers/following
+.posts-followers-following {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.15vw;
+}
+//makes followers/following clickable
+.num-followers, .num-following {
+    cursor: pointer;
+    margin-left: 50px;
+}
+//user's full name
+.full-name {
+    font-weight: 500;
+    font-size: .95vw;
+}
+//user's bio
 .name-bio {
     margin-top: 15px;
     font-size: .9vw;
 }
-.full-name {
-    font-weight: 500;
-    font-size: .95vw;
+
+//container for user-posts
+.scroll-box {
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-right: 6.5px;
+}
+//contains all the user-post's
+.user-posts {
+    height: auto;
+    width: 101%;
+}
+//individual user post
+.user-post {
+    margin-right: .43vw;
+}
+//scrollbar
+.scroll-box::-webkit-scrollbar {
+    width: 0.5em;
+}
+.scroll-box::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 0.25em;
+}
+
+.post-options {
+    display: flex;
+    flex-direction: row;
+    padding-left: 16.5vw;
+    padding-right: 16.5vw;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: 400;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: .15vw solid #fff;
+}
+
+.posts-button, .tagged-button {
+    display: flex;
+    flex-direction: row;
+}
+.posts-button.active {
+    border-top: .15vw solid #fff;
+}
+.posts, .tagged {
+    padding-right: 3px;
+    padding-left: 3px;
+    font-size: 1.05vw;
+    color: #fff;
+    cursor: pointer;
+}
+.post-options i {
+    color: #fff;
+    margin-top: auto;
+    margin-bottom: auto;
 }

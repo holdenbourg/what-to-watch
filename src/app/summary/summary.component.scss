@@ -134,7 +134,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     position: absolute;
-    left: 120px;
+    left: 300px;
     right: 40px;
     top: 40px;
     bottom: 40px;
@@ -144,7 +144,7 @@ body {
     backdrop-filter: blur(3px);
 }
 .container.active {
-    left: 300px;
+    left: 120px;
 }
 //all headers
 .title {

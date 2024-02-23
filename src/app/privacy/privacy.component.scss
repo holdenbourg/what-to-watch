@@ -146,7 +146,7 @@ body {
 }
 //other page redirect icons
 .settings-item a i {
-    opacity: 0;
+    opacity: 1;
     min-width: 50px;
     height: 35px;
     text-align: center;
@@ -154,7 +154,7 @@ body {
     transition: .5s;
 }
 .settings-item a.active i {
-    opacity: 1;
+    opacity: 0;
 }
 //username at the bottom of the dashboard
 .username {
@@ -175,7 +175,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    left: 120px;
+    left: 300px;
     right: 40px;
     top: 40px;
     bottom: 40px;
@@ -184,7 +184,7 @@ body {
     transition: .5s;
 }
 .container.active {
-    left: 300px;
+    left: 120px;
 }
 
 //all headers

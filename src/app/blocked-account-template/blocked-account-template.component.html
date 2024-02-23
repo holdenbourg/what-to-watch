@@ -1,7 +1,7 @@
 <div class="blocked-user">
     <div class="blocked-info">
         <img class="profile-picture" [src]="blockedAccount.profilePicture" [attr.alt]="blockedAccount.username">
-        <p class="username" (click)="this.routingService.navigateToAccount(blockedAccount.username)">{{ blockedAccount.username }}</p>
+        <p class="username" (click)="this.routingService.navigateToAccountsPosts(blockedAccount.username)">{{ blockedAccount.username }}</p>
     </div>
     <button type="submit" class="button" (click)="onUnblockUser(blockedAccount.username)">Unblock</button>
 </div>

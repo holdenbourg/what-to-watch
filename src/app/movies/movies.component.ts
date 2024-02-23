@@ -205,13 +205,29 @@ export class MoviesComponent  implements OnInit {
 
   public searchInput: string = '';
 
-  ngOnInit() {
-    this.toggleActive()
-        
+  ngOnInit() {        
     this.populateUsersRatedMovies();
 
     if(this.usersRatedMovies.length != 0) {
       this.activeMovie = this.usersRatedMovies.at(0)!;
+    }
+
+    this.sidebarCloseOnResize();
+  }
+
+  //closes/opens sidebar if screen width goes above/below 1275 pixels
+  sidebarCloseOnResize() {  
+    const themeClass = document.querySelector('.sidebar');
+    const container = document.querySelector('.container');
+    var width = window.innerWidth;
+
+    if(width <= 1275 && themeClass?.classList.contains('active')) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
+    }
+    if(width >= 1275 && !(themeClass?.classList.contains('active'))) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
     }
   }
 
@@ -333,8 +349,11 @@ export class MoviesComponent  implements OnInit {
   navigateToSummary() {
     this.routingService.navigateToSummary();
   }
-  navigateToAccount() {
-    this.routingService.navigateToAccount(this.currentUser.username);
+  navigateToAccountsPosts() {
+    this.routingService.navigateToAccountsPosts(this.currentUser.username);
+  }
+  navigateToAccountsTagged() {
+    this.routingService.navigateToAccountsTagged(this.currentUser.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

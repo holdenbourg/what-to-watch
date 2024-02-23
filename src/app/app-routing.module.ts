@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MoviesComponent } from './movies/movies.component';
 import { ShowsComponent } from './shows/shows.component';
-import { SettingsComponent } from './settings/settings.component';
+import { SettingsAccountInfoComponent } from './settings-account-info/settings-account-info.component';
 import { SearchComponent } from './search/search.component';
 import { AccountComponent } from './account/account.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
@@ -15,6 +15,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { SeriesInformationTemplateComponent } from './series-information-template/series-information-template.component';
 import { MovieInformationTemplateComponent } from './movie-information-template/movie-information-template.component';
+import { AccountTaggedComponent } from './account-tagged/account-tagged.component';
 
 const routes: Routes = [
   {path: '', component: LoginRegisterComponent},
@@ -24,7 +25,7 @@ const routes: Routes = [
   {path: 'shows', component: ShowsComponent},
   {path: 'edit-movie', component: EditMovieComponent},
   {path: 'edit-series', component: EditSeriesComponent},
-  {path: 'settings/account-info', component: SettingsComponent},
+  {path: 'settings/account-info', component: SettingsAccountInfoComponent},
   {path: 'settings/privacy', component: PrivacyComponent},
   {path: 'search/:type', component: SearchComponent},
   {path: 'search/:type/:input', component: SearchComponent},
@@ -32,7 +33,8 @@ const routes: Routes = [
   {path: 'film-information/series/:imdbId', component: SeriesInformationTemplateComponent},
   {path: 'rate-movie/:imdbId', component: RateMovieComponent},
   {path: 'rate-series/:imdbId', component: RateSeriesComponent},
-  {path: 'account/:username', component: AccountComponent},
+  {path: 'account/:username/posts', component: AccountComponent},
+  {path: 'account/:username/tagged', component: AccountTaggedComponent},
   {path: 'summary', component: SummaryComponent}
 ];
 

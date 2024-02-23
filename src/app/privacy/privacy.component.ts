@@ -22,8 +22,6 @@ export class PrivacyComponent {
   public username: string = this.localStorageService.getInformation('currentUser').username;
 
   ngOnInit() {
-    this.toggleActive();
-
     if(this.currentUser.private == true) {
       const privacyMode = document.querySelector('.privacy-mode');
       privacyMode?.classList.toggle('active');
@@ -33,6 +31,8 @@ export class PrivacyComponent {
       privacyMode!.textContent = 'Private';
       description!.textContent = `When your account is private, only the followers you've accepted can see your profile. This means someone you haven't approved won't be able to see any of your posts, any of the posts you've been tagged in, and wont be able to see the people on either you followers or following list.`;
     }
+
+    this.sidebarCloseOnResize();
   }
 
   OnSwitchPrivacy() {
@@ -67,8 +67,27 @@ export class PrivacyComponent {
     }
   }
 
-  goToAccount(username: string) {
-    this.routingService.navigateToAccount(username);
+  //closes/opens sidebar if screen width goes above/below 1275 pixels
+  sidebarCloseOnResize() {  
+    const themeClass = document.querySelector('.sidebar');
+    const container = document.querySelector('.container');
+    const privacy = document.querySelector('.privacy-icon');
+    const accountInfo = document.querySelector('.account-info-icon');
+
+    var width = window.innerWidth;
+
+    if(width <= 1275 && themeClass?.classList.contains('active')) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
+      accountInfo?.classList.toggle('active');
+      privacy?.classList.toggle('active');
+    }
+    if(width >= 1275 && !(themeClass?.classList.contains('active'))) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
+      accountInfo?.classList.toggle('active');
+      privacy?.classList.toggle('active');
+    }
   }
 
   toggleActive() {
@@ -103,8 +122,11 @@ export class PrivacyComponent {
   navigateToSummary() {
     this.routingService.navigateToSummary();
   }
-  navigateToAccount() {
-    this.routingService.navigateToAccount(this.currentUser.username);
+  navigateToAccountsPosts() {
+    this.routingService.navigateToAccountsPosts(this.currentUser.username);
+  }
+  navigateToAccountsTagged() {
+    this.routingService.navigateToAccountsTagged(this.currentUser.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

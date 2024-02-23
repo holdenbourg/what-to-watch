@@ -52,6 +52,6 @@ export class BlockedAccountTemplateComponent {
     this.localStorageService.clearInformation('currentUser');
     this.localStorageService.setInformation('currentUser', newUser);
 
-    window.location.reload()
+    window.location.reload();
   }
 }

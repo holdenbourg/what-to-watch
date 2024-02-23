@@ -81,6 +81,7 @@ body {
     height: 50px;
     margin: 5px 0;
     line-height: 50px;
+    cursor: pointer;
 }
 .list .list-item a {
     display: flex;
@@ -91,7 +92,6 @@ body {
     border-radius: 6px;
     white-space: nowrap;
     transition: .5s;
-    cursor: pointer;
 }
 .list .list-item.active a, 
 .list .list-item a:hover {
@@ -116,7 +116,7 @@ body {
     transition-delay: calc(.1s * var(--i));
 }
 //username at the bottom of the dashboard
-.username {
+.signed-in-as-username {
     position: absolute;
     padding-left: 10px;
     padding-right: 10px;
@@ -128,65 +128,161 @@ body {
     color: #fff;
 }
 
-//container for the whole screen
+//conatiner for the search-bar/populated movies
 .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: absolute;
     left: 300px;
     right: 40px;
-    bottom: 40px;
     top: 40px;
+    bottom: 40px;
     width: auto;
     height: auto;
     transition: .5s;
+    background-color: rgba(255, 0, 0, 0.2);
 }
 .container.active {
     left: 120px;
 }
 
-//upcoming films title
-.scroll-box p {
-    color: #fff;
-    font-size: 1.55vw;
-    font-weight: 600;
-    margin-top: 5px;
-    padding-bottom: 5px;
-    margin-left: 20px;
-    margin-right: 14px;
-    border-bottom: .15vw solid #fff;
-}
-//contains all the upcoming films
-.upcoming-films {
-    height: 93%;
-    padding-left: 20px;
-    padding-right: 6px;
-    overflow: hidden;
-    overflow-y: scroll;
-    scrollbar-color: #fff transparent;
-    transition: .5s;
-}
-//container for upcoming films
-.scroll-box {
-    position: absolute;
-    right: 0;
-    padding-right: 6.5px;
+//container for account-information and user-posts
+.account {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
     height: 100%;
-    width: 25%;
-    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
     border: .2vw solid #fff;
     border-radius: 5px;
     backdrop-filter: blur(3px);
 }
+
+//container for all the username/buttons/posts/followers/following/full-name/bio
+.account-information {
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+    width: 100%;
+}
+//profile picture
+.profile-picture {
+    height: 8vw;
+    width: 8vw;
+    border-radius: 8vw;
+    margin-right: 15px;
+    -webkit-filter: invert(100%);
+}
+//all the text in account-information container
+.account-information-text {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+//layout for edit-profile/view-archive buttons
+.username-buttons {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+//edit-profile/view-archive buttons
+.username-buttons button {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: auto;
+    height: 1.75vw;
+    background: transparent;
+    border: .15vw solid #fff;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: .75vw;
+    color: #fff;
+    font-weight: 500;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+}
+//the number of the user's post/followers/following
+.posts-followers-following {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.15vw;
+}
+//makes followers/following clickable
+.num-followers, .num-following {
+    cursor: pointer;
+    margin-left: 50px;
+}
+//user's full name
+.full-name {
+    font-weight: 500;
+    font-size: .95vw;
+}
+//user's bio
+.name-bio {
+    margin-top: 15px;
+    font-size: .9vw;
+}
+
+//container for tagged-posts
+.scroll-box {
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-right: 6.5px;
+}
+//contains all the tagged-post's
+.tagged-posts {
+    height: auto;
+    width: 101%;
+}
+//individual tagged post
+.tagged-post {
+    margin-right: .43vw;
+}
 //scrollbar
-.upcoming-films ::-webkit-scrollbar {
+.scroll-box::-webkit-scrollbar {
     width: 0.5em;
 }
-.upcoming-films ::-webkit-scrollbar-thumb {
+.scroll-box::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 0.25em;
 }
-//individual rated film
-.upcoming-film {
+
+.post-options {
+    display: flex;
+    flex-direction: row;
+    padding-left: 16.5vw;
+    padding-right: 16.5vw;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: 400;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: .15vw solid #fff;
+}
+
+.posts-button, .tagged-button {
+    display: flex;
+    flex-direction: row;
+}
+.tagged-button.active {
+    border-top: .15vw solid #fff;
+}
+.posts, .tagged {
+    padding-right: 3px;
+    padding-left: 3px;
+    font-size: 1.05vw;
+    color: #fff;
     cursor: pointer;
+}
+.post-options i {
+    color: #fff;
+    margin-top: auto;
+    margin-bottom: auto;
 }

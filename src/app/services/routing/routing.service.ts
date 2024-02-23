@@ -55,8 +55,11 @@ export class RoutingService {
   navigateToSummary() {
     this.router.navigateByUrl(`/summary`);
   }
-  navigateToAccount(username: string) {
-    this.router.navigateByUrl(`/account/${username}`);
+  navigateToAccountsPosts(username: string) {
+    this.router.navigateByUrl(`/account/${username}/posts`);
+  }
+  navigateToAccountsTagged(username: string) {
+    this.router.navigateByUrl(`/account/${username}/tagged`);
   }
   navigateToSettings() {
     this.router.navigateByUrl(`/settings/account-info`);

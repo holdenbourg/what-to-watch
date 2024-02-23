@@ -35,8 +35,6 @@ export class SearchComponent  implements OnInit {
 
 
   ngOnInit() {
-    this.toggleSidebarActive();
-
     //sets the search type/current active search type
     this.type = this.activatedRoute.snapshot.params['type'];
     this.currentActiveSearchType = '.' + this.type;
@@ -60,6 +58,8 @@ export class SearchComponent  implements OnInit {
       this.translatedMovies = [];
       this.translatedMovies = this.apiService.search10Films(this.input, 'series');
     }
+
+    this.sidebarCloseOnResize();
   }
 
   onSearch() {
@@ -86,6 +86,22 @@ export class SearchComponent  implements OnInit {
       this.routingService.navigateToMovieInformation(imdbId);
     } else if(type == 'series') {
       this.routingService.navigateToSeriesInformation(imdbId);
+    }
+  }
+
+  //closes/opens sidebar if screen width goes above/below 1275 pixels
+  sidebarCloseOnResize() {  
+    const themeClass = document.querySelector('.sidebar');
+    const container = document.querySelector('.container');
+    var width = window.innerWidth;
+
+    if(width <= 1275 && themeClass?.classList.contains('active')) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
+    }
+    if(width >= 1275 && !(themeClass?.classList.contains('active'))) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
     }
   }
 
@@ -190,8 +206,11 @@ export class SearchComponent  implements OnInit {
   navigateToSummary() {
     this.routingService.navigateToSummary();
   }
-  navigateToAccount() {
-    this.routingService.navigateToAccount(this.currentUser.username);
+  navigateToAccountsPosts() {
+    this.routingService.navigateToAccountsPosts(this.currentUser.username);
+  }
+  navigateToAccountsTagged() {
+    this.routingService.navigateToAccountsTagged(this.currentUser.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

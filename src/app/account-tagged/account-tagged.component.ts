@@ -1,25 +1,25 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
-import { RoutingService } from '../services/routing/routing.service';
-import { FormsModule } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
-import { ActivatedRoute } from '@angular/router';
-import { RawAccountInformationModel } from '../services/models/database-objects/raw-account-information-model';
 import { CommentModel } from '../services/models/database-objects/comment-model';
 import { FollowerModel } from '../services/models/database-objects/follower-model';
+import { RawAccountInformationModel } from '../services/models/database-objects/raw-account-information-model';
 import { UserPostModel } from '../services/models/database-objects/user-post-model';
+import { RoutingService } from '../services/routing/routing.service';
+import { CommonModule } from '@angular/common';
 import { UserPostTemplateComponent } from '../user-post-template/user-post-template.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-account',
+  selector: 'app-account-tagged',
   standalone: true,
-  imports: [CommonModule, FormsModule, UserPostTemplateComponent],
-  templateUrl: './account.component.html',
-  styleUrl: './account.component.scss'
+  imports: [CommonModule, UserPostTemplateComponent, FormsModule],
+  templateUrl: './account-tagged.component.html',
+  styleUrl: './account-tagged.component.scss'
 })
 
-export class AccountComponent  implements OnInit {
+export class AccountTaggedComponent {
   private routingService: RoutingService = inject(RoutingService);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
@@ -254,6 +254,7 @@ export class AccountComponent  implements OnInit {
   public userRequestedCurrentUserResult: boolean = false;
   public privateUserNotFollowedByCurrentUserResult: boolean = true;
   public publicUserNotFollowedByCurrentUserResult: boolean = true;
+
 
   ngOnInit() {   
     //sets the username from the url parameter
@@ -606,3 +607,4 @@ export class AccountComponent  implements OnInit {
     container?.classList.toggle('active');
   }
 }
+
