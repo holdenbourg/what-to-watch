@@ -10,11 +10,22 @@ import { CommentModel } from '../services/models/database-objects/comment-model'
 import { FollowerModel } from '../services/models/database-objects/follower-model';
 import { UserPostModel } from '../services/models/database-objects/user-post-model';
 import { UserPostTemplateComponent } from '../user-post-template/user-post-template.component';
+import { FollowerTemplateComponent } from '../follower-template/follower-template.component';
+import { FollowingTemplateComponent } from '../following-template/following-template.component';
+import { RequestTemplateComponent } from '../request-template/request-template.component';
+import { FollowerFollowingTemplateComponent } from '../follower-following-template/follower-following-template.component';
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [CommonModule, FormsModule, UserPostTemplateComponent],
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    UserPostTemplateComponent, 
+    FollowerTemplateComponent, 
+    FollowingTemplateComponent, 
+    RequestTemplateComponent, 
+    FollowerFollowingTemplateComponent],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss'
 })
@@ -243,6 +254,10 @@ export class AccountComponent  implements OnInit {
   }
 
   public username: string = '';
+
+  public followers: boolean = true;
+  public following: boolean = false;
+  public requests: boolean = false;
 
   public doesUserExistResult: boolean = true;
   public isCurrentUserResult: boolean = false;

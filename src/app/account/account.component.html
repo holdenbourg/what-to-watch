@@ -65,6 +65,7 @@
             <p>User doesn't exist</p>
         </div>
     </div>
+
     <div class="is-current-user" *ngIf="isCurrentUserResult == true">
         <div class="container">
             <div class="account">
@@ -107,6 +108,85 @@
                         ></app-user-post-template>
                     </div>
                 </div>
+            </div>
+            <div class="follower-info">
+                <div class="follower-following-requests" *ngIf="currentUser.private; else public">
+                    <div class="follower-type">
+                        <i (click)="toggleFollowers()" class="followers">Followers</i>
+                        <i (click)="toggleFollowing()" class="following">Following</i>
+                        <i (click)="toggleRequests()" class="requests">Requests</i>
+                    </div>
+                    <div class="list-follower-type">
+                        <div class="list-followers" *ngIf="followers">
+                            <div class="follower-scroll-box">
+                                <div class="follower-list">
+                                    <app-follower-template
+                                        *ngFor="let follower of currentUser.followers"
+                                        [followerAccount]="follower" 
+                                        (click)="onPostClicked(post.postUrl)" 
+                                        class="user-post"
+                                    ></app-follower-template>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-following" *ngIf="following">
+                            <div class="follower-scroll-box">
+                                <div class="following-list">
+                                    <app-following-template
+                                        *ngFor="let following of currentUser.following"
+                                        [followingAccount]="following" 
+                                        (click)="onPostClicked(post.postUrl)" 
+                                        class="user-post"
+                                    ></app-following-template>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-requests" *ngIf="requests">
+                            <div class="follower-scroll-box">
+                                <div class="request-list">
+                                    <app-request-template
+                                        *ngFor="let post of currentUser.posts"
+                                        [userPost]="post" 
+                                        (click)="onPostClicked(post.postUrl)" 
+                                        class="user-post"
+                                    ></app-request-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #public>
+                    <div class="follower-type">
+                        <i (click)="toggleFollowers()" class="followers">Followers</i>
+                        <i (click)="toggleFollowing()" class="following">Following</i>
+                    </div>
+                    <div class="list-follower-type">
+                        <div class="list-followers" *ngIf="followers">
+                            <div class="follower-scroll-box">
+                                <div class="follower-list">
+                                    <app-follower-template
+                                        *ngFor="let follower of currentUser.followers"
+                                        [followerAccount]="follower" 
+                                        (click)="onPostClicked(post.postUrl)" 
+                                        class="user-post"
+                                    ></app-follower-template>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-following" *ngIf="following">
+                            <div class="follower-scroll-box">
+                                <div class="following-list">
+                                    <app-following-template
+                                        *ngFor="let following of currentUser.following"
+                                        [followingAccount]="following" 
+                                        (click)="onPostClicked(post.postUrl)" 
+                                        class="user-post"
+                                    ></app-following-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
             </div>
         </div>
     </div>

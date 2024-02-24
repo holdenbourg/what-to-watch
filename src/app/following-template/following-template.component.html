@@ -1,0 +1,7 @@
+<div class="following-user">
+    <div class="following-info">
+        <img class="profile-picture" [src]="followingAccount.profilePicture" [attr.alt]="followingAccount.username">
+        <p class="username" (click)="this.routingService.navigateToAccountsPosts(followingAccount.username)">{{ followingAccount.username }}</p>
+    </div>
+    <button type="submit" class="button" (click)="onUnfollowUser(followingAccount.username)">Unfollow</button>
+</div>

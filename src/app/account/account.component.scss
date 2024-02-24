@@ -131,7 +131,7 @@ body {
 //conatiner for the search-bar/populated movies
 .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     position: absolute;
     left: 300px;
     right: 40px;
@@ -140,7 +140,7 @@ body {
     width: auto;
     height: auto;
     transition: .5s;
-    background-color: rgba(255, 0, 0, 0.2);
+    //background-color: rgba(255, 0, 0, 0.2);
 }
 .container.active {
     left: 120px;
@@ -254,19 +254,26 @@ body {
     border-radius: 0.25em;
 }
 
+//container for posts/tagged
 .post-options {
     display: flex;
     flex-direction: row;
-    padding-left: 16.5vw;
-    padding-right: 16.5vw;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding-left: 30%;
+    padding-right: 30%;
     width: 100%;
     font-weight: 400;
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: .15vw solid #fff;
 }
-
+//posts/tagged buttons
+.post-options i {
+    color: #fff;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+//individual button
 .posts-button, .tagged-button {
     display: flex;
     flex-direction: row;
@@ -274,6 +281,7 @@ body {
 .posts-button.active {
     border-top: .15vw solid #fff;
 }
+//posts/tagged button text
 .posts, .tagged {
     padding-right: 3px;
     padding-left: 3px;
@@ -281,8 +289,26 @@ body {
     color: #fff;
     cursor: pointer;
 }
-.post-options i {
+
+//container for the follower/following/requests (if private) info
+.follower-info {
+    border: .2vw solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+}
+//followers/following/requests button text
+.followers, .following, .requests {
+    padding-right: 3px;
+    padding-left: 3px;
+    font-size: 1.05vw;
     color: #fff;
-    margin-top: auto;
-    margin-bottom: auto;
+    cursor: pointer;
+}
+.follower-type {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.follower-type i.active {
+    border-bottom: .15vw solid #fff;
 }

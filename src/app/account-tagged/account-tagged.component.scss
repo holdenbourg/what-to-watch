@@ -140,7 +140,7 @@ body {
     width: auto;
     height: auto;
     transition: .5s;
-    background-color: rgba(255, 0, 0, 0.2);
+    //background-color: rgba(255, 0, 0, 0.2);
 }
 .container.active {
     left: 120px;
@@ -257,16 +257,20 @@ body {
 .post-options {
     display: flex;
     flex-direction: row;
-    padding-left: 16.5vw;
-    padding-right: 16.5vw;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding-left: 30%;
+    padding-right: 30%;
     width: 100%;
     font-weight: 400;
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: .15vw solid #fff;
 }
-
+.post-options i {
+    color: #fff;
+    margin-top: auto;
+    margin-bottom: auto;
+}
 .posts-button, .tagged-button {
     display: flex;
     flex-direction: row;
@@ -280,9 +284,4 @@ body {
     font-size: 1.05vw;
     color: #fff;
     cursor: pointer;
-}
-.post-options i {
-    color: #fff;
-    margin-top: auto;
-    margin-bottom: auto;
 }
