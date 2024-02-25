@@ -3,6 +3,8 @@
         <img class="profile-picture" [src]="requestAccount.profilePicture" [attr.alt]="requestAccount.username">
         <p class="username" (click)="this.routingService.navigateToAccountsPosts(requestAccount.username)">{{ requestAccount.username }}</p>
     </div>
-    <button type="submit" class="button" (click)="onAcceptUser(requestAccount.username)">Accept</button>
-    <button type="submit" class="button" (click)="onDeclineUser(requestAccount.username)">Decline</button>
+    <div class="buttons">
+        <button type="submit" class="accept-button" (click)="onAcceptUser(requestAccount.username)">Accept</button>
+        <button type="submit" class="decline-button" (click)="onDeclineUser(requestAccount.username)">Decline</button>
+    </div>
 </div>

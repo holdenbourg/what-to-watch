@@ -132,6 +132,7 @@ body {
 .container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     position: absolute;
     left: 300px;
     right: 40px;
@@ -146,14 +147,21 @@ body {
     left: 120px;
 }
 
+//does-user-exist text
+.does-user-exist p {
+    color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2vw;
+    font-weight: 500;
+}
+
 //container for account-information and user-posts
 .account {
     display: flex;
     flex-direction: column;
-    width: 55%;
+    width: 60%;
     height: 100%;
-    margin-left: auto;
-    margin-right: auto;
     border: .2vw solid #fff;
     border-radius: 5px;
     backdrop-filter: blur(3px);
@@ -214,10 +222,8 @@ body {
     flex-direction: row;
     font-size: 1.15vw;
 }
-//makes followers/following clickable
-.num-followers, .num-following {
-    cursor: pointer;
-    margin-left: 50px;
+.posts-followers-following p {
+    margin-right: 2.5vw;
 }
 //user's full name
 .full-name {
@@ -295,6 +301,7 @@ body {
     border: .2vw solid #fff;
     border-radius: 5px;
     backdrop-filter: blur(3px);
+    width: 36.5%;
 }
 //followers/following/requests button text
 .followers, .following, .requests {
@@ -304,11 +311,22 @@ body {
     color: #fff;
     cursor: pointer;
 }
+//followers/following/requests buttons
 .follower-type {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 12.5px;
+
 }
 .follower-type i.active {
     border-bottom: .15vw solid #fff;
+}
+
+//no follower/following/requests warning
+.list-follower-type p {
+    color: #fff;
+    font-size: 1.05vw;
+    text-align: center;
 }

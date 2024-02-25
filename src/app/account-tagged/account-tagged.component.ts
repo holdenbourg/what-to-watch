@@ -10,11 +10,22 @@ import { RoutingService } from '../services/routing/routing.service';
 import { CommonModule } from '@angular/common';
 import { UserPostTemplateComponent } from '../user-post-template/user-post-template.component';
 import { FormsModule } from '@angular/forms';
+import { FollowerFollowingTemplateComponent } from '../follower-following-template/follower-following-template.component';
+import { FollowerTemplateComponent } from '../follower-template/follower-template.component';
+import { FollowingTemplateComponent } from '../following-template/following-template.component';
+import { RequestTemplateComponent } from '../request-template/request-template.component';
 
 @Component({
   selector: 'app-account-tagged',
   standalone: true,
-  imports: [CommonModule, UserPostTemplateComponent, FormsModule],
+  imports: [
+    CommonModule, 
+    FormsModule, 
+    UserPostTemplateComponent, 
+    FollowerTemplateComponent, 
+    FollowingTemplateComponent, 
+    RequestTemplateComponent, 
+    FollowerFollowingTemplateComponent],
   templateUrl: './account-tagged.component.html',
   styleUrl: './account-tagged.component.scss'
 })
@@ -243,6 +254,10 @@ export class AccountTaggedComponent {
   }
 
   public username: string = '';
+  
+  public followers: boolean = true;
+  public following: boolean = false;
+  public requests: boolean = false;
 
   public doesUserExistResult: boolean = true;
   public isCurrentUserResult: boolean = false;
@@ -297,8 +312,79 @@ export class AccountTaggedComponent {
       const themeClass = document.querySelector('.sidebar');
       themeClass?.classList.toggle('active'); 
     }
+    
+    //sets active follower-type to followers
+    this.localStorageService.clearInformation('follower-type');
+    this.localStorageService.setInformation('follower-type', 'followers');
   }
 
+  
+  toggleFollowers() {
+    var activeFollowerType = this.localStorageService.getInformation('follower-type');
+
+    if(activeFollowerType != 'followers' && !this.followers) {
+      if(this.following) {
+        this.following = !this.following;
+      } else if (this.requests) {
+        this.requests = !this.requests;
+      }
+
+      this.followers = true;
+
+      this.localStorageService.clearInformation('follower-type');
+      this.localStorageService.setInformation('follower-type', 'followers');
+
+      const followers = document.querySelector('.followers');
+      followers?.classList.toggle('active');
+
+      const themeClass = document.querySelector(`.${activeFollowerType}`);
+      themeClass?.classList.toggle('active');
+    }
+  }
+  toggleFollowing() {
+    var activeFollowerType = this.localStorageService.getInformation('follower-type');
+
+    if(activeFollowerType != 'following' && !this.following) {
+      if(this.followers) {
+        this.followers = !this.followers;
+      } else if (this.requests) {
+        this.requests = !this.requests;
+      }
+
+      this.following = true;
+
+      this.localStorageService.clearInformation('follower-type');
+      this.localStorageService.setInformation('follower-type', 'following');
+
+      const followers = document.querySelector('.following');
+      followers?.classList.toggle('active');
+
+      const themeClass = document.querySelector(`.${activeFollowerType}`);
+      themeClass?.classList.toggle('active');
+    }
+  }
+  toggleRequests() {
+    var activeFollowerType = this.localStorageService.getInformation('follower-type');
+
+    if(activeFollowerType != 'requests' && !this.requests) {
+      if(this.followers) {
+        this.followers = !this.followers;
+      } else if (this.following) {
+        this.following = !this.following;
+      }
+
+      this.requests = true;
+
+      this.localStorageService.clearInformation('follower-type');
+      this.localStorageService.setInformation('follower-type', 'requests');
+
+      const followers = document.querySelector('.requests');
+      followers?.classList.toggle('active');
+
+      const themeClass = document.querySelector(`.${activeFollowerType}`);
+      themeClass?.classList.toggle('active');
+    }
+  }
   togglePosts() {
     this.navigateToAccountsPosts();
   }

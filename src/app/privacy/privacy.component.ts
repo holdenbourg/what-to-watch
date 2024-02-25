@@ -6,6 +6,7 @@ import { LocalStorageService } from '../services/local-storage/local-storage.ser
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 import { BlockedAccountTemplateComponent } from '../blocked-account-template/blocked-account-template.component';
 import { RawAccountInformationModel } from '../services/models/database-objects/raw-account-information-model';
+import { FollowerModel } from '../services/models/database-objects/follower-model';
 
 @Component({
   selector: 'app-privacy',
@@ -59,6 +60,15 @@ export class PrivacyComponent {
     
       let currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
       currentUser.private = false;
+
+      let currentUsersFollowers: FollowerModel[] = currentUser.followers;
+
+      for(let i = 0; i < currentUser.requests.length; i++) {
+        currentUsersFollowers.push(currentUser.requests[i]);
+      }
+
+      currentUser.followers = currentUsersFollowers;
+      currentUser.requests = [];
 
       this.localStorageService.clearInformation('currentUser');
       this.localStorageService.setInformation('currentUser', currentUser);

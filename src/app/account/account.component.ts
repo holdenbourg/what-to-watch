@@ -49,7 +49,9 @@ export class AccountComponent  implements OnInit {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'AshlynnDang'
       ],
       following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal'],
-      requests: [],
+      requests: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'JohnDiggle',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'FelicitySmoak'],
       blocked: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
       posts: [
         `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
@@ -63,7 +65,7 @@ export class AccountComponent  implements OnInit {
         `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
         `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
       ],
-      private: false
+      private: true
     },
     {
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -311,13 +313,10 @@ export class AccountComponent  implements OnInit {
       const themeClass = document.querySelector('.sidebar');
       themeClass?.classList.toggle('active'); 
     }
-  }
 
-  togglePosts() {
-    this.navigateToAccountsPosts();
-  }
-  toggleTaggedIn() {
-    this.navigateToAccountsTagged();
+    //sets active follower-type to followers
+    this.localStorageService.clearInformation('follower-type');
+    this.localStorageService.setInformation('follower-type', 'followers');
   }
 
   //closes/opens sidebar if screen width goes above/below 1275 pixels
@@ -336,6 +335,78 @@ export class AccountComponent  implements OnInit {
     }
   }
 
+  toggleFollowers() {
+    var activeFollowerType = this.localStorageService.getInformation('follower-type');
+
+    if(activeFollowerType != 'followers' && !this.followers) {
+      if(this.following) {
+        this.following = !this.following;
+      } else if (this.requests) {
+        this.requests = !this.requests;
+      }
+
+      this.followers = true;
+
+      this.localStorageService.clearInformation('follower-type');
+      this.localStorageService.setInformation('follower-type', 'followers');
+
+      const followers = document.querySelector('.followers');
+      followers?.classList.toggle('active');
+
+      const themeClass = document.querySelector(`.${activeFollowerType}`);
+      themeClass?.classList.toggle('active');
+    }
+  }
+  toggleFollowing() {
+    var activeFollowerType = this.localStorageService.getInformation('follower-type');
+
+    if(activeFollowerType != 'following' && !this.following) {
+      if(this.followers) {
+        this.followers = !this.followers;
+      } else if (this.requests) {
+        this.requests = !this.requests;
+      }
+
+      this.following = true;
+
+      this.localStorageService.clearInformation('follower-type');
+      this.localStorageService.setInformation('follower-type', 'following');
+
+      const followers = document.querySelector('.following');
+      followers?.classList.toggle('active');
+
+      const themeClass = document.querySelector(`.${activeFollowerType}`);
+      themeClass?.classList.toggle('active');
+    }
+  }
+  toggleRequests() {
+    var activeFollowerType = this.localStorageService.getInformation('follower-type');
+
+    if(activeFollowerType != 'requests' && !this.requests) {
+      if(this.followers) {
+        this.followers = !this.followers;
+      } else if (this.following) {
+        this.following = !this.following;
+      }
+
+      this.requests = true;
+
+      this.localStorageService.clearInformation('follower-type');
+      this.localStorageService.setInformation('follower-type', 'requests');
+
+      const followers = document.querySelector('.requests');
+      followers?.classList.toggle('active');
+
+      const themeClass = document.querySelector(`.${activeFollowerType}`);
+      themeClass?.classList.toggle('active');
+    }
+  }
+  togglePosts() {
+    this.navigateToAccountsPosts();
+  }
+  toggleTaggedIn() {
+    this.navigateToAccountsTagged();
+  }
   onPostClicked(postUrl: string) {
     throw new Error('Method not implemented.');
   }
@@ -345,13 +416,8 @@ export class AccountComponent  implements OnInit {
   onEditProfile() {
     throw new Error('Method not implemented.');
   }
-  showFollowing() {
-    throw new Error('Method not implemented.');
-  }
-  showFollowers() {
-    throw new Error('Method not implemented.');
-  }
 
+  //checks the db to see if a user under that username exists
   doesUserExist() {
     let userExistsInDB: boolean = false;
 

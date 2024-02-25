@@ -6,6 +6,9 @@
     border-radius: 5px;
     background-color: transparent;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 7.5px;
+    margin-right: 7.5px;
+    margin-bottom: 7.5px;
 }
 .request-info{
     display: flex;
@@ -27,9 +30,13 @@
     margin-left: 15px;
     cursor: pointer;
 }
-.button {
-    width: 6vw;
-    height: 2vw;
+.buttons button {
+    width: auto;
+    height: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     background: transparent;
     border: .15vw solid #fff;
     backdrop-filter: blur(10px);
@@ -42,5 +49,15 @@
     font-weight: 500;
     margin-top: auto;
     margin-bottom: auto;
+}
+.buttons {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.accept-button {
+    margin-left: 25px;
+    margin-right: 15px;
+}
+.decline-button {
     margin-right: 15px;
 }
