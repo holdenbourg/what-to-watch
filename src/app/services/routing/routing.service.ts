@@ -61,6 +61,9 @@ export class RoutingService {
   navigateToAccountsTagged(username: string) {
     this.router.navigateByUrl(`/account/${username}/tagged`);
   }
+  navigateToAccountsArchived(username: string) {
+    this.router.navigateByUrl(`/account/${username}/archive`);
+  }
   navigateToSettings() {
     this.router.navigateByUrl(`/settings/account-info`);
   }

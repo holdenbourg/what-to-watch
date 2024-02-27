@@ -51,6 +51,7 @@ export class RequestTemplateComponent {
       blocked: this.currentUser.blocked,
       posts: this.currentUser.posts,
       postsTaggedIn: this.currentUser.postsTaggedIn,
+      archivedPosts: this.currentUser.archivedPosts,
       private: this.currentUser.private
     }
 
@@ -85,6 +86,7 @@ export class RequestTemplateComponent {
       blocked: this.currentUser.blocked,
       posts: this.currentUser.posts,
       postsTaggedIn: this.currentUser.postsTaggedIn,
+      archivedPosts: this.currentUser.archivedPosts,
       private: this.currentUser.private
     }
 

@@ -280,7 +280,7 @@ body {
     margin-bottom: auto;
 }
 //individual button
-.posts-button, .tagged-button {
+.posts-button, .tagged-button, .archive-button {
     display: flex;
     flex-direction: row;
 }
@@ -288,7 +288,7 @@ body {
     border-top: .15vw solid #fff;
 }
 //posts/tagged button text
-.posts, .tagged {
+.posts, .tagged, .archive {
     padding-right: 3px;
     padding-left: 3px;
     font-size: 1.05vw;

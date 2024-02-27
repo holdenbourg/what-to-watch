@@ -61,7 +61,9 @@
     </nav>
 
     <div class="does-user-exist" *ngIf="doesUserExistResult == false">
-    
+        <div class="container">
+            <p>{{ username }} does not exist</p>
+        </div>
     </div>
     <div class="is-current-user" *ngIf="isCurrentUserResult == true">
         <div class="container">
@@ -76,8 +78,8 @@
                         </div>
                         <div class="posts-followers-following">
                             <p class="num-posts">{{ currentUser.posts.length }} posts</p>
-                            <p class="num-followers" (click)="showFollowers()">{{ currentUser.followers.length }} followers</p>
-                            <p class="num-following" (click)="showFollowing()">{{ currentUser.following.length }} following</p>
+                            <p class="num-followers">{{ currentUser.followers.length }} followers</p>
+                            <p class="num-following">{{ currentUser.following.length }} following</p>
                         </div>
                         <div class="name-bio">
                             <p class="full-name">{{ currentUser.firstName }} {{ currentUser.lastName }}</p>
@@ -88,19 +90,24 @@
                 <div class="post-options">
                     <div class="posts-button">
                         <i class='bx bxs-grid'></i>
-                        <i (click)="togglePosts()" class="posts">Posts</i>
+                        <i (click)="navigateToAccountsPosts()" class="posts">Posts</i>
                     </div>
                     <div class="tagged-button active">
                         <i class='bx bx-purchase-tag-alt'></i>
-                        <i (click)="toggleTaggedIn()" class="tagged">Tagged</i>
+                        <i (click)="navigateToAccountsTagged()" class="tagged">Tagged</i>
+                    </div>
+                    <div class="archive-button">
+                        <i class='bx bx-box'></i>
+                        <i (click)="navigateToAccountsArchived()" class="archive">Archive</i>
                     </div>
                 </div>
                 <div class="scroll-box">
                     <div class="tagged-posts">
                         <app-user-post-template
-                            *ngFor="let taggedPost of currentUser.postsTaggedIn"
-                            [userPost]="taggedPost" 
-                            (click)="onPostClicked(taggedPost.postUrl)" 
+                            *ngFor="let tagged of currentUser.postsTaggedIn"
+                            [userPost]="tagged" 
+                            (click)="onPostClicked(tagged.postUrl)" 
+                            (scroll)="fadeOutOnScrollDown()"
                             class="tagged-post"
                         ></app-user-post-template>
                     </div>

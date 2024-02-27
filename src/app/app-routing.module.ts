@@ -16,6 +16,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
 import { SeriesInformationTemplateComponent } from './series-information-template/series-information-template.component';
 import { MovieInformationTemplateComponent } from './movie-information-template/movie-information-template.component';
 import { AccountTaggedComponent } from './account-tagged/account-tagged.component';
+import { AccountArchiveComponent } from './account-archive/account-archive.component';
 
 const routes: Routes = [
   {path: '', component: LoginRegisterComponent},
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path: 'rate-series/:imdbId', component: RateSeriesComponent},
   {path: 'account/:username/posts', component: AccountComponent},
   {path: 'account/:username/tagged', component: AccountTaggedComponent},
+  {path: 'account/:username/archive', component: AccountArchiveComponent},
   {path: 'summary', component: SummaryComponent}
 ];
 

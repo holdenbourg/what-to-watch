@@ -49,9 +49,7 @@ export class AccountComponent  implements OnInit {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'AshlynnDang'
       ],
       following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal'],
-      requests: [
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'JohnDiggle',
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'FelicitySmoak'],
+      requests: [],
       blocked: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson'],
       posts: [
         `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
@@ -65,7 +63,8 @@ export class AccountComponent  implements OnInit {
         `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
         `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
       ],
-      private: true
+      archivedPosts: [],
+      private: false
     },
     {
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -86,6 +85,7 @@ export class AccountComponent  implements OnInit {
         `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson::::HoldenBourg,CalebHaralson,EnriqueLeal::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson;;;;CalebHaralson||||caption's are amazing @HoldenBourg @EnriqueLeal||||HoldenBourg,EnriqueLeal`,
       ],
       postsTaggedIn: [],
+      archivedPosts: [],
       private: false
     },
     {
@@ -107,6 +107,7 @@ export class AccountComponent  implements OnInit {
         `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::LukasGocke,HoldenBourg,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
       ],
       postsTaggedIn: [],
+      archivedPosts: [],
       private: false
     },
     {
@@ -128,6 +129,7 @@ export class AccountComponent  implements OnInit {
         `https://m.media-amazon.com/images/M/MV5BOTNkMzNlNmQtMWRlYS00MTExLWExNjgtODc0MGRjNjE1OGQwXkEyXkFqcGdeQXVyMjAwNzczNTU@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,HoldenBourg::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
       ],
       postsTaggedIn: [],
+      archivedPosts: [],
       private: false
     },
     {
@@ -149,6 +151,7 @@ export class AccountComponent  implements OnInit {
         `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,HoldenBourg::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
       ],
       postsTaggedIn: [],
+      archivedPosts: [],
       private: false
     },
     {
@@ -170,6 +173,7 @@ export class AccountComponent  implements OnInit {
         `https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg::::OliverQueen||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
       ],
       postsTaggedIn: [],
+      archivedPosts: [],
       private: true
     },
     {
@@ -191,6 +195,7 @@ export class AccountComponent  implements OnInit {
         `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg::::TommyMerlin||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
       ],
       postsTaggedIn: [],
+      archivedPosts: [],
       private: false
     },
     {
@@ -212,6 +217,7 @@ export class AccountComponent  implements OnInit {
         `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::JohnDiggle||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
       ],
       postsTaggedIn: [],
+      archivedPosts: [],
       private: true
     },
     {
@@ -233,6 +239,7 @@ export class AccountComponent  implements OnInit {
         `https://m.media-amazon.com/images/M/MV5BMzdlOGU2ODUtODk1YS00M2ZmLWEwNjEtODJhOGE5N2Y4ZTQyXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg::::FelicitySmoak||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
       ],
       postsTaggedIn: [],
+      archivedPosts: [],
       private: false
     }
   ];
@@ -252,11 +259,12 @@ export class AccountComponent  implements OnInit {
     blocked: [],
     posts: [],
     postsTaggedIn: [],
+    archivedPosts: [],
     private: false
   }
 
   public username: string = '';
-
+  
   public followers: boolean = true;
   public following: boolean = false;
   public requests: boolean = false;
@@ -271,6 +279,7 @@ export class AccountComponent  implements OnInit {
   public userRequestedCurrentUserResult: boolean = false;
   public privateUserNotFollowedByCurrentUserResult: boolean = true;
   public publicUserNotFollowedByCurrentUserResult: boolean = true;
+
 
   ngOnInit() {   
     //sets the username from the url parameter
@@ -304,7 +313,7 @@ export class AccountComponent  implements OnInit {
     // console.log('user requested current user: ' + this.userRequestedCurrentUserResult);
     // console.log('private user not followed current user: ' + this.privateUserNotFollowedByCurrentUserResult);
     // console.log('public user not followed current user: ' + this.publicUserNotFollowedByCurrentUserResult);
-    
+
     this.sidebarCloseOnResize();
 
     var width = window.innerWidth;
@@ -313,28 +322,13 @@ export class AccountComponent  implements OnInit {
       const themeClass = document.querySelector('.sidebar');
       themeClass?.classList.toggle('active'); 
     }
-
+    
     //sets active follower-type to followers
     this.localStorageService.clearInformation('follower-type');
     this.localStorageService.setInformation('follower-type', 'followers');
   }
 
-  //closes/opens sidebar if screen width goes above/below 1275 pixels
-  sidebarCloseOnResize() {  
-    const themeClass = document.querySelector('.sidebar');
-    const container = document.querySelector('.container');
-    var width = window.innerWidth;
-
-    if(width <= 1275 && themeClass?.classList.contains('active')) {
-      themeClass?.classList.toggle('active');
-      container?.classList.toggle('active');  
-    }
-    if(width >= 1275 && !(themeClass?.classList.contains('active'))) {
-      themeClass?.classList.toggle('active');
-      container?.classList.toggle('active');  
-    }
-  }
-
+  
   toggleFollowers() {
     var activeFollowerType = this.localStorageService.getInformation('follower-type');
 
@@ -401,23 +395,30 @@ export class AccountComponent  implements OnInit {
       themeClass?.classList.toggle('active');
     }
   }
-  togglePosts() {
-    this.navigateToAccountsPosts();
+
+  //closes/opens sidebar if screen width goes above/below 1275 pixels
+  sidebarCloseOnResize() {  
+    const themeClass = document.querySelector('.sidebar');
+    const container = document.querySelector('.container');
+    var width = window.innerWidth;
+
+    if(width <= 1275 && themeClass?.classList.contains('active')) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
+    }
+    if(width >= 1275 && !(themeClass?.classList.contains('active'))) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
+    }
   }
-  toggleTaggedIn() {
-    this.navigateToAccountsTagged();
-  }
+
   onPostClicked(postUrl: string) {
-    throw new Error('Method not implemented.');
-  }
-  onViewArchive() {
     throw new Error('Method not implemented.');
   }
   onEditProfile() {
     throw new Error('Method not implemented.');
   }
 
-  //checks the db to see if a user under that username exists
   doesUserExist() {
     let userExistsInDB: boolean = false;
 
@@ -579,6 +580,7 @@ export class AccountComponent  implements OnInit {
       blocked: this.convertRawFollowerToFollower(rawUser.blocked),
       posts: this.convertRawPostsToPosts(rawUser.posts),
       postsTaggedIn: this.convertRawPostsToPosts(rawUser.postsTaggedIn),
+      archivedPosts: this.convertRawPostsToPosts(rawUser.archivedPosts),
       private: rawUser.private
     }
 
@@ -682,6 +684,9 @@ export class AccountComponent  implements OnInit {
   }
   navigateToAccountsTagged() {
     this.routingService.navigateToAccountsTagged(this.currentUser.username);
+  }
+  navigateToAccountsArchived() {
+    this.routingService.navigateToAccountsArchived(this.currentUser.username);
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();

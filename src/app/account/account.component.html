@@ -62,7 +62,7 @@
 
     <div class="does-user-exist" *ngIf="doesUserExistResult == false">
         <div class="container">
-            <p>{{ username }}'s account doesn't exist</p>
+            <p>{{ username }} does not exist</p>
         </div>
     </div>
 
@@ -91,11 +91,15 @@
                 <div class="post-options">
                     <div class="posts-button active">
                         <i class='bx bxs-grid'></i>
-                        <i (click)="togglePosts()" class="posts">Posts</i>
+                        <i (click)="navigateToAccountsPosts()" class="posts">Posts</i>
                     </div>
                     <div class="tagged-button">
                         <i class='bx bx-purchase-tag-alt'></i>
-                        <i (click)="toggleTaggedIn()" class="tagged">Tagged</i>
+                        <i (click)="navigateToAccountsTagged()" class="tagged">Tagged</i>
+                    </div>
+                    <div class="archive-button">
+                        <i class='bx bx-box'></i>
+                        <i (click)="navigateToAccountsArchived()" class="archive">Archive</i>
                     </div>
                 </div>
                 <div class="scroll-box">
@@ -104,6 +108,7 @@
                             *ngFor="let post of currentUser.posts"
                             [userPost]="post" 
                             (click)="onPostClicked(post.postUrl)" 
+                            (scroll)="fadeOutOnScrollDown()"
                             class="user-post"
                         ></app-user-post-template>
                     </div>

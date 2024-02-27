@@ -15,5 +15,6 @@ export interface AccountInformationModel {
     blocked: FollowerModel[],
     posts: UserPostModel[],
     postsTaggedIn: UserPostModel[],
+    archivedPosts: UserPostModel[],
     private: boolean
 }
