@@ -1,9 +1,11 @@
 export interface RatedSeriesModel {
+    poster: string,
     title: string,
     releaseDate: string,
-    type: string,
     rated: string,
-    poster: string,
+    seasons: number,
+    episodes: number,
+    genres: string[],
     acting: number,
     visuals: number,
     story: number,

@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
-import { RatedSeriesInformationService } from '../services/film-information/rated-series-information.service';
 import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
@@ -14,7 +13,6 @@ import { LocalStorageService } from '../services/local-storage/local-storage.ser
 })
 export class EditSeriesComponent {
   private routingService: RoutingService = inject(RoutingService);
-  public ratedSeriesInformationService: RatedSeriesInformationService = inject(RatedSeriesInformationService);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
 
   public activeSeries: RatedSeriesModel = this.localStorageService.getInformation('currentEditSeries');

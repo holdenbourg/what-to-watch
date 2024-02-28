@@ -26,7 +26,7 @@
                     <label>Password</label>
                 </div>
                 <div class="remember-forgot">
-                    <label><input type="checkbox"> Remember me</label>
+                    <label><input type="checkbox" (click)="toggleRememberMe()"> Remember me</label>
                     <a (click)="onForgotPassword()">Forgot password?</a>
                 </div>
                 <button type="submit" class="button" (click)="onLogin()">Login</button>
@@ -62,7 +62,7 @@
                     <label>Password</label>
                 </div>
                 <div class="agree-to-terms">
-                    <label><input type="checkbox"> I agree to the terms & conditions</label>
+                    <label><input type="checkbox" (click)="toggleTerms()"> I agree to the terms & conditions</label>
                     <a (click)="onTerms()">terms</a>
                 </div>
                 <button type="submit" class="button" (click)="onSignUp()">Register</button>

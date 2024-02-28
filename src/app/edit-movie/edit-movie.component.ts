@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
-import { RatedMovieInformationService } from '../services/film-information/rated-movie-information.service';
 import { RoutingService } from '../services/routing/routing.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
@@ -14,7 +13,6 @@ import { LocalStorageService } from '../services/local-storage/local-storage.ser
 })
 export class EditMovieComponent {
   private routingService: RoutingService = inject(RoutingService);
-  public ratedMovieInformationService: RatedMovieInformationService = inject(RatedMovieInformationService);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
 
   activeMovie: RatedMovieModel = this.localStorageService.getInformation('currentEditMovie');

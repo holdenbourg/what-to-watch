@@ -11,11 +11,12 @@ import { RatedMovieModel } from '../services/models/rated-films/rated-movie-mode
 export class RatedMovieTemplateComponent {
   @Input()
   ratedFilm: RatedMovieModel = {
-    title: 'blank',
-    releaseDate: 'blank',
-    type: 'blank',
-    rated: 'blank',
-    poster: 'blank',
+    poster: '',
+    title: '',
+    releaseDate: '',
+    rated: '',
+    runTime: 0,
+    genres: [],
     acting: 0,
     visuals: 0,
     story: 0,
@@ -23,7 +24,7 @@ export class RatedMovieTemplateComponent {
     pacing: 0,
     ending: 0,
     rating: 0,
-    username: 'blank',
-    dateRated: 'blank'
+    username: '',
+    dateRated: ''
   }
 }

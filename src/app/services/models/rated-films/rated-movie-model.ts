@@ -1,9 +1,10 @@
 export interface RatedMovieModel {
+    poster: string,
     title: string,
     releaseDate: string,
-    type: string,
     rated: string,
-    poster: string,
+    runTime: number,
+    genres: string[],
     acting: number,
     visuals: number,
     story: number,

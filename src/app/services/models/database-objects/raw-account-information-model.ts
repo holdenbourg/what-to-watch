@@ -11,7 +11,10 @@ export interface RawAccountInformationModel {
     requests: string[],
     blocked: string[],
     posts: string[],
+    postsComments: string[],
     postsTaggedIn: string[],
+    taggedComments: string[],
     archivedPosts: string[],
+    archivedComments: string[],
     private: boolean
 }

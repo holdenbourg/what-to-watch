@@ -4,7 +4,6 @@ import { RoutingService } from '../services/routing/routing.service';
 import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
 import { RatedMovieTemplateComponent } from '../rated-movie-template/rated-movie-template.component';
 import { FormsModule } from '@angular/forms';
-import { RatedMovieInformationService } from '../services/film-information/rated-movie-information.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 
@@ -17,181 +16,18 @@ import { AccountInformationModel } from '../services/models/database-objects/acc
 })
 export class MoviesComponent  implements OnInit {
   private routingService: RoutingService = inject(RoutingService);
-  public ratedMovieInformationService: RatedMovieInformationService = inject(RatedMovieInformationService);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
 
   public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
-
-  public mockRatedMoviesDatabase: RatedMovieModel[] = [
-    {
-      title: 'Avatar',
-      releaseDate: 'December 08, 2009',
-      type: 'Movie',
-      rated: 'PG-13',
-      poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
-      acting: 4,
-      visuals: 5,
-      story: 6,
-      climax: 7,
-      pacing: 8,
-      ending: 9,
-      rating: 101,
-      username: 'HoldenBourg',
-      dateRated: 'December 06, 2024'
-    },
-    {
-      title: 'Avatar 2',
-      releaseDate: 'December 18, 2009',
-      type: 'Movie',
-      rated: 'PG-13',
-      poster: 'https://m.media-amazon.com/images/M/MV5BYjk4ZDAxN2MtYjhlNy00MzJhLWI1MGYtYjY5ZGJlY2YwMzNlXkEyXkFqcGdeQXVyNTc0NjY1ODk@._V1_SX300.jpg',
-      acting: 4,
-      visuals: 5,
-      story: 6,
-      climax: 7,
-      pacing: 8,
-      ending: 9,
-      rating: 102,
-      username: 'Holden',
-      dateRated: 'January 26, 2024'
-    },
-    {
-      title: 'Avatar 3',
-      releaseDate: 'December 18, 2009',
-      type: 'Movie',
-      rated: 'PG-13',
-      poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
-      acting: 4,
-      visuals: 5,
-      story: 6,
-      climax: 7,
-      pacing: 8,
-      ending: 9,
-      rating: 103,
-      username: 'HoldenBourg',
-      dateRated: 'January 26, 2024'
-    },
-    {
-      title: 'Avatar 4',
-      releaseDate: 'December 18, 2009',
-      type: 'Movie',
-      rated: 'PG-13',
-      poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
-      acting: 4,
-      visuals: 5,
-      story: 6,
-      climax: 7,
-      pacing: 8,
-      ending: 9,
-      rating: 104,
-      username: 'Holden',
-      dateRated: 'January 26, 2024'
-    },
-    {
-      title: 'Avatar 5',
-      releaseDate: 'December 18, 2009',
-      type: 'Movie',
-      rated: 'PG-13',
-      poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
-      acting: 4,
-      visuals: 5,
-      story: 6,
-      climax: 7,
-      pacing: 8,
-      ending: 9,
-      rating: 105,
-      username: 'HoldenBourg',
-      dateRated: 'January 26, 2024'
-    },
-    {
-      title: 'Avatar 6',
-      releaseDate: 'December 18, 2009',
-      type: 'Movie',
-      rated: 'PG-13',
-      poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
-      acting: 4,
-      visuals: 5,
-      story: 6,
-      climax: 7,
-      pacing: 8,
-      ending: 9,
-      rating: 106,
-      username: 'Holden',
-      dateRated: 'January 26, 2024'
-    },
-    {
-      title: 'Avatar 7',
-      releaseDate: 'December 18, 2009',
-      type: 'Movie',
-      rated: 'PG-13',
-      poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
-      acting: 4,
-      visuals: 5,
-      story: 6,
-      climax: 7,
-      pacing: 8,
-      ending: 9,
-      rating: 107,
-      username: 'HoldenBourg',
-      dateRated: 'January 26, 2024'
-    },
-    {
-      title: 'Avatar 8',
-      releaseDate: 'December 18, 2009',
-      type: 'Movie',
-      rated: 'PG-13',
-      poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
-      acting: 4,
-      visuals: 5,
-      story: 6,
-      climax: 7,
-      pacing: 8,
-      ending: 9,
-      rating: 108,
-      username: 'Holden',
-      dateRated: 'January 26, 2024'
-    },
-    {
-      title: 'Avatar 9',
-      releaseDate: 'December 18, 2009',
-      type: 'Movie',
-      rated: 'PG-13',
-      poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
-      acting: 4,
-      visuals: 5,
-      story: 6,
-      climax: 7,
-      pacing: 8,
-      ending: 9,
-      rating: 109,
-      username: 'HoldenBourg',
-      dateRated: 'January 26, 2024'
-    },
-    {
-      title: 'Avatar 10',
-      releaseDate: 'December 18, 2009',
-      type: 'Movie',
-      rated: 'PG-13',
-      poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
-      acting: 4,
-      visuals: 5,
-      story: 6,
-      climax: 7,
-      pacing: 8,
-      ending: 9,
-      rating: 1010,
-      username: 'Holden',
-      dateRated: 'January 26, 2024'
-    },
-  ];
   
   public usersRatedMovies: RatedMovieModel[] = [];
   public activeMovie: RatedMovieModel = {
+    poster: '',
     title: '',
     releaseDate: '',
-    type: '',
     rated: '',
-    poster: '',
+    runTime: 0,
+    genres: [],
     acting: 0,
     visuals: 0,
     story: 0,
@@ -233,7 +69,9 @@ export class MoviesComponent  implements OnInit {
 
   //populate users ratings from the series database
   populateUsersRatedMovies() {
-    this.usersRatedMovies = this.mockRatedMoviesDatabase.filter((movie) => movie.username == this.currentUser.username);
+    let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
+
+    this.usersRatedMovies = ratedMovies.filter((movie) => movie.username == this.currentUser.username);
   }
 
   onEdit(input: RatedMovieModel) {

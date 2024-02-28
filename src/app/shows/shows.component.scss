@@ -262,7 +262,7 @@ body {
 //search input/search icon/search prompt
 .input-box {
     margin-left: 20px;
-    margin-right: 29px;
+    margin-right: 20px;
     height: 2.5vw;
     border-bottom: .15vw solid #fff;
     transition: .5s;
@@ -307,24 +307,21 @@ body {
 
 //container for rated films
 .scroll-box {
-    padding-right: 6.5px;
+    margin-right: 6.5px;
     height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 //contains all the rated films
 .rated-films {
-    height: 94%;
     padding-left: 20px;
     padding-right: 6px;
-    overflow: hidden;
-    overflow-y: scroll;
-    scrollbar-color: #fff transparent;
-    transition: .5s;
 }
 //scrollbar
-.rated-films::-webkit-scrollbar {
+.scroll-box::-webkit-scrollbar {
     width: 0.5em;
 }
-.rated-films::-webkit-scrollbar-thumb {
+.scroll-box::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 0.25em;
 }

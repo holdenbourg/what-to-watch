@@ -70,7 +70,7 @@
                         <div class="film-text">
                             <p class="film-title">{{ highestRatedMovie.title }}</p>
                             <p class="film-release">{{ highestRatedMovie.releaseDate }}</p>
-                            <p class="film-type">{{ highestRatedMovie.type }}</p>
+                            <p class="film-runtime">{{ this.fixRuntime(highestRatedMovie.runTime) }}</p>
                             <p class="film-rating">{{ highestRatedMovie.rated }}</p>
                         </div>
                         <div class="rating-rated">
@@ -89,7 +89,8 @@
                         <div class="film-text">
                             <p class="film-title">{{ highestRatedSeries.title }}</p>
                             <p class="film-release">{{ highestRatedSeries.releaseDate }}</p>
-                            <p class="film-type">{{ highestRatedSeries.type }}</p>
+                            <p class="film-seasons">{{ highestRatedSeries.seasons }} Seasons</p>
+                            <p class="film-episodes">{{ highestRatedSeries.episodes }} Episodes</p>
                             <p class="film-rating">{{ highestRatedSeries.rated }}</p>
                         </div>
                         <div class="rating-rated">

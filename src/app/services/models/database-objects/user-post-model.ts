@@ -1,10 +1,9 @@
-import { CommentModel } from "./comment-model";
+import { CaptionModel } from "./caption-model";
 
 export interface UserPostModel {
     postUrl: string,
-    caption: CommentModel,
-    tagged: string[]
+    caption: CaptionModel,
     postDate: string,
     likes: string[],
-    comments: CommentModel[],
+    tagged: string[]
 }

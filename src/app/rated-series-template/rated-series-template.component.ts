@@ -11,11 +11,13 @@ import { RatedSeriesModel } from '../services/models/rated-films/rated-series-mo
 export class RatedSeriesTemplateComponent {
   @Input()
   ratedFilm: RatedSeriesModel = {
-    title: 'blank',
-    releaseDate: 'blank',
-    type: 'blank',
-    rated: 'blank',
-    poster: 'blank',
+    poster: '',
+    title: '',
+    releaseDate: '',
+    rated: '',
+    seasons: 0,
+    episodes: 0,
+    genres: [],
     acting: 0,
     visuals: 0,
     story: 0,
@@ -23,7 +25,7 @@ export class RatedSeriesTemplateComponent {
     pacing: 0,
     ending: 0,
     rating: 0,
-    username: 'blank',
-    dateRated: 'blank'
+    username: '',
+    dateRated: ''
   }
 }

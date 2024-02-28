@@ -60,14 +60,16 @@
         </ul>
     </nav>
     <div class="container">
-        <div class="scroll-box">
+        <div class="upcoming-films-container">
             <p>Upcoming Films</p>
-            <div class="upcoming-films">
-                <div class="upcoming-film" *ngFor="let film of upcomingFilmList; let i = index">
-                    <app-upcoming-film-template
-                        [upcomingFilm]="film"                      
-                        class="upcoming-film-{{i}}"
-                    ></app-upcoming-film-template>
+            <div class="scroll-box">
+                <div class="upcoming-films">
+                    <div class="upcoming-film" *ngFor="let film of upcomingFilmList; let i = index">
+                        <app-upcoming-film-template
+                            [upcomingFilm]="film"                      
+                            class="upcoming-film-{{i}}"
+                        ></app-upcoming-film-template>
+                    </div>
                 </div>
             </div>
         </div>

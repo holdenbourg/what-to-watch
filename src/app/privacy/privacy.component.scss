@@ -189,7 +189,7 @@ body {
 
 //all headers
 .title {
-    font-size: 30px;
+    font-size: 1.56vw;
     font-weight: 600;
     margin-top: 10px;
     margin-left: 25px;
@@ -286,26 +286,32 @@ input {
 .blocked-accounts-title {
     border-bottom: .15vw solid #fff;
     margin-left: 25px;
-    margin-right: 23px;
+    margin-right: 25px;
     color: #fff;
-    font-size: 30px;
+    font-size: 1.56vw;
     font-weight: 600;
     padding-top: 10px;
+    height: 14%;
 }
 //container for rated films
 .scroll-box {
+    margin-right: 10.5px;
     height: 86%;
-}
-.blocked-accounts {
-    height: 100%;
     overflow: hidden;
     overflow-y: scroll;
-    scrollbar-color: #fff transparent;
-    padding-left: 25px;
+}
+//contains all the rated films
+.blocked-accounts {
+    margin-left: 25px;
     padding-right: 6px;
 }
-.rated-film {
-    padding-bottom: 5px;
+//scrollbar
+.scroll-box::-webkit-scrollbar {
+    width: 0.5em;
+}
+.scroll-box::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 0.25em;
 }
 .no-blocked-users-message {
     color: #fff;

@@ -44,8 +44,11 @@ export class BlockedAccountTemplateComponent {
       requests: this.currentUser.requests,
       blocked: newBlockedUsers,
       posts: this.currentUser.posts,
+      postsComments: this.currentUser.postsComments,
       postsTaggedIn: this.currentUser.postsTaggedIn,
+      taggedComments: this.currentUser.taggedComments,
       archivedPosts: this.currentUser.archivedPosts,
+      archivedComments: this.currentUser.archivedComments,
       private: this.currentUser.private
     }
 

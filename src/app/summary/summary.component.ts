@@ -22,11 +22,12 @@ export class SummaryComponent {
   public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
   
   public highestRatedMovie: RatedMovieModel = {
+    poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
     title: 'Avatar',
     releaseDate: 'December 18, 2009',
-    type: 'Movie',
     rated: 'PG-13',
-    poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
+    runTime: 162,
+    genres: ['Action', 'Thriller', 'Fantasy'],
     acting: 10,
     visuals: 10,
     story: 10,
@@ -38,11 +39,13 @@ export class SummaryComponent {
     dateRated: 'January 26, 2024'
   }
   public highestRatedSeries: RatedSeriesModel = {
+    poster: 'https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg',
     title: 'Avatar: The Way of Water',
     releaseDate: 'December 16, 2022',
-    type: 'Movie',
     rated: 'PG-13',
-    poster: 'https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg',
+    seasons: 2, 
+    episodes: 48,
+    genres: ['Action', 'Thriller', 'Fantasy'],
     acting: 10,
     visuals: 10,
     story: 10,
@@ -85,6 +88,14 @@ export class SummaryComponent {
       themeClass?.classList.toggle('active');
       container?.classList.toggle('active');  
     }
+  }
+
+  //turn runtime 150 to 2 HR 30 MIN
+  fixRuntime(runtime: number) {
+    let hours = Math.floor(runtime/60);
+    let minutes = runtime - (hours * 60);
+
+    return `${hours} HR ${minutes} MIN`
   }
   
   navigateToHome() {

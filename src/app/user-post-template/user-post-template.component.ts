@@ -15,12 +15,11 @@ export class UserPostTemplateComponent {
     postUrl: '',
     caption: {
       username: '',
-      comment: '',
+      caption: '',
       tagged: []
     },
     tagged: [],
     postDate: '',
     likes: [],
-    comments: []
   }
 }
