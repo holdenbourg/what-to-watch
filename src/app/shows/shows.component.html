@@ -67,6 +67,8 @@
                 <div class="film-text">
                     <p class="title">{{ activeSeries.title }}</p>
                     <p class="release">{{ fixReleaseDay(activeSeries.releaseDate) }}</p>
+                    <p class="seasons">{{ activeSeries.seasons }} Seasons</p>
+                    <p class="episodes">{{ activeSeries.episodes }} Episodes</p>
                     <p class="film-rating">{{ activeSeries.rated }}</p>
                 </div>
             </div>
@@ -92,8 +94,9 @@
                     </div>
                 </div>
                 <div class="date-rated">
-                    <button type="submit" class="button" (click)="onEdit(activeSeries)">Edit Rating</button>
                     <p>Rated: {{ fixReleaseDay(activeSeries.dateRated) }}</p>
+                    <button type="submit" class="button" (click)="onEdit(activeSeries)">Edit Rating</button>
+                    <button type="submit" class="button" (click)="onDelete(activeSeries)">Delete Rating</button>
                 </div>
             </div>
         </div>

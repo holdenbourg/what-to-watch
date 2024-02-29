@@ -283,9 +283,14 @@ body {
 .posts-button, .tagged-button, .archive-button {
     display: flex;
     flex-direction: row;
+    padding-right: 7.5px;
+    padding-left: 7.5px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 .posts-button.active {
-    border-top: .15vw solid #fff;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 3px;
 }
 //posts/tagged button text
 .posts, .tagged, .archive {
@@ -305,8 +310,10 @@ body {
 }
 //followers/following/requests button text
 .followers, .following, .requests {
-    padding-right: 3px;
-    padding-left: 3px;
+    padding-right: 9px;
+    padding-left: 9px;
+    padding-top: 2px;
+    padding-bottom: 2px;
     font-size: 1.05vw;
     color: #fff;
     cursor: pointer;
@@ -321,7 +328,8 @@ body {
 
 }
 .follower-type i.active {
-    border-bottom: .15vw solid #fff;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 3px;
 }
 
 //no follower/following/requests warning

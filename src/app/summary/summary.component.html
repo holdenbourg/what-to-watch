@@ -106,9 +106,10 @@
             <div class="stat-container">
                 <p class="title">Rated Movie Statistics</p>
                 <div class="film-stats">
-                    <p class="stat">Number of Movies Rated: {{ ratedMovieStatistics.numFilmsRated }}</p>
+                    <p class="stat">Movies Rated: {{ ratedMovieStatistics.numFilmsRated }}</p>
+                    <p class="stat">Minutes Watched: {{ fixRuntime(ratedMovieStatistics.numMinutesWatched) }}</p>
                     <p class="stat">Average Movie Rating: {{ ratedMovieStatistics.averageFilmRating }}</p>
-                    <p class="stat">Most Watched Movie Rating: {{ ratedMovieStatistics.favoriteFilmRating }}</p>
+                    <p class="stat">Most Watched Rating: {{ ratedMovieStatistics.favoriteFilmRating }}</p>
                     <p class="stat">Most Watched Genre: {{ ratedMovieStatistics.favoriteGenre }}</p>
                     <p class="stat"></p>
                 </div>
@@ -117,9 +118,10 @@
             <div class="stat-container">
                 <p class="title">Rated Series Statistics</p>
                 <div class="film-stats">
-                    <p class="stat">Number of Series Rated: {{ ratedSeriesStatistics.numFilmsRated }}</p>
+                    <p class="stat">Series Rated: {{ ratedSeriesStatistics.numFilmsRated }}</p>
+                    <p class="stat">Episodes Watched: {{ ratedSeriesStatistics.numEpisodesWatched }}</p>
                     <p class="stat">Average Series Rating: {{ ratedSeriesStatistics.averageFilmRating }}</p>
-                    <p class="stat">Most Watched Series Rating: {{ ratedSeriesStatistics.favoriteFilmRating }}</p>
+                    <p class="stat">Most Watched Rating: {{ ratedSeriesStatistics.favoriteFilmRating }}</p>
                     <p class="stat">Most Watched Genre: {{ ratedSeriesStatistics.favoriteGenre }}</p>
                     <p class="stat"></p>
                 </div>

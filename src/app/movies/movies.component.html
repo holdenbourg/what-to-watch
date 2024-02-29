@@ -67,6 +67,7 @@
                 <div class="film-text">
                     <p class="title">{{ activeMovie.title }}</p>
                     <p class="release">{{ fixReleaseDay(activeMovie.releaseDate) }}</p>
+                    <p class="runtime">{{ fixRuntime(activeMovie.runTime) }}</p>
                     <p class="film-rating">{{ activeMovie.rated }}</p>
                 </div>
             </div>
@@ -92,8 +93,9 @@
                     </div>
                 </div>
                 <div class="date-rated">
-                    <button type="submit" class="button" (click)="onEdit(activeMovie)">Edit Rating</button>
                     <p>Rated: {{ fixReleaseDay(activeMovie.dateRated) }}</p>
+                    <button type="submit" class="button" (click)="onEdit(activeMovie)">Edit Rating</button>
+                    <button type="submit" class="button" (click)="onDelete(activeMovie)">Delete Rating</button>
                 </div>
             </div>
         </div>
@@ -101,7 +103,7 @@
         <div class="rated-films-container">
             <div class="seach-bar">
                 <div class="input-box">
-                    <input type="text" [(ngModel)]="searchInput" name="searchInput" (keyup.enter)="onSearch()" required>
+                    <input type="text" [(ngModel)]="searchInput" name="searchInput" required>
                     <label>What are you looking for?</label>
                 </div>
             </div>

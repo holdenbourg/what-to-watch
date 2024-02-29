@@ -29,6 +29,27 @@ export class EditMovieComponent {
 
   onEditRating() {
     //post updated rating to the database
+    let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
+    let returnRatedMovies: RatedMovieModel[] = [];
+
+    for(let i = 0; i < ratedMovies.length; i++) {
+      if(ratedMovies[i].title === this.activeMovie.title && ratedMovies[i].username === this.activeMovie.username) {
+        ratedMovies[i].acting = this.acting;
+        ratedMovies[i].visuals = this.visuals;
+        ratedMovies[i].story = this.story;
+        ratedMovies[i].pacing = this.pacing;
+        ratedMovies[i].climax = this.climax;
+        ratedMovies[i].ending = this.ending;
+        ratedMovies[i].rating = this.ratingAverage;
+
+        returnRatedMovies.push(ratedMovies[i]);
+      } else {
+        returnRatedMovies.push(ratedMovies[i]);
+      }
+    }
+
+    this.localStorageService.clearInformation('ratedMovies');
+    this.localStorageService.setInformation('ratedMovies', returnRatedMovies);
 
     //then route back to movies
     this.localStorageService.clearInformation('currentEditMovie');
@@ -83,6 +104,14 @@ export class EditMovieComponent {
   onDownEnding() {
     if(this.ending != undefined && this.ending != 1) this.ending = this.ending - 1;
     this.ratingAverage = this.getRatingsAverage();
+  }
+
+  //turn runtime 150 to 2 HR 30 MIN
+  fixRuntime(runtime: number) {
+    let hours = Math.floor(runtime/60);
+    let minutes = runtime - (hours * 60);
+
+    return `${hours} HR ${minutes} MIN`
   }
 
   //gets the average of the ratings

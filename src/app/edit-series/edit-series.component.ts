@@ -29,6 +29,27 @@ export class EditSeriesComponent {
 
   onEditRating() {
     //post updated rating to the database
+    let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
+    let returnRatedSeries: RatedSeriesModel[] = [];
+
+    for(let i = 0; i < ratedSeries.length; i++) {
+      if(ratedSeries[i].title === this.activeSeries.title && ratedSeries[i].username === this.activeSeries.username) {
+        ratedSeries[i].acting = this.acting;
+        ratedSeries[i].visuals = this.visuals;
+        ratedSeries[i].story = this.story;
+        ratedSeries[i].pacing = this.pacing;
+        ratedSeries[i].length = this.length;
+        ratedSeries[i].ending = this.ending;
+        ratedSeries[i].rating = this.ratingAverage;
+
+        returnRatedSeries.push(ratedSeries[i]);
+      } else {
+        returnRatedSeries.push(ratedSeries[i]);
+      }
+    }
+
+    this.localStorageService.clearInformation('ratedSeries');
+    this.localStorageService.setInformation('ratedSeries', returnRatedSeries);
 
     //then route back to shows
     this.localStorageService.clearInformation('currentEditSeries');

@@ -3,9 +3,11 @@ import { RoutingService } from '../services/routing/routing.service';
 import { ApiService } from '../services/api/api.service';
 import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
 import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
-import { RatedFilmStatisticsModel } from '../services/models/rated-films-statistics-model';
+import { RatedMovieStatisticsModel } from '../services/models/rated-movie-statistics-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
+import { RatedSeriesStatisticsModel } from '../services/models/rated-series-statistics-model';
+import { RatedMovieTemplateComponent } from '../rated-movie-template/rated-movie-template.component';
 
 @Component({
   selector: 'app-summary',
@@ -21,54 +23,11 @@ export class SummaryComponent {
 
   public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
   
-  public highestRatedMovie: RatedMovieModel = {
-    poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
-    title: 'Avatar',
-    releaseDate: 'December 18, 2009',
-    rated: 'PG-13',
-    runTime: 162,
-    genres: ['Action', 'Thriller', 'Fantasy'],
-    acting: 10,
-    visuals: 10,
-    story: 10,
-    pacing: 10,
-    climax: 10,
-    ending: 10,
-    rating: 10,
-    username: 'Holden',
-    dateRated: 'January 26, 2024'
-  }
-  public highestRatedSeries: RatedSeriesModel = {
-    poster: 'https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg',
-    title: 'Avatar: The Way of Water',
-    releaseDate: 'December 16, 2022',
-    rated: 'PG-13',
-    seasons: 2, 
-    episodes: 48,
-    genres: ['Action', 'Thriller', 'Fantasy'],
-    acting: 10,
-    visuals: 10,
-    story: 10,
-    pacing: 10,
-    length: 10,
-    ending: 10,
-    rating: 10,
-    username: 'Holden',
-    dateRated: 'January 26, 2024'
-  }
+  public highestRatedMovie?: RatedMovieModel = this.findBestRatedMovie();
+  public highestRatedSeries?: RatedSeriesModel = this.findBestRatedSeries();
 
-  public ratedMovieStatistics: RatedFilmStatisticsModel = {
-    numFilmsRated: 65,
-    averageFilmRating: 8.7,
-    favoriteFilmRating: 'PG-13',
-    favoriteGenre: 'Fantasy'
-  }
-  public ratedSeriesStatistics: RatedFilmStatisticsModel = {
-    numFilmsRated: 34,
-    averageFilmRating: 8.9,
-    favoriteFilmRating: 'TV-MA',
-    favoriteGenre: 'Action'
-  }
+  public ratedMovieStatistics?: RatedMovieStatisticsModel = this.findRatedMovieStatistics();
+  public ratedSeriesStatistics?: RatedSeriesStatisticsModel = this.findRatedSeriesStatistics();
   
   ngOnInit() {
     this.sidebarCloseOnResize();
@@ -90,6 +49,373 @@ export class SummaryComponent {
     }
   }
 
+  findBestRatedMovie() {
+    let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
+    let filteredMovies: RatedMovieModel[] = ratedMovies.filter((movie) => movie.username == this.currentUser.username);
+
+    if(filteredMovies.length > 0) {
+      let currentHighestMovie: RatedMovieModel = filteredMovies[0];
+      let currentHighest: number = filteredMovies[0].rating;
+  
+      for(let i = 0; i < filteredMovies.length; i++) {
+        if(filteredMovies[i].rating >= currentHighest) {
+          currentHighest = filteredMovies[i].rating;
+  
+          currentHighestMovie = filteredMovies[i];
+        }
+      }
+  
+      return currentHighestMovie;
+    } else {
+      return;
+    }
+  }
+  findBestRatedSeries() {
+    let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
+    let filteredSeries: RatedSeriesModel[] = ratedSeries.filter((series) => series.username == this.currentUser.username);
+
+    if(filteredSeries.length > 0) {
+      let currentHighestSeries: RatedSeriesModel = filteredSeries[0];
+      let currentHighest: number = filteredSeries[0].rating;
+  
+      for(let i = 0; i < filteredSeries.length; i++) {
+        if(filteredSeries[i].rating >= currentHighest) {
+          currentHighest = filteredSeries[i].rating;
+  
+          currentHighestSeries = filteredSeries[i];
+        }
+      }
+  
+      return currentHighestSeries;
+    } else {
+      return;
+    }
+  }
+  findRatedMovieStatistics() {
+    let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
+    let filteredMovies: RatedMovieModel[] = ratedMovies.filter((movie) => movie.username == this.currentUser.username);
+
+    if(filteredMovies.length > 0) {
+      let ratedMovieStatistics: RatedMovieStatisticsModel = {
+        numFilmsRated: filteredMovies.length,
+        numMinutesWatched: 0,
+        averageFilmRating: 0,
+        favoriteFilmRating: '',
+        favoriteGenre: '',
+      };
+
+      let averageFilmRating: number = 0;
+
+      //ratings counter
+      let numG: number = 0;
+      let numPG: number = 0;
+      let numPG13: number = 0;
+      let numR: number = 0;
+      let numNC17: number = 0;
+
+      //genres counter
+      let numRomance: number = 0;
+      let numDrama: number = 0;
+      let numAction: number = 0;
+      let numComedy: number = 0;
+      let numFantasy: number = 0;
+      let numAdventure: number = 0;
+      let numAnimation: number = 0;
+      let numSciFi: number = 0;
+      let numCrime: number = 0;
+      let numHorror: number = 0;
+      let numMystery: number = 0;
+      let numThriller: number = 0;
+      let numDocumentary: number = 0;
+      let numHistory: number = 0;
+      let numSport: number = 0;
+      let numFamily: number = 0;
+      let numShort: number = 0;
+      let numBiography: number = 0;
+      
+      for(let i = 0; i < filteredMovies.length; i++) {
+        ratedMovieStatistics.numMinutesWatched = ratedMovieStatistics.numMinutesWatched + filteredMovies[i].runTime;
+        averageFilmRating = averageFilmRating + filteredMovies[i].rating;
+
+        if(filteredMovies[i].rated == 'G') {
+          numG++;
+        } else if(filteredMovies[i].rated == 'PG') {
+          numPG++;
+        } else if(filteredMovies[i].rated == 'PG-13') {
+          numPG13++;
+        } else if(filteredMovies[i].rated == 'R') {
+          numR++;
+        } else if(filteredMovies[i].rated == 'NC-17') {
+          numNC17++;
+        }
+
+        filteredMovies[i].genres.forEach((genre) => {
+          if(genre == 'Romance') {
+            numRomance++;
+          } else if(genre == 'Drama') {
+            numDrama++;
+          } else if(genre == 'Action') {
+            numAction++;
+          } else if(genre == 'Comedy') {
+            numComedy++;
+          } else if(genre == 'Fantasy') {
+            numFantasy++;
+          } else if(genre == 'Adventure') {
+            numAdventure++;
+          } else if(genre == 'Animation') {
+            numAnimation++;
+          } else if(genre == 'Sci-Fi') {
+            numSciFi++;
+          } else if(genre == 'Crime') {
+            numCrime++;
+          } else if(genre == 'Horror') {
+            numHorror++;
+          } else if(genre == 'Mystery') {
+            numMystery++;
+          } else if(genre == 'Thriller') {
+            numThriller++;
+          } else if(genre == 'Documentary') {
+            numDocumentary++;
+          } else if(genre == 'History') {
+            numHistory++;
+          } else if(genre == 'Sport') {
+            numSport++;
+          } else if(genre == 'Family') {
+            numFamily++;
+          } else if(genre == 'Short') {
+            numShort++;
+          } else if(genre == 'Biography') {
+            numBiography++;
+          }
+        });
+      }
+
+      let ratingsHashmap = new Map<string, number>();
+      ratingsHashmap.set('G', numG);
+      ratingsHashmap.set('PG', numPG);
+      ratingsHashmap.set('PG-13', numPG13);
+      ratingsHashmap.set('R', numR);
+      ratingsHashmap.set('NC-17', numNC17);
+
+      let currentHighestRating: number = 0;
+      let currentHighestRatingString: string = '';
+
+      ratingsHashmap.forEach((value: number, key: string) => {
+        if(value > currentHighestRating) {
+          currentHighestRating = value;
+          currentHighestRatingString = key;
+        }
+      });
+
+      let genresHashmap = new Map<string, number>();
+      genresHashmap.set('Romance', numRomance);
+      genresHashmap.set('Drama', numDrama);
+      genresHashmap.set('Action', numAction);
+      genresHashmap.set('Comedy', numComedy);
+      genresHashmap.set('Fantasy', numFantasy);
+      genresHashmap.set('Adventure', numAdventure);
+      genresHashmap.set('Animation', numAnimation);
+      genresHashmap.set('Sci-Fi', numSciFi);
+      genresHashmap.set('Crime', numCrime);
+      genresHashmap.set('Horror', numHorror);
+      genresHashmap.set('Mystery', numMystery);
+      genresHashmap.set('Thriller', numThriller);
+      genresHashmap.set('Documentary', numDocumentary);
+      genresHashmap.set('History', numHistory);
+      genresHashmap.set('Sport', numSport);
+      genresHashmap.set('Family', numFamily);
+      genresHashmap.set('Sport', numShort);
+      genresHashmap.set('Biography', numBiography);
+
+      let currentHighestGenre: number = 0;
+      let currentHighestGenreString: string = '';
+
+      genresHashmap.forEach((value: number, key: string) => {
+        if(value > currentHighestGenre) {
+          currentHighestGenre = value;
+          currentHighestGenreString = key;
+        }
+      });
+
+      ratedMovieStatistics.averageFilmRating = Number((averageFilmRating / filteredMovies.length).toFixed(1));
+      ratedMovieStatistics.favoriteFilmRating = currentHighestRatingString;
+      ratedMovieStatistics.favoriteGenre = currentHighestGenreString;
+
+      console.log(genresHashmap);
+  
+      return ratedMovieStatistics;
+    } else {
+      return;
+    }
+  }
+  findRatedSeriesStatistics() {
+    let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
+    let filteredSeries: RatedSeriesModel[] = ratedSeries.filter((series) => series.username == this.currentUser.username);
+
+    console.log(filteredSeries);
+
+    if(filteredSeries.length > 0) {
+      let ratedSeriestatistics: RatedSeriesStatisticsModel = {
+        numFilmsRated: filteredSeries.length,
+        numEpisodesWatched: 0,
+        averageFilmRating: 0,
+        favoriteFilmRating: '',
+        favoriteGenre: '',
+      };
+
+      let averageFilmRating: number = 0;
+
+      //ratings counter
+      let numTVY: number = 0;
+      let numTVY7: number = 0;
+      let numTVY7FV: number = 0;
+      let numTVG: number = 0;
+      let numTVPG: number = 0;
+      let numTV14: number = 0;
+      let numTVMA: number = 0;
+
+      //genres counter
+      let numRomance: number = 0;
+      let numDrama: number = 0;
+      let numAction: number = 0;
+      let numComedy: number = 0;
+      let numFantasy: number = 0;
+      let numAdventure: number = 0;
+      let numAnimation: number = 0;
+      let numSciFi: number = 0;
+      let numCrime: number = 0;
+      let numHorror: number = 0;
+      let numMystery: number = 0;
+      let numThriller: number = 0;
+      let numDocumentary: number = 0;
+      let numHistory: number = 0;
+      let numSport: number = 0;
+      let numFamily: number = 0;
+      let numShort: number = 0;
+      let numBiography: number = 0;
+      
+      for(let i = 0; i < filteredSeries.length; i++) {
+        ratedSeriestatistics.numEpisodesWatched = ratedSeriestatistics.numEpisodesWatched + filteredSeries[i].episodes;
+        console.log(filteredSeries[i].episodes);
+        averageFilmRating = averageFilmRating + filteredSeries[i].rating;
+
+        if(filteredSeries[i].rated == 'TV-Y') {
+          numTVY++;
+        } else if(filteredSeries[i].rated == 'TV-Y7') {
+          numTVY7++;
+        } else if(filteredSeries[i].rated == 'TV-Y7-FV') {
+          numTVY7FV++;
+        } else if(filteredSeries[i].rated == 'TV-G') {
+          numTVG++;
+        } else if(filteredSeries[i].rated == 'TV-PG') {
+          numTVPG++;
+        } else if(filteredSeries[i].rated == 'TV-14') {
+          numTV14++;
+        } else if(filteredSeries[i].rated == 'TV-MA') {
+          numTVMA++;
+        }
+
+        filteredSeries[i].genres.forEach((genre) => {
+          if(genre == 'Romance') {
+            numRomance++;
+          } else if(genre == 'Drama') {
+            numDrama++;
+          } else if(genre == 'Action') {
+            numAction++;
+          } else if(genre == 'Comedy') {
+            numComedy++;
+          } else if(genre == 'Fantasy') {
+            numFantasy++;
+          } else if(genre == 'Adventure') {
+            numAdventure++;
+          } else if(genre == 'Animation') {
+            numAnimation++;
+          } else if(genre == 'Sci-Fi') {
+            numSciFi++;
+          } else if(genre == 'Crime') {
+            numCrime++;
+          } else if(genre == 'Horror') {
+            numHorror++;
+          } else if(genre == 'Mystery') {
+            numMystery++;
+          } else if(genre == 'Thriller') {
+            numThriller++;
+          } else if(genre == 'Documentary') {
+            numDocumentary++;
+          } else if(genre == 'History') {
+            numHistory++;
+          } else if(genre == 'Sport') {
+            numSport++;
+          } else if(genre == 'Family') {
+            numFamily++;
+          } else if(genre == 'Short') {
+            numShort++;
+          } else if(genre == 'Biography') {
+            numBiography++;
+          }
+        });
+      }
+
+      let ratingsHashmap = new Map<string, number>();
+      ratingsHashmap.set('TV-Y', numTVY);
+      ratingsHashmap.set('TV-Y7', numTVY7);
+      ratingsHashmap.set('TV-Y7-FV', numTVY7FV);
+      ratingsHashmap.set('TV-G', numTVG);
+      ratingsHashmap.set('TV-PG', numTVPG);
+      ratingsHashmap.set('TV-14', numTV14);
+      ratingsHashmap.set('TV-MA', numTVMA);
+
+      let currentHighestRating: number = 0;
+      let currentHighestRatingString: string = '';
+
+      ratingsHashmap.forEach((value: number, key: string) => {
+        if(value > currentHighestRating) {
+          currentHighestRating = value;
+          currentHighestRatingString = key;
+        }
+      });
+
+      console.log(ratingsHashmap);
+
+      let genresHashmap = new Map<string, number>();
+      genresHashmap.set('Romance', numRomance);
+      genresHashmap.set('Drama', numDrama);
+      genresHashmap.set('Action', numAction);
+      genresHashmap.set('Comedy', numComedy);
+      genresHashmap.set('Fantasy', numFantasy);
+      genresHashmap.set('Adventure', numAdventure);
+      genresHashmap.set('Animation', numAnimation);
+      genresHashmap.set('Sci-Fi', numSciFi);
+      genresHashmap.set('Crime', numCrime);
+      genresHashmap.set('Horror', numHorror);
+      genresHashmap.set('Mystery', numMystery);
+      genresHashmap.set('Thriller', numThriller);
+      genresHashmap.set('Documentary', numDocumentary);
+      genresHashmap.set('History', numHistory);
+      genresHashmap.set('Sport', numSport);
+      genresHashmap.set('Family', numFamily);
+      genresHashmap.set('Sport', numShort);
+      genresHashmap.set('Biography', numBiography);
+
+      let currentHighestGenre: number = 0;
+      let currentHighestGenreString: string = '';
+
+      genresHashmap.forEach((value: number, key: string) => {
+        if(value > currentHighestGenre) {
+          currentHighestGenre = value;
+          currentHighestGenreString = key;
+        }
+      });
+
+      ratedSeriestatistics.averageFilmRating = Number((averageFilmRating / filteredSeries.length).toFixed(1));
+      ratedSeriestatistics.favoriteFilmRating = currentHighestRatingString;
+      ratedSeriestatistics.favoriteGenre = currentHighestGenreString;
+  
+      return ratedSeriestatistics;
+    } else {
+      return;
+    }
+  }
   //turn runtime 150 to 2 HR 30 MIN
   fixRuntime(runtime: number) {
     let hours = Math.floor(runtime/60);

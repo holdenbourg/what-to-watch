@@ -195,22 +195,25 @@ body {
 }
 //movies/series/users
 .search-bar i {
-    margin-right: 10px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
     font-size: 1.2em;
     color: #fff;
-    line-height: 57px;
+    height: 1.5em;
+    margin-top: auto;
+    margin-bottom: auto;
     cursor: pointer;
-    height: 40px;
-    border-bottom: .15vw solid transparent;
 }
 .search-bar i.active {
-    margin-right: 10px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
     font-size: 1.2em;
+    height: 1.5em;
+    margin-top: auto;
+    margin-bottom: auto;
     color: #fff;
-    line-height: 57px;
     cursor: pointer;
-    height: 40px;
-    border-bottom: .15vw solid #fff;
+    background: rgba(255, 255, 255, .2);
     border-radius: 3px;
 }
 

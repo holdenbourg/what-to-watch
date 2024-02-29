@@ -76,6 +76,22 @@ export class ShowsComponent  implements OnInit {
     this.usersRatedSeries = ratedSeries.filter((series) => series.username == this.currentUser.username);
   }
 
+  onDelete(input: RatedSeriesModel) {
+    //delete rating from database
+    let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
+    let returnRatedSeries: RatedSeriesModel[] = [];
+
+    for(let i = 0; i < ratedSeries.length; i++) {
+      if(!(ratedSeries[i].title === input.title && ratedSeries[i].username === input.username)) {
+        returnRatedSeries.push(ratedSeries[i]);
+      }
+    }
+
+    this.localStorageService.clearInformation('ratedSeries');
+    this.localStorageService.setInformation('ratedSeries', returnRatedSeries);
+
+    window.location.reload();
+  }
   onEdit(input: RatedSeriesModel) {
     this.localStorageService.clearInformation('currentEditSeries');
     this.localStorageService.setInformation('currentEditSeries', input);

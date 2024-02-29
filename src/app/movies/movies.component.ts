@@ -48,6 +48,8 @@ export class MoviesComponent  implements OnInit {
       this.activeMovie = this.usersRatedMovies.at(0)!;
     }
 
+    this.localStorageService.clearInformation('currentEditMovie');
+
     this.sidebarCloseOnResize();
   }
 
@@ -67,13 +69,29 @@ export class MoviesComponent  implements OnInit {
     }
   }
 
-  //populate users ratings from the series database
+  //populate users ratings from the movies database
   populateUsersRatedMovies() {
     let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
 
     this.usersRatedMovies = ratedMovies.filter((movie) => movie.username == this.currentUser.username);
   }
 
+  onDelete(input: RatedMovieModel) {
+    //delete rating from database
+    let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
+    let returnRatedMovies: RatedMovieModel[] = [];
+
+    for(let i = 0; i < ratedMovies.length; i++) {
+      if(!(ratedMovies[i].title === input.title && ratedMovies[i].username === input.username)) {
+        returnRatedMovies.push(ratedMovies[i]);
+      }
+    }
+
+    this.localStorageService.clearInformation('ratedMovies');
+    this.localStorageService.setInformation('ratedMovies', returnRatedMovies);
+
+    window.location.reload();
+  }
   onEdit(input: RatedMovieModel) {
     this.localStorageService.clearInformation('currentEditMovie');
     this.localStorageService.setInformation('currentEditMovie', input);
@@ -164,6 +182,14 @@ export class MoviesComponent  implements OnInit {
   //turns the title to lowercase for searchbar
   toLowerCase(input: string) {
     return input.toLowerCase(); 
+  }
+  
+  //turn runtime 150 to 2 HR 30 MIN
+  fixRuntime(runtime: number) {
+    let hours = Math.floor(runtime/60);
+    let minutes = runtime - (hours * 60);
+
+    return `${hours} HR ${minutes} MIN`
   }
 
   navigateToHome() {
