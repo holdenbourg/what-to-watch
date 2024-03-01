@@ -65,17 +65,17 @@
             <div class="favorite-container">
                 <p class="title">Favorite Movie</p>
                 <div class="favorite-film">
-                    <img class="film-poster" [src]="highestRatedMovie.poster" [attr.alt]="highestRatedMovie.title">
+                    <img class="film-poster" [src]="highestRatedMovie?.poster" [attr.alt]="highestRatedMovie?.title">
                     <div class="film-information">
                         <div class="film-text">
-                            <p class="film-title">{{ highestRatedMovie.title }}</p>
-                            <p class="film-release">{{ highestRatedMovie.releaseDate }}</p>
-                            <p class="film-runtime">{{ this.fixRuntime(highestRatedMovie.runTime) }}</p>
-                            <p class="film-rating">{{ highestRatedMovie.rated }}</p>
+                            <p class="film-title">{{ highestRatedMovie?.title }}</p>
+                            <p class="film-release">{{ highestRatedMovie?.releaseDate }}</p>
+                            <p class="film-runtime">{{ this.fixRuntime(highestRatedMovie!.runTime) }}</p>
+                            <p class="film-rating">{{ highestRatedMovie?.rated }}</p>
                         </div>
                         <div class="rating-rated">
-                            <p class="rating">Rating: {{ highestRatedMovie.rating }}</p>
-                            <p class="date-rated">Rated: {{ highestRatedMovie.dateRated }}</p>    
+                            <p class="rating">Rating: {{ highestRatedMovie?.rating }}</p>
+                            <p class="date-rated">Rated: {{ highestRatedMovie?.dateRated }}</p>    
                         </div>
                     </div>
                 </div>
@@ -84,18 +84,18 @@
             <div class="favorite-container">
                 <p class="title">Favorite Series</p>
                 <div class="favorite-film">
-                    <img class="film-poster" [src]="highestRatedSeries.poster" [attr.alt]="highestRatedSeries.title">
+                    <img class="film-poster" [src]="highestRatedSeries?.poster" [attr.alt]="highestRatedSeries?.title">
                     <div class="film-information">
                         <div class="film-text">
-                            <p class="film-title">{{ highestRatedSeries.title }}</p>
-                            <p class="film-release">{{ highestRatedSeries.releaseDate }}</p>
-                            <p class="film-seasons">{{ highestRatedSeries.seasons }} Seasons</p>
-                            <p class="film-episodes">{{ highestRatedSeries.episodes }} Episodes</p>
-                            <p class="film-rating">{{ highestRatedSeries.rated }}</p>
+                            <p class="film-title">{{ highestRatedSeries?.title }}</p>
+                            <p class="film-release">{{ highestRatedSeries?.releaseDate }}</p>
+                            <p class="film-seasons">{{ highestRatedSeries?.seasons }} Seasons</p>
+                            <p class="film-episodes">{{ highestRatedSeries?.episodes }} Episodes</p>
+                            <p class="film-rating">{{ highestRatedSeries?.rated }}</p>
                         </div>
                         <div class="rating-rated">
-                            <p class="rating">Rating: {{ highestRatedSeries.rating }}</p>
-                            <p class="date-rated">Rated: {{ highestRatedSeries.dateRated }}</p>    
+                            <p class="rating">Rating: {{ highestRatedSeries?.rating }}</p>
+                            <p class="date-rated">Rated: {{ highestRatedSeries?.dateRated }}</p>    
                         </div>
                     </div>
                 </div>
@@ -106,11 +106,11 @@
             <div class="stat-container">
                 <p class="title">Rated Movie Statistics</p>
                 <div class="film-stats">
-                    <p class="stat">Movies Rated: {{ ratedMovieStatistics.numFilmsRated }}</p>
-                    <p class="stat">Minutes Watched: {{ fixRuntime(ratedMovieStatistics.numMinutesWatched) }}</p>
-                    <p class="stat">Average Movie Rating: {{ ratedMovieStatistics.averageFilmRating }}</p>
-                    <p class="stat">Most Watched Rating: {{ ratedMovieStatistics.favoriteFilmRating }}</p>
-                    <p class="stat">Most Watched Genre: {{ ratedMovieStatistics.favoriteGenre }}</p>
+                    <p class="stat">Movies Rated: {{ ratedMovieStatistics?.numFilmsRated }}</p>
+                    <p class="stat">Minutes Watched: {{ fixRuntime(ratedMovieStatistics!.numMinutesWatched) }}</p>
+                    <p class="stat">Average Movie Rating: {{ ratedMovieStatistics?.averageFilmRating }}</p>
+                    <p class="stat">Most Watched Rating: {{ ratedMovieStatistics?.favoriteFilmRating }}</p>
+                    <p class="stat">Most Watched Genre: {{ ratedMovieStatistics?.favoriteGenre }}</p>
                     <p class="stat"></p>
                 </div>
             </div>
@@ -118,11 +118,11 @@
             <div class="stat-container">
                 <p class="title">Rated Series Statistics</p>
                 <div class="film-stats">
-                    <p class="stat">Series Rated: {{ ratedSeriesStatistics.numFilmsRated }}</p>
-                    <p class="stat">Episodes Watched: {{ ratedSeriesStatistics.numEpisodesWatched }}</p>
-                    <p class="stat">Average Series Rating: {{ ratedSeriesStatistics.averageFilmRating }}</p>
-                    <p class="stat">Most Watched Rating: {{ ratedSeriesStatistics.favoriteFilmRating }}</p>
-                    <p class="stat">Most Watched Genre: {{ ratedSeriesStatistics.favoriteGenre }}</p>
+                    <p class="stat">Series Rated: {{ ratedSeriesStatistics?.numFilmsRated }}</p>
+                    <p class="stat">Episodes Watched: {{ ratedSeriesStatistics?.numEpisodesWatched }}</p>
+                    <p class="stat">Average Series Rating: {{ ratedSeriesStatistics?.averageFilmRating }}</p>
+                    <p class="stat">Most Watched Rating: {{ ratedSeriesStatistics?.favoriteFilmRating }}</p>
+                    <p class="stat">Most Watched Genre: {{ ratedSeriesStatistics?.favoriteGenre }}</p>
                     <p class="stat"></p>
                 </div>
             </div>

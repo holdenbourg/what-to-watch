@@ -245,11 +245,15 @@ body {
 //contains all the user-post's
 .user-posts {
     height: auto;
-    width: 101%;
+    width: 100%;
+    border-top: .15vw solid #fff;
+    border-bottom: .15vw solid #fff;
+    justify-content: space-evenly;
 }
 //individual user post
 .user-post {
-    margin-right: .43vw;
+    //margin-right: .43vw;
+    margin-right: 1%;
 }
 //scrollbar
 .scroll-box::-webkit-scrollbar {

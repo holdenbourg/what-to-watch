@@ -7,7 +7,6 @@ import { RatedMovieStatisticsModel } from '../services/models/rated-movie-statis
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 import { RatedSeriesStatisticsModel } from '../services/models/rated-series-statistics-model';
-import { RatedMovieTemplateComponent } from '../rated-movie-template/rated-movie-template.component';
 
 @Component({
   selector: 'app-summary',
