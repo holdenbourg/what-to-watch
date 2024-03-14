@@ -227,6 +227,10 @@ body {
     overflow: hidden;
     overflow-y: scroll;
     transition: .5s;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    --top-mask-size: 10px;
+    --bottom-mask-size: 0px;
 }
 //contains all the searched films
 .scroll-box.searched-films {
