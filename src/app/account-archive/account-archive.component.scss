@@ -162,9 +162,9 @@ body {
     flex-direction: column;
     width: 66.5%;
     height: 100%;
-    border: .2vw solid #fff;
-    border-radius: 5px;
     backdrop-filter: blur(3px);
+    border-radius: 5px;
+    border: solid .2vw #fff;
 }
 
 //container for all the username/buttons/posts/followers/following/full-name/bio
@@ -173,6 +173,7 @@ body {
     flex-direction: row;
     padding: 15px;
     width: 100%;
+    border-radius: 5px;
 }
 //profile picture
 .profile-picture {
@@ -240,16 +241,12 @@ body {
 .scroll-box {
     overflow: hidden;
     overflow-y: scroll;
-    margin-right: 6.5px;
-}
-//contains all the user-post's
-.archived-posts {
-    height: auto;
-    width: 101%;
-}
-//individual user post
-.archived-post {
-    margin-right: .43vw;
+    margin-right: 2px;
+    padding-left: 12px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    --top-mask-size: 20px;
+    --bottom-mask-size: 0px;
 }
 //scrollbar
 .scroll-box::-webkit-scrollbar {
@@ -258,6 +255,24 @@ body {
 .scroll-box::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 0.25em;
+}
+//contains all the user-post's
+.archived-posts {
+    display: inline-flex; 
+    flex-flow: row wrap;
+    justify-content: center; 
+    align-items: center; 
+    align-content: center;
+    height: auto;
+    width: 100%;
+}
+.archived-posts > * {
+    width:  calc(100%/3 - 4px);
+    aspect-ratio: 2/3;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 4px;
+    overflow: hidden;
 }
 
 //container for posts/tagged
@@ -271,7 +286,7 @@ body {
     font-weight: 400;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-bottom: .15vw solid #fff;
+    backdrop-filter: blur(3px);
 }
 //posts/tagged buttons
 .post-options i {
@@ -301,6 +316,31 @@ body {
     cursor: pointer;
 }
 
+//container for followers/following/requests (if private)
+.right-side {
+    height: 100%;
+}
+//container for follower
+.follower-scroll-box {
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-right: 2px;
+    height: 93.2%;   
+    padding-top: 5px; 
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    --top-mask-size: 10px;
+    --bottom-mask-size: 0px;
+}
+//scrollbar
+.follower-scroll-box::-webkit-scrollbar {
+    width: 0.5em;
+}
+.follower-scroll-box::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 0.25em;
+}
+
 //container for the follower/following/requests (if private) info
 .follower-info {
     border: .2vw solid #fff;
@@ -324,8 +364,8 @@ body {
     flex-direction: row;
     justify-content: space-around;
     padding-top: 10px;
-    padding-bottom: 12.5px;
-
+    padding-bottom: 10px;
+    height: 6.8%;
 }
 .follower-type i.active {
     background: rgba(255, 255, 255, .2);

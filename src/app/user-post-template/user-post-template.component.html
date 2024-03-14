@@ -1,1 +1,13 @@
-<img class="film-url" [src]="userPost.postUrl" [attr.alt]="userPost.postUrl">
+<div id="poster" class="user-post">
+    <img class="film-url" [src]="userPost.postUrl" [attr.alt]="userPost.postUrl">
+    <div class="post-info">
+        <div class="likes">
+            <i class='bx bxs-like'></i>
+            <span class="number-likes">{{ trimNumber(userPost.likes.length) }}</span>
+        </div>
+        <div class="comments">
+            <i class='bx bxs-comment'></i>
+            <span class="number-comments">{{ trimNumber(userPost.comments.length) }}</span>
+        </div>
+    </div>
+</div>

@@ -54,7 +54,17 @@ export class LoginRegisterComponent {
       bio: 'I love movies so much I love movies so much I love movies so much',
       followers: [
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal',
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'AshlynnDang'
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'AshlynnDang',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'OliverQueen',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'FelicitySmoak',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'JohnDiggle',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'TommyMerlin',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'MalcomMerlin',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'NarutoUzumaki',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'SasukeUchiha',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'ErenJaeger'
       ],
       following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal'],
       requests: [],
@@ -82,33 +92,36 @@ export class LoginRegisterComponent {
         `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`
       ],
       postsTaggedIn: [
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal`,
-        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal`,
-        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal`,
-        `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BNzk1OGU2NmMtNTdhZC00NjdlLWE5YTMtZTQ0MGExZTQzOGQyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMjZmYjg0ODctOTIyYy00YzhkLTgyMzEtNjUyY2JiZjVmYzI2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BN2YzYjI0MWYtYWUyZS00ZDQ4LWEzN2EtMDU4NDJmNjA2ZWFiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BYWNiNjBhZjAtMzVkNi00MTJiLWI0NGQtODE2NmIyNmU2OTQwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BM2RmMGY2Y2UtNjA1NS00NGE4LThiNzItMmE1NTk5NzI5NmE0XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg::::OliverQueen||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal`
       ],
       taggedComments: [
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||AshlynnDang||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
-        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
-        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
-        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg||||AshlynnDang||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
-        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
-        `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
-        `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`
+        `https://m.media-amazon.com/images/M/MV5BNzk1OGU2NmMtNTdhZC00NjdlLWE5YTMtZTQ0MGExZTQzOGQyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
+        `https://m.media-amazon.com/images/M/MV5BNzk1OGU2NmMtNTdhZC00NjdlLWE5YTMtZTQ0MGExZTQzOGQyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||AshlynnDang||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BMjZmYjg0ODctOTIyYy00YzhkLTgyMzEtNjUyY2JiZjVmYzI2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
+        `https://m.media-amazon.com/images/M/MV5BMjZmYjg0ODctOTIyYy00YzhkLTgyMzEtNjUyY2JiZjVmYzI2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BN2YzYjI0MWYtYWUyZS00ZDQ4LWEzN2EtMDU4NDJmNjA2ZWFiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||AshlynnDang||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
+        `https://m.media-amazon.com/images/M/MV5BN2YzYjI0MWYtYWUyZS00ZDQ4LWEzN2EtMDU4NDJmNjA2ZWFiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BYWNiNjBhZjAtMzVkNi00MTJiLWI0NGQtODE2NmIyNmU2OTQwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
+        `https://m.media-amazon.com/images/M/MV5BYWNiNjBhZjAtMzVkNi00MTJiLWI0NGQtODE2NmIyNmU2OTQwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BM2RmMGY2Y2UtNjA1NS00NGE4LThiNzItMmE1NTk5NzI5NmE0XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
+        `https://m.media-amazon.com/images/M/MV5BM2RmMGY2Y2UtNjA1NS00NGE4LThiNzItMmE1NTk5NzI5NmE0XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`
       ],
       archivedPosts: [
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
-        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
-        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`
+        `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BY2UxMWVlNmMtYzM0Zi00YTQzLTk2N2ItM2Y1NmNmMDk4MDFjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::LukasGocke,CalebHaralson,EnriqueLeal::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson;;;;CalebHaralson||||caption's are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`
       ],
       archivedComments: [
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
-        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
-        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
-        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
-        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`
+        `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
+        `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
+        `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`,
+        `https://m.media-amazon.com/images/M/MV5BY2UxMWVlNmMtYzM0Zi00YTQzLTk2N2ItM2Y1NmNmMDk4MDFjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson`,
+        `https://m.media-amazon.com/images/M/MV5BY2UxMWVlNmMtYzM0Zi00YTQzLTk2N2ItM2Y1NmNmMDk4MDFjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal`
       ],
       private: false
     },
@@ -313,6 +326,8 @@ export class LoginRegisterComponent {
       private: false
     }
   ];
+  public mockUsersDatabase: AccountInformationModel[] = this.rawMockUsersDatabase.map((rawUser) => this.convertRawUserToUser(rawUser));
+
   public mockRatedMoviesDatabase: RatedMovieModel[] = [
     {
       poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
@@ -716,8 +731,8 @@ export class LoginRegisterComponent {
     //}
 
     //resets the mock databases in local storage - 
-    // this.localStorageService.clearInformation('users');
-    // this.localStorageService.setInformation('users', this.rawMockUsersDatabase);
+    this.localStorageService.clearInformation('users');
+    this.localStorageService.setInformation('users', this.mockUsersDatabase);
     // this.localStorageService.clearInformation('ratedMovies');
     // this.localStorageService.setInformation('ratedMovies', this.mockRatedMoviesDatabase);
     // this.localStorageService.clearInformation('ratedSeries');
@@ -877,8 +892,8 @@ export class LoginRegisterComponent {
   //Login if user/password exist in database, else warning
   onLogin() {
     //run database call to see if a user with the given user/password exists
-    let user: RawAccountInformationModel;
-    let users: RawAccountInformationModel[] = this.localStorageService.getInformation('users');
+    let user: AccountInformationModel;
+    let users: AccountInformationModel[] = this.localStorageService.getInformation('users');
 
     for(let i = 0; i < users.length; i++) {
       if(users.at(i)!.username == this.loginObject.username && users.at(i)!.password == this.loginObject.password) user = users.at(i)!;
@@ -887,7 +902,7 @@ export class LoginRegisterComponent {
     //if they exist store username for later and route to home page, else show warning
     if(user! != null) {
       this.localStorageService.clearInformation('currentUser');
-      this.localStorageService.setInformation('currentUser', this.convertRawUserToUser(user));
+      this.localStorageService.setInformation('currentUser', user);
       this.routingService.navigateToHome();
 
     } else {
@@ -1161,12 +1176,9 @@ export class LoginRegisterComponent {
       following: this.convertRawFollowerToFollower(rawUser.following),
       requests: this.convertRawFollowerToFollower(rawUser.requests),
       blocked: this.convertRawFollowerToFollower(rawUser.blocked),
-      posts: this.convertRawPostsToPosts(rawUser.posts),
-      postsComments: this.convertRawCommentsToComments(rawUser.postsComments),
-      postsTaggedIn: this.convertRawPostsToPosts(rawUser.postsTaggedIn),
-      taggedComments: this.convertRawCommentsToComments(rawUser.taggedComments),
-      archivedPosts: this.convertRawPostsToPosts(rawUser.archivedPosts),
-      archivedComments: this.convertRawCommentsToComments(rawUser.archivedComments),
+      posts: this.convertRawPostsToPosts(rawUser),
+      postsTaggedIn: this.convertRawTaggedPostsToPosts(rawUser),
+      archivedPosts: this.convertRawArchivedPostsToPosts(rawUser),
       private: rawUser.private
     }
 
@@ -1190,16 +1202,63 @@ export class LoginRegisterComponent {
     return returnArray;
   }
   //rawPost: postUrl.jpg::::HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke::::12-06-2024::::CalebHaralson,EnriqueLeal::::LukasGocke,EnriqueLeal,CalebHaralson
-  convertRawPostsToPosts(rawPosts: string[]) {
+  convertRawPostsToPosts(rawUser: RawAccountInformationModel) {
     let returnArray: UserPostModel[] = [];
 
-    rawPosts.forEach((rawPostString) => {
+    rawUser.posts.forEach((rawPostString) => {
       let splitArray = rawPostString.split('::::');
+
+      let postsComments: string[] = rawUser.postsComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
 
       let post: UserPostModel = {
         postUrl: splitArray.at(0)!,
         caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
         postDate: splitArray.at(2)!,
+        comments: this.convertRawCommentsToComments(postsComments),
+        likes: splitArray.at(3)!.split(','),
+        tagged: splitArray.at(4)!.split(','),
+      }
+
+      returnArray.push(post);
+    })
+
+    return returnArray;
+  }
+  convertRawTaggedPostsToPosts(rawUser: RawAccountInformationModel) {
+    let returnArray: UserPostModel[] = [];
+
+    rawUser.postsTaggedIn.forEach((rawPostString) => {
+      let splitArray = rawPostString.split('::::');
+
+      let postsComments: string[] = rawUser.taggedComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
+
+      let post: UserPostModel = {
+        postUrl: splitArray.at(0)!,
+        caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
+        postDate: splitArray.at(2)!,
+        comments: this.convertRawCommentsToComments(postsComments),
+        likes: splitArray.at(3)!.split(','),
+        tagged: splitArray.at(4)!.split(','),
+      }
+
+      returnArray.push(post);
+    })
+
+    return returnArray;
+  }
+  convertRawArchivedPostsToPosts(rawUser: RawAccountInformationModel) {
+    let returnArray: UserPostModel[] = [];
+
+    rawUser.archivedPosts.forEach((rawPostString) => {
+      let splitArray = rawPostString.split('::::');
+
+      let postsComments: string[] = rawUser.archivedComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
+
+      let post: UserPostModel = {
+        postUrl: splitArray.at(0)!,
+        caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
+        postDate: splitArray.at(2)!,
+        comments: this.convertRawCommentsToComments(postsComments),
         likes: splitArray.at(3)!.split(','),
         tagged: splitArray.at(4)!.split(','),
       }

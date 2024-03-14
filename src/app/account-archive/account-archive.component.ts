@@ -49,11 +49,8 @@ export class AccountArchiveComponent {
     requests: [],
     blocked: [],
     posts: [],
-    postsComments: [],
     postsTaggedIn: [],
-    taggedComments: [],
     archivedPosts: [],
-    archivedComments: [],
     private: false
   }
 
@@ -81,11 +78,11 @@ export class AccountArchiveComponent {
 
     this.doesUserExist();
 
-    let users: RawAccountInformationModel[] = this.localStorageService.getInformation('users')
+    let users: AccountInformationModel[] = this.localStorageService.getInformation('users')
 
     if(this.doesUserExistResult) {
       for(let i = 0; i < users.length; i++) {
-        if(users.at(i)!.username == this.username) this.userAccount = this.convertRawUserToUser(users.at(i)!);
+        if(users.at(i)!.username == this.username) this.userAccount = users.at(i)!;
       }
     
       this.isCurrentUser();
@@ -118,6 +115,9 @@ export class AccountArchiveComponent {
       const themeClass = document.querySelector('.sidebar');
       themeClass?.classList.toggle('active'); 
     }
+
+    
+    document.getElementById('.scroll-box')!.style.paddingLeft = "12px";
     
     //sets active follower-type to followers
     this.localStorageService.clearInformation('follower-type');
@@ -383,12 +383,9 @@ export class AccountArchiveComponent {
       following: this.convertRawFollowerToFollower(rawUser.following),
       requests: this.convertRawFollowerToFollower(rawUser.requests),
       blocked: this.convertRawFollowerToFollower(rawUser.blocked),
-      posts: this.convertRawPostsToPosts(rawUser.posts),
-      postsComments: this.convertRawCommentsToComments(rawUser.postsComments),
-      postsTaggedIn: this.convertRawPostsToPosts(rawUser.postsTaggedIn),
-      taggedComments: this.convertRawCommentsToComments(rawUser.taggedComments),
-      archivedPosts: this.convertRawPostsToPosts(rawUser.archivedPosts),
-      archivedComments: this.convertRawCommentsToComments(rawUser.archivedComments),
+      posts: this.convertRawPostsToPosts(rawUser),
+      postsTaggedIn: this.convertRawTaggedPostsToPosts(rawUser),
+      archivedPosts: this.convertRawArchivedPostsToPosts(rawUser),
       private: rawUser.private
     }
 
@@ -412,16 +409,63 @@ export class AccountArchiveComponent {
     return returnArray;
   }
   //rawPost: postUrl.jpg::::HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke::::12-06-2024::::CalebHaralson,EnriqueLeal::::LukasGocke,EnriqueLeal,CalebHaralson
-  convertRawPostsToPosts(rawPosts: string[]) {
+  convertRawPostsToPosts(rawUser: RawAccountInformationModel) {
     let returnArray: UserPostModel[] = [];
 
-    rawPosts.forEach((rawPostString) => {
+    rawUser.posts.forEach((rawPostString) => {
       let splitArray = rawPostString.split('::::');
+
+      let postsComments: string[] = rawUser.postsComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
 
       let post: UserPostModel = {
         postUrl: splitArray.at(0)!,
         caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
         postDate: splitArray.at(2)!,
+        comments: this.convertRawCommentsToComments(postsComments),
+        likes: splitArray.at(3)!.split(','),
+        tagged: splitArray.at(4)!.split(','),
+      }
+
+      returnArray.push(post);
+    })
+
+    return returnArray;
+  }
+  convertRawTaggedPostsToPosts(rawUser: RawAccountInformationModel) {
+    let returnArray: UserPostModel[] = [];
+
+    rawUser.postsTaggedIn.forEach((rawPostString) => {
+      let splitArray = rawPostString.split('::::');
+
+      let postsComments: string[] = rawUser.taggedComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
+
+      let post: UserPostModel = {
+        postUrl: splitArray.at(0)!,
+        caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
+        postDate: splitArray.at(2)!,
+        comments: this.convertRawCommentsToComments(postsComments),
+        likes: splitArray.at(3)!.split(','),
+        tagged: splitArray.at(4)!.split(','),
+      }
+
+      returnArray.push(post);
+    })
+
+    return returnArray;
+  }
+  convertRawArchivedPostsToPosts(rawUser: RawAccountInformationModel) {
+    let returnArray: UserPostModel[] = [];
+
+    rawUser.archivedPosts.forEach((rawPostString) => {
+      let splitArray = rawPostString.split('::::');
+
+      let postsComments: string[] = rawUser.archivedComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
+
+      let post: UserPostModel = {
+        postUrl: splitArray.at(0)!,
+        caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
+        postDate: splitArray.at(2)!,
+        comments: this.convertRawCommentsToComments(postsComments),
         likes: splitArray.at(3)!.split(','),
         tagged: splitArray.at(4)!.split(','),
       }

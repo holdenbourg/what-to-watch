@@ -102,15 +102,16 @@
                     </div>
                 </div>
                 <div class="scroll-box">
-                    <div class="user-posts">
-                        <app-user-post-template
-                            *ngFor="let post of currentUser.posts"
-                            [userPost]="post" 
-                            (click)="onPostClicked(post.postUrl)" 
-                            (scroll)="fadeOutOnScrollDown()"
-                            class="user-post"
-                        ></app-user-post-template>
-                    </div>
+                    <ul class="user-posts">
+                        <li *ngFor="let post of currentUser.posts">
+                            <app-user-post-template
+                                [userPost]="post" 
+                                (click)="onPostClicked(post.postUrl)" 
+                                (scroll)="fadeOutOnScrollDown()"
+                                class="user-post"
+                            ></app-user-post-template>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="follower-info">
@@ -169,39 +170,39 @@
                     </div>
                 </div>
                 <ng-template #public>
-                    <div class="follower-type">
-                        <i (click)="toggleFollowers()" class="followers active">Followers</i>
-                        <i (click)="toggleFollowing()" class="following">Following</i>
-                    </div>
-                    <div class="list-follower-type">
-                        <div class="list-followers" *ngIf="followers">
-                            <div class="follower-scroll-box">
-                                <div class="follower-list" *ngIf="currentUser.followers.length != 0; else noFollowers">
-                                    <app-follower-template
-                                        *ngFor="let follower of currentUser.followers"
-                                        [followerAccount]="follower" 
-                                        (click)="this.routingService.navigateToAccountsPosts(follower.username)" 
-                                        class="follower-user"
-                                    ></app-follower-template>
-                                </div>
-                                <ng-template #noFollowers>
-                                    <p>You have no followers</p>
-                                </ng-template>
-                            </div>
+                    <div class="right-side">
+                        <div class="follower-type">
+                            <i (click)="toggleFollowers()" class="followers active">Followers</i>
+                            <i (click)="toggleFollowing()" class="following">Following</i>
                         </div>
-                        <div class="list-following" *ngIf="following">
-                            <div class="follower-scroll-box">
-                                <div class="following-list" *ngIf="currentUser.following.length != 0; else noFollowing">
-                                    <app-following-template
-                                        *ngFor="let following of currentUser.following"
-                                        [followingAccount]="following" 
-                                        (click)="this.routingService.navigateToAccountsPosts(following.username)" 
-                                        class="follower-user"
-                                    ></app-following-template>
+                        <div class="follower-scroll-box">
+                            <div class="list-follower-type">
+                                <div class="list-followers" *ngIf="followers">
+                                    <div class="follower-list" *ngIf="currentUser.followers.length != 0; else noFollowers">
+                                        <app-follower-template
+                                            *ngFor="let follower of currentUser.followers"
+                                            [followerAccount]="follower" 
+                                            (click)="this.routingService.navigateToAccountsPosts(follower.username)" 
+                                            class="follower-user"
+                                        ></app-follower-template>
+                                    </div>
+                                    <ng-template #noFollowers>
+                                        <p>You have no followers</p>
+                                    </ng-template>
                                 </div>
-                                <ng-template #noFollowing>
-                                    <p>You aren't following anyone</p>
-                                </ng-template>                                     
+                                <div class="list-following" *ngIf="following">
+                                    <div class="following-list" *ngIf="currentUser.following.length != 0; else noFollowing">
+                                        <app-following-template
+                                            *ngFor="let following of currentUser.following"
+                                            [followingAccount]="following" 
+                                            (click)="this.routingService.navigateToAccountsPosts(following.username)" 
+                                            class="follower-user"
+                                        ></app-following-template>
+                                    </div>
+                                    <ng-template #noFollowing>
+                                        <p>You aren't following anyone</p>
+                                    </ng-template>                                     
+                                </div>
                             </div>
                         </div>
                     </div>

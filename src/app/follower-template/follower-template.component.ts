@@ -46,11 +46,8 @@ export class FollowerTemplateComponent {
       requests: this.currentUser.requests,
       blocked: this.currentUser.blocked,
       posts: this.currentUser.posts,
-      postsComments: this.currentUser.postsComments,
       postsTaggedIn: this.currentUser.postsTaggedIn,
-      taggedComments: this.currentUser.taggedComments,
       archivedPosts: this.currentUser.archivedPosts,
-      archivedComments: this.currentUser.archivedComments,
       private: this.currentUser.private
     }
 
