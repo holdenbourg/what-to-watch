@@ -327,7 +327,6 @@ body {
     overflow-y: scroll;
     margin-right: 2px;
     height: 93.2%;   
-    padding-top: 5px; 
     -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
     mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
     --top-mask-size: 10px;
