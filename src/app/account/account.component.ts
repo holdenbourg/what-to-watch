@@ -15,6 +15,8 @@ import { FollowingTemplateComponent } from '../following-template/following-temp
 import { RequestTemplateComponent } from '../request-template/request-template.component';
 import { FollowerFollowingTemplateComponent } from '../follower-following-template/follower-following-template.component';
 import { CaptionModel } from '../services/models/database-objects/caption-model';
+import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
+import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
 
 @Component({
   selector: 'app-account',
@@ -211,11 +213,24 @@ export class AccountComponent  implements OnInit {
   fadeOutOnScrollDown() {
     throw new Error('Method not implemented.');
   }
-  onPostClicked(postUrl: string) {
-    throw new Error('Method not implemented.');
+  onPostClicked(post: UserPostModel) {
+    if(post.filmType == 'Movie') {
+      let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
+      let movie: RatedMovieModel = ratedMovies.filter((movie) => movie.username == this.currentUser.username && movie.poster == post.postUrl).at(0)!;
+      
+      console.log(post);
+      console.log(movie);
+    } else {
+      let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
+      let series: RatedSeriesModel = ratedSeries.filter((series) => series.username == this.currentUser.username && series.poster == post.postUrl).at(0)!;
+
+      console.log(post);
+      console.log(series);
+    }
+
   }
   onEditProfile() {
-    throw new Error('Method not implemented.');
+    this.routingService.navigateToSettings();
   }
 
   doesUserExist() {
@@ -404,7 +419,7 @@ export class AccountComponent  implements OnInit {
 
     return returnArray;
   }
-  //rawPost: postUrl.jpg::::HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke::::12-06-2024::::CalebHaralson,EnriqueLeal::::LukasGocke,EnriqueLeal,CalebHaralson
+  //rawPost: postUrl.jpg::::HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke::::12-06-2024::::CalebHaralson,EnriqueLeal::::LukasGocke,EnriqueLeal,CalebHaralson::::Movie
   convertRawPostsToPosts(rawUser: RawAccountInformationModel) {
     let returnArray: UserPostModel[] = [];
 
@@ -420,6 +435,7 @@ export class AccountComponent  implements OnInit {
         comments: this.convertRawCommentsToComments(postsComments),
         likes: splitArray.at(3)!.split(','),
         tagged: splitArray.at(4)!.split(','),
+        filmType: splitArray.at(5)!
       }
 
       returnArray.push(post);
@@ -442,6 +458,7 @@ export class AccountComponent  implements OnInit {
         comments: this.convertRawCommentsToComments(postsComments),
         likes: splitArray.at(3)!.split(','),
         tagged: splitArray.at(4)!.split(','),
+        filmType: splitArray.at(5)!
       }
 
       returnArray.push(post);
@@ -464,6 +481,7 @@ export class AccountComponent  implements OnInit {
         comments: this.convertRawCommentsToComments(postsComments),
         likes: splitArray.at(3)!.split(','),
         tagged: splitArray.at(4)!.split(','),
+        filmType: splitArray.at(5)!
       }
 
       returnArray.push(post);
@@ -494,7 +512,8 @@ export class AccountComponent  implements OnInit {
         postUrl: splitArray.at(0)!,
         username: splitArray.at(1)!,
         comment: splitArray.at(2)!,
-        tagged: splitArray.at(3)!.split(',')
+        tagged: splitArray.at(3)!.split(','),
+        commentDate: splitArray.at(4)!
       }
 
       returnArray.push(comment);
@@ -536,6 +555,28 @@ export class AccountComponent  implements OnInit {
   navigateToSettings() {
     this.routingService.navigateToSettings();
   }
+
+  public sortByDate(posts: UserPostModel[]) {
+    posts.sort((a: UserPostModel, b: UserPostModel) => {
+      let aDate: string = `${a.postDate.substring(6)}-${a.postDate.substring(0,2)}-${a.postDate.substring(3,5)}`
+      let newADate: Date = new Date(aDate);
+
+      let bDate: string = `${b.postDate.substring(6)}-${b.postDate.substring(0,2)}-${b.postDate.substring(3,5)}`
+      let newBDate: Date = new Date(bDate);
+
+      return newADate.getTime() - newBDate.getTime();
+    });
+
+    return posts;
+  }
+
+  
+  // let date: string = '04-10-2003';
+  // let reDate: string = `${date.substring(6)}-${date.substring(0,2)}-${date.substring(3,5)}`
+  // let newDate: Date = new Date(reDate);
+
+  // console.log(reDate);
+  // console.log(newDate);
 
   toggleActive() {
     const themeClass = document.querySelector('.sidebar');

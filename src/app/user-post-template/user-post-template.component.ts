@@ -21,7 +21,8 @@ export class UserPostTemplateComponent {
     postDate: '',
     comments: [],
     likes: [],
-    tagged: []
+    tagged: [],
+    filmType: ''
   }
 
   trimNumber(input: number) {

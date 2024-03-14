@@ -408,7 +408,7 @@ export class AccountArchiveComponent {
 
     return returnArray;
   }
-  //rawPost: postUrl.jpg::::HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke::::12-06-2024::::CalebHaralson,EnriqueLeal::::LukasGocke,EnriqueLeal,CalebHaralson
+  //rawPost: postUrl.jpg::::HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke::::12-06-2024::::CalebHaralson,EnriqueLeal::::LukasGocke,EnriqueLeal,CalebHaralson::::Movie
   convertRawPostsToPosts(rawUser: RawAccountInformationModel) {
     let returnArray: UserPostModel[] = [];
 
@@ -424,6 +424,7 @@ export class AccountArchiveComponent {
         comments: this.convertRawCommentsToComments(postsComments),
         likes: splitArray.at(3)!.split(','),
         tagged: splitArray.at(4)!.split(','),
+        filmType: splitArray.at(5)!
       }
 
       returnArray.push(post);
@@ -446,6 +447,7 @@ export class AccountArchiveComponent {
         comments: this.convertRawCommentsToComments(postsComments),
         likes: splitArray.at(3)!.split(','),
         tagged: splitArray.at(4)!.split(','),
+        filmType: splitArray.at(5)!
       }
 
       returnArray.push(post);
@@ -468,6 +470,7 @@ export class AccountArchiveComponent {
         comments: this.convertRawCommentsToComments(postsComments),
         likes: splitArray.at(3)!.split(','),
         tagged: splitArray.at(4)!.split(','),
+        filmType: splitArray.at(5)!
       }
 
       returnArray.push(post);
@@ -498,7 +501,8 @@ export class AccountArchiveComponent {
         postUrl: splitArray.at(0)!,
         username: splitArray.at(1)!,
         comment: splitArray.at(2)!,
-        tagged: splitArray.at(3)!.split(',')
+        tagged: splitArray.at(3)!.split(','),
+        commentDate: splitArray.at(4)!
       }
 
       returnArray.push(comment);

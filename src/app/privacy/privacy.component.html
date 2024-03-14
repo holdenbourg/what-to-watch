@@ -93,7 +93,7 @@
             </div>
             <div class="scroll-box">
                 <div class="blocked-accounts" *ngIf="currentUser.blocked.length != 0; else noBlockedUsers">
-                    <div class="rated-film" *ngFor="let blockedAccount of currentUser.blocked; let i = index">
+                    <div class="blocked-account" *ngFor="let blockedAccount of currentUser.blocked; let i = index">
                         <app-blocked-account-template
                             [blockedAccount]="blockedAccount"
                             class="blocked-account-{{i}}"

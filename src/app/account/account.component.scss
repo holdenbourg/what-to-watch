@@ -147,6 +147,21 @@ body {
     left: 120px;
 }
 
+.show-post {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: red;
+    height: 65%;
+    width: 50%;
+}
+.film-poster {
+    height: 100%;
+}
+
+
+
 //does-user-exist text
 .does-user-exist p {
     color: #fff;
@@ -321,12 +336,18 @@ body {
 .right-side {
     height: 100%;
 }
-//container for follower
+//container for followers
 .follower-scroll-box {
+    position: absolute;
     overflow: hidden;
     overflow-y: scroll;
-    margin-right: 2px;
-    height: 93.2%;   
+    padding-left: 5px;
+    padding-right: 1px;
+    right: 3px;
+    height: auto;
+    width: 100%;
+    top: 60px;
+    bottom: 0; 
     -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
     mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
     --top-mask-size: 10px;
@@ -365,7 +386,7 @@ body {
     justify-content: space-around;
     padding-top: .6vw;
     padding-bottom: .6vw;
-    height: 6.8%;
+    height: 60px;
     border-bottom: solid .2vw #fff;
 }
 .follower-type i.active {
@@ -376,7 +397,7 @@ body {
 //no follower/following/requests warning
 .list-follower-type p {
     color: #fff;
+    margin-top: 15px;
     font-size: 1.05vw;
-    font-size: 50px;
     text-align: center;
 }

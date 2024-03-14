@@ -7,5 +7,6 @@ export interface UserPostModel {
     postDate: string,
     comments: CommentModel[],
     likes: string[],
-    tagged: string[]
+    tagged: string[],
+    filmType: string
 }
