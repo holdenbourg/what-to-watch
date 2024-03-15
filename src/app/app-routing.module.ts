@@ -19,8 +19,6 @@ import { AccountTaggedComponent } from './account-tagged/account-tagged.componen
 import { AccountArchiveComponent } from './account-archive/account-archive.component';
 import { PostMovieComponent } from './post-movie/post-movie.component';
 import { PostSeriesComponent } from './post-series/post-series.component';
-import { MoviePostComponent } from './movie-post/movie-post.component';
-import { SeriesPostComponent } from './series-post/series-post.component';
 
 const routes: Routes = [
   {path: '', component: LoginRegisterComponent},
@@ -43,8 +41,6 @@ const routes: Routes = [
   {path: 'account/:username/posts', component: AccountComponent},
   {path: 'account/:username/tagged', component: AccountTaggedComponent},
   {path: 'account/:username/archive', component: AccountArchiveComponent},
-  {path: 'movie-post/:title', component: MoviePostComponent},
-  {path: 'series-post/:title', component: SeriesPostComponent},
   {path: 'summary', component: SummaryComponent}
 ];
 

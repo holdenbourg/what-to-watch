@@ -74,6 +74,8 @@ export class AccountComponent  implements OnInit {
   public privateUserNotFollowedByCurrentUserResult: boolean = true;
   public publicUserNotFollowedByCurrentUserResult: boolean = true;
 
+  public commentInput: string = '';
+
 
   ngOnInit() {   
     //sets the username from the url parameter
