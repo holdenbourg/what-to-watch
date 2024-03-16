@@ -239,8 +239,6 @@ export class SummaryComponent {
       ratedMovieStatistics.averageFilmRating = Number((averageFilmRating / filteredMovies.length).toFixed(1));
       ratedMovieStatistics.favoriteFilmRating = currentHighestRatingString;
       ratedMovieStatistics.favoriteGenre = currentHighestGenreString;
-
-      console.log(genresHashmap);
   
       return ratedMovieStatistics;
     } else {
@@ -250,8 +248,6 @@ export class SummaryComponent {
   findRatedSeriesStatistics() {
     let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
     let filteredSeries: RatedSeriesModel[] = ratedSeries.filter((series) => series.username == this.currentUser.username);
-
-    console.log(filteredSeries);
 
     if(filteredSeries.length > 0) {
       let ratedSeriestatistics: RatedSeriesStatisticsModel = {
@@ -295,7 +291,6 @@ export class SummaryComponent {
       
       for(let i = 0; i < filteredSeries.length; i++) {
         ratedSeriestatistics.numEpisodesWatched = ratedSeriestatistics.numEpisodesWatched + filteredSeries[i].episodes;
-        console.log(filteredSeries[i].episodes);
         averageFilmRating = averageFilmRating + filteredSeries[i].rating;
 
         if(filteredSeries[i].rated == 'TV-Y') {
@@ -373,8 +368,6 @@ export class SummaryComponent {
           currentHighestRatingString = key;
         }
       });
-
-      console.log(ratingsHashmap);
 
       let genresHashmap = new Map<string, number>();
       genresHashmap.set('Romance', numRomance);

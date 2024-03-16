@@ -207,39 +207,6 @@
                 </ng-template>
             </div>
         </div>
-        <div class="show-post">
-            <div class="post">
-                <img class="film-poster" [src]="usersPosts.at(19)!.poster" [attr.alt]="usersPosts.at(19)!.poster">
-                <div class="post-information">
-                    <div class="current-user-info">
-                        <img class="user-profile-picture" [src]="currentUser.profilePicture" [attr.alt]="currentUser.username">
-                        <p class="user-username">{{ currentUser.username }}</p>
-                    </div>
-                    <div class="post-comments">
-
-                    </div>
-                    <div class="commenting-area">
-                        <label class="prompt">Comment</label>
-                        <input class="input-enter" type="text" [(ngModel)]="commentInput" name="commentInput" (keyup.enter)="onComment()" (focus)="toggleCommentLabel()" required>
-                        
-                        <div class="liked" *ngIf="usersPosts.at(19)!.likes.includes(currentUser.username)">
-                            <a (click)="onLike()">
-                                <i class='bx bxs-like'></i>
-                            </a>
-                        </div>
-                        <div class="unliked" *ngIf="!usersPosts.at(19)!.likes.includes(currentUser.username)">
-                            <a (click)="onLike()">
-                                <i class='bx bx-like'></i>
-                            </a>
-                        </div>
-
-                        <a (click)="onSend()">
-                            <i class='bx bx-send'></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="user-blocked-current-user" *ngIf="userBlockedCurrentUserResult == true">
         <div class="container">
@@ -282,3 +249,37 @@
         </div>
     </div>
 </body>
+
+<!--<div class="show-post">
+    <div class="post">
+        <img class="film-poster" [src]="usersPosts.at(19)!.poster" [attr.alt]="usersPosts.at(19)!.poster">
+        <div class="post-information">
+            <div class="current-user-info">
+                <img class="user-profile-picture" [src]="currentUser.profilePicture" [attr.alt]="currentUser.username">
+                <p class="user-username">{{ currentUser.username }}</p>
+            </div>
+            <div class="post-comments">
+
+            </div>
+            <div class="commenting-area">
+                <label class="prompt">Comment</label>
+                <input class="input-enter" type="text" [(ngModel)]="commentInput" name="commentInput" (keyup.enter)="onComment()" (focus)="toggleCommentLabel()" required>
+                
+                <div class="liked" *ngIf="usersPosts.at(19)!.likes.includes(currentUser.username)">
+                    <a (click)="onLike()">
+                        <i class='bx bxs-like'></i>
+                    </a>
+                </div>
+                <div class="unliked" *ngIf="!usersPosts.at(19)!.likes.includes(currentUser.username)">
+                    <a (click)="onLike()">
+                        <i class='bx bx-like'></i>
+                    </a>
+                </div>
+
+                <a (click)="onSend()">
+                    <i class='bx bx-send'></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>-->

@@ -71,6 +71,7 @@ throw new Error('Method not implemented.');
     private: false
   }
   public usersPosts: UserPostModel[] = [];
+  public postsComments: CommentModel[] = [];
 
   public username: string = '';
   
@@ -98,11 +99,11 @@ throw new Error('Method not implemented.');
 
     this.doesUserExist();
 
-    let users: AccountInformationModel[] = this.localStorageService.getInformation('users')
+    let rawUsers: RawAccountInformationModel[] = this.localStorageService.getInformation('rawUsers');
 
     if(this.doesUserExistResult) {
-      for(let i = 0; i < users.length; i++) {
-        if(users.at(i)!.username == this.username) this.userAccount = users.at(i)!;
+      for(let i = 0; i < rawUsers.length; i++) {
+        if(rawUsers.at(i)!.username == this.username) this.userAccount = this.convertRawUserToUser(rawUsers.at(i)!);
       }
     
       this.isCurrentUser();
@@ -127,6 +128,8 @@ throw new Error('Method not implemented.');
     // console.log('private user not followed current user: ' + this.privateUserNotFollowedByCurrentUserResult);
     // console.log('public user not followed current user: ' + this.publicUserNotFollowedByCurrentUserResult);
 
+    this.populatePostsAndComments();
+
     this.sidebarCloseOnResize();
 
     var width = window.innerWidth;
@@ -139,17 +142,27 @@ throw new Error('Method not implemented.');
     //sets active follower-type to followers
     this.localStorageService.clearInformation('follower-type');
     this.localStorageService.setInformation('follower-type', 'followers');
-
-    for(let i = 0; i < 8; i++) {
-      var id = "m" + Math.random().toString(16).slice(2);
-      //var id2 = "s" + Math.random().toString(16).slice(2);
-    
-      console.log(id);
-      //console.log(id2);
-    }
   }
 
   
+  populatePostsAndComments() {
+    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
+    let rawComments: RawCommentModel[] = this.localStorageService.getInformation('rawComments');
+
+    let rawUsersPosts: RawUserPostModel[] = [];
+    let rawUsersComments: RawCommentModel[] = [];
+
+    for(let i = 0; i < rawPosts.length; i++) {
+      if(this.userAccount.postIds.includes(rawPosts[i].postId)) rawUsersPosts.push(rawPosts[i]);
+    }
+    for(let i = 0; i < rawComments.length; i++) {
+      if(this.userAccount.postIds.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
+    }
+
+    this.usersPosts = rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost));
+    this.postsComments = rawUsersComments.map((rawComment) => this.convertRawCommentToComment(rawComment));
+  }
+
   toggleFollowers() {
     var activeFollowerType = this.localStorageService.getInformation('follower-type');
 
@@ -233,9 +246,6 @@ throw new Error('Method not implemented.');
     }
   }
 
-  fadeOutOnScrollDown() {
-    throw new Error('Method not implemented.');
-  }
   onPostClicked(post: UserPostModel) {
     if(post.postId.charAt(0) == 'm') {
       let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
@@ -259,7 +269,7 @@ throw new Error('Method not implemented.');
   doesUserExist() {
     let userExistsInDB: boolean = false;
 
-    let users: RawAccountInformationModel[] = this.localStorageService.getInformation('users')
+    let users: RawAccountInformationModel[] = this.localStorageService.getInformation('rawUsers')
 
     for(let i = 0; i < users.length; i++) {
       if(users.at(i)!.username == this.username) userExistsInDB = true;
@@ -546,18 +556,18 @@ throw new Error('Method not implemented.');
     return posts;
   }
 
-  
-  // let date: string = '04-10-2003';
-  // let reDate: string = `${date.substring(6)}-${date.substring(0,2)}-${date.substring(3,5)}`
-  // let newDate: Date = new Date(reDate);
-
-  // console.log(reDate);
-  // console.log(newDate);
-
   toggleActive() {
     const themeClass = document.querySelector('.sidebar');
     themeClass?.classList.toggle('active');
     const container = document.querySelector('.container');
     container?.classList.toggle('active');
   }
+
+  /*for(let i = 0; i < 8; i++) {
+    var id = "m" + Math.random().toString(16).slice(2);
+    var id2 = "s" + Math.random().toString(16).slice(2);
+  
+    console.log(id);
+    console.log(id2);
+  }*/
 }

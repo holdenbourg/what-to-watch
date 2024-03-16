@@ -57,6 +57,7 @@ export class AccountTaggedComponent {
     private: false
   }
   public usersTaggedPosts: UserPostModel[] = [];
+  public taggedPostsComments: CommentModel[] = [];
 
   public username: string = '';
   
@@ -82,11 +83,11 @@ export class AccountTaggedComponent {
 
     this.doesUserExist();
 
-    let users: AccountInformationModel[] = this.localStorageService.getInformation('users')
+    let rawUsers: RawAccountInformationModel[] = this.localStorageService.getInformation('rawUsers')
 
     if(this.doesUserExistResult) {
-      for(let i = 0; i < users.length; i++) {
-        if(users.at(i)!.username == this.username) this.userAccount = users.at(i)!;
+      for(let i = 0; i < rawUsers.length; i++) {
+        if(rawUsers.at(i)!.username == this.username) this.userAccount = this.convertRawUserToUser(rawUsers.at(i)!);
       }
     
       this.isCurrentUser();
@@ -111,6 +112,8 @@ export class AccountTaggedComponent {
     // console.log('private user not followed current user: ' + this.privateUserNotFollowedByCurrentUserResult);
     // console.log('public user not followed current user: ' + this.publicUserNotFollowedByCurrentUserResult);
 
+    this.populatePostsAndComments();
+
     this.sidebarCloseOnResize();
 
     var width = window.innerWidth;
@@ -125,7 +128,25 @@ export class AccountTaggedComponent {
     this.localStorageService.setInformation('follower-type', 'followers');
   }
 
-  
+
+  populatePostsAndComments() {
+    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
+    let rawComments: RawCommentModel[] = this.localStorageService.getInformation('rawComments');
+
+    let rawUsersPosts: RawUserPostModel[] = [];
+    let rawUsersComments: RawCommentModel[] = [];
+
+    for(let i = 0; i < rawPosts.length; i++) {
+      if(this.userAccount.taggedPostIds.includes(rawPosts[i].postId)) rawUsersPosts.push(rawPosts[i]);
+    }
+    for(let i = 0; i < rawComments.length; i++) {
+      if(this.userAccount.taggedPostIds.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
+    }
+
+    this.usersTaggedPosts = rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost));
+    this.taggedPostsComments = rawUsersComments.map((rawComment) => this.convertRawCommentToComment(rawComment));
+  }
+
   toggleFollowers() {
     var activeFollowerType = this.localStorageService.getInformation('follower-type');
 
@@ -222,10 +243,10 @@ export class AccountTaggedComponent {
   doesUserExist() {
     let userExistsInDB: boolean = false;
 
-    let users: RawAccountInformationModel[] = this.localStorageService.getInformation('users')
+    let rawUsers: RawAccountInformationModel[] = this.localStorageService.getInformation('rawUsers')
 
-    for(let i = 0; i < users.length; i++) {
-      if(users.at(i)!.username == this.username) userExistsInDB = true;
+    for(let i = 0; i < rawUsers.length; i++) {
+      if(rawUsers.at(i)!.username == this.username) userExistsInDB = true;
     }
 
     if(userExistsInDB == false) {

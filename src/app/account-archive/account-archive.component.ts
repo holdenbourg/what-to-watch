@@ -56,6 +56,7 @@ export class AccountArchiveComponent {
     private: false
   }
   public usersArchivedPosts: UserPostModel[] = [];
+  public archivedPostsComments: CommentModel[] = [];
 
   public username: string = '';
   
@@ -81,11 +82,11 @@ export class AccountArchiveComponent {
 
     this.doesUserExist();
 
-    let users: AccountInformationModel[] = this.localStorageService.getInformation('users')
+    let rawUsers: RawAccountInformationModel[] = this.localStorageService.getInformation('rawUsers')
 
     if(this.doesUserExistResult) {
-      for(let i = 0; i < users.length; i++) {
-        if(users.at(i)!.username == this.username) this.userAccount = users.at(i)!;
+      for(let i = 0; i < rawUsers.length; i++) {
+        if(rawUsers.at(i)!.username == this.username) this.userAccount = this.convertRawUserToUser(rawUsers.at(i)!);
       }
     
       this.isCurrentUser();
@@ -110,6 +111,8 @@ export class AccountArchiveComponent {
     // console.log('private user not followed current user: ' + this.privateUserNotFollowedByCurrentUserResult);
     // console.log('public user not followed current user: ' + this.publicUserNotFollowedByCurrentUserResult);
 
+    this.populatePostsAndComments();
+
     this.sidebarCloseOnResize();
 
     var width = window.innerWidth;
@@ -118,9 +121,6 @@ export class AccountArchiveComponent {
       const themeClass = document.querySelector('.sidebar');
       themeClass?.classList.toggle('active'); 
     }
-
-    
-    document.getElementById('.scroll-box')!.style.paddingLeft = "12px";
     
     //sets active follower-type to followers
     this.localStorageService.clearInformation('follower-type');
@@ -128,6 +128,27 @@ export class AccountArchiveComponent {
   }
 
   
+  populatePostsAndComments() {
+    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
+    let rawComments: RawCommentModel[] = this.localStorageService.getInformation('rawComments');
+
+    let rawUsersPosts: RawUserPostModel[] = [];
+    let rawUsersComments: RawCommentModel[] = [];
+
+    for(let i = 0; i < rawPosts.length; i++) {
+      if(this.userAccount.archivedPostIds.includes(rawPosts[i].postId)) rawUsersPosts.push(rawPosts[i]);
+    }
+    for(let i = 0; i < rawComments.length; i++) {
+      if(this.userAccount.archivedPostIds.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
+    }
+
+    this.usersArchivedPosts = rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost));
+    this.archivedPostsComments = rawUsersComments.map((rawComment) => this.convertRawCommentToComment(rawComment));
+
+    console.log(this.usersArchivedPosts);
+    console.log(this.archivedPostsComments);
+  }
+
   toggleFollowers() {
     var activeFollowerType = this.localStorageService.getInformation('follower-type');
 
@@ -223,10 +244,11 @@ export class AccountArchiveComponent {
 
   doesUserExist() {
     let userExistsInDB: boolean = false;
-    let users: RawAccountInformationModel[] = this.localStorageService.getInformation('users')
 
-    for(let i = 0; i < users.length; i++) {
-      if(users.at(i)!.username == this.username) userExistsInDB = true;
+    let rawUsers: RawAccountInformationModel[] = this.localStorageService.getInformation('rawUsers')
+
+    for(let i = 0; i < rawUsers.length; i++) {
+      if(rawUsers.at(i)!.username == this.username) userExistsInDB = true;
     }
 
     if(userExistsInDB == false) {
