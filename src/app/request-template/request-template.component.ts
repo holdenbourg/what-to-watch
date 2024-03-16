@@ -49,9 +49,9 @@ export class RequestTemplateComponent {
       following: this.currentUser.following,
       requests: newRequestedUsers,
       blocked: this.currentUser.blocked,
-      posts: this.currentUser.posts,
-      postsTaggedIn: this.currentUser.postsTaggedIn,
-      archivedPosts: this.currentUser.archivedPosts,
+      postIds: this.currentUser.postIds,
+      taggedPostIds: this.currentUser.taggedPostIds,
+      archivedPostIds: this.currentUser.archivedPostIds,
       private: this.currentUser.private
     }
 
@@ -84,9 +84,9 @@ export class RequestTemplateComponent {
       following: this.currentUser.following,
       requests: newRequestedUsers,
       blocked: this.currentUser.blocked,
-      posts: this.currentUser.posts,
-      postsTaggedIn: this.currentUser.postsTaggedIn,
-      archivedPosts: this.currentUser.archivedPosts,
+      postIds: this.currentUser.postIds,
+      taggedPostIds: this.currentUser.taggedPostIds,
+      archivedPostIds: this.currentUser.archivedPostIds,
       private: this.currentUser.private
     }
 

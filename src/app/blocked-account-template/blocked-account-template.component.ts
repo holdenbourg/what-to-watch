@@ -43,9 +43,9 @@ export class BlockedAccountTemplateComponent {
       following: this.currentUser.following,
       requests: this.currentUser.requests,
       blocked: newBlockedUsers,
-      posts: this.currentUser.posts,
-      postsTaggedIn: this.currentUser.postsTaggedIn,
-      archivedPosts: this.currentUser.archivedPosts,
+      postIds: this.currentUser.postIds,
+      taggedPostIds: this.currentUser.taggedPostIds,
+      archivedPostIds: this.currentUser.archivedPostIds,
       private: this.currentUser.private
     }
 

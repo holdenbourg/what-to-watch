@@ -10,9 +10,11 @@ import { RawAccountInformationModel } from '../services/models/database-objects/
 import { CommentModel } from '../services/models/database-objects/comment-model';
 import { FollowerModel } from '../services/models/database-objects/follower-model';
 import { UserPostModel } from '../services/models/database-objects/user-post-model';
-import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
-import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
-import { CaptionModel } from '../services/models/database-objects/caption-model';
+import { RatedMovieModel } from '../services/models/database-objects/rated-movie-model';
+import { RatedSeriesModel } from '../services/models/database-objects/rated-series-model';
+import { RawUserPostModel } from '../services/models/database-objects/raw-user-post-model';
+import { RawCommentModel } from '../services/models/database-objects/raw-comment-model';
+import { ReplyModel } from '../services/models/database-objects/reply-model';
 
 @Component({
   selector: 'app-login',
@@ -45,12 +47,12 @@ export class LoginRegisterComponent {
 
   public rawMockUsersDatabase: RawAccountInformationModel[] = [
     {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       password: 'Captain$47',
       email: 'holden.bourg@gmail.com',
       firstName: 'Holden',
       lastName: 'Bourg',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       bio: 'I love movies so much I love movies so much I love movies so much',
       followers: [
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal',
@@ -75,280 +77,216 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'AshlynnDang',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'OliverQueen',
       ],
-      posts: [
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-20-2024::::LukasGocke,CalebHaralson,EnriqueLeal,HoldenBourg::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-19-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-18-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-17-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-16-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BMjAyMDIyNzA4NV5BMl5BanBnXkFtZTgwMDgxNzE0ODE@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-15-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-14-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BODM2ODgyOGYtYzYwMC00ZTEwLTg2MmItZDI2OTdhMTdiMGFiL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-13-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BNGMyZjM5YWUtMjVmMC00NmQ2LTgyMWEtNjYzZDFkYTIyMjFhXkEyXkFqcGdeQXVyMTAyMjQ3NzQ1._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-12-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BNTk2NjU1MjMyNV5BMl5BanBnXkFtZTcwMzc5NjE0MQ@@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-11-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BNDFjYTIxMjctYTQ2ZC00OGQ4LWE3OGYtNDdiMzNiNDZlMDAwXkEyXkFqcGdeQXVyNzI3NjY3NjQ@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-10-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Series`,
-        `https://m.media-amazon.com/images/M/MV5BNjRiNmNjMmMtN2U2Yi00ODgxLTk3OTMtMmI1MTI1NjYyZTEzXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-09-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Series`,
-        `https://m.media-amazon.com/images/M/MV5BNGM0YTk3MWEtN2JlZC00ZmZmLWIwMDktZTMxZGE5Zjc2MGExXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-08-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Series`,
-        `https://m.media-amazon.com/images/M/MV5BY2IyMDA0NGEtZjIyOS00NjU0LThlOTctODA0OTZmMDU2ZTMxXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-07-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Series`,
-        `https://m.media-amazon.com/images/M/MV5BNzgwY2QwYjItYTM1NS00OTZmLThlMjUtNmE0Mzg0OGE0NzE3XkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Series`,
-        `https://m.media-amazon.com/images/M/MV5BYTIxNjk3YjItYmYzMC00ZTdmLTk0NGUtZmNlZTA0NWFkZDMwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-05-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Series`,
-        `https://m.media-amazon.com/images/M/MV5BZjE0YjVjODQtZGY2NS00MDcyLThhMDAtZGQwMTZiOWNmNjRiXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-04-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Series`,
-        `https://m.media-amazon.com/images/M/MV5BODFmYTUwYzMtM2M2My00NGExLWIzMDctYmRjNTNhZDc4MGI2XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-03-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Series`,
-        `https://m.media-amazon.com/images/M/MV5BZGFiMWFhNDAtMzUyZS00NmQ2LTljNDYtMmZjNTc5MDUxMzViXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-02-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Series`,
-        `https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-01-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Series`
+      postIds: [
+        `m1b114fbe2525b`,
+        `mc64a0e2ed49d7`,
+        `m08c9ee59315b7`,
+        `m2b7950d28e018`,
+        `mb79abc0e36da9`,
+        `ma480047d8bc6b`,
+        `m297bcedc228ff`,
+        `maf9fa739dcc3f`,
+        `md20fca600e5f7`,
+        `m0ea021a14bc3c`,
+        `sca316788b32b3`,
+        `se21b5fdcc060e`,
+        `s4af79f404ab75`,
+        `s9bf8d9f4ec4d5`,
+        `s2ddf16037acbc`,
+        `se3eaaed56bf05`,
+        `s1a0a11a13629d`,
+        `s4d9733f005bf1`,
+        `s0c0a652725a69`,
+        `sb866077598854`
       ],
-      postsComments: [
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`
-      ],
-      postsTaggedIn: [
+      taggedPostIds: [
         `https://m.media-amazon.com/images/M/MV5BNzk1OGU2NmMtNTdhZC00NjdlLWE5YTMtZTQ0MGExZTQzOGQyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMjZmYjg0ODctOTIyYy00YzhkLTgyMzEtNjUyY2JiZjVmYzI2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BN2YzYjI0MWYtYWUyZS00ZDQ4LWEzN2EtMDU4NDJmNjA2ZWFiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BYWNiNjBhZjAtMzVkNi00MTJiLWI0NGQtODE2NmIyNmU2OTQwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BM2RmMGY2Y2UtNjA1NS00NGE4LThiNzItMmE1NTk5NzI5NmE0XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg::::OliverQueen||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,EnriqueLeal::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::Movie`
       ],
-      taggedComments: [
-        `https://m.media-amazon.com/images/M/MV5BNzk1OGU2NmMtNTdhZC00NjdlLWE5YTMtZTQ0MGExZTQzOGQyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BNzk1OGU2NmMtNTdhZC00NjdlLWE5YTMtZTQ0MGExZTQzOGQyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||AshlynnDang||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BMjZmYjg0ODctOTIyYy00YzhkLTgyMzEtNjUyY2JiZjVmYzI2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BMjZmYjg0ODctOTIyYy00YzhkLTgyMzEtNjUyY2JiZjVmYzI2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BN2YzYjI0MWYtYWUyZS00ZDQ4LWEzN2EtMDU4NDJmNjA2ZWFiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||AshlynnDang||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BN2YzYjI0MWYtYWUyZS00ZDQ4LWEzN2EtMDU4NDJmNjA2ZWFiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BYWNiNjBhZjAtMzVkNi00MTJiLWI0NGQtODE2NmIyNmU2OTQwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BYWNiNjBhZjAtMzVkNi00MTJiLWI0NGQtODE2NmIyNmU2OTQwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BM2RmMGY2Y2UtNjA1NS00NGE4LThiNzItMmE1NTk5NzI5NmE0XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BM2RmMGY2Y2UtNjA1NS00NGE4LThiNzItMmE1NTk5NzI5NmE0XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`
-      ],
-      archivedPosts: [
-        `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke,EnriqueLeal::::Movie`,
-        `https://m.media-amazon.com/images/M/MV5BY2UxMWVlNmMtYzM0Zi00YTQzLTk2N2ItM2Y1NmNmMDk4MDFjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg::::HoldenBourg||||caption's are amazing @LukasGocke @CalebHaralson||||LukasGocke,CalebHaralson::::12-06-2024::::LukasGocke,CalebHaralson,HoldenBourg,EnriqueLeal::::LukasGocke,EnriqueLeal::::Movie`
-      ],
-      archivedComments: [
-        `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BY2UxMWVlNmMtYzM0Zi00YTQzLTk2N2ItM2Y1NmNmMDk4MDFjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg||||LukasGocke||||comments are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson||||04-10-2003`,
-        `https://m.media-amazon.com/images/M/MV5BY2UxMWVlNmMtYzM0Zi00YTQzLTk2N2ItM2Y1NmNmMDk4MDFjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg||||CalebHaralson||||comments are amazing @LukasGocke @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003`
+      archivedPostIds: [
+        `m77b8e730b1597`,
+        `m2e872b0b5fe1c`,
+        `m64de727bc325a`
       ],
       private: false
     },
     {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'LukasGocke',
       password: 'Captain$47',
       email: 'lukas.gocke@gmail.com',
       firstName: 'Lukas',
       lastName: 'Gocke',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       bio: 'I love movies so much I love movies so much I love movies so much',
       followers: [],
       following: [],
       requests: [],
       blocked: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
-      posts: [
+      postIds: [
         `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg,EnriqueLeal::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg,EnriqueLeal::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg,EnriqueLeal::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg::::LukasGocke||||caption's are amazing @HoldenBourg @CalebHaralson||||HoldenBourg,CalebHaralson::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg,EnriqueLeal::::Movie`,
       ],
-      postsComments: [],
-      postsTaggedIn: [],
-      taggedComments: [],
-      archivedPosts: [],
-      archivedComments: [],
+      taggedPostIds: [],
+      archivedPostIds: [],
       private: false
     },
     {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'CalebHaralson',
       password: 'Captain$47',
       email: 'caleb.haralson@gmail.com',
       firstName: 'Caleb',
       lastName: 'Haralson',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       bio: 'I love movies so much I love movies so much I love movies so much',
       followers: [],
       following: [],
       requests: [],
       blocked: [],
-      posts: [
+      postIds: [
         `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg,EnriqueLeal::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg,EnriqueLeal::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg,EnriqueLeal::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg::::CalebHaralson||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg,EnriqueLeal::::Movie`,
       ],
-      postsComments: [],
-      postsTaggedIn: [],
-      taggedComments: [],
-      archivedPosts: [],
-      archivedComments: [],
+      taggedPostIds: [],
+      archivedPostIds: [],
       private: false
     },
     {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'EnriqueLeal',
       password: 'Captain$47',
       email: 'enrique.leal@gmail.com',
       firstName: 'Enrique',
       lastName: 'Leal',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       bio: 'I love movies so much I love movies so much I love movies so much',
       followers: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
       following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
       requests: [],
       blocked: [],
-      posts: [
+      postIds: [
         `https://m.media-amazon.com/images/M/MV5BOTNkMzNlNmQtMWRlYS00MTExLWExNjgtODc0MGRjNjE1OGQwXkEyXkFqcGdeQXVyMjAwNzczNTU@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BOTNkMzNlNmQtMWRlYS00MTExLWExNjgtODc0MGRjNjE1OGQwXkEyXkFqcGdeQXVyMjAwNzczNTU@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BOTNkMzNlNmQtMWRlYS00MTExLWExNjgtODc0MGRjNjE1OGQwXkEyXkFqcGdeQXVyMjAwNzczNTU@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BOTNkMzNlNmQtMWRlYS00MTExLWExNjgtODc0MGRjNjE1OGQwXkEyXkFqcGdeQXVyMjAwNzczNTU@._V1_SX300.jpg::::EnriqueLeal||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
       ],
-      postsComments: [],
-      postsTaggedIn: [],
-      taggedComments: [],
-      archivedPosts: [],
-      archivedComments: [],
+      taggedPostIds: [],
+      archivedPostIds: [],
       private: false
     },
     {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'AshlynnDang',
       password: 'Captain$47',
       email: 'ashlynn.dang@gmail.com',
       firstName: 'Ashlynn',
       lastName: 'Dang',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       bio: 'I love movies so much I love movies so much I love movies so much',
       followers: [],
       following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
       requests: [],
       blocked: [],
-      posts: [
+      postIds: [
         `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg::::AshlynnDang||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
       ],
-      postsComments: [],
-      postsTaggedIn: [],
-      taggedComments: [],
-      archivedPosts: [],
-      archivedComments: [],
+      taggedPostIds: [],
+      archivedPostIds: [],
       private: false
     },
     {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'OliverQueen',
       password: 'Captain$47',
       email: 'oliver.queen@gmail.com',
       firstName: 'Oliver',
       lastName: 'Queen',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       bio: 'I love movies so much I love movies so much I love movies so much',
       followers: [],
       following: [],
       requests: [],
       blocked: [],
-      posts: [
+      postIds: [
         `https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg::::OliverQueen||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg::::OliverQueen||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg::::OliverQueen||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg::::OliverQueen||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
       ],
-      postsComments: [],
-      postsTaggedIn: [],
-      taggedComments: [],
-      archivedPosts: [],
-      archivedComments: [],
+      taggedPostIds: [],
+      archivedPostIds: [],
       private: true
     },
     {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'TommyMerlin',
       password: 'Captain$47',
       email: 'tommy.merlin@gmail.com',
       firstName: 'Tommy',
       lastName: 'Merlin',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       bio: 'I love movies so much I love movies so much I love movies so much',
       followers: [],
       following: [],
       requests: [],
       blocked: [],
-      posts: [
+      postIds: [
         `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg::::TommyMerlin||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg::::TommyMerlin||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg::::TommyMerlin||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg::::TommyMerlin||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
       ],
-      postsComments: [],
-      postsTaggedIn: [],
-      taggedComments: [],
-      archivedPosts: [],
-      archivedComments: [],
+      taggedPostIds: [],
+      archivedPostIds: [],
       private: false
     },
     {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'JohnDiggle',
       password: 'Captain$47',
       email: 'john.diggle@gmail.com',
       firstName: 'John',
       lastName: 'Diggle',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       bio: 'I love movies so much I love movies so much I love movies so much',
       followers: [],
       following: [],
       requests: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
       blocked: [],
-      posts: [
+      postIds: [
         `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::JohnDiggle||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::JohnDiggle||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::JohnDiggle||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg::::JohnDiggle||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
       ],
-      postsComments: [],
-      postsTaggedIn: [],
-      taggedComments: [],
-      archivedPosts: [],
-      archivedComments: [],
+      taggedPostIds: [],
+      archivedPostIds: [],
       private: true
     },
     {
-      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'FelicitySmoak',
       password: 'Captain$47',
       email: 'felicity.smoak@gmail.com',
       firstName: 'Felicity',
       lastName: 'Smoak',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       bio: 'I love movies so much I love movies so much I love movies so much',
       followers: [],
       following: [],
       requests: [],
       blocked: [],
-      posts: [
+      postIds: [
         `https://m.media-amazon.com/images/M/MV5BMzdlOGU2ODUtODk1YS00M2ZmLWEwNjEtODJhOGE5N2Y4ZTQyXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg::::FelicitySmoak||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMzdlOGU2ODUtODk1YS00M2ZmLWEwNjEtODJhOGE5N2Y4ZTQyXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg::::FelicitySmoak||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMzdlOGU2ODUtODk1YS00M2ZmLWEwNjEtODJhOGE5N2Y4ZTQyXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg::::FelicitySmoak||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
         `https://m.media-amazon.com/images/M/MV5BMzdlOGU2ODUtODk1YS00M2ZmLWEwNjEtODJhOGE5N2Y4ZTQyXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg::::FelicitySmoak||||caption's are amazing @LukasGocke @HoldenBourg||||LukasGocke,HoldenBourg::::12-06-2024::::HoldenBourg,CalebHaralson,LukasGocke,EnriqueLeal::::HoldenBourg::::Movie`,
       ],
-      postsComments: [],
-      postsTaggedIn: [],
-      taggedComments: [],
-      archivedPosts: [],
-      archivedComments: [],
+      taggedPostIds: [],
+      archivedPostIds: [],
       private: false
     }
   ];
@@ -356,6 +294,7 @@ export class LoginRegisterComponent {
 
   public mockRatedMoviesDatabase: RatedMovieModel[] = [
     {
+      postId: 'm1b114fbe2525b',
       poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
       title: 'Avatar',
       releaseDate: 'December 08, 2009',
@@ -373,6 +312,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 20, 2024'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       poster: 'https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg',
       title: 'Avatar: The Way of Water',
       releaseDate: 'December 16, 2022',
@@ -390,6 +330,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 19, 2024'
     },
     {
+      postId: 'm08c9ee59315b7',
       poster: 'https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg',
       title: 'Avatar:The Last Airbender - The Legend So Far',
       releaseDate: 'November 18, 2005',
@@ -407,6 +348,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 18, 2024'
     },
     {
+      postId: 'm2b7950d28e018',
       poster: 'https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg',
       title: `The King's Avatar: For the Glory`,
       releaseDate: 'August 16, 2019',
@@ -424,6 +366,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 17, 2024'
     },
     {
+      postId: 'mb79abc0e36da9',
       poster: 'https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg',
       title: 'Avatar Spirits',
       releaseDate: 'June 22, 2010',
@@ -441,6 +384,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 16, 2024'
     },
     {
+      postId: 'ma480047d8bc6b',
       poster: 'https://m.media-amazon.com/images/M/MV5BMjAyMDIyNzA4NV5BMl5BanBnXkFtZTgwMDgxNzE0ODE@._V1_SX300.jpg',
       title: 'The Last Avatar',
       releaseDate: 'December 06, 2014',
@@ -458,6 +402,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 15, 2024'
     },
     {
+      postId: 'm297bcedc228ff',
       poster: 'https://m.media-amazon.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX300.jpg',
       title: 'Catch Me If You Can',
       releaseDate: 'December 25, 2002',
@@ -475,6 +420,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 14, 2024'
     },
     {
+      postId: 'maf9fa739dcc3f',
       poster: 'https://m.media-amazon.com/images/M/MV5BODM2ODgyOGYtYzYwMC00ZTEwLTg2MmItZDI2OTdhMTdiMGFiL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg',
       title: 'To Catch a Thief',
       releaseDate: 'December 08, 2009',
@@ -492,6 +438,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 13, 2024'
     },
     {
+      postId: 'md20fca600e5f7',
       poster: 'https://m.media-amazon.com/images/M/MV5BNGMyZjM5YWUtMjVmMC00NmQ2LTgyMWEtNjYzZDFkYTIyMjFhXkEyXkFqcGdeQXVyMTAyMjQ3NzQ1._V1_SX300.jpg',
       title: 'To Catch a Killer',
       releaseDate: 'April 06, 2023',
@@ -509,6 +456,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 12, 2024'
     },
     {
+      postId: 'm0ea021a14bc3c',
       poster: 'https://m.media-amazon.com/images/M/MV5BNTk2NjU1MjMyNV5BMl5BanBnXkFtZTcwMzc5NjE0MQ@@._V1_SX300.jpg',
       title: 'Catch and Release',
       releaseDate: 'January 26, 2007',
@@ -526,25 +474,153 @@ export class LoginRegisterComponent {
       dateRated: 'December 11, 2024'
     },
     {
-      poster: 'https://m.media-amazon.com/images/M/MV5BZjIyMjE5ZDYtMTQxNC00NTEzLTgwYzYtMmM0NDg3OWFlYWM5XkEyXkFqcGdeQXVyNjMxNzQ2NTQ@._V1_SX300.jpg',
-      title: 'Avatar',
-      releaseDate: 'December 08, 2009',
+      postId: 'm77b8e730b1597',
+      poster: 'https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg',
+      title: 'Jaws',
+      releaseDate: 'June 20, 1975',
+      rated: 'PG',
+      runTime: 124,
+      genres: ['Adventure', 'Mystery', 'Thriller'],
+      acting: 3,
+      visuals: 3,
+      story: 3,
+      climax: 3,
+      pacing: 3,
+      ending: 3,
+      rating: 3,
+      username: 'HoldenBourg',
+      dateRated: 'November 11, 2024'
+    },
+    {
+      postId: 'm2e872b0b5fe1c',
+      poster: 'https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
+      title: 'Jaws 2',
+      releaseDate: 'June 16, 1978',
+      rated: 'PG',
+      runTime: 116,
+      genres: ['Adventure', 'Horror', 'Thriller'],
+      acting: 4,
+      visuals: 4,
+      story: 4,
+      climax: 4,
+      pacing: 4,
+      ending: 4,
+      rating: 4,
+      username: 'HoldenBourg',
+      dateRated: 'October 11, 2024'
+    },
+    {
+      postId: 'm64de727bc325a',
+      poster: 'https://m.media-amazon.com/images/M/MV5BY2UxMWVlNmMtYzM0Zi00YTQzLTk2N2ItM2Y1NmNmMDk4MDFjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg',
+      title: 'Jaws: The Revenge',
+      releaseDate: 'July 17, 1987',
       rated: 'PG-13',
-      runTime: 162,
-      genres: ['Action', 'Adventure', 'Fantasy'],
-      acting: 9,
-      visuals: 9,
-      story: 9,
+      runTime: 89,
+      genres: ['Adventure', 'Horror', 'Thriller'],
+      acting: 5,
+      visuals: 5,
+      story: 5,
       climax: 5,
       pacing: 5,
       ending: 5,
-      rating: 7,
-      username: 'AshlynnDang',
-      dateRated: 'December 22, 2024'
+      rating: 5,
+      username: 'HoldenBourg',
+      dateRated: 'September 11, 2024'
+    },
+    {
+      postId: 'm0ea021a14bc3c',
+      poster: 'https://m.media-amazon.com/images/M/MV5BNTk2NjU1MjMyNV5BMl5BanBnXkFtZTcwMzc5NjE0MQ@@._V1_SX300.jpg',
+      title: 'Catch and Release',
+      releaseDate: 'January 26, 2007',
+      rated: 'PG-13',
+      runTime: 111,
+      genres: ['Comedy', 'Drama', 'Romance'],
+      acting: 8,
+      visuals: 5,
+      story: 3,
+      climax: 7,
+      pacing: 2,
+      ending: 7,
+      rating: 5.3,
+      username: 'HoldenBourg',
+      dateRated: 'August 11, 2024'
+    },
+    {
+      postId: 'm0ea021a14bc3c',
+      poster: 'https://m.media-amazon.com/images/M/MV5BNTk2NjU1MjMyNV5BMl5BanBnXkFtZTcwMzc5NjE0MQ@@._V1_SX300.jpg',
+      title: 'Catch and Release',
+      releaseDate: 'January 26, 2007',
+      rated: 'PG-13',
+      runTime: 111,
+      genres: ['Comedy', 'Drama', 'Romance'],
+      acting: 8,
+      visuals: 5,
+      story: 3,
+      climax: 7,
+      pacing: 2,
+      ending: 7,
+      rating: 5.3,
+      username: 'HoldenBourg',
+      dateRated: 'July 11, 2024'
+    },
+    {
+      postId: 'm0ea021a14bc3c',
+      poster: 'https://m.media-amazon.com/images/M/MV5BNTk2NjU1MjMyNV5BMl5BanBnXkFtZTcwMzc5NjE0MQ@@._V1_SX300.jpg',
+      title: 'Catch and Release',
+      releaseDate: 'January 26, 2007',
+      rated: 'PG-13',
+      runTime: 111,
+      genres: ['Comedy', 'Drama', 'Romance'],
+      acting: 8,
+      visuals: 5,
+      story: 3,
+      climax: 7,
+      pacing: 2,
+      ending: 7,
+      rating: 5.3,
+      username: 'HoldenBourg',
+      dateRated: 'June 11, 2024'
+    },
+    {
+      postId: 'm0ea021a14bc3c',
+      poster: 'https://m.media-amazon.com/images/M/MV5BNTk2NjU1MjMyNV5BMl5BanBnXkFtZTcwMzc5NjE0MQ@@._V1_SX300.jpg',
+      title: 'Catch and Release',
+      releaseDate: 'January 26, 2007',
+      rated: 'PG-13',
+      runTime: 111,
+      genres: ['Comedy', 'Drama', 'Romance'],
+      acting: 8,
+      visuals: 5,
+      story: 3,
+      climax: 7,
+      pacing: 2,
+      ending: 7,
+      rating: 5.3,
+      username: 'HoldenBourg',
+      dateRated: 'May 11, 2024'
+    },
+    {
+      postId: 'm0ea021a14bc3c',
+      poster: 'https://m.media-amazon.com/images/M/MV5BNTk2NjU1MjMyNV5BMl5BanBnXkFtZTcwMzc5NjE0MQ@@._V1_SX300.jpg',
+      title: 'Catch and Release',
+      releaseDate: 'January 26, 2007',
+      rated: 'PG-13',
+      runTime: 111,
+      genres: ['Comedy', 'Drama', 'Romance'],
+      acting: 8,
+      visuals: 5,
+      story: 3,
+      climax: 7,
+      pacing: 2,
+      ending: 7,
+      rating: 5.3,
+      username: 'HoldenBourg',
+      dateRated: 'April 11, 2024'
     }
   ];
   public mockRatedSeriesDatabase: RatedSeriesModel[] = [
     {
+      postId: 'sca316788b32b3',
       poster: 'https://m.media-amazon.com/images/M/MV5BNDFjYTIxMjctYTQ2ZC00OGQ4LWE3OGYtNDdiMzNiNDZlMDAwXkEyXkFqcGdeQXVyNzI3NjY3NjQ@._V1_SX300.jpg',
       title: 'Attack on Titan',
       releaseDate: 'December 18, 2009',
@@ -563,6 +639,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 10, 2024'
     },
     {
+      postId: 'se21b5fdcc060e',
       poster: 'https://m.media-amazon.com/images/M/MV5BNjRiNmNjMmMtN2U2Yi00ODgxLTk3OTMtMmI1MTI1NjYyZTEzXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
       title: 'Death Note',
       releaseDate: 'October 21, 2007',
@@ -581,6 +658,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 9, 2024'
     },
     {
+      postId: 's4af79f404ab75',
       poster: 'https://m.media-amazon.com/images/M/MV5BNGM0YTk3MWEtN2JlZC00ZmZmLWIwMDktZTMxZGE5Zjc2MGExXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
       title: 'Hunter x Hunter',
       releaseDate: 'April 17, 2016',
@@ -599,6 +677,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 8, 2024'
     },
     {
+      postId: 's9bf8d9f4ec4d5',
       poster: 'https://m.media-amazon.com/images/M/MV5BY2IyMDA0NGEtZjIyOS00NjU0LThlOTctODA0OTZmMDU2ZTMxXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_SX300.jpg',
       title: 'Fire Force',
       releaseDate: 'July 05, 2019',
@@ -617,6 +696,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 7, 2024'
     },
     {
+      postId: 's2ddf16037acbc',
       poster: 'https://m.media-amazon.com/images/M/MV5BNzgwY2QwYjItYTM1NS00OTZmLThlMjUtNmE0Mzg0OGE0NzE3XkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
       title: 'Berserk',
       releaseDate: 'May 28, 2002',
@@ -635,6 +715,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 6, 2024'
     },
     {
+      postId: 'se3eaaed56bf05',
       poster: 'https://m.media-amazon.com/images/M/MV5BYTIxNjk3YjItYmYzMC00ZTdmLTk0NGUtZmNlZTA0NWFkZDMwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
       title: 'Demon Slayer: Kimetsu no Yaiba',
       releaseDate: 'January 22, 2021',
@@ -653,6 +734,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 5, 2024'
     },
     {
+      postId: 's1a0a11a13629d',
       poster: 'https://m.media-amazon.com/images/M/MV5BZjE0YjVjODQtZGY2NS00MDcyLThhMDAtZGQwMTZiOWNmNjRiXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg',
       title: 'Bleach',
       releaseDate: 'September 09, 2006',
@@ -671,6 +753,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 4, 2024'
     },
     {
+      postId: 's4d9733f005bf1',
       poster: 'https://m.media-amazon.com/images/M/MV5BODFmYTUwYzMtM2M2My00NGExLWIzMDctYmRjNTNhZDc4MGI2XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_SX300.jpg',
       title: 'Bleach: Thousand-Year Blood War',
       releaseDate: 'October 10, 2022',
@@ -689,6 +772,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 3, 2024'
     },
     {
+      postId: 's0c0a652725a69',
       poster: 'https://m.media-amazon.com/images/M/MV5BZGFiMWFhNDAtMzUyZS00NmQ2LTljNDYtMmZjNTc5MDUxMzViXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
       title: 'Naruto: Shippuden',
       releaseDate: 'October 28, 2009',
@@ -707,6 +791,7 @@ export class LoginRegisterComponent {
       dateRated: 'December 2, 2024'
     },
     {
+      postId: 'sb866077598854',
       poster: 'https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg',
       title: 'Naruto',
       releaseDate: 'September 10, 2005',
@@ -723,24 +808,468 @@ export class LoginRegisterComponent {
       rating: 5.3,
       username: 'HoldenBourg',
       dateRated: 'December 1, 2024'
+    }
+  ];
+  public rawMockPostsDatabase: RawUserPostModel[] = [
+    {
+      postId: 'm1b114fbe2525b',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-20-2024'
     },
     {
+      postId: 'mc64a0e2ed49d7',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-19-2024'
+    },
+    {
+      postId: 'm08c9ee59315b7',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-18-2024'
+    },
+    {
+      postId: 'm2b7950d28e018',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-17-2024'
+    },
+    {
+      postId: 'mb79abc0e36da9',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-16-2024'
+    },
+    {
+      postId: 'ma480047d8bc6b',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BMjAyMDIyNzA4NV5BMl5BanBnXkFtZTgwMDgxNzE0ODE@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-15-2024'
+    },
+    {
+      postId: 'm297bcedc228ff',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-14-2024'
+    },
+    {
+      postId: 'maf9fa739dcc3f',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BODM2ODgyOGYtYzYwMC00ZTEwLTg2MmItZDI2OTdhMTdiMGFiL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-13-2024'
+    },
+    {
+      postId: 'md20fca600e5f7',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BNGMyZjM5YWUtMjVmMC00NmQ2LTgyMWEtNjYzZDFkYTIyMjFhXkEyXkFqcGdeQXVyMTAyMjQ3NzQ1._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-12-2024'
+    },
+    {
+      postId: 'm0ea021a14bc3c',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BNTk2NjU1MjMyNV5BMl5BanBnXkFtZTcwMzc5NjE0MQ@@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-11-2024'
+    },
+    {
+      postId: 'sca316788b32b3',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
       poster: 'https://m.media-amazon.com/images/M/MV5BNDFjYTIxMjctYTQ2ZC00OGQ4LWE3OGYtNDdiMzNiNDZlMDAwXkEyXkFqcGdeQXVyNzI3NjY3NjQ@._V1_SX300.jpg',
-      title: 'Attack on Titan 11',
-      releaseDate: 'December 08, 2009',
-      rated: 'TV-MA',
-      seasons: 5, 
-      episodes: 124,
-      genres: ['Animation', 'Action', 'Adventure'],
-      acting: 9,
-      visuals: 9,
-      story: 9,
-      length: 5,
-      pacing: 5,
-      ending: 5,
-      rating: 7,
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-10-2024'
+    },
+    {
+      postId: 'se21b5fdcc060e',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BNjRiNmNjMmMtN2U2Yi00ODgxLTk3OTMtMmI1MTI1NjYyZTEzXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-09-2024'
+    },
+    {
+      postId: 's4af79f404ab75',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BNGM0YTk3MWEtN2JlZC00ZmZmLWIwMDktZTMxZGE5Zjc2MGExXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-08-2024'
+    },
+    {
+      postId: 's9bf8d9f4ec4d5',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BY2IyMDA0NGEtZjIyOS00NjU0LThlOTctODA0OTZmMDU2ZTMxXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-07-2024'
+    },
+    {
+      postId: 's2ddf16037acbc',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BNzgwY2QwYjItYTM1NS00OTZmLThlMjUtNmE0Mzg0OGE0NzE3XkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-06-2024'
+    },
+    {
+      postId: 'se3eaaed56bf05',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BYTIxNjk3YjItYmYzMC00ZTdmLTk0NGUtZmNlZTA0NWFkZDMwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-05-2024'
+    },
+    {
+      postId: 's1a0a11a13629d',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BZjE0YjVjODQtZGY2NS00MDcyLThhMDAtZGQwMTZiOWNmNjRiXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-04-2024'
+    },
+    {
+      postId: 's4d9733f005bf1',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BODFmYTUwYzMtM2M2My00NGExLWIzMDctYmRjNTNhZDc4MGI2XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-03-2024'
+    },
+    {
+      postId: 's0c0a652725a69',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BZGFiMWFhNDAtMzUyZS00NmQ2LTljNDYtMmZjNTc5MDUxMzViXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-02-2024'
+    },
+    {
+      postId: 'sb866077598854',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: 'https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg',
+      caption: `caption's are amazing @LukasGocke @CalebHaralson`,
+      likes: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      taggedUsers: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
+      ],
+      postDate: '12-01-2024'
+    },
+    {
+      postId: 'm77b8e730b1597',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: '',
+      caption: ``,
+      likes: [],
+      taggedUsers: [],
+      postDate: '11-11-2024'
+    },
+    {
+      postId: 'm2e872b0b5fe1c',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: '',
+      caption: ``,
+      likes: [],
+      taggedUsers: [],
+      postDate: '10-11-2024'
+    },
+    {
+      postId: 'm64de727bc325a',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      poster: '',
+      caption: ``,
+      likes: [],
+      taggedUsers: [],
+      postDate: '09-11-2024'
+    },
+    {
+      postId: 'mf5b3417fd47a7',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'CalebHaralson',
+      poster: '',
+      caption: ``,
+      likes: [],
+      taggedUsers: [],
+      postDate: '08-11-2024'
+    },
+    {
+      postId: 'm4ee49fbf13c86',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'EnriqueLeal',
+      poster: '',
+      caption: ``,
+      likes: [],
+      taggedUsers: [],
+      postDate: '07-11-2024'
+    },
+    {
+      postId: 'm6e1657aa83a9a',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'LukasGocke',
+      poster: '',
+      caption: ``,
+      likes: [],
+      taggedUsers: [],
+      postDate: '06-11-2024'
+    },
+    {
+      postId: 'mffab7fbeb34f9',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'AshlynnDang',
-      dateRated: 'December 21, 2024'
+      poster: '',
+      caption: ``,
+      likes: [],
+      taggedUsers: [],
+      postDate: '05-11-2024'
+    },
+    {
+      postId: 'm30500143dac36',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'OliverQueen',
+      poster: '',
+      caption: ``,
+      likes: [],
+      taggedUsers: [],
+      postDate: '04-11-2024'
     }
   ];
 
@@ -895,12 +1424,9 @@ export class LoginRegisterComponent {
       following: [],
       requests: [],
       blocked: [],
-      posts: [],
-      postsComments: [],
-      postsTaggedIn: [],
-      taggedComments: [],
-      archivedPosts: [],
-      archivedComments: [],
+      postIds: [],
+      taggedPostIds: [],
+      archivedPostIds: [],
       private: false
     }
 
@@ -1200,20 +1726,20 @@ export class LoginRegisterComponent {
       firstName: rawUser.firstName,
       lastName: rawUser.lastName,
       bio: rawUser.bio,
-      followers: this.convertRawFollowerToFollower(rawUser.followers),
-      following: this.convertRawFollowerToFollower(rawUser.following),
-      requests: this.convertRawFollowerToFollower(rawUser.requests),
-      blocked: this.convertRawFollowerToFollower(rawUser.blocked),
-      posts: this.convertRawPostsToPosts(rawUser),
-      postsTaggedIn: this.convertRawTaggedPostsToPosts(rawUser),
-      archivedPosts: this.convertRawArchivedPostsToPosts(rawUser),
+      followers: this.convertRawFollowersToFollowers(rawUser.followers),
+      following: this.convertRawFollowersToFollowers(rawUser.following),
+      requests: this.convertRawFollowersToFollowers(rawUser.requests),
+      blocked: this.convertRawFollowersToFollowers(rawUser.blocked),
+      postIds: rawUser.postIds,
+      taggedPostIds: rawUser.taggedPostIds,
+      archivedPostIds: rawUser.archivedPostIds,
       private: rawUser.private
     }
 
     return user;
   }
   //rawFollower: profilePicture.jpg::::HoldenBourg
-  convertRawFollowerToFollower(rawFollowers: string[]) {
+  convertRawFollowersToFollowers(rawFollowers: string[]) {
     let returnArray: FollowerModel[] = [];
 
     rawFollowers.forEach((rawFollowerString) => {
@@ -1229,108 +1755,56 @@ export class LoginRegisterComponent {
 
     return returnArray;
   }
-  //rawPost: postUrl.jpg::::HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke::::12-06-2024::::CalebHaralson,EnriqueLeal::::LukasGocke,EnriqueLeal,CalebHaralson::::Movie
-  convertRawPostsToPosts(rawUser: RawAccountInformationModel) {
-    let returnArray: UserPostModel[] = [];
-
-    rawUser.posts.forEach((rawPostString) => {
-      let splitArray = rawPostString.split('::::');
-
-      let postsComments: string[] = rawUser.postsComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
-
-      let post: UserPostModel = {
-        postUrl: splitArray.at(0)!,
-        caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
-        postDate: splitArray.at(2)!,
-        comments: this.convertRawCommentsToComments(postsComments),
-        likes: splitArray.at(3)!.split(','),
-        tagged: splitArray.at(4)!.split(','),
-        filmType: splitArray.at(5)!
-      }
-
-      returnArray.push(post);
-    })
-
-    return returnArray;
-  }
-  convertRawTaggedPostsToPosts(rawUser: RawAccountInformationModel) {
-    let returnArray: UserPostModel[] = [];
-
-    rawUser.postsTaggedIn.forEach((rawPostString) => {
-      let splitArray = rawPostString.split('::::');
-
-      let postsComments: string[] = rawUser.taggedComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
-
-      let post: UserPostModel = {
-        postUrl: splitArray.at(0)!,
-        caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
-        postDate: splitArray.at(2)!,
-        comments: this.convertRawCommentsToComments(postsComments),
-        likes: splitArray.at(3)!.split(','),
-        tagged: splitArray.at(4)!.split(','),
-        filmType: splitArray.at(5)!
-      }
-
-      returnArray.push(post);
-    })
-
-    return returnArray;
-  }
-  convertRawArchivedPostsToPosts(rawUser: RawAccountInformationModel) {
-    let returnArray: UserPostModel[] = [];
-
-    rawUser.archivedPosts.forEach((rawPostString) => {
-      let splitArray = rawPostString.split('::::');
-
-      let postsComments: string[] = rawUser.archivedComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
-
-      let post: UserPostModel = {
-        postUrl: splitArray.at(0)!,
-        caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
-        postDate: splitArray.at(2)!,
-        comments: this.convertRawCommentsToComments(postsComments),
-        likes: splitArray.at(3)!.split(','),
-        tagged: splitArray.at(4)!.split(','),
-        filmType: splitArray.at(5)!
-      }
-
-      returnArray.push(post);
-    })
-
-    return returnArray;
-  }
-  //rawCaption: HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke
-  convertRawCaptionToCaption(rawCaption: string) {
-    let splitArray = rawCaption.split('||||');
-
-    let caption: CaptionModel = {
-      username: splitArray.at(0)!,
-      caption: splitArray.at(1)!,
-      tagged: splitArray.at(2)!.split(',')
+  //converts the posts db raw output into UserPostModel
+  convertRawPostToPost(rawPost: RawUserPostModel) {
+    let post: UserPostModel = {
+      postId: rawPost.postId,
+      profilePicture: rawPost.profilePicture,
+      username: rawPost.username,
+      poster: rawPost.poster,
+      caption: rawPost.caption,
+      likes: rawPost.likes,
+      taggedUsers: this.convertRawFollowersToFollowers(rawPost.taggedUsers),
+      postDate: rawPost.postDate
     }
 
-    return caption;
+    return post;
   }
-  //rawComments: postUrl.jpg||||HoldenBourg||||Looks kinda like @LukasGocke or @EnriqueLeal||||LukasGocke,EnriqueLeal||||04-10-2003
-  convertRawCommentsToComments(rawComment: string[]) {
-    let returnArray: CommentModel[] = [];
+  //converts the comments db raw output into CommentModel
+  convertRawCommentToComment(rawComment: RawCommentModel) {
+    let comment: CommentModel = {
+      postId: rawComment.postId,
+      profilePicture: rawComment.profilePicture,
+      username: rawComment.username,
+      comment: rawComment.comment,
+      likes: rawComment.likes,
+      replies: this.convertRawRepliesToReplies(rawComment.replies),
+      commentDate: rawComment.commentDate
+    }
 
-    rawComment.forEach((rawCommentString) => {
-      let splitArray = rawCommentString.split('||||');
+    return comment;
+  }
+  //rawReply: profilePicture.jpg::::HoldenBourg::::I love replying::::22::::04-10-2003
+  convertRawRepliesToReplies(rawReplies: string[]) {
+    let returnArray: ReplyModel[] = [];
 
-      let comment: CommentModel = {
-        postUrl: splitArray.at(0)!,
+    rawReplies.forEach((rawReplyString) => {
+      let splitArray = rawReplyString.split('::::');
+
+      let reply: ReplyModel = {
+        profilePicture: splitArray.at(0)!,
         username: splitArray.at(1)!,
         comment: splitArray.at(2)!,
-        tagged: splitArray.at(3)!.split(','),
+        likes: splitArray.at(3)!.split(','),
         commentDate: splitArray.at(4)!
       }
 
-      returnArray.push(comment);
+      returnArray.push(reply);
     })
 
     return returnArray;
   }
+
   
   //switch between login/register form
   toggleLoginRegister() {

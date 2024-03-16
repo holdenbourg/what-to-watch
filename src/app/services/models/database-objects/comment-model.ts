@@ -1,7 +1,11 @@
+import { ReplyModel } from "./reply-model"
+
 export interface CommentModel {
-    postUrl: string,
+    postId: string,
+    profilePicture: string,
     username: string,
     comment: string,
-    tagged: string[],
+    likes: string[],
+    replies: ReplyModel[],
     commentDate: string
 }

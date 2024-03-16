@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
 import { ApiService } from '../services/api/api.service';
-import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
-import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
+import { RatedMovieModel } from '../services/models/database-objects/rated-movie-model';
+import { RatedSeriesModel } from '../services/models/database-objects/rated-series-model';
 import { RatedMovieStatisticsModel } from '../services/models/rated-movie-statistics-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';

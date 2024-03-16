@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
-import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
+import { RatedSeriesModel } from '../services/models/database-objects/rated-series-model';
 import { FormsModule } from '@angular/forms';
 import { RatedSeriesTemplateComponent } from '../rated-series-template/rated-series-template.component';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
@@ -22,6 +22,7 @@ export class ShowsComponent  implements OnInit {
 
   public usersRatedSeries: RatedSeriesModel[] = [];
   public activeSeries: RatedSeriesModel = {
+    postId: '',
     poster: '',
     title: '',
     releaseDate: '',

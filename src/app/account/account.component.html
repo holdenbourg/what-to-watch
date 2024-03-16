@@ -77,7 +77,7 @@
                             <button type="submit" class="edit-profile-button" (click)="onEditProfile()">Edit Profile</button>
                         </div>
                         <div class="posts-followers-following">
-                            <p class="num-posts">{{ currentUser.posts.length }} posts</p>
+                            <p class="num-posts">{{ currentUser.postIds.length }} posts</p>
                             <p class="num-followers">{{ currentUser.followers.length }} followers</p>
                             <p class="num-following">{{ currentUser.following.length }} following</p>
                         </div>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="scroll-box">
                     <ul class="user-posts">
-                        <li *ngFor="let post of sortByDate(currentUser.posts)">
+                        <li *ngFor="let post of sortByDate(usersPosts)">
                             <app-user-post-template
                                 [userPost]="post" 
                                 (click)="onPostClicked(post)" 
@@ -209,7 +209,7 @@
         </div>
         <div class="show-post">
             <div class="post">
-                <img class="film-poster" [src]="currentUser.posts.at(19).postUrl" [attr.alt]="currentUser.posts.at(19).postUrl">
+                <img class="film-poster" [src]="usersPosts.at(19)!.poster" [attr.alt]="usersPosts.at(19)!.poster">
                 <div class="post-information">
                     <div class="current-user-info">
                         <img class="user-profile-picture" [src]="currentUser.profilePicture" [attr.alt]="currentUser.username">
@@ -222,12 +222,12 @@
                         <label class="prompt">Comment</label>
                         <input class="input-enter" type="text" [(ngModel)]="commentInput" name="commentInput" (keyup.enter)="onComment()" (focus)="toggleCommentLabel()" required>
                         
-                        <div class="liked" *ngIf="currentUser.posts.at(19).likes.includes(currentUser.username)">
+                        <div class="liked" *ngIf="usersPosts.at(19)!.likes.includes(currentUser.username)">
                             <a (click)="onLike()">
                                 <i class='bx bxs-like'></i>
                             </a>
                         </div>
-                        <div class="unliked" *ngIf="!currentUser.posts.at(19).likes.includes(currentUser.username)">
+                        <div class="unliked" *ngIf="!usersPosts.at(19)!.likes.includes(currentUser.username)">
                             <a (click)="onLike()">
                                 <i class='bx bx-like'></i>
                             </a>

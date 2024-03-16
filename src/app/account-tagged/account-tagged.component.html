@@ -77,7 +77,7 @@
                             <button type="submit" class="edit-profile-button" (click)="onEditProfile()">Edit Profile</button>
                         </div>
                         <div class="posts-followers-following">
-                            <p class="num-posts">{{ currentUser.posts.length }} posts</p>
+                            <p class="num-posts">{{ currentUser.postIds.length }} posts</p>
                             <p class="num-followers">{{ currentUser.followers.length }} followers</p>
                             <p class="num-following">{{ currentUser.following.length }} following</p>
                         </div>
@@ -103,10 +103,10 @@
                 </div>
                 <div class="scroll-box">
                     <ul class="tagged-posts">
-                        <li *ngFor="let post of currentUser.postsTaggedIn">
+                        <li *ngFor="let post of usersTaggedPosts">
                             <app-user-post-template
                                 [userPost]="post" 
-                                (click)="onPostClicked(post.postUrl)" 
+                                (click)="onPostClicked(post.poster)" 
                                 (scroll)="fadeOutOnScrollDown()"
                                 class="user-post"
                             ></app-user-post-template>

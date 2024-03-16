@@ -14,7 +14,9 @@ import { FollowerTemplateComponent } from '../follower-template/follower-templat
 import { FollowingTemplateComponent } from '../following-template/following-template.component';
 import { RequestTemplateComponent } from '../request-template/request-template.component';
 import { UserPostTemplateComponent } from '../user-post-template/user-post-template.component';
-import { CaptionModel } from '../services/models/database-objects/caption-model';
+import { RawCommentModel } from '../services/models/database-objects/raw-comment-model';
+import { RawUserPostModel } from '../services/models/database-objects/raw-user-post-model';
+import { ReplyModel } from '../services/models/database-objects/reply-model';
 
 @Component({
   selector: 'app-account-archive',
@@ -48,11 +50,12 @@ export class AccountArchiveComponent {
     following: [],
     requests: [],
     blocked: [],
-    posts: [],
-    postsTaggedIn: [],
-    archivedPosts: [],
+    postIds: [],
+    taggedPostIds: [],
+    archivedPostIds: [],
     private: false
   }
+  public usersArchivedPosts: UserPostModel[] = [];
 
   public username: string = '';
   
@@ -122,11 +125,6 @@ export class AccountArchiveComponent {
     //sets active follower-type to followers
     this.localStorageService.clearInformation('follower-type');
     this.localStorageService.setInformation('follower-type', 'followers');
-
-    if(this.currentUser.archivedPosts.length == 0) {
-      const noPostsWarning = document.querySelector('.no-posts');
-      noPostsWarning!.textContent = 'You have no posts archived';
-    }
   }
 
   
@@ -379,20 +377,20 @@ export class AccountArchiveComponent {
       firstName: rawUser.firstName,
       lastName: rawUser.lastName,
       bio: rawUser.bio,
-      followers: this.convertRawFollowerToFollower(rawUser.followers),
-      following: this.convertRawFollowerToFollower(rawUser.following),
-      requests: this.convertRawFollowerToFollower(rawUser.requests),
-      blocked: this.convertRawFollowerToFollower(rawUser.blocked),
-      posts: this.convertRawPostsToPosts(rawUser),
-      postsTaggedIn: this.convertRawTaggedPostsToPosts(rawUser),
-      archivedPosts: this.convertRawArchivedPostsToPosts(rawUser),
+      followers: this.convertRawFollowersToFollowers(rawUser.followers),
+      following: this.convertRawFollowersToFollowers(rawUser.following),
+      requests: this.convertRawFollowersToFollowers(rawUser.requests),
+      blocked: this.convertRawFollowersToFollowers(rawUser.blocked),
+      postIds: rawUser.postIds,
+      taggedPostIds: rawUser.taggedPostIds,
+      archivedPostIds: rawUser.archivedPostIds,
       private: rawUser.private
     }
 
     return user;
   }
   //rawFollower: profilePicture.jpg::::HoldenBourg
-  convertRawFollowerToFollower(rawFollowers: string[]) {
+  convertRawFollowersToFollowers(rawFollowers: string[]) {
     let returnArray: FollowerModel[] = [];
 
     rawFollowers.forEach((rawFollowerString) => {
@@ -408,104 +406,51 @@ export class AccountArchiveComponent {
 
     return returnArray;
   }
-  //rawPost: postUrl.jpg::::HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke::::12-06-2024::::CalebHaralson,EnriqueLeal::::LukasGocke,EnriqueLeal,CalebHaralson::::Movie
-  convertRawPostsToPosts(rawUser: RawAccountInformationModel) {
-    let returnArray: UserPostModel[] = [];
-
-    rawUser.posts.forEach((rawPostString) => {
-      let splitArray = rawPostString.split('::::');
-
-      let postsComments: string[] = rawUser.postsComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
-
-      let post: UserPostModel = {
-        postUrl: splitArray.at(0)!,
-        caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
-        postDate: splitArray.at(2)!,
-        comments: this.convertRawCommentsToComments(postsComments),
-        likes: splitArray.at(3)!.split(','),
-        tagged: splitArray.at(4)!.split(','),
-        filmType: splitArray.at(5)!
-      }
-
-      returnArray.push(post);
-    })
-
-    return returnArray;
-  }
-  convertRawTaggedPostsToPosts(rawUser: RawAccountInformationModel) {
-    let returnArray: UserPostModel[] = [];
-
-    rawUser.postsTaggedIn.forEach((rawPostString) => {
-      let splitArray = rawPostString.split('::::');
-
-      let postsComments: string[] = rawUser.taggedComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
-
-      let post: UserPostModel = {
-        postUrl: splitArray.at(0)!,
-        caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
-        postDate: splitArray.at(2)!,
-        comments: this.convertRawCommentsToComments(postsComments),
-        likes: splitArray.at(3)!.split(','),
-        tagged: splitArray.at(4)!.split(','),
-        filmType: splitArray.at(5)!
-      }
-
-      returnArray.push(post);
-    })
-
-    return returnArray;
-  }
-  convertRawArchivedPostsToPosts(rawUser: RawAccountInformationModel) {
-    let returnArray: UserPostModel[] = [];
-
-    rawUser.archivedPosts.forEach((rawPostString) => {
-      let splitArray = rawPostString.split('::::');
-
-      let postsComments: string[] = rawUser.archivedComments.filter((comment) => comment.split('||||').at(0) == splitArray.at(0));
-
-      let post: UserPostModel = {
-        postUrl: splitArray.at(0)!,
-        caption: this.convertRawCaptionToCaption(splitArray.at(1)!),
-        postDate: splitArray.at(2)!,
-        comments: this.convertRawCommentsToComments(postsComments),
-        likes: splitArray.at(3)!.split(','),
-        tagged: splitArray.at(4)!.split(','),
-        filmType: splitArray.at(5)!
-      }
-
-      returnArray.push(post);
-    })
-
-    return returnArray;
-  }
-  //rawCaption: HoldenBourg||||Loved being there with @LukasGocke||||LukasGocke
-  convertRawCaptionToCaption(rawCaption: string) {
-    let splitArray = rawCaption.split('||||');
-
-    let caption: CaptionModel = {
-      username: splitArray.at(0)!,
-      caption: splitArray.at(1)!,
-      tagged: splitArray.at(2)!.split(',')
+  //converts the posts db raw output into UserPostModel
+  convertRawPostToPost(rawPost: RawUserPostModel) {
+    let post: UserPostModel = {
+      postId: rawPost.postId,
+      profilePicture: rawPost.profilePicture,
+      username: rawPost.username,
+      poster: rawPost.poster,
+      caption: rawPost.caption,
+      likes: rawPost.likes,
+      taggedUsers: this.convertRawFollowersToFollowers(rawPost.taggedUsers),
+      postDate: rawPost.postDate
     }
 
-    return caption;
+    return post;
   }
-  //rawComments: postUrl.jpg||||HoldenBourg||||Looks kinda like @LukasGocke or @EnriqueLeal||||LukasGocke,EnriqueLeal
-  convertRawCommentsToComments(rawComment: string[]) {
-    let returnArray: CommentModel[] = [];
+  //converts the comments db raw output into CommentModel
+  convertRawCommentToComment(rawComment: RawCommentModel) {
+    let comment: CommentModel = {
+      postId: rawComment.postId,
+      profilePicture: rawComment.profilePicture,
+      username: rawComment.username,
+      comment: rawComment.comment,
+      likes: rawComment.likes,
+      replies: this.convertRawRepliesToReplies(rawComment.replies),
+      commentDate: rawComment.commentDate
+    }
 
-    rawComment.forEach((rawCommentString) => {
-      let splitArray = rawCommentString.split('||||');
+    return comment;
+  }
+  //rawReply: profilePicture.jpg::::HoldenBourg::::I love replying::::22::::04-10-2003
+  convertRawRepliesToReplies(rawReplies: string[]) {
+    let returnArray: ReplyModel[] = [];
 
-      let comment: CommentModel = {
-        postUrl: splitArray.at(0)!,
+    rawReplies.forEach((rawReplyString) => {
+      let splitArray = rawReplyString.split('::::');
+
+      let reply: ReplyModel = {
+        profilePicture: splitArray.at(0)!,
         username: splitArray.at(1)!,
         comment: splitArray.at(2)!,
-        tagged: splitArray.at(3)!.split(','),
+        likes: splitArray.at(3)!.split(','),
         commentDate: splitArray.at(4)!
       }
 
-      returnArray.push(comment);
+      returnArray.push(reply);
     })
 
     return returnArray;

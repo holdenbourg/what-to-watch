@@ -1,5 +1,5 @@
 <div id="poster" class="user-post">
-    <img class="film-url" [src]="userPost.postUrl" [attr.alt]="userPost.postUrl">
+    <img class="film-url" [src]="userPost.poster" [attr.alt]="userPost.poster">
     <div class="post-info">
         <div class="likes">
             <i class='bx bxs-like'></i>
@@ -7,7 +7,7 @@
         </div>
         <div class="comments">
             <i class='bx bxs-comment'></i>
-            <span class="number-comments">{{ trimNumber(userPost.comments.length) }}</span>
+            <span class="number-comments">{{ trimNumber(comments.length) }}</span>
         </div>
     </div>
 </div>

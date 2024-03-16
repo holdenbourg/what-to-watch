@@ -1,12 +1,12 @@
-import { CaptionModel } from "./caption-model";
-import { CommentModel } from "./comment-model";
+import { FollowerModel } from "./follower-model";
 
 export interface UserPostModel {
-    postUrl: string,
-    caption: CaptionModel,
-    postDate: string,
-    comments: CommentModel[],
+    postId: string,
+    profilePicture: string,
+    username: string,
+    poster: string,
+    caption: string,
     likes: string[],
-    tagged: string[],
-    filmType: string
+    taggedUsers: FollowerModel[],
+    postDate: string
 }

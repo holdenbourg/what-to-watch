@@ -3,19 +3,19 @@ import { FollowerModel } from "./follower-model";
 import { UserPostModel } from "./user-post-model";
 
 export interface AccountInformationModel {
-    profilePicture: string,
     username: string,
     password: string,
     email: string,
     firstName: string,
     lastName: string,
+    profilePicture: string,
     bio: string,
     followers: FollowerModel[],
     following: FollowerModel[],
     requests: FollowerModel[],
     blocked: FollowerModel[],
-    posts: UserPostModel[],
-    postsTaggedIn: UserPostModel[],
-    archivedPosts: UserPostModel[],
+    postIds: string[],
+    taggedPostIds: string[],
+    archivedPostIds: string[],
     private: boolean
 }

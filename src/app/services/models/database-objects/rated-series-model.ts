@@ -1,4 +1,5 @@
 export interface RatedSeriesModel {
+    postId: string,
     poster: string,
     title: string,
     releaseDate: string,

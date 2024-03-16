@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
+import { RatedMovieModel } from '../services/models/database-objects/rated-movie-model';
 import { RoutingService } from '../services/routing/routing.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 

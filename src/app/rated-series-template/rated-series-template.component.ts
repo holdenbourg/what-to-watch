@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { RatedSeriesModel } from '../services/models/rated-films/rated-series-model';
+import { RatedSeriesModel } from '../services/models/database-objects/rated-series-model';
 
 @Component({
   selector: 'app-rated-series-template',
@@ -11,6 +11,7 @@ import { RatedSeriesModel } from '../services/models/rated-films/rated-series-mo
 export class RatedSeriesTemplateComponent {
   @Input()
   ratedFilm: RatedSeriesModel = {
+    postId: '',
     poster: '',
     title: '',
     releaseDate: '',

@@ -1,4 +1,5 @@
 export interface RatedMovieModel {
+    postId: string,
     poster: string,
     title: string,
     releaseDate: string,

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Output, inject } from '@angular/core';
 import { RoutingService } from '../services/routing/routing.service';
-import { RatedMovieModel } from '../services/models/rated-films/rated-movie-model';
+import { RatedMovieModel } from '../services/models/database-objects/rated-movie-model';
 import { RatedMovieTemplateComponent } from '../rated-movie-template/rated-movie-template.component';
 import { FormsModule } from '@angular/forms';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
@@ -22,6 +22,7 @@ export class MoviesComponent  implements OnInit {
   
   public usersRatedMovies: RatedMovieModel[] = [];
   public activeMovie: RatedMovieModel = {
+    postId: '',
     poster: '',
     title: '',
     releaseDate: '',
@@ -98,9 +99,7 @@ export class MoviesComponent  implements OnInit {
 
     this.routingService.navigateToEditMovie();
   }
-  onSearch() {
 
-  }
   onRatedFilmClicked(title: string, rating: number) {
     for(let i = 0; i < this.usersRatedMovies.length; i++) {
       const currentRating = this.usersRatedMovies.at(i);
