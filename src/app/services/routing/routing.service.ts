@@ -40,11 +40,11 @@ export class RoutingService {
   navigateToRateSeries(imdbId?: string) {
     this.router.navigateByUrl(`/rate-series/${imdbId}`);
   }
-  navigateToPostMovie(title: string) {
-    this.router.navigateByUrl(`/post-movie/${title}`);
+  navigateToPostMovie(postId: string) {
+    this.router.navigateByUrl(`/post-movie/${postId}`);
   }
-  navigateToPostSeries(title: string) {
-    this.router.navigateByUrl(`/post-series/${title}`);
+  navigateToPostSeries(postId: string) {
+    this.router.navigateByUrl(`/post-series/${postId}`);
   }
   navigateToMovies() {
     this.router.navigateByUrl(`/movies`);

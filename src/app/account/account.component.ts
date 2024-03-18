@@ -253,6 +253,7 @@ throw new Error('Method not implemented.');
       
       console.log(post);
       console.log(movie);
+      this.navigateToPostMovie(post.postId);
     } else {
       let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
       let series: RatedSeriesModel = ratedSeries.filter((series) => series.postId == post.postId).at(0)!;
@@ -523,11 +524,11 @@ throw new Error('Method not implemented.');
   navigateToSummary() {
     this.routingService.navigateToSummary();
   }
-  navigateToPostMovie(title: string) {
-    this.routingService.navigateToPostMovie(title);
+  navigateToPostMovie(postId: string) {
+    this.routingService.navigateToPostMovie(postId);
   }
-  navigateToPostSeries(title: string) {
-    this.routingService.navigateToPostSeries(title);
+  navigateToPostSeries(postId: string) {
+    this.routingService.navigateToPostSeries(postId);
   }
   navigateToAccountsPosts() {
     this.routingService.navigateToAccountsPosts(this.currentUser.username);
@@ -563,6 +564,7 @@ throw new Error('Method not implemented.');
     container?.classList.toggle('active');
   }
 
+  //method for creating postId's
   /*for(let i = 0; i < 8; i++) {
     var id = "m" + Math.random().toString(16).slice(2);
     var id2 = "s" + Math.random().toString(16).slice(2);

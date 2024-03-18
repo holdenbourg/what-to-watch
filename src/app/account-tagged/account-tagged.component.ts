@@ -230,9 +230,6 @@ export class AccountTaggedComponent {
     }
   }
 
-  fadeOutOnScrollDown() {
-    throw new Error('Method not implemented.');
-  }
   onPostClicked(postUrl: string) {
     throw new Error('Method not implemented.');
   }

@@ -101,17 +101,19 @@
                         <i (click)="navigateToAccountsArchived()" class="archive">Archive</i>
                     </div>
                 </div>
-                <div class="scroll-box">
+                <div class="scroll-box" *ngIf="usersPosts.length != 0">
                     <ul class="user-posts">
                         <li *ngFor="let post of sortByDate(usersPosts)">
                             <app-user-post-template
                                 [userPost]="post" 
-                                (click)="onPostClicked(post)" 
-                                (scroll)="fadeOutOnScrollDown()"
+                                (click)="onPostClicked(post)"
                                 class="user-post"
                             ></app-user-post-template>
                         </li>
                     </ul>
+                </div>
+                <div class="no-posts" *ngIf="usersPosts.length == 0">
+                    <p>You don't have any posts</p>
                 </div>
             </div>
             <div class="follower-info">

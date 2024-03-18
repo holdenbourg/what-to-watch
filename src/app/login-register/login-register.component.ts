@@ -1465,16 +1465,17 @@ export class LoginRegisterComponent {
     //}
 
     //resets the mock databases in local storage - 
-    // this.localStorageService.clearInformation('rawUsers');
-    // this.localStorageService.setInformation('rawUsers', this.rawMockUsersDatabase);
-    // this.localStorageService.clearInformation('ratedMovies');
-    // this.localStorageService.setInformation('ratedMovies', this.mockRatedMoviesDatabase);
-    // this.localStorageService.clearInformation('ratedSeries');
-    // this.localStorageService.setInformation('ratedSeries', this.mockRatedSeriesDatabase);
-    // this.localStorageService.clearInformation('rawPosts');
-    // this.localStorageService.setInformation('rawPosts', this.rawMockPostsDatabase);
-    // this.localStorageService.clearInformation('rawComments');
-    // this.localStorageService.setInformation('rawComments', this.rawMockCommentsDatabase);
+    this.localStorageService.clearInformation('users');
+    this.localStorageService.clearInformation('rawUsers');
+    this.localStorageService.setInformation('rawUsers', this.rawMockUsersDatabase);
+    this.localStorageService.clearInformation('ratedMovies');
+    this.localStorageService.setInformation('ratedMovies', this.mockRatedMoviesDatabase);
+    this.localStorageService.clearInformation('ratedSeries');
+    this.localStorageService.setInformation('ratedSeries', this.mockRatedSeriesDatabase);
+    this.localStorageService.clearInformation('rawPosts');
+    this.localStorageService.setInformation('rawPosts', this.rawMockPostsDatabase);
+    this.localStorageService.clearInformation('rawComments');
+    this.localStorageService.setInformation('rawComments', this.rawMockCommentsDatabase);
   }
 
   onTerms() {
