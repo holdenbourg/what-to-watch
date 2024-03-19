@@ -13,5 +13,6 @@ export interface RawAccountInformationModel {
     postIds: string[],
     taggedPostIds: string[],
     archivedPostIds: string[],
+    dateJoined: string,
     private: boolean
 }

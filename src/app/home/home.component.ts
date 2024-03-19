@@ -132,6 +132,24 @@ export class HomeComponent implements OnInit {
     this.routingService.navigateToSettings();
   }
 
+  sortByDate(upcomingFilms: UpcomingFilmModel[]) {
+    let filteredUpcomingFilms: UpcomingFilmModel[] = upcomingFilms.filter((upcomingFilm) => {
+      let upcomingFilmDate: Date = new Date(upcomingFilm.release_date);
+      let currentDate = new Date(new Date().toJSON().slice(0, 10));
+
+      return upcomingFilmDate.getTime() >= currentDate.getTime();
+    });
+    
+    filteredUpcomingFilms.sort((a: UpcomingFilmModel, b: UpcomingFilmModel) => {
+      let aDate: Date = new Date(a.release_date);
+      let bDate: Date = new Date(b.release_date);
+      
+      return aDate.getTime() - bDate.getTime();
+    });
+
+    return filteredUpcomingFilms;
+  }
+
   toggleActive() {
     const themeClass = document.querySelector('.sidebar');
     themeClass?.classList.toggle('active');

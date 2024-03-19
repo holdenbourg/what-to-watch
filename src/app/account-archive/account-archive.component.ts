@@ -53,6 +53,7 @@ export class AccountArchiveComponent {
     postIds: [],
     taggedPostIds: [],
     archivedPostIds: [],
+    dateJoined: '',
     private: false
   }
   public usersArchivedPosts: UserPostModel[] = [];
@@ -144,9 +145,6 @@ export class AccountArchiveComponent {
 
     this.usersArchivedPosts = rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost));
     this.archivedPostsComments = rawUsersComments.map((rawComment) => this.convertRawCommentToComment(rawComment));
-
-    console.log(this.usersArchivedPosts);
-    console.log(this.archivedPostsComments);
   }
 
   toggleFollowers() {
@@ -406,6 +404,7 @@ export class AccountArchiveComponent {
       postIds: rawUser.postIds,
       taggedPostIds: rawUser.taggedPostIds,
       archivedPostIds: rawUser.archivedPostIds,
+      dateJoined: rawUser.dateJoined,
       private: rawUser.private
     }
 
@@ -510,6 +509,17 @@ export class AccountArchiveComponent {
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();
+  }
+
+  sortByDate(posts: UserPostModel[]) {
+    posts.sort((a: UserPostModel, b: UserPostModel) => {
+      let aDate: Date = new Date(a.postDate);
+      let bDate: Date = new Date(b.postDate);
+      
+      return aDate.getTime() - bDate.getTime();
+    });
+
+    return posts;
   }
 
   toggleActive() {

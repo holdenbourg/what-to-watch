@@ -103,7 +103,7 @@
                 </div>
                 <div class="scroll-box">
                     <ul class="tagged-posts">
-                        <li *ngFor="let post of usersTaggedPosts">
+                        <li *ngFor="let post of sortByDate(usersTaggedPosts)">
                             <app-user-post-template
                                 [userPost]="post" 
                                 (click)="onPostClicked(post.poster)" 

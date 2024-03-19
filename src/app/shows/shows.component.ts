@@ -73,8 +73,11 @@ export class ShowsComponent  implements OnInit {
   //populate users ratings from the series database
   populateUsersRatedSeries() {
     let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
+    let filteredSeries: RatedSeriesModel[] = ratedSeries.filter((series) => series.username == this.currentUser.username);
 
-    this.usersRatedSeries = ratedSeries.filter((series) => series.username == this.currentUser.username);
+    this.usersRatedSeries = filteredSeries.sort((a: RatedSeriesModel, b: RatedSeriesModel) => {
+      return b.rating - a.rating;
+    });
   }
 
   onDelete(input: RatedSeriesModel) {
@@ -110,7 +113,7 @@ export class ShowsComponent  implements OnInit {
   }
 
   //turns the given date (18 Dec 2009) into (December 18, 2009)
-  fixRelease(releaseDate?: string) {
+  fixRelease(releaseDate?: string) {    
     if(releaseDate == '') {
       return '';
     } else {
@@ -160,8 +163,65 @@ export class ShowsComponent  implements OnInit {
       return `${month} ${day}, ${year}`
     }
   }
+
+  //turns 2009-12-18 into December 18, 2009
+  fixReleaseDate(releaseDate?: string) {    
+    if(releaseDate == '') {
+      return '';
+    } else {
+      let day = releaseDate?.substring(8);
+      if (day?.charAt(0) == '0') day = day.substring(1);
+
+      let month = releaseDate?.substring(5,7);
+      const year = releaseDate?.substring(0,4);
+    
+      switch(month) {
+        case '01':
+          month = 'January'
+          break;
+        case '02':
+          month = 'February'
+          break;
+        case '03':
+          month = 'March'
+          break;
+        case '04':
+          month = 'April'
+          break;
+        case '05':
+          month = 'May'
+          break;
+        case '06':
+          month = 'June'
+          break;
+        case '07':
+          month = 'July'
+          break;
+        case '08':
+          month = 'August'
+          break;
+        case '09':
+          month = 'September'
+          break;
+        case '10':
+          month = 'October'
+          break;
+        case '11':
+          month = 'November'
+          break;
+        case '12':
+          month = 'December'
+          break;
+      }
+        
+      return `${month} ${day}, ${year}`
+    }
+  }
+
   //turns 08 day into 8
   fixReleaseDay(releaseDate?: string) {
+    console.log(releaseDate);
+
     if(releaseDate != undefined && releaseDate != '') {
       const index = releaseDate.indexOf(' ');
 

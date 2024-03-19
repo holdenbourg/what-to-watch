@@ -66,7 +66,7 @@
                 <img class="film-poster" [src]="activeMovie.poster" [attr.alt]="activeMovie.title">
                 <div class="film-text">
                     <p class="title">{{ activeMovie.title }}</p>
-                    <p class="release">{{ fixReleaseDay(activeMovie.releaseDate) }}</p>
+                    <p class="release">{{ fixReleaseDate(activeMovie.releaseDate) }}</p>
                     <p class="runtime">{{ fixRuntime(activeMovie.runTime) }}</p>
                     <p class="film-rating">{{ activeMovie.rated }}</p>
                 </div>
@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="date-rated">
-                    <p>Rated: {{ fixReleaseDay(activeMovie.dateRated) }}</p>
+                    <p>Rated: {{ fixReleaseDate(activeMovie.dateRated) }}</p>
                     <button type="submit" class="button" (click)="onEdit(activeMovie)">Edit Rating</button>
                     <button type="submit" class="button" (click)="onDelete(activeMovie)">Delete Rating</button>
                 </div>

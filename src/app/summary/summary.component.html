@@ -69,13 +69,13 @@
                     <div class="film-information">
                         <div class="film-text">
                             <p class="film-title">{{ highestRatedMovie?.title }}</p>
-                            <p class="film-release">{{ highestRatedMovie?.releaseDate }}</p>
+                            <p class="film-release">{{ fixReleaseDate(highestRatedMovie?.releaseDate) }}</p>
                             <p class="film-runtime">{{ this.fixRuntime(highestRatedMovie!.runTime) }}</p>
                             <p class="film-rating">{{ highestRatedMovie?.rated }}</p>
                         </div>
                         <div class="rating-rated">
                             <p class="rating">Rating: {{ highestRatedMovie?.rating }}</p>
-                            <p class="date-rated">Rated: {{ highestRatedMovie?.dateRated }}</p>    
+                            <p class="date-rated">Rated: {{ fixReleaseDate(highestRatedMovie?.dateRated) }}</p>    
                         </div>
                     </div>
                 </div>
@@ -88,14 +88,14 @@
                     <div class="film-information">
                         <div class="film-text">
                             <p class="film-title">{{ highestRatedSeries?.title }}</p>
-                            <p class="film-release">{{ highestRatedSeries?.releaseDate }}</p>
+                            <p class="film-release">{{ fixReleaseDate(highestRatedSeries?.releaseDate) }}</p>
                             <p class="film-seasons">{{ highestRatedSeries?.seasons }} Seasons</p>
                             <p class="film-episodes">{{ highestRatedSeries?.episodes }} Episodes</p>
                             <p class="film-rating">{{ highestRatedSeries?.rated }}</p>
                         </div>
                         <div class="rating-rated">
                             <p class="rating">Rating: {{ highestRatedSeries?.rating }}</p>
-                            <p class="date-rated">Rated: {{ highestRatedSeries?.dateRated }}</p>    
+                            <p class="date-rated">Rated: {{ fixReleaseDate(highestRatedSeries?.dateRated) }}</p>    
                         </div>
                     </div>
                 </div>

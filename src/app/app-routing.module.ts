@@ -13,8 +13,8 @@ import { EditMovieComponent } from './edit-movie/edit-movie.component';
 import { EditSeriesComponent } from './edit-series/edit-series.component';
 import { SummaryComponent } from './summary/summary.component';
 import { PrivacyComponent } from './privacy/privacy.component';
-import { SeriesInformationTemplateComponent } from './series-information-template/series-information-template.component';
-import { MovieInformationTemplateComponent } from './movie-information-template/movie-information-template.component';
+import { SeriesInformationComponent } from './series-information/series-information.component';
+import { MovieInformationComponent } from './movie-information/movie-information.component';
 import { AccountTaggedComponent } from './account-tagged/account-tagged.component';
 import { AccountArchiveComponent } from './account-archive/account-archive.component';
 import { PostMovieComponent } from './post-movie/post-movie.component';
@@ -32,8 +32,8 @@ const routes: Routes = [
   {path: 'settings/privacy', component: PrivacyComponent},
   {path: 'search/:type', component: SearchComponent},
   {path: 'search/:type/:input', component: SearchComponent},
-  {path: 'film-information/movie/:imdbId', component: MovieInformationTemplateComponent},
-  {path: 'film-information/series/:imdbId', component: SeriesInformationTemplateComponent},
+  {path: 'film-information/movie/:imdbId', component: MovieInformationComponent},
+  {path: 'film-information/series/:imdbId', component: SeriesInformationComponent},
   {path: 'rate-movie/:imdbId', component: RateMovieComponent},
   {path: 'rate-series/:imdbId', component: RateSeriesComponent},
   {path: 'post-movie/:postId', component: PostMovieComponent},

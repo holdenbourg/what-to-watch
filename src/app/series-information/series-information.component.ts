@@ -1,27 +1,29 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StreamingServiceTemplateComponent } from '../streaming-service-template/streaming-service-template.component';
-import { CombinedFilmApiResponseModel } from '../services/models/combined-film-api-response';
 import { RoutingService } from '../services/routing/routing.service';
+import { CombinedFilmApiResponseModel } from '../services/models/combined-film-api-response';
 import { ApiService } from '../services/api/api.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { LocalStorageService } from '../services/local-storage/local-storage.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-movie-information-template',
+  selector: 'app-series-information',
   standalone: true,
   imports: [CommonModule, StreamingServiceTemplateComponent],
-  templateUrl: './movie-information-template.component.html',
-  styleUrl: './movie-information-template.component.scss'
+  templateUrl: './series-information.component.html',
+  styleUrl: './series-information.component.scss'
 })
-export class MovieInformationTemplateComponent implements OnInit {
-  private apiService: ApiService = inject(ApiService);
+export class SeriesInformationComponent implements OnInit {
   private routingService: RoutingService = inject(RoutingService);
+  private apiService: ApiService = inject(ApiService);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
-  public localStorageService: LocalStorageService = inject(LocalStorageService);
 
   public streamingServices: string[] = [];
   public imdbId: string = '';
+  public numSeasons: number = 0;
+  public numEpisodes: number = 0;
+  public seasons: string = '';
+  public episodes: string = '';
 
   combinedApiResult: CombinedFilmApiResponseModel = {
     title: '',
@@ -78,19 +80,19 @@ export class MovieInformationTemplateComponent implements OnInit {
 
 
   ngOnInit() {
+    //sets the type/imdbId for the look up from the url parameter
     this.imdbId = this.activatedRoute.snapshot.params['imdbId'];
 
-    this.getStraightMovie();
+    this.getStraightSeries();
   }
-
 
   goToTrailer(trailerUrl: string) {
     window.open(trailerUrl, "_blank");
   }
 
-  async getStraightMovie() {
+  async getStraightSeries() {
     let omdbMovie = await this.apiService.search1FilmOmdbStraight(this.imdbId);
-    let mdbMovie = await this.apiService.search1MovieMdbStraight(this.imdbId);
+    let mdbMovie = await this.apiService.search1SeriesMdbStraight(this.imdbId);
 
     let combinedDetails: CombinedFilmApiResponseModel = {
       title: omdbMovie?.Title,
@@ -120,11 +122,26 @@ export class MovieInformationTemplateComponent implements OnInit {
       response: omdbMovie?.Response,
       watch_providers: mdbMovie?.watch_providers,
       trailer: mdbMovie?.trailer,
-      seasons: []
+      seasons: mdbMovie?.seasons
     }
 
     this.combinedApiResult = combinedDetails;
     console.log(this.combinedApiResult);
+
+    //calculate seasons/episodes
+    this.combinedApiResult.seasons?.forEach((element) => {
+      this.numEpisodes = this.numEpisodes + element.episode_count;
+
+      if(element.episode_count != 0) this.numSeasons++;
+    });
+
+    if(this.numSeasons == 1) {
+      this.seasons = `${this.numSeasons} Season`;
+      this.episodes = `${this.numEpisodes} Episodes`;
+    } else {
+      this.seasons = `${this.numSeasons} Seasons`;
+      this.episodes = `${this.numEpisodes} Episodes`;
+    }
 
     //fix streaming services
     this.combinedApiResult.watch_providers?.forEach((element) => {
@@ -135,7 +152,6 @@ export class MovieInformationTemplateComponent implements OnInit {
       }
     });
   }
-
   //if the film is a movie route to rate-movie, else rate-series
   onRateThisFilm() {
     if(this.combinedApiResult.type === "movie") {
@@ -147,6 +163,10 @@ export class MovieInformationTemplateComponent implements OnInit {
 
   //turns the given date (18 Dec 2009) into (December 18, 2009)
   fixRelease(releaseDate: string) {
+    if(releaseDate == 'N/A') {
+      return releaseDate;
+    }
+
     const day = releaseDate.substring(0,2);
     let month = releaseDate.substring(3,6);
     const year = releaseDate.substring(7);
@@ -238,13 +258,5 @@ export class MovieInformationTemplateComponent implements OnInit {
     } else {
       return poster;
     }
-  }
-
-  //turn runtime 150 to 2 HR 30 MIN
-  fixRuntime(runtime: number) {
-    let hours = Math.floor(runtime/60);
-    let minutes = runtime - (hours * 60);
-
-    return `${hours} HR ${minutes} MIN`
   }
 }

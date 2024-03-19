@@ -111,6 +111,7 @@ export class LoginRegisterComponent {
         `m2e872b0b5fe1c`,
         `m64de727bc325a`
       ],
+      dateJoined: '2003-04-10',
       private: false
     },
     {
@@ -128,6 +129,7 @@ export class LoginRegisterComponent {
       postIds: [`m6e1657aa83a9a`],
       taggedPostIds: [],
       archivedPostIds: [],
+      dateJoined: '2003-04-11',
       private: false
     },
     {
@@ -145,6 +147,7 @@ export class LoginRegisterComponent {
       postIds: [`mf5b3417fd47a7`],
       taggedPostIds: [],
       archivedPostIds: [],
+      dateJoined: '2003-04-12',
       private: false
     },
     {
@@ -162,6 +165,7 @@ export class LoginRegisterComponent {
       postIds: [`m4ee49fbf13c86`],
       taggedPostIds: [],
       archivedPostIds: [],
+      dateJoined: '2003-04-13',
       private: false
     },
     {
@@ -179,6 +183,7 @@ export class LoginRegisterComponent {
       postIds: [`mffab7fbeb34f9`],
       taggedPostIds: [],
       archivedPostIds: [],
+      dateJoined: '2003-04-14',
       private: false
     },
     {
@@ -196,6 +201,7 @@ export class LoginRegisterComponent {
       postIds: [`m30500143dac36`],
       taggedPostIds: [],
       archivedPostIds: [],
+      dateJoined: '2003-04-15',
       private: true
     },
     {
@@ -213,6 +219,7 @@ export class LoginRegisterComponent {
       postIds: [],
       taggedPostIds: [],
       archivedPostIds: [],
+      dateJoined: '2003-04-16',
       private: false
     },
     {
@@ -230,6 +237,7 @@ export class LoginRegisterComponent {
       postIds: [],
       taggedPostIds: [],
       archivedPostIds: [],
+      dateJoined: '2003-04-17',
       private: true
     },
     {
@@ -247,6 +255,7 @@ export class LoginRegisterComponent {
       postIds: [],
       taggedPostIds: [],
       archivedPostIds: [],
+      dateJoined: '2003-04-18',
       private: false
     }
   ];
@@ -257,7 +266,7 @@ export class LoginRegisterComponent {
       postId: 'm1b114fbe2525b',
       poster: 'https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg',
       title: 'Avatar',
-      releaseDate: 'December 08, 2009',
+      releaseDate: '2009-12-08',
       rated: 'PG-13',
       runTime: 162,
       genres: ['Action', 'Adventure', 'Fantasy'],
@@ -269,13 +278,13 @@ export class LoginRegisterComponent {
       ending: 5,
       rating: 5.5,
       username: 'HoldenBourg',
-      dateRated: 'December 20, 2024'
+      dateRated: '2024-12-20'
     },
     {
       postId: 'mc64a0e2ed49d7',
       poster: 'https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg',
       title: 'Avatar: The Way of Water',
-      releaseDate: 'December 16, 2022',
+      releaseDate: '2022-12-16',
       rated: 'PG-13',
       runTime: 192,
       genres: ['Action', 'Adventure', 'Fantasy'],
@@ -287,13 +296,13 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 5.5,
       username: 'HoldenBourg',
-      dateRated: 'December 19, 2024'
+      dateRated: '2024-12-19'
     },
     {
       postId: 'm08c9ee59315b7',
       poster: 'https://m.media-amazon.com/images/M/MV5BZGQ1ZTNmNzItNGYyMC00MDk2LWJiZDAtZTkwZDFlNWJlYTVjXkEyXkFqcGdeQXVyODUxNDExNTg@._V1_SX300.jpg',
       title: 'Avatar:The Last Airbender - The Legend So Far',
-      releaseDate: 'November 18, 2005',
+      releaseDate: '2005-10-18',
       rated: 'N/A',
       runTime: 0,
       genres: ['Animation'],
@@ -305,13 +314,13 @@ export class LoginRegisterComponent {
       ending: 1,
       rating: 5,
       username: 'HoldenBourg',
-      dateRated: 'December 18, 2024'
+      dateRated: '2024-12-18'
     },
     {
       postId: 'm2b7950d28e018',
       poster: 'https://m.media-amazon.com/images/M/MV5BMzFkZTMzOGUtOGM3NS00YzI2LTllMjgtODk0NDhkNWRiMTMzXkEyXkFqcGdeQXVyNzI1NzMxNzM@._V1_SX300.jpg',
       title: `The King's Avatar: For the Glory`,
-      releaseDate: 'August 16, 2019',
+      releaseDate: '2019-08-16',
       rated: 'N/A',
       runTime: 98,
       genres: ['Animation', 'Action', 'Drama'],
@@ -323,13 +332,13 @@ export class LoginRegisterComponent {
       ending: 2,
       rating: 4.7,
       username: 'HoldenBourg',
-      dateRated: 'December 17, 2024'
+      dateRated: '2024-12-17'
     },
     {
       postId: 'mb79abc0e36da9',
       poster: 'https://m.media-amazon.com/images/M/MV5BMzQ4MDMxNjExNl5BMl5BanBnXkFtZTgwOTYzODI5NTE@._V1_SX300.jpg',
       title: 'Avatar Spirits',
-      releaseDate: 'June 22, 2010',
+      releaseDate: '2010-06-22',
       rated: 'N/A',
       runTime: 32,
       genres: ['Documentary', 'Short'],
@@ -341,13 +350,13 @@ export class LoginRegisterComponent {
       ending: 1,
       rating: 5,
       username: 'HoldenBourg',
-      dateRated: 'December 16, 2024'
+      dateRated: '2024-12-16'
     },
     {
       postId: 'ma480047d8bc6b',
       poster: 'https://m.media-amazon.com/images/M/MV5BMjAyMDIyNzA4NV5BMl5BanBnXkFtZTgwMDgxNzE0ODE@._V1_SX300.jpg',
       title: 'The Last Avatar',
-      releaseDate: 'December 06, 2014',
+      releaseDate: '2014-12-06',
       rated: 'Not Rated',
       runTime: 90,
       genres: ['Drama'],
@@ -359,13 +368,13 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 6.3,
       username: 'HoldenBourg',
-      dateRated: 'December 15, 2024'
+      dateRated: '2024-12-15'
     },
     {
       postId: 'm297bcedc228ff',
       poster: 'https://m.media-amazon.com/images/M/MV5BMTY5MzYzNjc5NV5BMl5BanBnXkFtZTYwNTUyNTc2._V1_SX300.jpg',
       title: 'Catch Me If You Can',
-      releaseDate: 'December 25, 2002',
+      releaseDate: '2002-12-25',
       rated: 'PG-13',
       runTime: 141,
       genres: ['Biography', 'Crime', 'Drama'],
@@ -377,13 +386,13 @@ export class LoginRegisterComponent {
       ending: 4,
       rating: 5.8,
       username: 'HoldenBourg',
-      dateRated: 'December 14, 2024'
+      dateRated: '2024-12-14'
     },
     {
       postId: 'maf9fa739dcc3f',
       poster: 'https://m.media-amazon.com/images/M/MV5BODM2ODgyOGYtYzYwMC00ZTEwLTg2MmItZDI2OTdhMTdiMGFiL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg',
       title: 'To Catch a Thief',
-      releaseDate: 'December 08, 2009',
+      releaseDate: '2009-12-08',
       rated: 'PG',
       runTime: 106,
       genres: ['Mystery', 'Romance', 'Thriller'],
@@ -395,13 +404,13 @@ export class LoginRegisterComponent {
       ending: 9,
       rating: 6.3,
       username: 'HoldenBourg',
-      dateRated: 'December 13, 2024'
+      dateRated: '2024-12-13'
     },
     {
       postId: 'md20fca600e5f7',
       poster: 'https://m.media-amazon.com/images/M/MV5BNGMyZjM5YWUtMjVmMC00NmQ2LTgyMWEtNjYzZDFkYTIyMjFhXkEyXkFqcGdeQXVyMTAyMjQ3NzQ1._V1_SX300.jpg',
       title: 'To Catch a Killer',
-      releaseDate: 'April 06, 2023',
+      releaseDate: '2023-04-06',
       rated: 'PG-13',
       runTime: 119,
       genres: ['Action', 'Crime', 'Drama'],
@@ -413,13 +422,13 @@ export class LoginRegisterComponent {
       ending: 2,
       rating: 4.5,
       username: 'HoldenBourg',
-      dateRated: 'December 12, 2024'
+      dateRated: '2024-12-12'
     },
     {
       postId: 'm0ea021a14bc3c',
       poster: 'https://m.media-amazon.com/images/M/MV5BNTk2NjU1MjMyNV5BMl5BanBnXkFtZTcwMzc5NjE0MQ@@._V1_SX300.jpg',
       title: 'Catch and Release',
-      releaseDate: 'January 26, 2007',
+      releaseDate: '2007-01-26',
       rated: 'PG-13',
       runTime: 111,
       genres: ['Comedy', 'Drama', 'Romance'],
@@ -431,13 +440,13 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 5.3,
       username: 'HoldenBourg',
-      dateRated: 'December 11, 2024'
+      dateRated: '2024-12-11'
     },
     {
       postId: 'm77b8e730b1597',
       poster: 'https://m.media-amazon.com/images/M/MV5BMmVmODY1MzEtYTMwZC00MzNhLWFkNDMtZjAwM2EwODUxZTA5XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg',
       title: 'Jaws',
-      releaseDate: 'June 20, 1975',
+      releaseDate: '1975-06-20',
       rated: 'PG',
       runTime: 124,
       genres: ['Adventure', 'Mystery', 'Thriller'],
@@ -449,13 +458,13 @@ export class LoginRegisterComponent {
       ending: 3,
       rating: 3,
       username: 'HoldenBourg',
-      dateRated: 'November 11, 2024'
+      dateRated: '2024-11-11'
     },
     {
       postId: 'm2e872b0b5fe1c',
       poster: 'https://m.media-amazon.com/images/M/MV5BN2U1MWE1NTMtYjQ2ZC00MTFmLWFmYjItODMyNGYxOTAyZmEzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
       title: 'Jaws 2',
-      releaseDate: 'June 16, 1978',
+      releaseDate: '1978-06-16',
       rated: 'PG',
       runTime: 116,
       genres: ['Adventure', 'Horror', 'Thriller'],
@@ -467,13 +476,13 @@ export class LoginRegisterComponent {
       ending: 4,
       rating: 4,
       username: 'HoldenBourg',
-      dateRated: 'October 11, 2024'
+      dateRated: '2024-10-11'
     },
     {
       postId: 'm64de727bc325a',
       poster: 'https://m.media-amazon.com/images/M/MV5BY2UxMWVlNmMtYzM0Zi00YTQzLTk2N2ItM2Y1NmNmMDk4MDFjXkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_SX300.jpg',
       title: 'Jaws: The Revenge',
-      releaseDate: 'July 17, 1987',
+      releaseDate: '1987-07-17',
       rated: 'PG-13',
       runTime: 89,
       genres: ['Adventure', 'Horror', 'Thriller'],
@@ -485,13 +494,13 @@ export class LoginRegisterComponent {
       ending: 5,
       rating: 5,
       username: 'HoldenBourg',
-      dateRated: 'September 11, 2024'
+      dateRated: '2024-09-11'
     },
     {
       postId: 'mf5b3417fd47a7',
       poster: 'https://m.media-amazon.com/images/M/MV5BNzk1OGU2NmMtNTdhZC00NjdlLWE5YTMtZTQ0MGExZTQzOGQyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
       title: 'Halloween',
-      releaseDate: 'October 27, 1978',
+      releaseDate: '1978-10-27',
       rated: 'R',
       runTime: 91,
       genres: ['Horror', 'Thriller'],
@@ -503,13 +512,13 @@ export class LoginRegisterComponent {
       ending: 6,
       rating: 6,
       username: 'CalebHaralson',
-      dateRated: 'August 11, 2024'
+      dateRated: '2024-08-11'
     },
     {
       postId: 'm4ee49fbf13c86',
       poster: 'https://m.media-amazon.com/images/M/MV5BMjZmYjg0ODctOTIyYy00YzhkLTgyMzEtNjUyY2JiZjVmYzI2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
       title: 'Halloween II',
-      releaseDate: 'October 30, 1981',
+      releaseDate: '1981-10-30',
       rated: 'R',
       runTime: 92,
       genres: ['Horror'],
@@ -521,13 +530,13 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 7,
       username: 'EnriqueLeal',
-      dateRated: 'July 11, 2024'
+      dateRated: '2024-07-11'
     },
     {
       postId: 'm6e1657aa83a9a',
       poster: 'https://m.media-amazon.com/images/M/MV5BN2YzYjI0MWYtYWUyZS00ZDQ4LWEzN2EtMDU4NDJmNjA2ZWFiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
       title: 'Halloween III: Season of the Witch',
-      releaseDate: 'October 22, 1982',
+      releaseDate: '1982-10-22',
       rated: 'R',
       runTime: 98,
       genres: ['Horror', 'Mystery', 'Sci-Fi'],
@@ -539,13 +548,13 @@ export class LoginRegisterComponent {
       ending: 8,
       rating: 8,
       username: 'LukasGocke',
-      dateRated: 'June 11, 2024'
+      dateRated: '2024-06-11'
     },
     {
       postId: 'mffab7fbeb34f9',
       poster: 'https://m.media-amazon.com/images/M/MV5BYWNiNjBhZjAtMzVkNi00MTJiLWI0NGQtODE2NmIyNmU2OTQwXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
       title: 'Halloween 4: The Return of Michael Myers',
-      releaseDate: 'October 21, 1988',
+      releaseDate: '1988-10-21',
       rated: 'R',
       runTime: 88,
       genres: ['Horror', 'Thriller'],
@@ -557,13 +566,13 @@ export class LoginRegisterComponent {
       ending: 9,
       rating: 9,
       username: 'AshlynnDang',
-      dateRated: 'May 11, 2024'
+      dateRated: '2024-05-11'
     },
     {
       postId: 'm30500143dac36',
       poster: 'https://m.media-amazon.com/images/M/MV5BM2RmMGY2Y2UtNjA1NS00NGE4LThiNzItMmE1NTk5NzI5NmE0XkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg',
       title: 'Halloween Kills',
-      releaseDate: 'October 15, 2021',
+      releaseDate: '2021-10-15',
       rated: 'R',
       runTime: 105,
       genres: ['Action', 'Horror', 'Thriller'],
@@ -575,7 +584,7 @@ export class LoginRegisterComponent {
       ending: 10,
       rating: 10,
       username: 'OliverQueen',
-      dateRated: 'April 11, 2024'
+      dateRated: '2024-04-11'
     }
   ];
   public mockRatedSeriesDatabase: RatedSeriesModel[] = [
@@ -583,7 +592,7 @@ export class LoginRegisterComponent {
       postId: 'sca316788b32b3',
       poster: 'https://m.media-amazon.com/images/M/MV5BNDFjYTIxMjctYTQ2ZC00OGQ4LWE3OGYtNDdiMzNiNDZlMDAwXkEyXkFqcGdeQXVyNzI3NjY3NjQ@._V1_SX300.jpg',
       title: 'Attack on Titan',
-      releaseDate: 'December 18, 2009',
+      releaseDate: '2009-12-18',
       rated: 'TV-MA',
       seasons: 5, 
       episodes: 124,
@@ -596,13 +605,13 @@ export class LoginRegisterComponent {
       ending: 5,
       rating: 5.5,
       username: 'HoldenBourg',
-      dateRated: 'December 10, 2024'
+      dateRated: '2024-12-10'
     },
     {
       postId: 'se21b5fdcc060e',
       poster: 'https://m.media-amazon.com/images/M/MV5BNjRiNmNjMmMtN2U2Yi00ODgxLTk3OTMtMmI1MTI1NjYyZTEzXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
       title: 'Death Note',
-      releaseDate: 'October 21, 2007',
+      releaseDate: '2007-10-21',
       rated: 'TV-14',
       seasons: 1, 
       episodes: 37,
@@ -615,13 +624,13 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 5.5,
       username: 'HoldenBourg',
-      dateRated: 'December 9, 2024'
+      dateRated: '2024-12-09'
     },
     {
       postId: 's4af79f404ab75',
       poster: 'https://m.media-amazon.com/images/M/MV5BNGM0YTk3MWEtN2JlZC00ZmZmLWIwMDktZTMxZGE5Zjc2MGExXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
       title: 'Hunter x Hunter',
-      releaseDate: 'April 17, 2016',
+      releaseDate: '2016-04-17',
       rated: 'TV-14',
       seasons: 3, 
       episodes: 148,
@@ -634,13 +643,13 @@ export class LoginRegisterComponent {
       ending: 1,
       rating: 5,
       username: 'HoldenBourg',
-      dateRated: 'December 8, 2024'
+      dateRated: '2024-12-08'
     },
     {
       postId: 's9bf8d9f4ec4d5',
       poster: 'https://m.media-amazon.com/images/M/MV5BY2IyMDA0NGEtZjIyOS00NjU0LThlOTctODA0OTZmMDU2ZTMxXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_SX300.jpg',
       title: 'Fire Force',
-      releaseDate: 'July 05, 2019',
+      releaseDate: '2019-07-05',
       rated: 'TV-14',
       seasons: 3, 
       episodes: 78,
@@ -653,13 +662,13 @@ export class LoginRegisterComponent {
       ending: 2,
       rating: 4.7,
       username: 'HoldenBourg',
-      dateRated: 'December 7, 2024'
+      dateRated: '2024-12-07'
     },
     {
       postId: 's2ddf16037acbc',
       poster: 'https://m.media-amazon.com/images/M/MV5BNzgwY2QwYjItYTM1NS00OTZmLThlMjUtNmE0Mzg0OGE0NzE3XkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
       title: 'Berserk',
-      releaseDate: 'May 28, 2002',
+      releaseDate: '2002-05-28',
       rated: 'TV-MA',
       seasons: 1, 
       episodes: 25,
@@ -672,13 +681,13 @@ export class LoginRegisterComponent {
       ending: 1,
       rating: 5,
       username: 'HoldenBourg',
-      dateRated: 'December 6, 2024'
+      dateRated: '2024-12-06'
     },
     {
       postId: 'se3eaaed56bf05',
       poster: 'https://m.media-amazon.com/images/M/MV5BYTIxNjk3YjItYmYzMC00ZTdmLTk0NGUtZmNlZTA0NWFkZDMwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
       title: 'Demon Slayer: Kimetsu no Yaiba',
-      releaseDate: 'January 22, 2021',
+      releaseDate: '2021-01-22',
       rated: 'TV-MA',
       seasons: 5, 
       episodes: 62,
@@ -691,13 +700,13 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 6.3,
       username: 'HoldenBourg',
-      dateRated: 'December 5, 2024'
+      dateRated: '2024-12-05'
     },
     {
       postId: 's1a0a11a13629d',
       poster: 'https://m.media-amazon.com/images/M/MV5BZjE0YjVjODQtZGY2NS00MDcyLThhMDAtZGQwMTZiOWNmNjRiXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg',
       title: 'Bleach',
-      releaseDate: 'September 09, 2006',
+      releaseDate: '2006-09-09',
       rated: 'TV-14',
       seasons: 3, 
       episodes: 396,
@@ -710,13 +719,13 @@ export class LoginRegisterComponent {
       ending: 4,
       rating: 5.8,
       username: 'HoldenBourg',
-      dateRated: 'December 4, 2024'
+      dateRated: '2024-12-04'
     },
     {
       postId: 's4d9733f005bf1',
       poster: 'https://m.media-amazon.com/images/M/MV5BODFmYTUwYzMtM2M2My00NGExLWIzMDctYmRjNTNhZDc4MGI2XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_SX300.jpg',
       title: 'Bleach: Thousand-Year Blood War',
-      releaseDate: 'October 10, 2022',
+      releaseDate: '2022-10-10',
       rated: 'TV-MA',
       seasons: 2, 
       episodes: 26,
@@ -729,13 +738,13 @@ export class LoginRegisterComponent {
       ending: 9,
       rating: 6.3,
       username: 'HoldenBourg',
-      dateRated: 'December 3, 2024'
+      dateRated: '2024-12-03'
     },
     {
       postId: 's0c0a652725a69',
       poster: 'https://m.media-amazon.com/images/M/MV5BZGFiMWFhNDAtMzUyZS00NmQ2LTljNDYtMmZjNTc5MDUxMzViXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg',
       title: 'Naruto: Shippuden',
-      releaseDate: 'October 28, 2009',
+      releaseDate: '2009-10-28',
       rated: 'TV-PG',
       seasons: 21, 
       episodes: 503,
@@ -748,13 +757,13 @@ export class LoginRegisterComponent {
       ending: 2,
       rating: 4.5,
       username: 'HoldenBourg',
-      dateRated: 'December 2, 2024'
+      dateRated: '2024-12-02'
     },
     {
       postId: 'sb866077598854',
       poster: 'https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SX300.jpg',
       title: 'Naruto',
-      releaseDate: 'September 10, 2005',
+      releaseDate: '2005-09-10',
       rated: 'TV-PG',
       seasons: 5, 
       episodes: 225,
@@ -767,7 +776,7 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 5.3,
       username: 'HoldenBourg',
-      dateRated: 'December 1, 2024'
+      dateRated: '2024-12-01'
     }
   ];
   public rawMockPostsDatabase: RawUserPostModel[] = [
@@ -787,7 +796,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-20-2024'
+      postDate: '2024-12-20'
     },
     {
       postId: 'mc64a0e2ed49d7',
@@ -805,7 +814,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-19-2024'
+      postDate: '2024-12-19'
     },
     {
       postId: 'm08c9ee59315b7',
@@ -823,7 +832,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-18-2024'
+      postDate: '2024-12-18'
     },
     {
       postId: 'm2b7950d28e018',
@@ -841,7 +850,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-17-2024'
+      postDate: '2024-12-17'
     },
     {
       postId: 'mb79abc0e36da9',
@@ -859,7 +868,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-16-2024'
+      postDate: '2024-12-16'
     },
     {
       postId: 'ma480047d8bc6b',
@@ -877,7 +886,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-15-2024'
+      postDate: '2024-12-15'
     },
     {
       postId: 'm297bcedc228ff',
@@ -895,7 +904,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-14-2024'
+      postDate: '2024-12-14'
     },
     {
       postId: 'maf9fa739dcc3f',
@@ -913,7 +922,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-13-2024'
+      postDate: '2024-12-13'
     },
     {
       postId: 'md20fca600e5f7',
@@ -931,7 +940,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-12-2024'
+      postDate: '2024-12-12'
     },
     {
       postId: 'm0ea021a14bc3c',
@@ -949,7 +958,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-11-2024'
+      postDate: '2024-12-11'
     },
     {
       postId: 'sca316788b32b3',
@@ -967,7 +976,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-10-2024'
+      postDate: '2024-12-10'
     },
     {
       postId: 'se21b5fdcc060e',
@@ -985,7 +994,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-09-2024'
+      postDate: '2024-12-09'
     },
     {
       postId: 's4af79f404ab75',
@@ -1003,7 +1012,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-08-2024'
+      postDate: '2024-12-08'
     },
     {
       postId: 's9bf8d9f4ec4d5',
@@ -1021,7 +1030,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-07-2024'
+      postDate: '2024-12-07'
     },
     {
       postId: 's2ddf16037acbc',
@@ -1039,7 +1048,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-06-2024'
+      postDate: '2024-12-06'
     },
     {
       postId: 'se3eaaed56bf05',
@@ -1057,7 +1066,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-05-2024'
+      postDate: '2024-12-05'
     },
     {
       postId: 's1a0a11a13629d',
@@ -1075,7 +1084,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-04-2024'
+      postDate: '2024-12-04'
     },
     {
       postId: 's4d9733f005bf1',
@@ -1093,7 +1102,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-03-2024'
+      postDate: '2024-12-03'
     },
     {
       postId: 's0c0a652725a69',
@@ -1111,7 +1120,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-02-2024'
+      postDate: '2024-12-02'
     },
     {
       postId: 'sb866077598854',
@@ -1129,7 +1138,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '12-01-2024'
+      postDate: '2024-12-01'
     },
     {
       postId: 'm77b8e730b1597',
@@ -1147,7 +1156,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '11-11-2024'
+      postDate: '2024-11-11'
     },
     {
       postId: 'm2e872b0b5fe1c',
@@ -1165,7 +1174,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '10-11-2024'
+      postDate: '2024-10-11'
     },
     {
       postId: 'm64de727bc325a',
@@ -1183,7 +1192,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '09-11-2024'
+      postDate: '2024-09-11'
     },
     {
       postId: 'mf5b3417fd47a7',
@@ -1201,7 +1210,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '08-11-2024'
+      postDate: '2024-08-11'
     },
     {
       postId: 'm4ee49fbf13c86',
@@ -1219,7 +1228,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg'
       ],
-      postDate: '07-11-2024'
+      postDate: '2024-07-11'
     },
     {
       postId: 'm6e1657aa83a9a',
@@ -1237,7 +1246,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '06-11-2024'
+      postDate: '2024-06-11'
     },
     {
       postId: 'mffab7fbeb34f9',
@@ -1255,7 +1264,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '05-11-2024'
+      postDate: '2024-05-11'
     },
     {
       postId: 'm30500143dac36',
@@ -1273,7 +1282,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '04-11-2024'
+      postDate: '2024-04-11'
     }
   ];
   public rawMockCommentsDatabase: RawCommentModel[] = [
@@ -1288,10 +1297,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::11-01-2024`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::11-02-2024`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
       ],
-      commentDate: '12-01-2024'
+      commentDate: '2024-12-01'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1304,10 +1313,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::11-01-2024`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::11-02-2024`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
       ],
-      commentDate: '12-02-2024'
+      commentDate: '2024-12-02'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1319,10 +1328,10 @@ export class LoginRegisterComponent {
         'LukasGocke'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::11-01-2024`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::11-02-2024`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
       ],
-      commentDate: '12-03-2024'
+      commentDate: '2024-12-03'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1335,10 +1344,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::11-01-2024`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::11-02-2024`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
       ],
-      commentDate: '12-04-2024'
+      commentDate: '2024-12-04'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1349,10 +1358,10 @@ export class LoginRegisterComponent {
         'HoldenBourg'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::11-01-2024`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::11-02-2024`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
       ],
-      commentDate: '12-05-2024'
+      commentDate: '2024-12-05'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1365,10 +1374,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::NarutoUzumaki::::Reply number 1::::HoldenBourg,CalebHaralson::::11-01-2024`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::11-02-2024`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::NarutoUzumaki::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
       ],
-      commentDate: '12-06-2024'
+      commentDate: '2024-12-06'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1381,10 +1390,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::11-01-2024`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::11-02-2024`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
       ],
-      commentDate: '12-07-2024'
+      commentDate: '2024-12-07'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1397,10 +1406,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::11-01-2024`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::11-02-2024`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
       ],
-      commentDate: '12-08-2024'
+      commentDate: '2024-12-08'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1413,10 +1422,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::11-01-2024`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::11-02-2024`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
       ],
-      commentDate: '12-09-2024'
+      commentDate: '2024-12-09'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1429,10 +1438,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::11-01-2024`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::11-02-2024`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
       ],
-      commentDate: '12-10-2024'
+      commentDate: '2024-12-10'
     },
     {
       postId: 'mc64a0e2ed49d7',
@@ -1445,10 +1454,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::11-01-2024`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::11-02-2024`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
       ],
-      commentDate: '12-10-2024'
+      commentDate: '2024-12-10'
     }
   ];
 
@@ -1465,17 +1474,16 @@ export class LoginRegisterComponent {
     //}
 
     //resets the mock databases in local storage - 
-    this.localStorageService.clearInformation('users');
-    this.localStorageService.clearInformation('rawUsers');
-    this.localStorageService.setInformation('rawUsers', this.rawMockUsersDatabase);
-    this.localStorageService.clearInformation('ratedMovies');
-    this.localStorageService.setInformation('ratedMovies', this.mockRatedMoviesDatabase);
-    this.localStorageService.clearInformation('ratedSeries');
-    this.localStorageService.setInformation('ratedSeries', this.mockRatedSeriesDatabase);
-    this.localStorageService.clearInformation('rawPosts');
-    this.localStorageService.setInformation('rawPosts', this.rawMockPostsDatabase);
-    this.localStorageService.clearInformation('rawComments');
-    this.localStorageService.setInformation('rawComments', this.rawMockCommentsDatabase);
+    // this.localStorageService.clearInformation('rawUsers');
+    // this.localStorageService.setInformation('rawUsers', this.rawMockUsersDatabase);
+    // this.localStorageService.clearInformation('ratedMovies');
+    // this.localStorageService.setInformation('ratedMovies', this.mockRatedMoviesDatabase);
+    // this.localStorageService.clearInformation('ratedSeries');
+    // this.localStorageService.setInformation('ratedSeries', this.mockRatedSeriesDatabase);
+    // this.localStorageService.clearInformation('rawPosts');
+    // this.localStorageService.setInformation('rawPosts', this.rawMockPostsDatabase);
+    // this.localStorageService.clearInformation('rawComments');
+    // this.localStorageService.setInformation('rawComments', this.rawMockCommentsDatabase);
   }
 
   onTerms() {
@@ -1609,6 +1617,7 @@ export class LoginRegisterComponent {
       postIds: [],
       taggedPostIds: [],
       archivedPostIds: [],
+      dateJoined: new Date().toJSON().slice(0, 10), //current day date
       private: false
     }
 
@@ -1915,6 +1924,7 @@ export class LoginRegisterComponent {
       postIds: rawUser.postIds,
       taggedPostIds: rawUser.taggedPostIds,
       archivedPostIds: rawUser.archivedPostIds,
+      dateJoined: rawUser.dateJoined,
       private: rawUser.private
     }
 

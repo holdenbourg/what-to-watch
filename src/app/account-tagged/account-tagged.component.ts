@@ -54,6 +54,7 @@ export class AccountTaggedComponent {
     postIds: [],
     taggedPostIds: [],
     archivedPostIds: [],
+    dateJoined: '',
     private: false
   }
   public usersTaggedPosts: UserPostModel[] = [];
@@ -401,6 +402,7 @@ export class AccountTaggedComponent {
       postIds: rawUser.postIds,
       taggedPostIds: rawUser.taggedPostIds,
       archivedPostIds: rawUser.archivedPostIds,
+      dateJoined: rawUser.dateJoined,
       private: rawUser.private
     }
 
@@ -507,6 +509,17 @@ export class AccountTaggedComponent {
     this.routingService.navigateToSettings();
   }
 
+  sortByDate(posts: UserPostModel[]) {
+    posts.sort((a: UserPostModel, b: UserPostModel) => {
+      let aDate: Date = new Date(a.postDate);
+      let bDate: Date = new Date(b.postDate);
+      
+      return aDate.getTime() - bDate.getTime();
+    });
+
+    return posts;
+  }
+  
   toggleActive() {
     const themeClass = document.querySelector('.sidebar');
     themeClass?.classList.toggle('active');

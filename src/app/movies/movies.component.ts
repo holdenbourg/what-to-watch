@@ -73,8 +73,11 @@ export class MoviesComponent  implements OnInit {
   //populate users ratings from the movies database
   populateUsersRatedMovies() {
     let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
+    let filteredMovies: RatedMovieModel[] = ratedMovies.filter((movie) => movie.username == this.currentUser.username);
 
-    this.usersRatedMovies = ratedMovies.filter((movie) => movie.username == this.currentUser.username);
+    this.usersRatedMovies = filteredMovies.sort((a: RatedMovieModel, b: RatedMovieModel) => {
+      return b.rating - a.rating;
+    });
   }
 
   onDelete(input: RatedMovieModel) {
@@ -121,39 +124,93 @@ export class MoviesComponent  implements OnInit {
     
       switch(month) {
         case 'Jan':
-          month = 'January'
+          month = '01'
           break;
         case 'Feb':
-          month = 'February'
+          month = '02'
           break;
         case 'Mar':
-          month = 'March'
+          month = '03'
           break;
         case 'Apr':
-          month = 'April'
+          month = '04'
           break;
         case 'May':
-          month = 'May'
+          month = '05'
           break;
         case 'Jun':
-          month = 'June'
+          month = '06'
           break;
         case 'Jul':
-          month = 'July'
+          month = '07'
           break;
         case 'Aug':
-          month = 'August'
+          month = '08'
           break;
         case 'Sep':
-          month = 'September'
+          month = '09'
           break;
         case 'Oct':
-          month = 'October'
+          month = '10'
           break;
         case 'Nov':
-          month = 'November'
+          month = '11'
           break;
         case 'Dec':
+          month = '12'
+          break;
+      }
+        
+      return `${year}-${month}-${day}`
+    }
+  }
+
+  //turns 2009-12-18 into December 18, 2009
+  fixReleaseDate(releaseDate?: string) {    
+    if(releaseDate == '') {
+      return '';
+    } else {
+      let day = releaseDate?.substring(8);
+      if (day?.charAt(0) == '0') day = day.substring(1);
+
+      let month = releaseDate?.substring(5,7);
+      const year = releaseDate?.substring(0,4);
+    
+      switch(month) {
+        case '01':
+          month = 'January'
+          break;
+        case '02':
+          month = 'February'
+          break;
+        case '03':
+          month = 'March'
+          break;
+        case '04':
+          month = 'April'
+          break;
+        case '05':
+          month = 'May'
+          break;
+        case '06':
+          month = 'June'
+          break;
+        case '07':
+          month = 'July'
+          break;
+        case '08':
+          month = 'August'
+          break;
+        case '09':
+          month = 'September'
+          break;
+        case '10':
+          month = 'October'
+          break;
+        case '11':
+          month = 'November'
+          break;
+        case '12':
           month = 'December'
           break;
       }
@@ -161,6 +218,7 @@ export class MoviesComponent  implements OnInit {
       return `${month} ${day}, ${year}`
     }
   }
+
   //turns 08 day into 8
   fixReleaseDay(releaseDate?: string) {
     if(releaseDate != undefined && releaseDate != '') {

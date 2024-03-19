@@ -68,6 +68,7 @@ throw new Error('Method not implemented.');
     postIds: [],
     taggedPostIds: [],
     archivedPostIds: [],
+    dateJoined: '',
     private: false
   }
   public usersPosts: UserPostModel[] = [];
@@ -431,6 +432,7 @@ throw new Error('Method not implemented.');
       postIds: rawUser.postIds,
       taggedPostIds: rawUser.taggedPostIds,
       archivedPostIds: rawUser.archivedPostIds,
+      dateJoined: rawUser.dateJoined,
       private: rawUser.private
     }
 
@@ -543,15 +545,12 @@ throw new Error('Method not implemented.');
     this.routingService.navigateToSettings();
   }
 
-  public sortByDate(posts: UserPostModel[]) {
+  sortByDate(posts: UserPostModel[]) {
     posts.sort((a: UserPostModel, b: UserPostModel) => {
-      let aDate: string = `${a.postDate.substring(6)}-${a.postDate.substring(0,2)}-${a.postDate.substring(3,5)}`
-      let newADate: Date = new Date(aDate);
-
-      let bDate: string = `${b.postDate.substring(6)}-${b.postDate.substring(0,2)}-${b.postDate.substring(3,5)}`
-      let newBDate: Date = new Date(bDate);
-
-      return newADate.getTime() - newBDate.getTime();
+      let aDate: Date = new Date(a.postDate);
+      let bDate: Date = new Date(b.postDate);
+      
+      return aDate.getTime() - bDate.getTime();
     });
 
     return posts;

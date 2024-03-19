@@ -52,6 +52,7 @@ export class RequestTemplateComponent {
       postIds: this.currentUser.postIds,
       taggedPostIds: this.currentUser.taggedPostIds,
       archivedPostIds: this.currentUser.archivedPostIds,
+      dateJoined: this.currentUser.dateJoined,
       private: this.currentUser.private
     }
 
@@ -87,6 +88,7 @@ export class RequestTemplateComponent {
       postIds: this.currentUser.postIds,
       taggedPostIds: this.currentUser.taggedPostIds,
       archivedPostIds: this.currentUser.archivedPostIds,
+      dateJoined: this.currentUser.dateJoined,
       private: this.currentUser.private
     }
 

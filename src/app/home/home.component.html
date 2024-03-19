@@ -64,7 +64,7 @@
             <p>Upcoming Films</p>
             <div class="scroll-box">
                 <div class="upcoming-films">
-                    <div class="upcoming-film" *ngFor="let film of upcomingFilmList; let i = index">
+                    <div class="upcoming-film" *ngFor="let film of sortByDate(upcomingFilmList); let i = index">
                         <app-upcoming-film-template
                             [upcomingFilm]="film"                      
                             class="upcoming-film-{{i}}"

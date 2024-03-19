@@ -48,6 +48,7 @@ export class FollowerTemplateComponent {
       postIds: this.currentUser.postIds,
       taggedPostIds: this.currentUser.taggedPostIds,
       archivedPostIds: this.currentUser.archivedPostIds,
+      dateJoined: this.currentUser.dateJoined,
       private: this.currentUser.private
     }
 

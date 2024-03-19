@@ -53,18 +53,11 @@ export class SummaryComponent {
     let filteredMovies: RatedMovieModel[] = ratedMovies.filter((movie) => movie.username == this.currentUser.username);
 
     if(filteredMovies.length > 0) {
-      let currentHighestMovie: RatedMovieModel = filteredMovies[0];
-      let currentHighest: number = filteredMovies[0].rating;
-  
-      for(let i = 0; i < filteredMovies.length; i++) {
-        if(filteredMovies[i].rating >= currentHighest) {
-          currentHighest = filteredMovies[i].rating;
-  
-          currentHighestMovie = filteredMovies[i];
-        }
-      }
-  
-      return currentHighestMovie;
+      filteredMovies.sort((a: RatedMovieModel, b: RatedMovieModel) => {
+        return b.rating - a.rating;
+      });
+
+      return filteredMovies.at(0);
     } else {
       return;
     }
@@ -74,18 +67,11 @@ export class SummaryComponent {
     let filteredSeries: RatedSeriesModel[] = ratedSeries.filter((series) => series.username == this.currentUser.username);
 
     if(filteredSeries.length > 0) {
-      let currentHighestSeries: RatedSeriesModel = filteredSeries[0];
-      let currentHighest: number = filteredSeries[0].rating;
-  
-      for(let i = 0; i < filteredSeries.length; i++) {
-        if(filteredSeries[i].rating >= currentHighest) {
-          currentHighest = filteredSeries[i].rating;
-  
-          currentHighestSeries = filteredSeries[i];
-        }
-      }
-  
-      return currentHighestSeries;
+      filteredSeries.sort((a: RatedSeriesModel, b: RatedSeriesModel) => {
+        return b.rating - a.rating;
+      });
+
+      return filteredSeries.at(0);
     } else {
       return;
     }
@@ -439,6 +425,60 @@ export class SummaryComponent {
   }
   navigateToSettings() {
     this.routingService.navigateToSettings();
+  }
+
+  //turns 2009-12-18 into December 18, 2009
+  fixReleaseDate(releaseDate?: string) {    
+    if(releaseDate == '') {
+      return '';
+    } else {
+      let day = releaseDate?.substring(8);
+      if (day?.charAt(0) == '0') day = day.substring(1);
+
+      let month = releaseDate?.substring(5,7);
+      const year = releaseDate?.substring(0,4);
+    
+      switch(month) {
+        case '01':
+          month = 'January'
+          break;
+        case '02':
+          month = 'February'
+          break;
+        case '03':
+          month = 'March'
+          break;
+        case '04':
+          month = 'April'
+          break;
+        case '05':
+          month = 'May'
+          break;
+        case '06':
+          month = 'June'
+          break;
+        case '07':
+          month = 'July'
+          break;
+        case '08':
+          month = 'August'
+          break;
+        case '09':
+          month = 'September'
+          break;
+        case '10':
+          month = 'October'
+          break;
+        case '11':
+          month = 'November'
+          break;
+        case '12':
+          month = 'December'
+          break;
+      }
+        
+      return `${month} ${day}, ${year}`
+    }
   }
 
   toggleActive() {
