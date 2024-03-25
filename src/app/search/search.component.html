@@ -63,7 +63,7 @@
     <div class="container">
         <div class="search-bar">
             <label class="prompt">What did you watch?</label>
-            <input class="input-enter" type="text" [(ngModel)]="searchInput" name="searchInput" (keyup.enter)="onSearch()" (focus)="toggleSearchLabel()" required>
+            <input class="input-enter" type="text" [(ngModel)]="searchInput" name="searchInput" (keyup.enter)="onSearch()" (blur)="untoggleSearchLabel()" (focus)="toggleSearchLabel()" required>
             <i (click)="toggleMoviesActive()" class="movies">Movies</i>
             <i (click)="toggleSeriesActive()" class="series">Series</i>
             <i (click)="toggleUsersActive()" class="users">Users</i>

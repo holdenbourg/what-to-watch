@@ -19,6 +19,7 @@ import { RatedSeriesModel } from '../services/models/database-objects/rated-seri
 import { RawCommentModel } from '../services/models/database-objects/raw-comment-model';
 import { RawUserPostModel } from '../services/models/database-objects/raw-user-post-model';
 import { ReplyModel } from '../services/models/database-objects/reply-model';
+import { CommentTemplateComponent } from '../comment-template/comment-template.component';
 
 @Component({
   selector: 'app-account',
@@ -30,22 +31,17 @@ import { ReplyModel } from '../services/models/database-objects/reply-model';
     FollowerTemplateComponent, 
     FollowingTemplateComponent, 
     RequestTemplateComponent, 
-    FollowerFollowingTemplateComponent],
+    FollowerFollowingTemplateComponent,
+    CommentTemplateComponent],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss'
 })
 
 export class AccountComponent  implements OnInit {
-onComment() {
+onRightPost() {
 throw new Error('Method not implemented.');
 }
-toggleCommentLabel() {
-throw new Error('Method not implemented.');
-}
-onSend() {
-throw new Error('Method not implemented.');
-}
-onLike() {
+onLeftPost() {
 throw new Error('Method not implemented.');
 }
   public routingService: RoutingService = inject(RoutingService);
@@ -73,6 +69,36 @@ throw new Error('Method not implemented.');
   }
   public usersPosts: UserPostModel[] = [];
   public postsComments: CommentModel[] = [];
+
+  public currentPost: UserPostModel = {
+    postId: '',
+    profilePicture: '',
+    username: '',
+    poster: '',
+    caption: '',
+    likes: [],
+    taggedUsers: [],
+    postDate: ''
+  };
+  public currentRatedMovie: RatedMovieModel = {
+    postId: '',
+    poster: '',
+    title: '',
+    releaseDate: '',
+    rated: '',
+    runTime: 0,
+    genres: [],
+    acting: 0,
+    visuals: 0,
+    story: 0,
+    climax: 0,
+    pacing: 0,
+    ending: 0,
+    rating: 0,
+    username: '',
+    dateRated: ''
+  };
+  public currentComments: CommentModel[] = [];
 
   public username: string = '';
   
@@ -145,7 +171,31 @@ throw new Error('Method not implemented.');
     this.localStorageService.setInformation('follower-type', 'followers');
   }
 
-  
+  onCommentClick() {
+    const prompt = document.querySelector('.prompt');
+
+    if(!(prompt?.classList.contains('active'))) prompt?.classList.toggle('active'); 
+  }
+  onCommentUnClick() {
+    const prompt = document.querySelector('.prompt');
+
+    if(prompt?.classList.contains('active') && this.commentInput.length == 0) prompt?.classList.toggle('active');
+  }
+  onBackOut() {
+    const moviePostContainer = document.querySelector('.show-movie-post');
+    moviePostContainer?.classList.toggle('active');
+  }
+
+  onPostComment() {
+  }
+  onComment() {
+  }
+  toggleCommentLabel() {
+  }
+  onSend() {
+  }
+  onLike() {
+  }
   populatePostsAndComments() {
     let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
     let rawComments: RawCommentModel[] = this.localStorageService.getInformation('rawComments');
@@ -252,9 +302,15 @@ throw new Error('Method not implemented.');
       let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
       let movie: RatedMovieModel = ratedMovies.filter((movie) => movie.postId == post.postId).at(0)!;
       
+      const moviePostContainer = document.querySelector('.show-movie-post');
+      moviePostContainer?.classList.toggle('active');
+
+      this.currentPost = post;
+      this.currentRatedMovie = movie;
+      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId);
+
       console.log(post);
       console.log(movie);
-      this.navigateToPostMovie(post.postId);
     } else {
       let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
       let series: RatedSeriesModel = ratedSeries.filter((series) => series.postId == post.postId).at(0)!;
@@ -262,7 +318,6 @@ throw new Error('Method not implemented.');
       console.log(post);
       console.log(series);
     }
-
   }
   onEditProfile() {
     this.routingService.navigateToSettings();
@@ -549,6 +604,16 @@ throw new Error('Method not implemented.');
     posts.sort((a: UserPostModel, b: UserPostModel) => {
       let aDate: Date = new Date(a.postDate);
       let bDate: Date = new Date(b.postDate);
+      
+      return aDate.getTime() - bDate.getTime();
+    });
+
+    return posts;
+  }
+  sortCommentsByDate(posts: CommentModel[]) {
+    posts.sort((a: CommentModel, b: CommentModel) => {
+      let aDate: Date = new Date(a.commentDate);
+      let bDate: Date = new Date(b.commentDate);
       
       return aDate.getTime() - bDate.getTime();
     });

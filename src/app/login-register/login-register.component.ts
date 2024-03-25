@@ -278,7 +278,7 @@ export class LoginRegisterComponent {
       ending: 5,
       rating: 5.5,
       username: 'HoldenBourg',
-      dateRated: '2024-12-20'
+      dateRated: '2023-12-20'
     },
     {
       postId: 'mc64a0e2ed49d7',
@@ -296,7 +296,7 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 5.5,
       username: 'HoldenBourg',
-      dateRated: '2024-12-19'
+      dateRated: '2023-12-19'
     },
     {
       postId: 'm08c9ee59315b7',
@@ -314,7 +314,7 @@ export class LoginRegisterComponent {
       ending: 1,
       rating: 5,
       username: 'HoldenBourg',
-      dateRated: '2024-12-18'
+      dateRated: '2023-12-18'
     },
     {
       postId: 'm2b7950d28e018',
@@ -332,7 +332,7 @@ export class LoginRegisterComponent {
       ending: 2,
       rating: 4.7,
       username: 'HoldenBourg',
-      dateRated: '2024-12-17'
+      dateRated: '2023-12-17'
     },
     {
       postId: 'mb79abc0e36da9',
@@ -350,7 +350,7 @@ export class LoginRegisterComponent {
       ending: 1,
       rating: 5,
       username: 'HoldenBourg',
-      dateRated: '2024-12-16'
+      dateRated: '2023-12-16'
     },
     {
       postId: 'ma480047d8bc6b',
@@ -368,7 +368,7 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 6.3,
       username: 'HoldenBourg',
-      dateRated: '2024-12-15'
+      dateRated: '2023-12-15'
     },
     {
       postId: 'm297bcedc228ff',
@@ -386,7 +386,7 @@ export class LoginRegisterComponent {
       ending: 4,
       rating: 5.8,
       username: 'HoldenBourg',
-      dateRated: '2024-12-14'
+      dateRated: '2023-12-14'
     },
     {
       postId: 'maf9fa739dcc3f',
@@ -404,7 +404,7 @@ export class LoginRegisterComponent {
       ending: 9,
       rating: 6.3,
       username: 'HoldenBourg',
-      dateRated: '2024-12-13'
+      dateRated: '2023-12-13'
     },
     {
       postId: 'md20fca600e5f7',
@@ -422,7 +422,7 @@ export class LoginRegisterComponent {
       ending: 2,
       rating: 4.5,
       username: 'HoldenBourg',
-      dateRated: '2024-12-12'
+      dateRated: '2023-12-12'
     },
     {
       postId: 'm0ea021a14bc3c',
@@ -440,7 +440,7 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 5.3,
       username: 'HoldenBourg',
-      dateRated: '2024-12-11'
+      dateRated: '2023-12-11'
     },
     {
       postId: 'm77b8e730b1597',
@@ -458,7 +458,7 @@ export class LoginRegisterComponent {
       ending: 3,
       rating: 3,
       username: 'HoldenBourg',
-      dateRated: '2024-11-11'
+      dateRated: '2023-11-11'
     },
     {
       postId: 'm2e872b0b5fe1c',
@@ -476,7 +476,7 @@ export class LoginRegisterComponent {
       ending: 4,
       rating: 4,
       username: 'HoldenBourg',
-      dateRated: '2024-10-11'
+      dateRated: '2023-10-11'
     },
     {
       postId: 'm64de727bc325a',
@@ -494,7 +494,7 @@ export class LoginRegisterComponent {
       ending: 5,
       rating: 5,
       username: 'HoldenBourg',
-      dateRated: '2024-09-11'
+      dateRated: '2023-09-11'
     },
     {
       postId: 'mf5b3417fd47a7',
@@ -512,7 +512,7 @@ export class LoginRegisterComponent {
       ending: 6,
       rating: 6,
       username: 'CalebHaralson',
-      dateRated: '2024-08-11'
+      dateRated: '2023-08-11'
     },
     {
       postId: 'm4ee49fbf13c86',
@@ -530,7 +530,7 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 7,
       username: 'EnriqueLeal',
-      dateRated: '2024-07-11'
+      dateRated: '2023-07-11'
     },
     {
       postId: 'm6e1657aa83a9a',
@@ -548,7 +548,7 @@ export class LoginRegisterComponent {
       ending: 8,
       rating: 8,
       username: 'LukasGocke',
-      dateRated: '2024-06-11'
+      dateRated: '2023-06-11'
     },
     {
       postId: 'mffab7fbeb34f9',
@@ -566,7 +566,7 @@ export class LoginRegisterComponent {
       ending: 9,
       rating: 9,
       username: 'AshlynnDang',
-      dateRated: '2024-05-11'
+      dateRated: '2023-05-11'
     },
     {
       postId: 'm30500143dac36',
@@ -584,7 +584,7 @@ export class LoginRegisterComponent {
       ending: 10,
       rating: 10,
       username: 'OliverQueen',
-      dateRated: '2024-04-11'
+      dateRated: '2023-04-11'
     }
   ];
   public mockRatedSeriesDatabase: RatedSeriesModel[] = [
@@ -605,7 +605,7 @@ export class LoginRegisterComponent {
       ending: 5,
       rating: 5.5,
       username: 'HoldenBourg',
-      dateRated: '2024-12-10'
+      dateRated: '2023-12-10'
     },
     {
       postId: 'se21b5fdcc060e',
@@ -624,7 +624,7 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 5.5,
       username: 'HoldenBourg',
-      dateRated: '2024-12-09'
+      dateRated: '2023-12-09'
     },
     {
       postId: 's4af79f404ab75',
@@ -643,7 +643,7 @@ export class LoginRegisterComponent {
       ending: 1,
       rating: 5,
       username: 'HoldenBourg',
-      dateRated: '2024-12-08'
+      dateRated: '2023-12-08'
     },
     {
       postId: 's9bf8d9f4ec4d5',
@@ -662,7 +662,7 @@ export class LoginRegisterComponent {
       ending: 2,
       rating: 4.7,
       username: 'HoldenBourg',
-      dateRated: '2024-12-07'
+      dateRated: '2023-12-07'
     },
     {
       postId: 's2ddf16037acbc',
@@ -681,7 +681,7 @@ export class LoginRegisterComponent {
       ending: 1,
       rating: 5,
       username: 'HoldenBourg',
-      dateRated: '2024-12-06'
+      dateRated: '2023-12-06'
     },
     {
       postId: 'se3eaaed56bf05',
@@ -700,7 +700,7 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 6.3,
       username: 'HoldenBourg',
-      dateRated: '2024-12-05'
+      dateRated: '2023-12-05'
     },
     {
       postId: 's1a0a11a13629d',
@@ -719,7 +719,7 @@ export class LoginRegisterComponent {
       ending: 4,
       rating: 5.8,
       username: 'HoldenBourg',
-      dateRated: '2024-12-04'
+      dateRated: '2023-12-04'
     },
     {
       postId: 's4d9733f005bf1',
@@ -738,7 +738,7 @@ export class LoginRegisterComponent {
       ending: 9,
       rating: 6.3,
       username: 'HoldenBourg',
-      dateRated: '2024-12-03'
+      dateRated: '2023-12-03'
     },
     {
       postId: 's0c0a652725a69',
@@ -757,7 +757,7 @@ export class LoginRegisterComponent {
       ending: 2,
       rating: 4.5,
       username: 'HoldenBourg',
-      dateRated: '2024-12-02'
+      dateRated: '2023-12-02'
     },
     {
       postId: 'sb866077598854',
@@ -776,7 +776,7 @@ export class LoginRegisterComponent {
       ending: 7,
       rating: 5.3,
       username: 'HoldenBourg',
-      dateRated: '2024-12-01'
+      dateRated: '2023-12-01'
     }
   ];
   public rawMockPostsDatabase: RawUserPostModel[] = [
@@ -796,7 +796,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-20'
+      postDate: '2023-12-20'
     },
     {
       postId: 'mc64a0e2ed49d7',
@@ -814,7 +814,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-19'
+      postDate: '2023-12-19'
     },
     {
       postId: 'm08c9ee59315b7',
@@ -832,7 +832,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-18'
+      postDate: '2023-12-18'
     },
     {
       postId: 'm2b7950d28e018',
@@ -850,7 +850,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-17'
+      postDate: '2023-12-17'
     },
     {
       postId: 'mb79abc0e36da9',
@@ -868,7 +868,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-16'
+      postDate: '2023-12-16'
     },
     {
       postId: 'ma480047d8bc6b',
@@ -886,7 +886,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-15'
+      postDate: '2023-12-15'
     },
     {
       postId: 'm297bcedc228ff',
@@ -904,7 +904,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-14'
+      postDate: '2023-12-14'
     },
     {
       postId: 'maf9fa739dcc3f',
@@ -922,7 +922,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-13'
+      postDate: '2023-12-13'
     },
     {
       postId: 'md20fca600e5f7',
@@ -940,7 +940,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-12'
+      postDate: '2023-12-12'
     },
     {
       postId: 'm0ea021a14bc3c',
@@ -958,7 +958,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-11'
+      postDate: '2023-12-11'
     },
     {
       postId: 'sca316788b32b3',
@@ -976,7 +976,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-10'
+      postDate: '2023-12-10'
     },
     {
       postId: 'se21b5fdcc060e',
@@ -994,7 +994,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-09'
+      postDate: '2023-12-09'
     },
     {
       postId: 's4af79f404ab75',
@@ -1012,7 +1012,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-08'
+      postDate: '2023-12-08'
     },
     {
       postId: 's9bf8d9f4ec4d5',
@@ -1030,7 +1030,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-07'
+      postDate: '2023-12-07'
     },
     {
       postId: 's2ddf16037acbc',
@@ -1048,7 +1048,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-06'
+      postDate: '2023-12-06'
     },
     {
       postId: 'se3eaaed56bf05',
@@ -1066,7 +1066,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-05'
+      postDate: '2023-12-05'
     },
     {
       postId: 's1a0a11a13629d',
@@ -1084,7 +1084,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-04'
+      postDate: '2023-12-04'
     },
     {
       postId: 's4d9733f005bf1',
@@ -1102,7 +1102,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-03'
+      postDate: '2023-12-03'
     },
     {
       postId: 's0c0a652725a69',
@@ -1120,7 +1120,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-02'
+      postDate: '2023-12-02'
     },
     {
       postId: 'sb866077598854',
@@ -1138,7 +1138,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-12-01'
+      postDate: '2023-12-01'
     },
     {
       postId: 'm77b8e730b1597',
@@ -1156,7 +1156,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-11-11'
+      postDate: '2023-11-11'
     },
     {
       postId: 'm2e872b0b5fe1c',
@@ -1174,7 +1174,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-10-11'
+      postDate: '2023-10-11'
     },
     {
       postId: 'm64de727bc325a',
@@ -1192,7 +1192,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-09-11'
+      postDate: '2023-09-11'
     },
     {
       postId: 'mf5b3417fd47a7',
@@ -1210,7 +1210,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-08-11'
+      postDate: '2023-08-11'
     },
     {
       postId: 'm4ee49fbf13c86',
@@ -1228,7 +1228,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg'
       ],
-      postDate: '2024-07-11'
+      postDate: '2023-07-11'
     },
     {
       postId: 'm6e1657aa83a9a',
@@ -1246,7 +1246,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-06-11'
+      postDate: '2023-06-11'
     },
     {
       postId: 'mffab7fbeb34f9',
@@ -1264,7 +1264,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-05-11'
+      postDate: '2023-05-11'
     },
     {
       postId: 'm30500143dac36',
@@ -1282,7 +1282,7 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal'
       ],
-      postDate: '2024-04-11'
+      postDate: '2023-04-11'
     }
   ];
   public rawMockCommentsDatabase: RawCommentModel[] = [
@@ -1297,10 +1297,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
-      commentDate: '2024-12-01'
+      commentDate: '2023-12-01'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1313,10 +1313,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
-      commentDate: '2024-12-02'
+      commentDate: '2023-12-02'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1328,10 +1328,10 @@ export class LoginRegisterComponent {
         'LukasGocke'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
-      commentDate: '2024-12-03'
+      commentDate: '2023-12-03'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1344,10 +1344,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
-      commentDate: '2024-12-04'
+      commentDate: '2023-12-04'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1358,26 +1358,26 @@ export class LoginRegisterComponent {
         'HoldenBourg'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
-      commentDate: '2024-12-05'
+      commentDate: '2023-12-05'
     },
     {
       postId: 'm1b114fbe2525b',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'TommyMerlin',
-      comment: 'Comment number 6',
+      comment: 'Comment number 6, Comment number 6, Comment number 6, Comment number 6, Comment number 6, Comment number 6, Comment number 6',
       likes: [
         'HoldenBourg',
         'LukasGocke',
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::NarutoUzumaki::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::NarutoUzumaki::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
-      commentDate: '2024-12-06'
+      commentDate: '2023-12-06'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1390,10 +1390,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
-      commentDate: '2024-12-07'
+      commentDate: '2023-12-07'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1406,10 +1406,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
-      commentDate: '2024-12-08'
+      commentDate: '2023-12-08'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1422,10 +1422,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
-      commentDate: '2024-12-09'
+      commentDate: '2023-12-09'
     },
     {
       postId: 'm1b114fbe2525b',
@@ -1438,10 +1438,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
-      commentDate: '2024-12-10'
+      commentDate: '2023-12-10'
     },
     {
       postId: 'mc64a0e2ed49d7',
@@ -1454,10 +1454,10 @@ export class LoginRegisterComponent {
         'CalebHaralson'
       ],
       replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2024-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2024-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
-      commentDate: '2024-12-10'
+      commentDate: '2023-12-10'
     }
   ];
 
@@ -1482,8 +1482,8 @@ export class LoginRegisterComponent {
     // this.localStorageService.setInformation('ratedSeries', this.mockRatedSeriesDatabase);
     // this.localStorageService.clearInformation('rawPosts');
     // this.localStorageService.setInformation('rawPosts', this.rawMockPostsDatabase);
-    // this.localStorageService.clearInformation('rawComments');
-    // this.localStorageService.setInformation('rawComments', this.rawMockCommentsDatabase);
+    this.localStorageService.clearInformation('rawComments');
+    this.localStorageService.setInformation('rawComments', this.rawMockCommentsDatabase);
   }
 
   onTerms() {

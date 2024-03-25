@@ -112,12 +112,16 @@ export class SearchComponent  implements OnInit {
     const container = document.querySelector('.container');
     container?.classList.toggle('active');
   }
-  toggleSearchLabel() {
-    const searchLabel = document.querySelector('.prompt');
 
-    if(!(this.searchInput.length > 0) && !searchLabel?.classList.contains('active')) {
-      searchLabel?.classList.toggle('active');
-    }
+  toggleSearchLabel() {
+    const prompt = document.querySelector('.prompt');
+
+    if(!(prompt?.classList.contains('active'))) prompt?.classList.toggle('active'); 
+  }
+  untoggleSearchLabel() {
+    const prompt = document.querySelector('.prompt');
+
+    if(prompt?.classList.contains('active') && this.searchInput.length == 0) prompt?.classList.toggle('active');
   }
 
   toggleMoviesActive() {
