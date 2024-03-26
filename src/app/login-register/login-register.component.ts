@@ -1482,8 +1482,8 @@ export class LoginRegisterComponent {
     // this.localStorageService.setInformation('ratedSeries', this.mockRatedSeriesDatabase);
     // this.localStorageService.clearInformation('rawPosts');
     // this.localStorageService.setInformation('rawPosts', this.rawMockPostsDatabase);
-    this.localStorageService.clearInformation('rawComments');
-    this.localStorageService.setInformation('rawComments', this.rawMockCommentsDatabase);
+    // this.localStorageService.clearInformation('rawComments');
+    // this.localStorageService.setInformation('rawComments', this.rawMockCommentsDatabase);
   }
 
   onTerms() {

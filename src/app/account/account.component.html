@@ -103,11 +103,11 @@
                 </div>
                 <div class="scroll-box" *ngIf="usersPosts.length != 0">
                     <ul class="user-posts">
-                        <li *ngFor="let post of sortByDate(usersPosts)">
+                        <li *ngFor="let post of usersPosts let i = index">
                             <app-user-post-template
                                 [userPost]="post" 
-                                (click)="onPostClicked(post)"
-                                class="user-post"
+                                (click)="onPostClicked(post, i)"
+                                class="user-post-{{i}}"
                             ></app-user-post-template>
                         </li>
                     </ul>
@@ -209,18 +209,18 @@
                 </ng-template>
             </div>
         </div>
-        <div class="show-movie-post">
+        <div class="show-post">
             <div class="back-button">
                 <a (click)="onBackOut()">
                     <i class='bx bx-x'></i>
                 </a>
             </div>
-            <div class="left-button">
+            <div class="left-button" id="left-button">
                 <a (click)="onLeftPost()">
                     <i class='bx bx-chevron-left'></i>
                 </a>
             </div>
-            <div class="right-button">
+            <div class="right-button" id="right-button">
                 <a (click)="onRightPost()">
                     <i class='bx bx-chevron-right'></i>
                 </a>
@@ -232,7 +232,7 @@
                         <img class="user-profile-picture" [src]="currentUser.profilePicture" [attr.alt]="currentUser.username">
                         <p class="user-username">{{ currentUser.username }}</p>
                     </div>
-                    <div class="comment-scroll-box" *ngIf="currentComments.length != 0">
+                    <div class="comment-scroll-box">
                         <ul class="post-comments">
                             <li *ngFor="let comment of sortCommentsByDate(currentComments)">
                                 <app-comment-template
@@ -253,7 +253,7 @@
                                     <i class='bx bxs-like'></i>
                                 </a>
                             </div>
-                            <div class="unliked" *ngIf="currentPost.likes.includes(currentUser.username)">
+                            <div class="unliked" *ngIf="!currentPost.likes.includes(currentUser.username)">
                                 <a (click)="onLike()">
                                     <i class='bx bx-like'></i>
                                 </a>

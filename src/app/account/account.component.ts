@@ -38,16 +38,13 @@ import { CommentTemplateComponent } from '../comment-template/comment-template.c
 })
 
 export class AccountComponent  implements OnInit {
-onRightPost() {
-throw new Error('Method not implemented.');
-}
-onLeftPost() {
-throw new Error('Method not implemented.');
-}
   public routingService: RoutingService = inject(RoutingService);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   
+  public ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
+  public ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
+
   public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
   public userAccount: AccountInformationModel = {
     profilePicture: '',
@@ -70,6 +67,7 @@ throw new Error('Method not implemented.');
   public usersPosts: UserPostModel[] = [];
   public postsComments: CommentModel[] = [];
 
+  public currentPostNumber: number = 0;
   public currentPost: UserPostModel = {
     postId: '',
     profilePicture: '',
@@ -93,6 +91,25 @@ throw new Error('Method not implemented.');
     story: 0,
     climax: 0,
     pacing: 0,
+    ending: 0,
+    rating: 0,
+    username: '',
+    dateRated: ''
+  };
+  public currentRatedSeries: RatedSeriesModel = {
+    postId: '',
+    poster: '',
+    title: '',
+    releaseDate: '',
+    rated: '',
+    seasons: 0,
+    episodes: 0,
+    genres: [],
+    acting: 0,
+    visuals: 0,
+    story: 0,
+    pacing: 0,
+    length: 0,
     ending: 0,
     rating: 0,
     username: '',
@@ -182,10 +199,45 @@ throw new Error('Method not implemented.');
     if(prompt?.classList.contains('active') && this.commentInput.length == 0) prompt?.classList.toggle('active');
   }
   onBackOut() {
-    const moviePostContainer = document.querySelector('.show-movie-post');
-    moviePostContainer?.classList.toggle('active');
+    const postContainer = document.querySelector('.show-post');
+    postContainer?.classList.toggle('active');
   }
+  onRightPost() {  
+    if(this.currentPostNumber <= this.usersPosts.length - 1) {
+      if(this.usersPosts.at(this.currentPostNumber + 1)!.postId.charAt(0) == 'm') {
+        this.currentPostNumber = this.currentPostNumber + 1;
+        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
+        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
+        this.currentRatedMovie = this.ratedMovies.filter((movie) => movie.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
+      } else {
+        this.currentPostNumber = this.currentPostNumber + 1;
+        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
+        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
+        this.currentRatedSeries = this.ratedSeries.filter((series) => series.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
+      }
+    }
 
+    if(this.currentPostNumber == this.usersPosts.length - 1) document.getElementById('right-button')!.style.scale = "0";
+    else if(this.currentPostNumber > 0) document.getElementById('left-button')!.style.scale = "1";
+  }
+  onLeftPost() {
+    if(this.currentPostNumber > 0) {
+      if(this.usersPosts.at(this.currentPostNumber - 1)!.postId.charAt(0) == 'm') {
+        this.currentPostNumber = this.currentPostNumber - 1;
+        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
+        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
+        this.currentRatedMovie = this.ratedMovies.filter((movie) => movie.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
+      } else {
+        this.currentPostNumber = this.currentPostNumber - 1;
+        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
+        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
+        this.currentRatedSeries = this.ratedSeries.filter((series) => series.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
+      }
+    }
+
+    if(this.currentPostNumber == 0) document.getElementById('left-button')!.style.scale = "0";
+    else if(this.currentPostNumber < this.usersPosts.length) document.getElementById('right-button')!.style.scale = "1";
+  }
   onPostComment() {
   }
   onComment() {
@@ -210,7 +262,7 @@ throw new Error('Method not implemented.');
       if(this.userAccount.postIds.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
     }
 
-    this.usersPosts = rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost));
+    this.usersPosts = this.sortByDate(rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost)));
     this.postsComments = rawUsersComments.map((rawComment) => this.convertRawCommentToComment(rawComment));
   }
 
@@ -297,32 +349,42 @@ throw new Error('Method not implemented.');
     }
   }
 
-  onPostClicked(post: UserPostModel) {
+  onPostClicked(post: UserPostModel, postNumber: number) {
     if(post.postId.charAt(0) == 'm') {
       let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
       let movie: RatedMovieModel = ratedMovies.filter((movie) => movie.postId == post.postId).at(0)!;
       
-      const moviePostContainer = document.querySelector('.show-movie-post');
+      const moviePostContainer = document.querySelector('.show-post');
       moviePostContainer?.classList.toggle('active');
 
+      this.currentPostNumber = postNumber;
       this.currentPost = post;
       this.currentRatedMovie = movie;
-      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId);
-
-      console.log(post);
-      console.log(movie);
+      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId);      
     } else {
       let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
       let series: RatedSeriesModel = ratedSeries.filter((series) => series.postId == post.postId).at(0)!;
+            
+      const seriesPostContainer = document.querySelector('.show-post');
+      seriesPostContainer?.classList.toggle('active');
 
-      console.log(post);
-      console.log(series);
+      this.currentPostNumber = postNumber;
+      this.currentPost = post;
+      this.currentRatedSeries = series;
+      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId); 
     }
+    
+    if(this.currentPostNumber == 0) document.getElementById('left-button')!.style.scale = "0";
+    else document.getElementById('left-button')!.style.scale = "1";
+
+    if(this.currentPostNumber == this.usersPosts.length - 1) document.getElementById('right-button')!.style.scale = "0";
+    else document.getElementById('right-button')!.style.scale = "1";
   }
   onEditProfile() {
     this.routingService.navigateToSettings();
   }
 
+  //makes sure an account under that username exists
   doesUserExist() {
     let userExistsInDB: boolean = false;
 
@@ -637,3 +699,4 @@ throw new Error('Method not implemented.');
     console.log(id2);
   }*/
 }
+

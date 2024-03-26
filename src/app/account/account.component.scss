@@ -68,7 +68,6 @@ body {
 }
 .sidebar.active .logo-menu .toggle-button {
     left: 90%;
-
 }
 //list of all page redirects
 .sidebar .list {
@@ -150,7 +149,7 @@ body {
 
 
 
-.show-movie-post {
+.show-post {
     transform: scale(0);
     position: absolute;
     height: 100%;
@@ -158,7 +157,7 @@ body {
     background: rgba(0, 0, 0, .8);
     backdrop-filter: blur(5px);
 }
-.show-movie-post.active {
+.show-post.active {
     transform: scale(1);
 }
 .post {
@@ -173,8 +172,8 @@ body {
     border-radius: 5px;
 }
 .film-poster {
+    aspect-ratio: 2/3;
     height: 100%;
-    width: auto;
     border-right: .2vw solid #fff;
 }
 .post-information {
@@ -245,6 +244,7 @@ body {
     overflow-y: scroll;
     margin-right: 2px;
     padding-left: 12px;
+    height: 80%;
 }
 //scrollbar
 .comment-scroll-box::-webkit-scrollbar {
@@ -277,7 +277,7 @@ body {
     color: #fff;
     font-weight: 500;
     pointer-events: none;
-    margin-top: .85vw;
+    margin-top: 1vw;
     margin-left: 2.5px;
 }
 //shifts search prompt up on click
@@ -303,9 +303,9 @@ body {
     margin: auto 0 auto 0;
     font-size: 1.6vw;
     color: #fff;
-    line-height: 40px;
-    height: 40px;
-    margin-bottom: 9px;
+    line-height: 50%;
+    height: 50%;
+    cursor: pointer;
 }
 .liked, .unliked {
     margin-left: 7.5px;
