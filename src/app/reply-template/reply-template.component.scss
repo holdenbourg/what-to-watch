@@ -1,4 +1,4 @@
-.whole-comment {
+.whole-reply {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -56,23 +56,4 @@
 .reply-button {
     cursor: pointer;
     font-weight: 500;
-}
-
-.replies {
-    color: #fff;
-    font-weight: 400;
-    font-size: .8vw;
-    line-height: .8vw;
-}
-.view-replies {
-    cursor: pointer;
-    padding-left: 30px;
-}
-.view-replies.active {
-    
-    content: " - Hide Replies - ";
-}
-.comment-replies {
-    list-style: none;
-    padding-left: 30px;
 }

@@ -10,5 +10,16 @@
             <p (click)="onReply(comment)" class="reply-button">Reply</p>
             <p class="comment-date">{{ fixCommentDate(comment.commentDate) }}</p>
         </div>
+        <div class="replies" *ngIf="comment.replies.length != 0">
+            <p class="view-replies" (click)="populateReplies(comment)"> - View {{ comment.replies.length }} Replies - </p>
+            <ul class="comment-replies">
+                <li *ngFor="let reply of sortRepliesByDate(replies)">
+                    <app-reply-template
+                        [reply]="reply" 
+                        class="comment-reply"
+                    ></app-reply-template>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

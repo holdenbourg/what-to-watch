@@ -1,15 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommentModel } from '../services/models/database-objects/comment-model';
+import { ReplyModel } from '../services/models/database-objects/reply-model';
+import { ReplyTemplateComponent } from '../reply-template/reply-template.component';
+import { empty } from 'rxjs';
+import { RawCommentModel } from '../services/models/database-objects/raw-comment-model';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-comment-template',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReplyTemplateComponent],
   templateUrl: './comment-template.component.html',
   styleUrl: './comment-template.component.scss'
 })
-export class CommentTemplateComponent {
+export class CommentTemplateComponent implements OnInit {
+  public localStorageService: LocalStorageService = inject(LocalStorageService);
+
   @Input()
   public comment: CommentModel = {
     postId: '',
@@ -21,6 +28,36 @@ export class CommentTemplateComponent {
     commentDate: ''
   };
 
+  replies: ReplyModel[] = [];
+
+
+  ngOnInit() {
+
+  }
+
+  populateReplies(comment: CommentModel) {
+    let rawComments: RawCommentModel[] = this.localStorageService.getInformation('rawComments');
+    let rawUsersComments: RawCommentModel[] = rawComments.;
+
+    for(let i = 0; i < rawComments.length; i++) {
+      if(this.comment.postId.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
+    }
+
+    this.postsComments = rawUsersComments.map((rawComment) => this.convertRawCommentToComment(rawComment));
+    
+    const privacyMode = document.querySelector(`.post-comment-2 .view-replies`);
+    privacyMode!.textContent = ' - Hide Replies - ';
+
+/*     if(privacyMode?.classList.contains('active')) {
+      //privacyMode!.textContent = ` - View ${this.comment.replies.length} Replies - `;
+      this.replies = [];
+      privacyMode?.classList.toggle('active');
+    } else {
+      //privacyMode!.textContent = ' - Hide Replies - ';
+      this.replies = this.sortRepliesByDate(this.comment.replies);
+      privacyMode?.classList.toggle('active');
+    } */
+  }
 
   onReply(comment: CommentModel) {
     throw new Error('Method not implemented.');
@@ -78,5 +115,17 @@ export class CommentTemplateComponent {
         
       return `${month} ${day}, ${year}`
     }
+  }
+
+  //profilePicture.jpg::::HoldenBourg::::I love replying::::22::::04-10-2003
+  sortRepliesByDate(replies: ReplyModel[]) {
+    replies.sort((a: ReplyModel, b: ReplyModel) => {
+      let aDate: Date = new Date(a.commentDate);
+      let bDate: Date = new Date(b.commentDate);
+      
+      return bDate.getTime() - aDate.getTime();
+    });
+
+    return replies;
   }
 }

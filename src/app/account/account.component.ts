@@ -78,6 +78,7 @@ export class AccountComponent  implements OnInit {
     taggedUsers: [],
     postDate: ''
   };
+  public currentComments: CommentModel[] = [];
   public currentRatedMovie: RatedMovieModel = {
     postId: '',
     poster: '',
@@ -115,7 +116,6 @@ export class AccountComponent  implements OnInit {
     username: '',
     dateRated: ''
   };
-  public currentComments: CommentModel[] = [];
 
   public username: string = '';
   
@@ -667,7 +667,7 @@ export class AccountComponent  implements OnInit {
       let aDate: Date = new Date(a.postDate);
       let bDate: Date = new Date(b.postDate);
       
-      return aDate.getTime() - bDate.getTime();
+      return bDate.getTime() - aDate.getTime();
     });
 
     return posts;
@@ -677,7 +677,7 @@ export class AccountComponent  implements OnInit {
       let aDate: Date = new Date(a.commentDate);
       let bDate: Date = new Date(b.commentDate);
       
-      return aDate.getTime() - bDate.getTime();
+      return bDate.getTime() - aDate.getTime();
     });
 
     return posts;

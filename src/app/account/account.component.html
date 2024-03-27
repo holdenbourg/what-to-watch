@@ -232,12 +232,22 @@
                         <img class="user-profile-picture" [src]="currentUser.profilePicture" [attr.alt]="currentUser.username">
                         <p class="user-username">{{ currentUser.username }}</p>
                     </div>
+                    <div class="post-rating-info">
+                        <p class="rating-date">{{ currentUser.firstName }} rated {{ currentRatedMovie.title }} a {{ currentRatedMovie.rating }}</p>
+                        <p class="movie-criteria">Acting: {{ currentRatedMovie.acting }}</p>
+                        <p class="movie-criteria">Visuals: {{ currentRatedMovie.visuals }}</p>
+                        <p class="movie-criteria">Story: {{ currentRatedMovie.story }}</p>
+                        <p class="movie-criteria">Climax: {{ currentRatedMovie.climax }}</p>
+                        <p class="movie-criteria">Pacing: {{ currentRatedMovie.pacing }}</p>
+                        <p class="movie-criteria">Ending: {{ currentRatedMovie.ending }}</p>
+
+                    </div>
                     <div class="comment-scroll-box">
                         <ul class="post-comments">
-                            <li *ngFor="let comment of sortCommentsByDate(currentComments)">
+                            <li *ngFor="let comment of sortCommentsByDate(currentComments) let i = index">
                                 <app-comment-template
                                     [comment]="comment" 
-                                    class="post-comment"
+                                    class="post-comment-{{i}}"
                                 ></app-comment-template>
                             </li>
                         </ul>

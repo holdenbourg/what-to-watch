@@ -1296,10 +1296,7 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
-      ],
+      replies: [],
       commentDate: '2023-12-01'
     },
     {
