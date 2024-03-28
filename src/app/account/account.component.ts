@@ -209,6 +209,7 @@ export class AccountComponent  implements OnInit {
         this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
         this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
         this.currentRatedMovie = this.ratedMovies.filter((movie) => movie.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
+        
       } else {
         this.currentPostNumber = this.currentPostNumber + 1;
         this.currentPost = this.usersPosts.at(this.currentPostNumber)!;

@@ -1452,7 +1452,31 @@ export class LoginRegisterComponent {
       ],
       replies: [
         `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::AshlynnDang::::Reply number 3::::LukasGocke,CalebHaralson::::2023-11-03`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke::::Reply number 4::::LukasGocke,CalebHaralson::::2023-11-04`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal::::Reply number 5::::LukasGocke,CalebHaralson::::2023-11-05`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson::::Reply number 6::::LukasGocke,CalebHaralson::::2023-11-06`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::OliverQueen::::Reply number 7::::LukasGocke,CalebHaralson::::2023-11-07`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::TommyMerlin::::Reply number 8::::LukasGocke,CalebHaralson::::2023-11-08`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::JohnDiggle::::Reply number 9::::LukasGocke,CalebHaralson::::2023-11-09`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::FelicitySmoak::::Reply number 10::::LukasGocke,CalebHaralson::::2023-11-10`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ErenJaeger::::Reply number 11::::LukasGocke,CalebHaralson::::2023-11-11`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ReinerBraun::::Reply number 12::::LukasGocke,CalebHaralson::::2023-11-12`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::MikasaAckerman::::Reply number 13::::LukasGocke,CalebHaralson::::2023-11-13`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ErwinSmith::::Reply number 14::::LukasGocke,CalebHaralson::::2023-11-14`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LeviAckerman::::Reply number 15::::LukasGocke,CalebHaralson::::2023-11-15`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::KennyAckerman::::Reply number 16::::LukasGocke,CalebHaralson::::2023-11-16`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ItachiUchiha::::Reply number 17::::LukasGocke,CalebHaralson::::2023-11-17`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::JaraiyaTheGallant::::Reply number 18::::LukasGocke,CalebHaralson::::2023-11-18`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ObitoUchiha::::Reply number 19::::LukasGocke,CalebHaralson::::2023-11-19`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::MadaraUchiha::::Reply number 20::::LukasGocke,CalebHaralson::::2023-11-20`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::MinatoNamikaze::::Reply number 21::::LukasGocke,CalebHaralson::::2023-11-21`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::KakashiSensei::::Reply number 22::::LukasGocke,CalebHaralson::::2023-11-22`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LightYagami::::Reply number 23::::LukasGocke,CalebHaralson::::2023-11-23`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ToddBourg::::Reply number 24::::LukasGocke,CalebHaralson::::2023-11-24`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::AmyBourg::::Reply number 25::::LukasGocke,CalebHaralson::::2023-11-25`,
+        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::JaydenBourg::::Reply number 26::::LukasGocke,CalebHaralson::::2023-11-26`
       ],
       commentDate: '2023-12-10'
     }

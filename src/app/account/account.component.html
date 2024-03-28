@@ -232,17 +232,41 @@
                         <img class="user-profile-picture" [src]="currentUser.profilePicture" [attr.alt]="currentUser.username">
                         <p class="user-username">{{ currentUser.username }}</p>
                     </div>
-                    <div class="post-rating-info">
-                        <p class="rating-date">{{ currentUser.firstName }} rated {{ currentRatedMovie.title }} a {{ currentRatedMovie.rating }}</p>
-                        <p class="movie-criteria">Acting: {{ currentRatedMovie.acting }}</p>
-                        <p class="movie-criteria">Visuals: {{ currentRatedMovie.visuals }}</p>
-                        <p class="movie-criteria">Story: {{ currentRatedMovie.story }}</p>
-                        <p class="movie-criteria">Climax: {{ currentRatedMovie.climax }}</p>
-                        <p class="movie-criteria">Pacing: {{ currentRatedMovie.pacing }}</p>
-                        <p class="movie-criteria">Ending: {{ currentRatedMovie.ending }}</p>
-
-                    </div>
                     <div class="comment-scroll-box">
+                        <div class="movie-rating-info" *ngIf="currentPost.postId.charAt(0) == 'm'; else series">
+                            <p class="rating-information">{{ currentRatedMovie.title }}</p>
+                            <div class="movie-criteria">
+                                <div class="left-three">
+                                    <p class="movie-criteria">Acting: {{ currentRatedMovie.acting }}</p>
+                                    <p class="movie-criteria">Visuals: {{ currentRatedMovie.visuals }}</p>
+                                    <p class="movie-criteria">Story: {{ currentRatedMovie.story }}</p>
+                                </div>
+                                <div class="right-three">
+                                    <p class="movie-criteria">Climax: {{ currentRatedMovie.climax }}</p>
+                                    <p class="movie-criteria">Pacing: {{ currentRatedMovie.pacing }}</p>
+                                    <p class="movie-criteria">Ending: {{ currentRatedMovie.ending }}</p>
+                                </div>
+                            </div>
+                            <p class="overall-rating">Overall Rating: {{ currentRatedMovie.rating }}</p>
+                        </div>
+                        <ng-template #series>
+                            <div class="series-rating-info">
+                                <p class="rating-information">{{ currentRatedSeries.title }}</p>
+                                <div class="series-criteria">
+                                    <div class="left-three">
+                                        <p class="series-criteria">Acting: {{ currentRatedSeries.acting }}</p>
+                                        <p class="series-criteria">Visuals: {{ currentRatedSeries.visuals }}</p>
+                                        <p class="series-criteria">Story: {{ currentRatedSeries.story }}</p>
+                                    </div>
+                                    <div class="right-three">
+                                        <p class="series-criteria">Pacing: {{ currentRatedSeries.pacing }}</p>
+                                        <p class="series-criteria">Length: {{ currentRatedSeries.length }}</p>
+                                        <p class="series-criteria">Ending: {{ currentRatedSeries.ending }}</p>
+                                    </div>
+                                </div>
+                                <p class="overall-rating">Overall Rating: {{ currentRatedSeries.rating }}</p>
+                            </div>
+                        </ng-template>
                         <ul class="post-comments">
                             <li *ngFor="let comment of sortCommentsByDate(currentComments) let i = index">
                                 <app-comment-template

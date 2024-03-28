@@ -64,15 +64,11 @@
     font-size: .8vw;
     line-height: .8vw;
 }
-.view-replies {
+.view-replies, .view-more-replies {
     cursor: pointer;
-    padding-left: 30px;
-}
-.view-replies.active {
-    
-    content: " - Hide Replies - ";
+    padding-left: 20px;
 }
 .comment-replies {
     list-style: none;
-    padding-left: 30px;
+    padding-left: 20px;
 }

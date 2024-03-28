@@ -148,7 +148,6 @@ body {
 
 
 
-
 .show-post {
     transform: scale(0);
     position: absolute;
@@ -160,6 +159,42 @@ body {
 .show-post.active {
     transform: scale(1);
 }
+
+.left-buttons {
+    display: flex;
+    margin-left: 10px;
+}
+.right-buttons {
+    display: flex;
+    margin-right: 10px;
+}
+.back-button {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    color: #fff;
+    font-size: 2.5vw;
+}
+.left-button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 25px;
+    color: #fff;
+    font-size: 4vw;
+}
+.right-button {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 25px;
+    color: #fff;
+    font-size: 4vw;
+}
+
 .post {
     position: absolute;
     display: flex;
@@ -200,47 +235,6 @@ body {
     font-size: .85vw;
     font-weight: 500;
 }
-.post-rating-info {
-    color: #fff;
-}
-.post-comments {
-    height: 80%;
-}
-
-.left-buttons {
-    display: flex;
-    margin-left: 10px;
-}
-.right-buttons {
-    display: flex;
-    margin-right: 10px;
-}
-.back-button {
-    cursor: pointer;
-    position: absolute;
-    top: 20px;
-    left: 25px;
-    color: #fff;
-    font-size: 2.5vw;
-}
-.left-button {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 25px;
-    color: #fff;
-    font-size: 4vw;
-}
-.right-button {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 25px;
-    color: #fff;
-    font-size: 4vw;
-}
 //container for posts-comments
 .comment-scroll-box {
     overflow: hidden;
@@ -257,7 +251,36 @@ body {
     background: white;
     border-radius: 0.25em;
 }
-
+.movie-rating-info, .series-rating-info {
+    color: #fff;
+    font-size: .8vw;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 7.5px;
+    padding: 7.5px 5px 10px 5px;
+    border: .15vw solid #fff;
+    border-radius: 5px;
+}
+.rating-information {
+    font-size: 1vw;
+    font-weight: 500;
+    text-align: center;
+}
+.movie-criteria, .series-criteria {
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+}
+.movie-criteria p, .series-criteria p {
+    padding-left: 0;
+    text-wrap: nowrap;
+}
+.overall-rating {
+    padding-top: 2.5px;
+    font-size: .825vw;
+    font-weight: 500;
+    text-align: center;
+}
 .commenting-area {
     display: flex;
     height: 10%;
@@ -271,7 +294,6 @@ body {
     width: 100%;
     transition: .5s;
 }
-
 //search prompt
 .prompt {
     position: absolute;

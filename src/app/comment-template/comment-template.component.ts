@@ -29,34 +29,70 @@ export class CommentTemplateComponent implements OnInit {
   };
 
   replies: ReplyModel[] = [];
+  leftOverReplies: ReplyModel[] = [];
 
 
   ngOnInit() {
-
+    this.leftOverReplies = this.sortRepliesByDate(this.comment.replies);
   }
 
   populateReplies(comment: CommentModel) {
     let rawComments: RawCommentModel[] = this.localStorageService.getInformation('rawComments');
-    let rawUsersComments: RawCommentModel[] = rawComments.;
+    let rawPostComments: RawCommentModel[] = rawComments.filter((rawComment) => rawComment.postId == comment.postId);
 
-    for(let i = 0; i < rawComments.length; i++) {
-      if(this.comment.postId.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
+    rawPostComments.reverse();
+
+    let index: number = 0;
+    for(let i = 0; i < rawPostComments.length; i++) {
+      if(rawPostComments[i].comment == comment.comment && rawPostComments[i].username == comment.username) index = i;
+    }
+    
+    const viewReplies = document.querySelector(`.post-comment-${index} .view-replies`);
+    const viewMoreReplies = document.querySelector(`.post-comment-${index} .view-more-replies`);
+
+    if(viewReplies?.classList.contains('active')) {
+      viewReplies!.textContent = ` - View ${this.comment.replies.length} Replies - `;
+      viewMoreReplies!.textContent = ``;
+      this.replies = [];
+      viewReplies?.classList.toggle('active');
+    } else if (viewReplies!.textContent == ' - Hide Replies - ') {
+      viewReplies!.textContent = ` - View ${this.comment.replies.length} Replies - `;
+      viewMoreReplies!.textContent = ``;
+      this.replies = [];
+    } else if(!viewReplies?.classList.contains('active') && this.comment.replies.length <= 10) {
+      viewReplies!.textContent = ' - Hide Replies - ';
+      this.replies = this.sortRepliesByDate(this.comment.replies);
+      viewReplies?.classList.toggle('active');
+      viewMoreReplies!.textContent = ``;
+    } else if(!viewReplies?.classList.contains('active') && this.comment.replies.length > 10) {
+      this.replies = this.leftOverReplies.slice(0, 10);
+      viewReplies!.textContent = ` - Hide Replies - `;
+      viewMoreReplies!.textContent = ` - View ${this.leftOverReplies.length - 10} More - `;
+    }
+  }
+  onPopulateMoreReplies(comment: CommentModel) {
+    let rawComments: RawCommentModel[] = this.localStorageService.getInformation('rawComments');
+    let rawPostComments: RawCommentModel[] = rawComments.filter((rawComment) => rawComment.postId == comment.postId);
+
+    rawPostComments.reverse();
+
+    let index: number = 0;
+    for(let i = 0; i < rawPostComments.length; i++) {
+      if(rawPostComments[i].comment == comment.comment && rawPostComments[i].username == comment.username) index = i;
     }
 
-    this.postsComments = rawUsersComments.map((rawComment) => this.convertRawCommentToComment(rawComment));
-    
-    const privacyMode = document.querySelector(`.post-comment-2 .view-replies`);
-    privacyMode!.textContent = ' - Hide Replies - ';
+    const viewReplies = document.querySelector(`.post-comment-${index} .view-replies`);
+    const viewMoreReplies = document.querySelector(`.post-comment-${index} .view-more-replies`);
 
-/*     if(privacyMode?.classList.contains('active')) {
-      //privacyMode!.textContent = ` - View ${this.comment.replies.length} Replies - `;
-      this.replies = [];
-      privacyMode?.classList.toggle('active');
+    if(this.comment.replies.length - this.replies.length <= 10) {
+      this.replies = this.sortRepliesByDate(this.comment.replies);;
+      viewReplies!.textContent = ` - Hide Replies - `;
+      viewMoreReplies!.textContent = ``;
     } else {
-      //privacyMode!.textContent = ' - Hide Replies - ';
-      this.replies = this.sortRepliesByDate(this.comment.replies);
-      privacyMode?.classList.toggle('active');
-    } */
+      this.replies = this.leftOverReplies.slice(0, this.replies.length + 10);
+      viewReplies!.textContent = ` - Hide Replies - `;
+      viewMoreReplies!.textContent = ` - View ${this.leftOverReplies.length - this.replies.length} More - `;
+    }
   }
 
   onReply(comment: CommentModel) {
@@ -117,7 +153,6 @@ export class CommentTemplateComponent implements OnInit {
     }
   }
 
-  //profilePicture.jpg::::HoldenBourg::::I love replying::::22::::04-10-2003
   sortRepliesByDate(replies: ReplyModel[]) {
     replies.sort((a: ReplyModel, b: ReplyModel) => {
       let aDate: Date = new Date(a.commentDate);
