@@ -789,7 +789,8 @@ export class LoginRegisterComponent {
       likes: [
         'LukasGocke',
         'CalebHaralson',
-        'EnriqueLeal'
+        'EnriqueLeal',
+        'HoldenBourg'
       ],
       taggedUsers: [
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke',
@@ -1289,7 +1290,7 @@ export class LoginRegisterComponent {
     {
       postId: 'm1b114fbe2525b',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
-      username: 'LukasGocke',
+      username: 'HoldenBourg',
       comment: 'Comment number 1',
       likes: [
         'HoldenBourg',
@@ -1305,7 +1306,6 @@ export class LoginRegisterComponent {
       username: 'EnriqueLeal',
       comment: 'Comment number 2',
       likes: [
-        'HoldenBourg',
         'LukasGocke',
         'CalebHaralson'
       ],
@@ -1321,7 +1321,6 @@ export class LoginRegisterComponent {
       username: 'CalebHaralson',
       comment: 'Comment number 3',
       likes: [
-        'HoldenBourg',
         'LukasGocke'
       ],
       replies: [
@@ -1336,7 +1335,6 @@ export class LoginRegisterComponent {
       username: 'AshlynnDang',
       comment: 'Comment number 4',
       likes: [
-        'HoldenBourg',
         'LukasGocke',
         'CalebHaralson'
       ],
@@ -1398,7 +1396,6 @@ export class LoginRegisterComponent {
       username: 'JohnDiggle',
       comment: 'Comment number 8',
       likes: [
-        'HoldenBourg',
         'LukasGocke',
         'CalebHaralson'
       ],
@@ -1414,7 +1411,6 @@ export class LoginRegisterComponent {
       username: 'MalcomMerlin',
       comment: 'Comment number 9',
       likes: [
-        'HoldenBourg',
         'LukasGocke',
         'CalebHaralson'
       ],

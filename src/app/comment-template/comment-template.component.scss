@@ -3,6 +3,7 @@
     flex-direction: row;
     width: 100%;
     padding: 10px 0 10px 0;
+    background: red;
 }
 
 .profile-pitcure {
@@ -23,6 +24,11 @@
     flex-direction: row;
     color: #fff;
     overflow: hidden;
+}
+.like {
+    margin-right: 5px;
+    //margin-left: 100%;
+    background: blue;
 }
 .profile-username {
     font-weight: 500;

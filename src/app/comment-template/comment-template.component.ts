@@ -6,6 +6,7 @@ import { ReplyTemplateComponent } from '../reply-template/reply-template.compone
 import { empty } from 'rxjs';
 import { RawCommentModel } from '../services/models/database-objects/raw-comment-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
+import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 
 @Component({
   selector: 'app-comment-template',
@@ -16,6 +17,7 @@ import { LocalStorageService } from '../services/local-storage/local-storage.ser
 })
 export class CommentTemplateComponent implements OnInit {
   public localStorageService: LocalStorageService = inject(LocalStorageService);
+  public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
   @Input()
   public comment: CommentModel = {

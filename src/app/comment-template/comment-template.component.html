@@ -23,4 +23,16 @@
             <p class="view-more-replies" (click)="onPopulateMoreReplies(comment)"></p>
         </div>
     </div>
+    <div class="like">
+        <div class="liked" *ngIf="comment.likes.includes(currentUser.username)">
+            <a (click)="onLike()">
+                <i class='bx bxs-like'></i>
+            </a>
+        </div>
+        <div class="unliked" *ngIf="!comment.likes.includes(currentUser.username)">
+            <a (click)="onLike()">
+                <i class='bx bx-like'></i>
+            </a>
+        </div>
+    </div>
 </div>
