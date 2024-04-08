@@ -3,8 +3,6 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { CommentModel } from '../services/models/database-objects/comment-model';
 import { ReplyModel } from '../services/models/database-objects/reply-model';
 import { ReplyTemplateComponent } from '../reply-template/reply-template.component';
-import { empty } from 'rxjs';
-import { RawCommentModel } from '../services/models/database-objects/raw-comment-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 
@@ -22,11 +20,11 @@ export class CommentTemplateComponent implements OnInit {
   @Input()
   public comment: CommentModel = {
     postId: '',
+    commentId: '',
     profilePicture: '',
     username: '',
     comment: '',
     likes: [],
-    replies: [],
     commentDate: ''
   };
 
@@ -35,12 +33,13 @@ export class CommentTemplateComponent implements OnInit {
 
 
   ngOnInit() {
-    this.leftOverReplies = this.sortRepliesByDate(this.comment.replies);
+    let replies: ReplyModel[] = this.localStorageService.getInformation('replies');
+    this.leftOverReplies = this.sortRepliesByDate(replies.filter((reply) => reply.commentId == reply.commentId));
   }
 
   populateReplies(comment: CommentModel) {
-    let rawComments: RawCommentModel[] = this.localStorageService.getInformation('rawComments');
-    let rawPostComments: RawCommentModel[] = rawComments.filter((rawComment) => rawComment.postId == comment.postId);
+    let rawComments: CommentModel[] = this.localStorageService.getInformation('rawComments');
+    let rawPostComments: CommentModel[] = rawComments.filter((rawComment) => rawComment.postId == comment.postId);
 
     rawPostComments.reverse();
 
@@ -53,28 +52,28 @@ export class CommentTemplateComponent implements OnInit {
     const viewMoreReplies = document.querySelector(`.post-comment-${index} .view-more-replies`);
 
     if(viewReplies?.classList.contains('active')) {
-      viewReplies!.textContent = ` - View ${this.comment.replies.length} Replies - `;
+      viewReplies!.textContent = ` - View ${this.leftOverReplies.length} Replies - `;
       viewMoreReplies!.textContent = ``;
       this.replies = [];
       viewReplies?.classList.toggle('active');
     } else if (viewReplies!.textContent == ' - Hide Replies - ') {
-      viewReplies!.textContent = ` - View ${this.comment.replies.length} Replies - `;
+      viewReplies!.textContent = ` - View ${this.leftOverReplies.length} Replies - `;
       viewMoreReplies!.textContent = ``;
       this.replies = [];
-    } else if(!viewReplies?.classList.contains('active') && this.comment.replies.length <= 10) {
+    } else if(!viewReplies?.classList.contains('active') && this.leftOverReplies.length <= 10) {
       viewReplies!.textContent = ' - Hide Replies - ';
-      this.replies = this.sortRepliesByDate(this.comment.replies);
+      this.replies = this.sortRepliesByDate(this.leftOverReplies);
       viewReplies?.classList.toggle('active');
       viewMoreReplies!.textContent = ``;
-    } else if(!viewReplies?.classList.contains('active') && this.comment.replies.length > 10) {
+    } else if(!viewReplies?.classList.contains('active') && this.leftOverReplies.length > 10) {
       this.replies = this.leftOverReplies.slice(0, 10);
       viewReplies!.textContent = ` - Hide Replies - `;
       viewMoreReplies!.textContent = ` - View ${this.leftOverReplies.length - 10} More - `;
     }
   }
   onPopulateMoreReplies(comment: CommentModel) {
-    let rawComments: RawCommentModel[] = this.localStorageService.getInformation('rawComments');
-    let rawPostComments: RawCommentModel[] = rawComments.filter((rawComment) => rawComment.postId == comment.postId);
+    let rawComments: CommentModel[] = this.localStorageService.getInformation('rawComments');
+    let rawPostComments: CommentModel[] = rawComments.filter((rawComment) => rawComment.postId == comment.postId);
 
     rawPostComments.reverse();
 
@@ -86,8 +85,8 @@ export class CommentTemplateComponent implements OnInit {
     const viewReplies = document.querySelector(`.post-comment-${index} .view-replies`);
     const viewMoreReplies = document.querySelector(`.post-comment-${index} .view-more-replies`);
 
-    if(this.comment.replies.length - this.replies.length <= 10) {
-      this.replies = this.sortRepliesByDate(this.comment.replies);;
+    if(this.leftOverReplies.length - this.replies.length <= 10) {
+      this.replies = this.sortRepliesByDate(this.leftOverReplies);
       viewReplies!.textContent = ` - Hide Replies - `;
       viewMoreReplies!.textContent = ``;
     } else {
@@ -155,6 +154,12 @@ export class CommentTemplateComponent implements OnInit {
     }
   }
 
+  onLike() {
+
+  }
+  onUnlike() {
+
+  }
   sortRepliesByDate(replies: ReplyModel[]) {
     replies.sort((a: ReplyModel, b: ReplyModel) => {
       let aDate: Date = new Date(a.commentDate);

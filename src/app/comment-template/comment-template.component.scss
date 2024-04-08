@@ -1,11 +1,14 @@
 .whole-comment {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     width: 100%;
     padding: 10px 0 10px 0;
-    background: red;
 }
-
+.left-side {
+    display: flex;
+    flex-direction: row;
+}
 .profile-pitcure {
     height: 1.75vw;
     width: 1.75vw;
@@ -27,8 +30,11 @@
 }
 .like {
     margin-right: 5px;
-    //margin-left: 100%;
-    background: blue;
+    font-size: 1.1vw;
+    color: #fff;
+}
+.like i {
+    cursor: pointer;
 }
 .profile-username {
     font-weight: 500;

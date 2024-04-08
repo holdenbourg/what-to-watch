@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { UserPostModel } from '../services/models/database-objects/user-post-model';
 import { CommentModel } from '../services/models/database-objects/comment-model';
-import { RawCommentModel } from '../services/models/database-objects/raw-comment-model';
 import { ReplyModel } from '../services/models/database-objects/reply-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
@@ -33,10 +32,10 @@ export class UserPostTemplateComponent implements OnInit {
   }
 
   populateComments() {
-    let comments: RawCommentModel[] = this.localStorageService.getInformation('rawComments');
+    let comments: CommentModel[] = this.localStorageService.getInformation('rawComments');
     let rawComments = comments.filter((rawComment) => rawComment.postId == this.userPost.postId)
 
-    this.comments = rawComments.map((rawComment) => this.convertRawCommentToComment(rawComment));
+    this.comments = rawComments;
   }
   trimNumber(input: number) {
     let number: string = input.toString();
@@ -67,39 +66,4 @@ export class UserPostTemplateComponent implements OnInit {
       return input;
     }
   }
-
-    //converts the comments db raw output into CommentModel
-    convertRawCommentToComment(rawComment: RawCommentModel) {
-      let comment: CommentModel = {
-        postId: rawComment.postId,
-        profilePicture: rawComment.profilePicture,
-        username: rawComment.username,
-        comment: rawComment.comment,
-        likes: rawComment.likes,
-        replies: this.convertRawRepliesToReplies(rawComment.replies),
-        commentDate: rawComment.commentDate
-      }
-  
-      return comment;
-    }
-    //rawReply: profilePicture.jpg::::HoldenBourg::::I love replying::::22::::04-10-2003
-    convertRawRepliesToReplies(rawReplies: string[]) {
-      let returnArray: ReplyModel[] = [];
-  
-      rawReplies.forEach((rawReplyString) => {
-        let splitArray = rawReplyString.split('::::');
-  
-        let reply: ReplyModel = {
-          profilePicture: splitArray.at(0)!,
-          username: splitArray.at(1)!,
-          comment: splitArray.at(2)!,
-          likes: splitArray.at(3)!.split(','),
-          commentDate: splitArray.at(4)!
-        }
-  
-        returnArray.push(reply);
-      })
-  
-      return returnArray;
-    }
 }

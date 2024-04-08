@@ -13,7 +13,6 @@ import { UserPostModel } from '../services/models/database-objects/user-post-mod
 import { RatedMovieModel } from '../services/models/database-objects/rated-movie-model';
 import { RatedSeriesModel } from '../services/models/database-objects/rated-series-model';
 import { RawUserPostModel } from '../services/models/database-objects/raw-user-post-model';
-import { RawCommentModel } from '../services/models/database-objects/raw-comment-model';
 import { ReplyModel } from '../services/models/database-objects/reply-model';
 
 @Component({
@@ -1286,9 +1285,10 @@ export class LoginRegisterComponent {
       postDate: '2023-04-11'
     }
   ];
-  public rawMockCommentsDatabase: RawCommentModel[] = [
+  public rawMockCommentsDatabase: CommentModel[] = [
     {
       postId: 'm1b114fbe2525b',
+      commentId: 'cf27ae8e50d6f9',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: 'Comment number 1',
@@ -1297,11 +1297,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      replies: [],
       commentDate: '2023-12-01'
     },
     {
       postId: 'm1b114fbe2525b',
+      commentId: 'c29ef0f5432ee1',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'EnriqueLeal',
       comment: 'Comment number 2',
@@ -1309,28 +1309,22 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
-      ],
       commentDate: '2023-12-02'
     },
     {
       postId: 'm1b114fbe2525b',
+      commentId: 'cf901da1624394',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'CalebHaralson',
       comment: 'Comment number 3',
       likes: [
         'LukasGocke'
       ],
-      replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
-      ],
       commentDate: '2023-12-03'
     },
     {
       postId: 'm1b114fbe2525b',
+      commentId: 'c1601ad93a6f0d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'AshlynnDang',
       comment: 'Comment number 4',
@@ -1338,28 +1332,22 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
-      ],
       commentDate: '2023-12-04'
     },
     {
       postId: 'm1b114fbe2525b',
+      commentId: 'c8ae596289a788',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'OliverQueen',
       comment: 'Comment number 5',
       likes: [
         'HoldenBourg'
       ],
-      replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
-      ],
       commentDate: '2023-12-05'
     },
     {
       postId: 'm1b114fbe2525b',
+      commentId: 'c75ed8983b2685',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'TommyMerlin',
       comment: 'Comment number 6, Comment number 6, Comment number 6, Comment number 6, Comment number 6, Comment number 6, Comment number 6',
@@ -1368,14 +1356,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::NarutoUzumaki::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
-      ],
       commentDate: '2023-12-06'
     },
     {
       postId: 'm1b114fbe2525b',
+      commentId: 'c2eb1441cffcc2',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'FelicitySmoak',
       comment: 'Comment number 7',
@@ -1384,14 +1369,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
-      ],
       commentDate: '2023-12-07'
     },
     {
       postId: 'm1b114fbe2525b',
+      commentId: 'c9b2e0cd075df2',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'JohnDiggle',
       comment: 'Comment number 8',
@@ -1399,14 +1381,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
-      ],
       commentDate: '2023-12-08'
     },
     {
       postId: 'm1b114fbe2525b',
+      commentId: 'ceda40daaca3ed',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'MalcomMerlin',
       comment: 'Comment number 9',
@@ -1414,14 +1393,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
-      ],
       commentDate: '2023-12-09'
     },
     {
       postId: 'm1b114fbe2525b',
+      commentId: 'c54b6527bcbb25',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'NarutoUzumaki',
       comment: 'Comment number 10',
@@ -1429,15 +1405,12 @@ export class LoginRegisterComponent {
         'HoldenBourg',
         'LukasGocke',
         'CalebHaralson'
-      ],
-      replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`
       ],
       commentDate: '2023-12-10'
     },
     {
       postId: 'mc64a0e2ed49d7',
+      commentId: 'ca6bb512e14b58',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'NarutoUzumaki',
       comment: 'Comment number 10',
@@ -1446,37 +1419,517 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      replies: [
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::HoldenBourg::::Reply number 1::::LukasGocke,CalebHaralson::::2023-11-01`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::SasukeUchiha::::Reply number 2::::LukasGocke,CalebHaralson::::2023-11-02`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::AshlynnDang::::Reply number 3::::LukasGocke,CalebHaralson::::2023-11-03`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LukasGocke::::Reply number 4::::LukasGocke,CalebHaralson::::2023-11-04`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::EnriqueLeal::::Reply number 5::::LukasGocke,CalebHaralson::::2023-11-05`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::CalebHaralson::::Reply number 6::::LukasGocke,CalebHaralson::::2023-11-06`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::OliverQueen::::Reply number 7::::LukasGocke,CalebHaralson::::2023-11-07`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::TommyMerlin::::Reply number 8::::LukasGocke,CalebHaralson::::2023-11-08`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::JohnDiggle::::Reply number 9::::LukasGocke,CalebHaralson::::2023-11-09`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::FelicitySmoak::::Reply number 10::::LukasGocke,CalebHaralson::::2023-11-10`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ErenJaeger::::Reply number 11::::LukasGocke,CalebHaralson::::2023-11-11`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ReinerBraun::::Reply number 12::::LukasGocke,CalebHaralson::::2023-11-12`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::MikasaAckerman::::Reply number 13::::LukasGocke,CalebHaralson::::2023-11-13`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ErwinSmith::::Reply number 14::::LukasGocke,CalebHaralson::::2023-11-14`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LeviAckerman::::Reply number 15::::LukasGocke,CalebHaralson::::2023-11-15`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::KennyAckerman::::Reply number 16::::LukasGocke,CalebHaralson::::2023-11-16`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ItachiUchiha::::Reply number 17::::LukasGocke,CalebHaralson::::2023-11-17`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::JaraiyaTheGallant::::Reply number 18::::LukasGocke,CalebHaralson::::2023-11-18`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ObitoUchiha::::Reply number 19::::LukasGocke,CalebHaralson::::2023-11-19`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::MadaraUchiha::::Reply number 20::::LukasGocke,CalebHaralson::::2023-11-20`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::MinatoNamikaze::::Reply number 21::::LukasGocke,CalebHaralson::::2023-11-21`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::KakashiSensei::::Reply number 22::::LukasGocke,CalebHaralson::::2023-11-22`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::LightYagami::::Reply number 23::::LukasGocke,CalebHaralson::::2023-11-23`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::ToddBourg::::Reply number 24::::LukasGocke,CalebHaralson::::2023-11-24`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::AmyBourg::::Reply number 25::::LukasGocke,CalebHaralson::::2023-11-25`,
-        `https://cdn-icons-png.flaticon.com/512/1144/1144760.png::::JaydenBourg::::Reply number 26::::LukasGocke,CalebHaralson::::2023-11-26`
-      ],
       commentDate: '2023-12-10'
     }
   ];
+  public rawMockRepliesDatabase: ReplyModel[] = [
+    {
+      commentId: 'cf27ae8e50d6f9',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      comment: `Reply number 1`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-01'
+    },
+    {
+      commentId: 'cf27ae8e50d6f9',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'SasukeUchiha',
+      comment: `Reply number 2`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c29ef0f5432ee1',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      comment: `Reply number 1`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c29ef0f5432ee1',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'SasukeUchiha',
+      comment: `Reply number 2`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'cf901da1624394',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      comment: `Reply number 1`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'cf901da1624394',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'SasukeUchiha',
+      comment: `Reply number 2`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c1601ad93a6f0d',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      comment: `Reply number 1`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c1601ad93a6f0d',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'SasukeUchiha',
+      comment: `Reply number 2`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c8ae596289a788',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      comment: `Reply number 1`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c8ae596289a788',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'SasukeUchiha',
+      comment: `Reply number 2`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c75ed8983b2685',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      comment: `Reply number 1`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c75ed8983b2685',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'SasukeUchiha',
+      comment: `Reply number 2`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c2eb1441cffcc2',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      comment: `Reply number 1`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c2eb1441cffcc2',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'SasukeUchiha',
+      comment: `Reply number 2`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c9b2e0cd075df2',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      comment: `Reply number 1`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c9b2e0cd075df2',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'SasukeUchiha',
+      comment: `Reply number 2`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'ceda40daaca3ed',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      comment: `Reply number 1`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'ceda40daaca3ed',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'SasukeUchiha',
+      comment: `Reply number 2`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c54b6527bcbb25',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      comment: `Reply number 1`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'c54b6527bcbb25',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'SasukeUchiha',
+      comment: `Reply number 2`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'HoldenBourg',
+      comment: `Reply number 1`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'SasukeUchiha',
+      comment: `Reply number 2`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-02'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'AshlynnDang',
+      comment: `Reply number 3`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-03'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'LukasGocke',
+      comment: `Reply number 4`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-04'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'EnriqueLeal',
+      comment: `Reply number 5`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-05'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'CalebHaralson',
+      comment: `Reply number 6`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-06'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'OliverQueen',
+      comment: `Reply number 7`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-07'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'TommyMerlin',
+      comment: `Reply number 8`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-08'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'JohnDiggle',
+      comment: `Reply number 9`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-09'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'FelicitySmoak',
+      comment: `Reply number 10`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-10'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'ErenJaeger',
+      comment: `Reply number 11`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-11'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'ReinerBraun',
+      comment: `Reply number 12`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-12'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'MikasaAckerman',
+      comment: `Reply number 13`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-13'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'ErwinSmith',
+      comment: `Reply number 14`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-14'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'LeviAckerman',
+      comment: `Reply number 15`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-15'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'KennyAckerman',
+      comment: `Reply number 16`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-16'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'ItachiUchiha',
+      comment: `Reply number 17`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-17'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'JaraiyaTheGallant',
+      comment: `Reply number 18`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-18'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'ObitoUchiha',
+      comment: `Reply number 19`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-19'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'MadaraUchiha',
+      comment: `Reply number 20`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-20'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'MinatoNamikaze',
+      comment: `Reply number 21`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-21'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'KakashiSensei',
+      comment: `Reply number 22`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-22'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'LightYagami',
+      comment: `Reply number 23`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-23'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'ToddBourg',
+      comment: `Reply number 24`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-24'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'AmyBourg',
+      comment: `Reply number 25`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-25'
+    },
+    {
+      commentId: 'ca6bb512e14b58',
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
+      username: 'JaydenBourg',
+      comment: `Reply number 26`,
+      likes: [
+        'LukasGocke',
+        'CalebHaralson'
+      ],
+      commentDate: '2023-11-26'
+    }
+  ]; 
 
   ngOnInit() {
     if(this.currentUser != undefined) {
@@ -1499,8 +1952,10 @@ export class LoginRegisterComponent {
     // this.localStorageService.setInformation('ratedSeries', this.mockRatedSeriesDatabase);
     // this.localStorageService.clearInformation('rawPosts');
     // this.localStorageService.setInformation('rawPosts', this.rawMockPostsDatabase);
-    // this.localStorageService.clearInformation('rawComments');
-    // this.localStorageService.setInformation('rawComments', this.rawMockCommentsDatabase);
+    // this.localStorageService.clearInformation('comments');
+    // this.localStorageService.setInformation('comments', this.rawMockCommentsDatabase);
+    // this.localStorageService.clearInformation('replies');
+    // this.localStorageService.setInformation('replies', this.rawMockRepliesDatabase);
   }
 
   onTerms() {
@@ -1979,41 +2434,6 @@ export class LoginRegisterComponent {
 
     return post;
   }
-  //converts the comments db raw output into CommentModel
-  convertRawCommentToComment(rawComment: RawCommentModel) {
-    let comment: CommentModel = {
-      postId: rawComment.postId,
-      profilePicture: rawComment.profilePicture,
-      username: rawComment.username,
-      comment: rawComment.comment,
-      likes: rawComment.likes,
-      replies: this.convertRawRepliesToReplies(rawComment.replies),
-      commentDate: rawComment.commentDate
-    }
-
-    return comment;
-  }
-  //rawReply: profilePicture.jpg::::HoldenBourg::::I love replying::::22::::04-10-2003
-  convertRawRepliesToReplies(rawReplies: string[]) {
-    let returnArray: ReplyModel[] = [];
-
-    rawReplies.forEach((rawReplyString) => {
-      let splitArray = rawReplyString.split('::::');
-
-      let reply: ReplyModel = {
-        profilePicture: splitArray.at(0)!,
-        username: splitArray.at(1)!,
-        comment: splitArray.at(2)!,
-        likes: splitArray.at(3)!.split(','),
-        commentDate: splitArray.at(4)!
-      }
-
-      returnArray.push(reply);
-    })
-
-    return returnArray;
-  }
-
   
   //switch between login/register form
   toggleLoginRegister() {

@@ -157,6 +157,3 @@ export class HomeComponent implements OnInit {
     container?.classList.toggle('active');
   }
 }
-
-
-

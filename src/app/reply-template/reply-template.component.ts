@@ -13,6 +13,7 @@ import { CommentModel } from '../services/models/database-objects/comment-model'
 export class ReplyTemplateComponent {
   @Input()
   public reply: ReplyModel = {
+    commentId: '',
     profilePicture: '',
     username: '',
     comment: '',

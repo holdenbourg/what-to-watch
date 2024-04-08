@@ -14,9 +14,7 @@ import { FollowerFollowingTemplateComponent } from '../follower-following-templa
 import { FollowerTemplateComponent } from '../follower-template/follower-template.component';
 import { FollowingTemplateComponent } from '../following-template/following-template.component';
 import { RequestTemplateComponent } from '../request-template/request-template.component';
-import { RawCommentModel } from '../services/models/database-objects/raw-comment-model';
 import { RawUserPostModel } from '../services/models/database-objects/raw-user-post-model';
-import { ReplyModel } from '../services/models/database-objects/reply-model';
 
 @Component({
   selector: 'app-account-tagged',
@@ -132,10 +130,10 @@ export class AccountTaggedComponent {
 
   populatePostsAndComments() {
     let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
-    let rawComments: RawCommentModel[] = this.localStorageService.getInformation('rawComments');
+    let rawComments: CommentModel[] = this.localStorageService.getInformation('rawComments');
 
     let rawUsersPosts: RawUserPostModel[] = [];
-    let rawUsersComments: RawCommentModel[] = [];
+    let rawUsersComments: CommentModel[] = [];
 
     for(let i = 0; i < rawPosts.length; i++) {
       if(this.userAccount.taggedPostIds.includes(rawPosts[i].postId)) rawUsersPosts.push(rawPosts[i]);
@@ -145,7 +143,7 @@ export class AccountTaggedComponent {
     }
 
     this.usersTaggedPosts = rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost));
-    this.taggedPostsComments = rawUsersComments.map((rawComment) => this.convertRawCommentToComment(rawComment));
+    this.taggedPostsComments = rawUsersComments;
   }
 
   toggleFollowers() {
@@ -440,40 +438,6 @@ export class AccountTaggedComponent {
 
     return post;
   }
-  //converts the comments db raw output into CommentModel
-  convertRawCommentToComment(rawComment: RawCommentModel) {
-    let comment: CommentModel = {
-      postId: rawComment.postId,
-      profilePicture: rawComment.profilePicture,
-      username: rawComment.username,
-      comment: rawComment.comment,
-      likes: rawComment.likes,
-      replies: this.convertRawRepliesToReplies(rawComment.replies),
-      commentDate: rawComment.commentDate
-    }
-
-    return comment;
-  }
-  //rawReply: profilePicture.jpg::::HoldenBourg::::I love replying::::22::::04-10-2003
-  convertRawRepliesToReplies(rawReplies: string[]) {
-    let returnArray: ReplyModel[] = [];
-
-    rawReplies.forEach((rawReplyString) => {
-      let splitArray = rawReplyString.split('::::');
-
-      let reply: ReplyModel = {
-        profilePicture: splitArray.at(0)!,
-        username: splitArray.at(1)!,
-        comment: splitArray.at(2)!,
-        likes: splitArray.at(3)!.split(','),
-        commentDate: splitArray.at(4)!
-      }
-
-      returnArray.push(reply);
-    })
-
-    return returnArray;
-  }
 
   navigateToHome() {
     this.routingService.navigateToHome();
@@ -526,5 +490,6 @@ export class AccountTaggedComponent {
     const container = document.querySelector('.container');
     container?.classList.toggle('active');
   }
+
 }
 
