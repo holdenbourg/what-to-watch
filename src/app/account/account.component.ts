@@ -674,7 +674,7 @@ export class AccountComponent  implements OnInit {
         if(usedCaption.indexOf(' ') != -1) finalString = usedCaption.substring(0, usedCaption.indexOf(' '));
         else  finalString = usedCaption.substring(0);      
     
-        newCaption = newCaption.replace(finalString, `<b>${finalString}</b>`);
+        newCaption = newCaption.replace(finalString, `<span style="font-weight: 600;">${finalString}</span>`);
   
         usedCaption = usedCaption.substring(1);
       }
