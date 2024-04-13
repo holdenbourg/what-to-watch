@@ -135,7 +135,7 @@ export class AccountComponent  implements OnInit {
   public commentInput: string = '';
 
 
-  ngOnInit() {   
+  ngOnInit() {       
     //sets the username from the url parameter
     this.username = this.activatedRoute.snapshot.params['username'];
 
@@ -215,9 +215,6 @@ export class AccountComponent  implements OnInit {
         this.currentRatedSeries = this.ratedSeries.filter((series) => series.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
       }
     }
-
-    if(this.currentPostNumber == this.usersPosts.length - 1) document.getElementById('right-button')!.style.scale = "0";
-    else if(this.currentPostNumber > 0) document.getElementById('left-button')!.style.scale = "1";
   }
   onLeftPost() {
     if(this.currentPostNumber > 0) {
@@ -233,23 +230,59 @@ export class AccountComponent  implements OnInit {
         this.currentRatedSeries = this.ratedSeries.filter((series) => series.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
       }
     }
-
-    if(this.currentPostNumber == 0) document.getElementById('left-button')!.style.scale = "0";
-    else if(this.currentPostNumber < this.usersPosts.length) document.getElementById('right-button')!.style.scale = "1";
   }
   onPostComment() {
-  }
-  onComment() {
+    if(this.commentInput.length > 0) {
+      let comment: CommentModel = {
+        postId: this.currentPost.postId,
+        commentId: this.generateUniqueCommentId(),
+        profilePicture: this.currentUser.profilePicture,
+        username: this.currentUser.username,
+        comment: this.commentInput,
+        likes: [],
+        commentDate: new Date().toJSON().slice(0, 10)
+      }
+
+      this.currentComments.push(comment);
+
+      let allComments: CommentModel[] = this.localStorageService.getInformation('comments');
+      allComments.push(comment);
+
+      this.localStorageService.clearInformation('comments');
+      this.localStorageService.setInformation('comments', allComments);
+    }
   }
   toggleCommentLabel() {
   }
   onSend() {
   }
   onLike() {
+    if(this.currentPost.likes.includes(this.currentUser.username)) {
+      const index = this.currentPost.likes.indexOf(this.currentUser.username, 0);
+
+      if (index > -1) {
+        this.currentPost.likes.splice(index, 1);
+      }
+    } else {
+      this.currentPost.likes.push(this.currentUser.username);
+    }    
+
+    //update the likes for that post in database
+    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
+
+    for(let post of rawPosts) {
+      if(post.postId == this.currentPost.postId) {
+        post.likes = this.currentPost.likes;
+      }
+    }
+
+    this.localStorageService.clearInformation('rawPosts');
+    this.localStorageService.setInformation('rawPosts', rawPosts);
   }
+
   populatePostsAndComments() {
     let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
-    let rawComments: CommentModel[] = this.localStorageService.getInformation('rawComments');
+    let rawComments: CommentModel[] = this.localStorageService.getInformation('comments');
 
     let rawUsersPosts: RawUserPostModel[] = [];
     let rawUsersComments: CommentModel[] = [];
@@ -359,7 +392,7 @@ export class AccountComponent  implements OnInit {
       this.currentPostNumber = postNumber;
       this.currentPost = post;
       this.currentRatedMovie = movie;
-      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId);      
+      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId);
     } else {
       let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
       let series: RatedSeriesModel = ratedSeries.filter((series) => series.postId == post.postId).at(0)!;
@@ -370,14 +403,8 @@ export class AccountComponent  implements OnInit {
       this.currentPostNumber = postNumber;
       this.currentPost = post;
       this.currentRatedSeries = series;
-      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId); 
+      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId);
     }
-    
-    if(this.currentPostNumber == 0) document.getElementById('left-button')!.style.scale = "0";
-    else document.getElementById('left-button')!.style.scale = "1";
-
-    if(this.currentPostNumber == this.usersPosts.length - 1) document.getElementById('right-button')!.style.scale = "0";
-    else document.getElementById('right-button')!.style.scale = "1";
   }
   onEditProfile() {
     this.routingService.navigateToSettings();
@@ -627,6 +654,110 @@ export class AccountComponent  implements OnInit {
     this.routingService.navigateToSettings();
   }
 
+  //bolds the account usernames that are atted(@)
+  boldAttedUsernames(caption: string) {
+    const count = caption.split('@').length - 1; 
+
+    if(count == 0) {
+      return caption;
+    } else {
+      let newCaption: string = caption; 
+      let usedCaption: string = caption;   
+  
+      for(let i = 0; i < count; i++) {
+        let index: number = usedCaption.indexOf('@');
+        
+        usedCaption = usedCaption.substring(index);
+  
+        let finalString: string = '';
+  
+        if(usedCaption.indexOf(' ') != -1) finalString = usedCaption.substring(0, usedCaption.indexOf(' '));
+        else  finalString = usedCaption.substring(0);      
+    
+        newCaption = newCaption.replace(finalString, `<b>${finalString}</b>`);
+  
+        usedCaption = usedCaption.substring(1);
+      }
+      
+      const element = document.getElementById("actual-comment")!;
+      element.innerHTML = newCaption;
+
+      return;
+    }
+  }
+  //generates commentId and makes sure it's unique
+  generateUniqueCommentId() {
+    let allComments: CommentModel[] = this.localStorageService.getInformation('comments');
+
+    let commentId: string = 'c' + Math.random().toString(16).slice(2);
+    let isUnique: boolean = false;
+
+    while(!isUnique) {
+      for(let i = 0; i < allComments.length; i++) {
+        if(allComments[i].commentId == commentId) {
+          commentId = 'c' + Math.random().toString(16).slice(2);
+          break;
+        } else if(i == (allComments.length - 1) && allComments[i].commentId != commentId) {
+          isUnique = true;
+        }
+      }
+    }
+
+    return commentId;
+  }
+  //turns 2009-12-18 into December 18, 2009
+  fixCommentDate(commentDate?: string) {    
+    if(commentDate == '') {
+      return '';
+    } else {
+      let day = commentDate?.substring(8);
+      if (day?.charAt(0) == '0') day = day.substring(1);
+
+      let month = commentDate?.substring(5,7);
+      const year = commentDate?.substring(0,4);
+    
+      switch(month) {
+        case '01':
+          month = 'January'
+          break;
+        case '02':
+          month = 'February'
+          break;
+        case '03':
+          month = 'March'
+          break;
+        case '04':
+          month = 'April'
+          break;
+        case '05':
+          month = 'May'
+          break;
+        case '06':
+          month = 'June'
+          break;
+        case '07':
+          month = 'July'
+          break;
+        case '08':
+          month = 'August'
+          break;
+        case '09':
+          month = 'September'
+          break;
+        case '10':
+          month = 'October'
+          break;
+        case '11':
+          month = 'November'
+          break;
+        case '12':
+          month = 'December'
+          break;
+      }
+        
+      return `${month} ${day}, ${year}`
+    }
+  }
   sortByDate(posts: UserPostModel[]) {
     posts.sort((a: UserPostModel, b: UserPostModel) => {
       let aDate: Date = new Date(a.postDate);
@@ -671,6 +802,13 @@ export class AccountComponent  implements OnInit {
     console.log(id);
   }*/
 
+  //method for creating replyId's
+  /*for(let i = 0; i < 8; i++) {
+    var id = "r" + Math.random().toString(16).slice(2);
+  
+    console.log(id);
+  }*/
+
 /*   
   //converts the comments db raw output into CommentModel
   convertRawCommentToComment(rawComment: RawCommentModel) {
@@ -708,4 +846,3 @@ export class AccountComponent  implements OnInit {
   } 
 */
 }
-

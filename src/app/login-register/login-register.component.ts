@@ -1291,7 +1291,7 @@ export class LoginRegisterComponent {
       commentId: 'cf27ae8e50d6f9',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
-      comment: 'Comment number 1',
+      comment: 'Comment number 1 @HoldenBourg@AshlynnDang @LukasGocke @CalebHaralson',
       likes: [
         'HoldenBourg',
         'LukasGocke',
@@ -1425,6 +1425,7 @@ export class LoginRegisterComponent {
   public rawMockRepliesDatabase: ReplyModel[] = [
     {
       commentId: 'cf27ae8e50d6f9',
+      replyId: 'r4af7c4786c9e1',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: `Reply number 1`,
@@ -1436,6 +1437,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'cf27ae8e50d6f9',
+      replyId: 'r62a5946328fc6',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
       comment: `Reply number 2`,
@@ -1447,6 +1449,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'c29ef0f5432ee1',
+      replyId: 'rbe90cd2d8512',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: `Reply number 1`,
@@ -1454,10 +1457,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      commentDate: '2023-11-02'
+      commentDate: '2023-11-01'
     },
     {
       commentId: 'c29ef0f5432ee1',
+      replyId: 'r5a70870c8b60e',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
       comment: `Reply number 2`,
@@ -1469,6 +1473,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'cf901da1624394',
+      replyId: 'rfe080035d070e',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: `Reply number 1`,
@@ -1476,10 +1481,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      commentDate: '2023-11-02'
+      commentDate: '2023-11-01'
     },
     {
       commentId: 'cf901da1624394',
+      replyId: 'r6eae1395ad8d5',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
       comment: `Reply number 2`,
@@ -1491,6 +1497,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'c1601ad93a6f0d',
+      replyId: 'r2c50dd79ed0d2',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: `Reply number 1`,
@@ -1498,10 +1505,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      commentDate: '2023-11-02'
+      commentDate: '2023-11-01'
     },
     {
       commentId: 'c1601ad93a6f0d',
+      replyId: 'r421a9201c8fb3',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
       comment: `Reply number 2`,
@@ -1513,6 +1521,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'c8ae596289a788',
+      replyId: 'r5f09426286745',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: `Reply number 1`,
@@ -1520,10 +1529,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      commentDate: '2023-11-02'
+      commentDate: '2023-11-01'
     },
     {
       commentId: 'c8ae596289a788',
+      replyId: 'r32870e5f29a14',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
       comment: `Reply number 2`,
@@ -1535,6 +1545,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'c75ed8983b2685',
+      replyId: 'r73a14c3c5e6d9',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: `Reply number 1`,
@@ -1542,10 +1553,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      commentDate: '2023-11-02'
+      commentDate: '2023-11-01'
     },
     {
       commentId: 'c75ed8983b2685',
+      replyId: 'r557a5628b8698',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
       comment: `Reply number 2`,
@@ -1557,6 +1569,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'c2eb1441cffcc2',
+      replyId: 'r72f79aa859278',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: `Reply number 1`,
@@ -1564,10 +1577,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      commentDate: '2023-11-02'
+      commentDate: '2023-11-01'
     },
     {
       commentId: 'c2eb1441cffcc2',
+      replyId: 'rf6089da30a85f',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
       comment: `Reply number 2`,
@@ -1579,6 +1593,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'c9b2e0cd075df2',
+      replyId: 'r4afc159c06a1a',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: `Reply number 1`,
@@ -1586,10 +1601,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      commentDate: '2023-11-02'
+      commentDate: '2023-11-01'
     },
     {
       commentId: 'c9b2e0cd075df2',
+      replyId: 'r23bfd33e960ad',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
       comment: `Reply number 2`,
@@ -1601,6 +1617,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ceda40daaca3ed',
+      replyId: 'rf1bf1f31f9da7',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: `Reply number 1`,
@@ -1608,10 +1625,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      commentDate: '2023-11-02'
+      commentDate: '2023-11-01'
     },
     {
       commentId: 'ceda40daaca3ed',
+      replyId: 'rfb7f6252ff8ec',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
       comment: `Reply number 2`,
@@ -1623,6 +1641,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'c54b6527bcbb25',
+      replyId: 'ra04671550c12d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: `Reply number 1`,
@@ -1630,10 +1649,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      commentDate: '2023-11-02'
+      commentDate: '2023-11-01'
     },
     {
       commentId: 'c54b6527bcbb25',
+      replyId: 'r7cde124fce59f',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
       comment: `Reply number 2`,
@@ -1645,6 +1665,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'ra8dd78e88aeb4',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
       comment: `Reply number 1`,
@@ -1652,10 +1673,11 @@ export class LoginRegisterComponent {
         'LukasGocke',
         'CalebHaralson'
       ],
-      commentDate: '2023-11-02'
+      commentDate: '2023-11-01'
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r2c6255f0c2aaf',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
       comment: `Reply number 2`,
@@ -1667,6 +1689,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r8f8ad6166b72b',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'AshlynnDang',
       comment: `Reply number 3`,
@@ -1678,6 +1701,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'red0f689dcf755',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'LukasGocke',
       comment: `Reply number 4`,
@@ -1689,6 +1713,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'rad7d5d9ff1a4d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'EnriqueLeal',
       comment: `Reply number 5`,
@@ -1700,6 +1725,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r7c4712786a0ed',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'CalebHaralson',
       comment: `Reply number 6`,
@@ -1711,6 +1737,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r75a38949335c5',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'OliverQueen',
       comment: `Reply number 7`,
@@ -1722,6 +1749,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r1fd6b02c645fe',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'TommyMerlin',
       comment: `Reply number 8`,
@@ -1733,6 +1761,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'raf690d8a3803a',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'JohnDiggle',
       comment: `Reply number 9`,
@@ -1744,6 +1773,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'rdfbb9ede08f61',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'FelicitySmoak',
       comment: `Reply number 10`,
@@ -1755,6 +1785,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r263560adcf974',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ErenJaeger',
       comment: `Reply number 11`,
@@ -1766,6 +1797,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r592731415367f',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ReinerBraun',
       comment: `Reply number 12`,
@@ -1777,6 +1809,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r0338ecf855051',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'MikasaAckerman',
       comment: `Reply number 13`,
@@ -1788,6 +1821,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'rb37571d2d502c',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ErwinSmith',
       comment: `Reply number 14`,
@@ -1799,6 +1833,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'rdd6f20da45cbf',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'LeviAckerman',
       comment: `Reply number 15`,
@@ -1810,6 +1845,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r6aceaa09a9987',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'KennyAckerman',
       comment: `Reply number 16`,
@@ -1821,6 +1857,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r4ddbabf4f4f5d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ItachiUchiha',
       comment: `Reply number 17`,
@@ -1832,6 +1869,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r555488e48335',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'JaraiyaTheGallant',
       comment: `Reply number 18`,
@@ -1843,6 +1881,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r5784ce9e17c3b',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ObitoUchiha',
       comment: `Reply number 19`,
@@ -1854,6 +1893,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r2c13645d8646b',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'MadaraUchiha',
       comment: `Reply number 20`,
@@ -1865,6 +1905,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r970279d92bddb',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'MinatoNamikaze',
       comment: `Reply number 21`,
@@ -1876,6 +1917,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'rcb95c8e109119',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'KakashiSensei',
       comment: `Reply number 22`,
@@ -1887,6 +1929,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r5a58500d9f9e9',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'LightYagami',
       comment: `Reply number 23`,
@@ -1898,6 +1941,7 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'rc05b1aa32d957',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ToddBourg',
       comment: `Reply number 24`,
@@ -1909,9 +1953,10 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 're2eb46f1d082d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'AmyBourg',
-      comment: `Reply number 25`,
+      comment: `@HoldenBourg Reply number 25`,
       likes: [
         'LukasGocke',
         'CalebHaralson'
@@ -1920,9 +1965,10 @@ export class LoginRegisterComponent {
     },
     {
       commentId: 'ca6bb512e14b58',
+      replyId: 'r702f62a53e5f2',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'JaydenBourg',
-      comment: `Reply number 26`,
+      comment: `Reply number 26 @HoldenBourg@AshlynnDang @LukasGocke @EnriqueLeal @CalebHaralson EnriqueLealEnriqueLealEnriqueLealEnriqueLealEnriqueLeal`,
       likes: [
         'LukasGocke',
         'CalebHaralson'
@@ -1954,8 +2000,8 @@ export class LoginRegisterComponent {
     // this.localStorageService.setInformation('rawPosts', this.rawMockPostsDatabase);
     // this.localStorageService.clearInformation('comments');
     // this.localStorageService.setInformation('comments', this.rawMockCommentsDatabase);
-    // this.localStorageService.clearInformation('replies');
-    // this.localStorageService.setInformation('replies', this.rawMockRepliesDatabase);
+    this.localStorageService.clearInformation('replies');
+    this.localStorageService.setInformation('replies', this.rawMockRepliesDatabase);
   }
 
   onTerms() {

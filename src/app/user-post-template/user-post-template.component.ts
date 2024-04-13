@@ -32,7 +32,7 @@ export class UserPostTemplateComponent implements OnInit {
   }
 
   populateComments() {
-    let comments: CommentModel[] = this.localStorageService.getInformation('rawComments');
+    let comments: CommentModel[] = this.localStorageService.getInformation('comments');
     let rawComments = comments.filter((rawComment) => rawComment.postId == this.userPost.postId)
 
     this.comments = rawComments;

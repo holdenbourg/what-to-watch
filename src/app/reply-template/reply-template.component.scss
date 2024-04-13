@@ -1,59 +1,80 @@
 .whole-reply {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    justify-content: space-between;
+    width: 455px;
     padding: 10px 0 10px 0;
 }
 
+//container for profile-picture and comment-info
+.left-side {
+    width: 425px;
+    display: flex;
+    flex-direction: row;
+    word-wrap: break-word;
+}
 .profile-pitcure {
-    height: 1.75vw;
-    width: 1.75vw;
-    border-radius: 1.75vw;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
     -webkit-filter: invert(100%);
     margin: 2.5px 12px 5px 0;
 }
-
-.comment-info {
+//contianer for comment and comment-options
+.reply-info {
     display: flex;
     flex-direction: column;
 }
-
-.comment {
+//container for profile-username and the actual-comment
+.reply {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     color: #fff;
     overflow: hidden;
 }
 .profile-username {
-    font-weight: 500;
+    font-weight: 600;
     padding-right: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    font-size: .85vw;
-    line-height: .85vw;
+    margin-top: 2.5px;
+    margin-bottom: 0;
+    font-size: 16.5px;
+    line-height: 16.5px;
 }
-.actual-comment {
+.actual-reply {
     font-weight: 400;
-    margin-top: 5px;
+    margin-top: 0;
     margin-bottom: 5px;
-    font-size: .8vw;
-    line-height: .8vw;
+    font-size: 16.5px;
+    line-height: 19.5px;
+    width: 381px;
 }
-
-.comment-options {
+//container for the comment-likes, reply-button, and comment-date
+.reply-options {
     display: flex;
     flex-direction: row;
     color: mix(white, black, 80%);
     font-weight: 400;
-    font-size: .75vw;
-    line-height: .75vw;
+    font-size: 14.5px;
+    line-height: 14.5px;
 }
-.comment-options p {
+//comment-options individual elements
+.reply-options p {
     padding-right: 25px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 0;
 }
 .reply-button {
     cursor: pointer;
     font-weight: 500;
 }
+
+//container for both liked and unliked
+.like {
+    margin-right: 5px;
+    font-size: 21px;
+    color: #fff;
+}
+.like i {
+    cursor: pointer;
+}
+

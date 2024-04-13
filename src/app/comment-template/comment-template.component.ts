@@ -34,19 +34,18 @@ export class CommentTemplateComponent implements OnInit {
 
   ngOnInit() {
     let replies: ReplyModel[] = this.localStorageService.getInformation('replies');
-    this.leftOverReplies = this.sortRepliesByDate(replies.filter((reply) => reply.commentId == reply.commentId));
+    this.leftOverReplies = this.sortRepliesByDate(replies.filter((reply) => reply.commentId == this.comment.commentId));
   }
 
   populateReplies(comment: CommentModel) {
-    let rawComments: CommentModel[] = this.localStorageService.getInformation('rawComments');
+    let rawComments: CommentModel[] = this.localStorageService.getInformation('comments');
     let rawPostComments: CommentModel[] = rawComments.filter((rawComment) => rawComment.postId == comment.postId);
 
     rawPostComments.reverse();
 
     let index: number = 0;
-    for(let i = 0; i < rawPostComments.length; i++) {
-      if(rawPostComments[i].comment == comment.comment && rawPostComments[i].username == comment.username) index = i;
-    }
+
+    for(let i = 0; i < rawPostComments.length; i++) if(rawPostComments[i].comment == comment.comment && rawPostComments[i].username == comment.username) index = i;
     
     const viewReplies = document.querySelector(`.post-comment-${index} .view-replies`);
     const viewMoreReplies = document.querySelector(`.post-comment-${index} .view-more-replies`);
@@ -62,7 +61,7 @@ export class CommentTemplateComponent implements OnInit {
       this.replies = [];
     } else if(!viewReplies?.classList.contains('active') && this.leftOverReplies.length <= 10) {
       viewReplies!.textContent = ' - Hide Replies - ';
-      this.replies = this.sortRepliesByDate(this.leftOverReplies);
+      this.replies = this.leftOverReplies;
       viewReplies?.classList.toggle('active');
       viewMoreReplies!.textContent = ``;
     } else if(!viewReplies?.classList.contains('active') && this.leftOverReplies.length > 10) {
@@ -72,15 +71,14 @@ export class CommentTemplateComponent implements OnInit {
     }
   }
   onPopulateMoreReplies(comment: CommentModel) {
-    let rawComments: CommentModel[] = this.localStorageService.getInformation('rawComments');
+    let rawComments: CommentModel[] = this.localStorageService.getInformation('comments');
     let rawPostComments: CommentModel[] = rawComments.filter((rawComment) => rawComment.postId == comment.postId);
 
     rawPostComments.reverse();
 
     let index: number = 0;
-    for(let i = 0; i < rawPostComments.length; i++) {
-      if(rawPostComments[i].comment == comment.comment && rawPostComments[i].username == comment.username) index = i;
-    }
+
+    for(let i = 0; i < rawPostComments.length; i++) if(rawPostComments[i].commentId == comment.commentId) index = i;
 
     const viewReplies = document.querySelector(`.post-comment-${index} .view-replies`);
     const viewMoreReplies = document.querySelector(`.post-comment-${index} .view-more-replies`);
@@ -98,6 +96,38 @@ export class CommentTemplateComponent implements OnInit {
 
   onReply(comment: CommentModel) {
     throw new Error('Method not implemented.');
+  }
+
+  //bolds the account usernames that are atted(@)
+  boldAttedUsernames(caption: string) {
+    const count = caption.split('@').length - 1; 
+
+    if(count == 0) {
+      return caption;
+    } else {
+      let newCaption: string = caption; 
+      let usedCaption: string = caption;   
+  
+      for(let i = 0; i < count; i++) {
+        let index: number = usedCaption.indexOf('@');
+        
+        usedCaption = usedCaption.substring(index);
+  
+        let finalString: string = '';
+  
+        if(usedCaption.indexOf(' ') != -1) finalString = usedCaption.substring(0, usedCaption.indexOf(' '));
+        else  finalString = usedCaption.substring(0);      
+    
+        newCaption = newCaption.replace(finalString, `<b>${finalString}</b>`);
+  
+        usedCaption = usedCaption.substring(1);
+      }
+
+      const postCommentId = document.getElementById(`actual-comment-${this.comment.commentId}`)!;    
+      postCommentId.innerHTML = newCaption;
+
+      return;
+    }
   }
 
   //turns 2009-12-18 into December 18, 2009
@@ -155,11 +185,29 @@ export class CommentTemplateComponent implements OnInit {
   }
 
   onLike() {
+    if(this.comment.likes.includes(this.currentUser.username)) {
+      const index = this.comment.likes.indexOf(this.currentUser.username, 0);
 
-  }
-  onUnlike() {
+      if (index > -1) {
+        this.comment.likes.splice(index, 1);
+      }
+    } else {
+      this.comment.likes.push(this.currentUser.username);
+    }    
 
+    //update the likes for that post in database
+    let comments: CommentModel[] = this.localStorageService.getInformation('comments');
+
+    for(let comment of comments) {
+      if(comment.commentId == this.comment.commentId) {
+        comment.likes = this.comment.likes;
+      }
+    }
+
+    this.localStorageService.clearInformation('comments');
+    this.localStorageService.setInformation('comments', comments);
   }
+
   sortRepliesByDate(replies: ReplyModel[]) {
     replies.sort((a: ReplyModel, b: ReplyModel) => {
       let aDate: Date = new Date(a.commentDate);

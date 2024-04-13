@@ -1,23 +1,23 @@
 <div class="whole-comment">
     <div class="left-side">
         <img class="profile-pitcure" [src]="comment.profilePicture" [attr.alt]="comment.username">
-        <div class="commen-info">
+        <div class="comment-info">
             <div class="comment">
                 <p class="profile-username">{{ comment.username }}</p>
-                <p class="actual-comment">{{ comment.comment }}</p>
+                <p class="actual-comment" id="actual-comment-{{comment.commentId}}">{{ boldAttedUsernames(comment.comment) }}</p>
             </div>
             <div class="comment-options">
                 <p class="comment-likes">{{ comment.likes.length }} likes</p>
                 <p (click)="onReply(comment)" class="reply-button">Reply</p>
                 <p class="comment-date">{{ fixCommentDate(comment.commentDate) }}</p>
             </div>
-            <div class="replies" *ngIf="comment.replies.length != 0">
-                <p class="view-replies" (click)="populateReplies(comment)"> - View {{ comment.replies.length }} Replies - </p>
+            <div class="replies" *ngIf="leftOverReplies.length != 0">
+                <p class="view-replies" (click)="populateReplies(comment)"> - View {{ leftOverReplies.length }} Replies - </p>
                 <ul class="comment-replies">
-                    <li *ngFor="let reply of sortRepliesByDate(replies)">
+                    <li *ngFor="let reply of sortRepliesByDate(replies) let i = index">
                         <app-reply-template
                             [reply]="reply" 
-                            class="comment-reply"
+                            class="comment-reply-{{i}}"
                         ></app-reply-template>
                     </li>
                 </ul>
@@ -27,7 +27,7 @@
     </div>
     <div class="like">
         <div class="liked" *ngIf="comment.likes.includes(currentUser.username)">
-            <a (click)="onUnlike()">
+            <a (click)="onLike()">
                 <i class='bx bxs-like'></i>
             </a>
         </div>

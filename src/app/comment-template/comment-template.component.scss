@@ -2,85 +2,91 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 545px;
     padding: 10px 0 10px 0;
 }
+
+//container for profile-picture and comment-info
 .left-side {
+    width: 515px;
     display: flex;
     flex-direction: row;
 }
 .profile-pitcure {
-    height: 1.75vw;
-    width: 1.75vw;
-    border-radius: 1.75vw;
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
     -webkit-filter: invert(100%);
     margin: 2.5px 12px 5px 0;
 }
-
+//contianer for comment and comment-options
 .comment-info {
     display: flex;
     flex-direction: column;
 }
-
+//container for profile-username and the actual-comment
 .comment {
     display: flex;
     flex-direction: row;
     color: #fff;
     overflow: hidden;
-}
-.like {
-    margin-right: 5px;
-    font-size: 1.1vw;
-    color: #fff;
-}
-.like i {
-    cursor: pointer;
+    width: 471px;
 }
 .profile-username {
     font-weight: 500;
     padding-right: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size: .85vw;
-    line-height: .85vw;
+    font-size: 16.5px;
+    line-height: 16.5px;
 }
 .actual-comment {
     font-weight: 400;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size: .8vw;
-    line-height: .8vw;
+    font-size: 16.5px;
+    line-height: 19.5px;
 }
-
+//container for the comment-likes, reply-button, and comment-date
 .comment-options {
     display: flex;
     flex-direction: row;
     color: mix(white, black, 80%);
     font-weight: 400;
-    font-size: .75vw;
-    line-height: .75vw;
+    font-size: 14.5px;
+    line-height: 14.5px;
 }
+//comment-options individual elements
 .comment-options p {
     padding-right: 25px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 0;
 }
 .reply-button {
     cursor: pointer;
     font-weight: 500;
 }
-
-.replies {
-    color: #fff;
-    font-weight: 400;
-    font-size: .8vw;
-    line-height: .8vw;
-}
+//container for view-replies button, comment-replies, and view-more-replies button
 .view-replies, .view-more-replies {
     cursor: pointer;
-    padding-left: 20px;
+    padding-left: 15px;
+    font-weight: 500;
+    font-size: 14.5px;
+    line-height: 14.5px;
+    color: mix(white, black, 80%);
 }
 .comment-replies {
     list-style: none;
-    padding-left: 20px;
+    padding-left: 15px;
+    width: 100%;
+}
+
+//container for both liked and unliked
+.like {
+    margin-right: 5px;
+    font-size: 21px;
+    color: #fff;
+}
+.like i {
+    cursor: pointer;
 }

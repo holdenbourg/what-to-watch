@@ -1,14 +1,28 @@
 <div class="whole-reply">
-    <img class="profile-pitcure" [src]="reply.profilePicture" [attr.alt]="reply.username">
-    <div class="commen-info">
-        <div class="comment">
-            <p class="profile-username">{{ reply.username }}</p>
-            <p class="actual-comment">{{ reply.comment }}</p>
+    <div class="left-side">
+        <img class="profile-pitcure" [src]="reply.profilePicture" [attr.alt]="reply.username">
+        <div class="reply-info">
+            <div class="reply">
+                <p class="profile-username">{{ reply.username }}</p>
+                <p class="actual-reply" id="actual-reply-{{reply.replyId}}">{{ boldAttedUsernames(reply.comment) }}</p>
+            </div>
+            <div class="reply-options">
+                <p class="reply-likes">{{ reply.likes.length }} likes</p>
+                <p (click)="onReply(reply)" class="reply-button">Reply</p>
+                <p class="reply-date">{{ fixCommentDate(reply.commentDate) }}</p>
+            </div>
+        </div> 
+    </div>
+    <div class="like" id="like-{{reply.replyId}}">
+        <div class="liked" *ngIf="reply.likes.includes(currentUser.username)">
+            <a (click)="onLike()">
+                <i class='bx bxs-like'></i>
+            </a>
         </div>
-        <div class="comment-options">
-            <p class="comment-likes">{{ reply.likes.length }} likes</p>
-            <p (click)="onReply(reply)" class="reply-button">Reply</p>
-            <p class="comment-date">{{ fixCommentDate(reply.commentDate) }}</p>
+        <div class="unliked" *ngIf="!reply.likes.includes(currentUser.username)">
+            <a (click)="onLike()">
+                <i class='bx bx-like'></i>
+            </a>
         </div>
     </div>
 </div>
