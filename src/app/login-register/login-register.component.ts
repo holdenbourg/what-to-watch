@@ -1990,18 +1990,18 @@ export class LoginRegisterComponent {
     //}
 
     //resets the mock databases in local storage - 
-    this.localStorageService.clearInformation('rawUsers');
-    this.localStorageService.setInformation('rawUsers', this.rawMockUsersDatabase);
-    this.localStorageService.clearInformation('ratedMovies');
-    this.localStorageService.setInformation('ratedMovies', this.mockRatedMoviesDatabase);
-    this.localStorageService.clearInformation('ratedSeries');
-    this.localStorageService.setInformation('ratedSeries', this.mockRatedSeriesDatabase);
-    this.localStorageService.clearInformation('rawPosts');
-    this.localStorageService.setInformation('rawPosts', this.rawMockPostsDatabase);
-    this.localStorageService.clearInformation('comments');
-    this.localStorageService.setInformation('comments', this.rawMockCommentsDatabase);
-    this.localStorageService.clearInformation('replies');
-    this.localStorageService.setInformation('replies', this.rawMockRepliesDatabase);
+    // this.localStorageService.clearInformation('rawUsers');
+    // this.localStorageService.setInformation('rawUsers', this.rawMockUsersDatabase);
+    // this.localStorageService.clearInformation('ratedMovies');
+    // this.localStorageService.setInformation('ratedMovies', this.mockRatedMoviesDatabase);
+    // this.localStorageService.clearInformation('ratedSeries');
+    // this.localStorageService.setInformation('ratedSeries', this.mockRatedSeriesDatabase);
+    // this.localStorageService.clearInformation('rawPosts');
+    // this.localStorageService.setInformation('rawPosts', this.rawMockPostsDatabase);
+    // this.localStorageService.clearInformation('comments');
+    // this.localStorageService.setInformation('comments', this.rawMockCommentsDatabase);
+    // this.localStorageService.clearInformation('replies');
+    // this.localStorageService.setInformation('replies', this.rawMockRepliesDatabase);
   }
 
   onTerms() {

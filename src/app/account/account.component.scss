@@ -387,6 +387,16 @@ body {
 .liked, .unliked {
     margin-left: 7.5px;
 }
+.comment-warning {
+    position: absolute;
+    width: 570px;
+    top: 101%;
+    right: 0;
+    color: red;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;    
+}
 
 
 

@@ -18,6 +18,7 @@ import { RatedMovieModel } from '../services/models/database-objects/rated-movie
 import { RatedSeriesModel } from '../services/models/database-objects/rated-series-model';
 import { RawUserPostModel } from '../services/models/database-objects/raw-user-post-model';
 import { CommentTemplateComponent } from '../comment-template/comment-template.component';
+import { ReplyModel } from '../services/models/database-objects/reply-model';
 
 @Component({
   selector: 'app-account',
@@ -133,9 +134,10 @@ export class AccountComponent  implements OnInit {
   public publicUserNotFollowedByCurrentUserResult: boolean = true;
 
   public commentInput: string = '';
+  public commentWarning: string = '';
 
 
-  ngOnInit() {       
+  ngOnInit() {
     //sets the username from the url parameter
     this.username = this.activatedRoute.snapshot.params['username'];
 
@@ -232,6 +234,21 @@ export class AccountComponent  implements OnInit {
     }
   }
   onPostComment() {
+    if(this.commentInput.length <= 0) {
+      this.commentWarning = `Comment must be between 2 and 150 characters`;
+      setTimeout(() => {this.commentWarning = ``;}, 3000);
+      return;
+    } else if(this.commentInput.length >= 150) {
+      this.commentWarning = `Comment must be between 2 and 150 characters`;
+      setTimeout(() => {this.commentWarning = ``;}, 3000);
+      return;
+    } else if (this.userAttedTwice(this.commentInput)) {
+      this.commentWarning = `Comment can't @ the same user twice`;
+      setTimeout(() => {this.commentWarning = ``;}, 3000);
+      return;
+    }
+    
+
     if(this.commentInput.length > 0) {
       let comment: CommentModel = {
         postId: this.currentPost.postId,
@@ -654,6 +671,35 @@ export class AccountComponent  implements OnInit {
     this.routingService.navigateToSettings();
   }
 
+  //checks to see if the same person is atted twice 
+  userAttedTwice(comment: string) {
+    const count = comment.split('@').length - 1; 
+
+    if(count == 0 || count == 1) {
+      return false;
+    } else {
+      let newComment: string = comment;
+
+      for(let i = 0; i < count; i++) {
+        let index: number = newComment.indexOf('@');
+      
+        newComment = newComment.substring(index);
+
+        let attedUsername: string = '';
+
+        if(newComment.indexOf(' ') != -1) attedUsername = newComment.substring(0, newComment.indexOf(' '));
+        else attedUsername = newComment.substring(0);
+
+        newComment = newComment.substring(attedUsername.length);
+        
+        if(newComment.includes(attedUsername)) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+  }
   //bolds the account usernames that are atted(@)
   boldAttedUsernames(caption: string) {
     const count = caption.split('@').length - 1; 
@@ -672,7 +718,7 @@ export class AccountComponent  implements OnInit {
         let finalString: string = '';
   
         if(usedCaption.indexOf(' ') != -1) finalString = usedCaption.substring(0, usedCaption.indexOf(' '));
-        else  finalString = usedCaption.substring(0);      
+        else finalString = usedCaption.substring(0);      
     
         newCaption = newCaption.replace(finalString, `<span style="font-weight: 600;">${finalString}</span>`);
   
@@ -704,6 +750,26 @@ export class AccountComponent  implements OnInit {
     }
 
     return commentId;
+  }
+  //generates replyId and makes sure it's unique
+  generateUniqueReplyId() {
+    let allReplies: ReplyModel[] = this.localStorageService.getInformation('replies');
+
+    let replyId: string = 'r' + Math.random().toString(16).slice(2);
+    let isUnique: boolean = false;
+
+    while(!isUnique) {
+      for(let i = 0; i < allReplies.length; i++) {
+        if(allReplies[i].replyId == replyId) {
+          replyId = 'r' + Math.random().toString(16).slice(2);
+          break;
+        } else if(i == (allReplies.length - 1) && allReplies[i].replyId != replyId) {
+          isUnique = true;
+        }
+      }
+    }
+
+    return replyId;
   }
   //turns 2009-12-18 into December 18, 2009
   fixCommentDate(commentDate?: string) {    
