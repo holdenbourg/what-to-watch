@@ -18,4 +18,10 @@ export class LocalStorageService {
   cleanAll() {
     localStorage.clear()
   }
+
+  cleanTemporaryLocalStorages() {
+    this.clearInformation('currentPostNumber');
+    this.clearInformation('currentEditSeries');
+    this.clearInformation('currentEditMovie');
+  }
 }

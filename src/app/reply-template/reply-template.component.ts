@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, inject } from '@angular/core';
 import { ReplyModel } from '../services/models/database-objects/reply-model';
-import { CommentModel } from '../services/models/database-objects/comment-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
-import { style } from '@angular/animations';
+import { RoutingService } from '../services/routing/routing.service';
+import { ReplyService } from '../services/reply/reply.service';
 
 @Component({
   selector: 'app-reply-template',
@@ -15,6 +15,8 @@ import { style } from '@angular/animations';
 })
 export class ReplyTemplateComponent {
   public localStorageService: LocalStorageService = inject(LocalStorageService);
+  public routingService: RoutingService = inject(RoutingService);
+  public replyService: ReplyService = inject(ReplyService);
   public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
   
   @Input()
@@ -23,14 +25,12 @@ export class ReplyTemplateComponent {
     replyId: '',
     profilePicture: '',
     username: '',
+    replyingToUsername: '',
     comment: '',
     likes: [],
     commentDate: ''
   }
 
-  onReply(reply: ReplyModel) {
-    throw new Error('Method not implemented.');
-  }
 
   onLike() {
     if(this.reply.likes.includes(this.currentUser.username)) {
@@ -56,9 +56,16 @@ export class ReplyTemplateComponent {
     this.localStorageService.setInformation('replies', replies);
   }
 
+  onReply(reply: ReplyModel) {
+    const prompt = document.querySelector(`.prompt`);
+    prompt!.textContent = `Replying to ${reply.username}`;
+
+    this.replyService.commentId = reply.commentId;
+  }
+
   //bolds the account usernames that are atted(@)
   boldAttedUsernames(caption: string) {
-    const count = caption.split('@').length - 1; 
+    const count = caption.split('@').length - 1;     
 
     if(count == 0) {
       return caption;
@@ -72,11 +79,16 @@ export class ReplyTemplateComponent {
         usedCaption = usedCaption.substring(index);
   
         let finalString: string = '';
-  
-        if(usedCaption.indexOf(' ') != -1) finalString = usedCaption.substring(0, usedCaption.indexOf(' '));
-        else  finalString = usedCaption.substring(0);      
+
+        if(usedCaption.indexOf(' ') == -1) {
+          finalString = usedCaption.substring(0);      
+        } else if(usedCaption.substring(1).indexOf('@') != -1 && usedCaption.substring(1).indexOf('@') < usedCaption.indexOf(' ')) {
+          finalString = usedCaption.substring(0, usedCaption.substring(1).indexOf('@') + 1);
+        } else {
+          finalString = usedCaption.substring(0, usedCaption.indexOf(' '));
+        }              
     
-        newCaption = newCaption.replace(finalString, `<span style="font-weight: 600;">${finalString}</span>`);
+        newCaption = newCaption.replace(finalString, `<a href="/account/${finalString.substring(1)}/posts" style="font-weight: 600; cursor: pointer; text-decoration: none; color: #fff">${finalString}</a>`);
   
         usedCaption = usedCaption.substring(1);
       }
@@ -140,5 +152,9 @@ export class ReplyTemplateComponent {
         
       return `${month} ${day}, ${year}`
     }
+  }
+
+  attedUserClicked(attedUser: string) {
+    this.routingService.navigateToAccountsPosts(attedUser);
   }
 }

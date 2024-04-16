@@ -3,7 +3,7 @@
         <img class="profile-pitcure" [src]="comment.profilePicture" [attr.alt]="comment.username">
         <div class="comment-info">
             <div class="comment">
-                <p class="profile-username">{{ comment.username }}</p>
+                <a class="profile-username" href="/account/{{ comment.username }}/posts">{{ comment.username }}</a>
                 <p class="actual-comment" id="actual-comment-{{comment.commentId}}">{{ boldAttedUsernames(comment.comment) }}</p>
             </div>
             <div class="comment-options">
@@ -12,9 +12,9 @@
                 <p class="comment-date">{{ fixCommentDate(comment.commentDate) }}</p>
             </div>
             <div class="replies" *ngIf="leftOverReplies.length != 0">
-                <p class="view-replies" (click)="populateReplies(comment)"> - View {{ leftOverReplies.length }} Replies - </p>
+                <p class="view-replies" (click)="populateReplies(comment)" *ngIf="!(leftOverReplies.length <= 3)"> - View {{ this.leftOverReplies.length }} Replies - </p>
                 <ul class="comment-replies">
-                    <li *ngFor="let reply of sortRepliesByDate(replies) let i = index">
+                    <li *ngFor="let reply of replies let i = index">
                         <app-reply-template
                             [reply]="reply" 
                             class="comment-reply-{{i}}"

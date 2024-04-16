@@ -3,6 +3,7 @@ export interface ReplyModel {
     replyId: string,
     profilePicture: string,
     username: string,
+    replyingToUsername: string,
     comment: string,
     likes: string[],
     commentDate: string

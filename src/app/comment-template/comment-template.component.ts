@@ -5,6 +5,8 @@ import { ReplyModel } from '../services/models/database-objects/reply-model';
 import { ReplyTemplateComponent } from '../reply-template/reply-template.component';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
+import { RoutingService } from '../services/routing/routing.service';
+import { ReplyService } from '../services/reply/reply.service';
 
 @Component({
   selector: 'app-comment-template',
@@ -15,6 +17,8 @@ import { AccountInformationModel } from '../services/models/database-objects/acc
 })
 export class CommentTemplateComponent implements OnInit {
   public localStorageService: LocalStorageService = inject(LocalStorageService);
+  public routingService: RoutingService = inject(RoutingService);
+  public replyService: ReplyService = inject(ReplyService);
   public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
   @Input()
@@ -35,6 +39,10 @@ export class CommentTemplateComponent implements OnInit {
   ngOnInit() {
     let replies: ReplyModel[] = this.localStorageService.getInformation('replies');
     this.leftOverReplies = this.sortRepliesByDate(replies.filter((reply) => reply.commentId == this.comment.commentId));
+
+    if(this.leftOverReplies.length <= 3) {
+      this.replies = this.leftOverReplies;
+    }
   }
 
   populateReplies(comment: CommentModel) {
@@ -42,13 +50,13 @@ export class CommentTemplateComponent implements OnInit {
     let rawPostComments: CommentModel[] = rawComments.filter((rawComment) => rawComment.postId == comment.postId);
 
     rawPostComments.reverse();
-
+    
     let index: number = 0;
 
-    for(let i = 0; i < rawPostComments.length; i++) if(rawPostComments[i].comment == comment.comment && rawPostComments[i].username == comment.username) index = i;
+    for(let i = 0; i < rawPostComments.length; i++) if(rawPostComments[i].commentId == this.comment.commentId) index = i;
     
     const viewReplies = document.querySelector(`.post-comment-${index} .view-replies`);
-    const viewMoreReplies = document.querySelector(`.post-comment-${index} .view-more-replies`);
+    const viewMoreReplies = document.querySelector(`.post-comment-${index} .view-more-replies`); 
 
     if(viewReplies?.classList.contains('active')) {
       viewReplies!.textContent = ` - View ${this.leftOverReplies.length} Replies - `;
@@ -95,7 +103,10 @@ export class CommentTemplateComponent implements OnInit {
   }
 
   onReply(comment: CommentModel) {
-    throw new Error('Method not implemented.');
+    const prompt = document.querySelector(`.prompt`);
+    prompt!.textContent = `Replying to ${comment.username}`;
+
+    this.replyService.commentId = comment.commentId;
   }
 
   //bolds the account usernames that are atted(@)
@@ -115,16 +126,21 @@ export class CommentTemplateComponent implements OnInit {
   
         let finalString: string = '';
   
-        if(usedCaption.indexOf(' ') != -1) finalString = usedCaption.substring(0, usedCaption.indexOf(' '));
-        else  finalString = usedCaption.substring(0);      
-    
-        newCaption = newCaption.replace(finalString, `<span style="font-weight: 600;">${finalString}</span>`);
+        if(usedCaption.indexOf(' ') == -1) {
+          finalString = usedCaption.substring(0);      
+        } else if(usedCaption.substring(1).indexOf('@') != -1 && usedCaption.substring(1).indexOf('@') < usedCaption.indexOf(' ')) {
+          finalString = usedCaption.substring(0, usedCaption.substring(1).indexOf('@') + 1);
+        } else {
+          finalString = usedCaption.substring(0, usedCaption.indexOf(' '));
+        }       
+
+        newCaption = newCaption.replace(finalString, `<a href="/account/${finalString.substring(1)}/posts" style="font-weight: 600; cursor: pointer; text-decoration: none; color: #fff">${finalString}</a>`);
   
         usedCaption = usedCaption.substring(1);
       }
-
-      const postCommentId = document.getElementById(`actual-comment-${this.comment.commentId}`)!;    
-      postCommentId.innerHTML = newCaption;
+      
+      const element = document.getElementById(`actual-comment-${this.comment.commentId}`)!;
+      element.innerHTML = newCaption;
 
       return;
     }
@@ -208,14 +224,19 @@ export class CommentTemplateComponent implements OnInit {
     this.localStorageService.setInformation('comments', comments);
   }
 
+  //not being used
   sortRepliesByDate(replies: ReplyModel[]) {
     replies.sort((a: ReplyModel, b: ReplyModel) => {
       let aDate: Date = new Date(a.commentDate);
       let bDate: Date = new Date(b.commentDate);
       
-      return bDate.getTime() - aDate.getTime();
+      return aDate.getTime() - bDate.getTime();
     });
 
     return replies;
+  }
+
+  attedUserClicked(attedUser: string) {
+    this.routingService.navigateToAccountsPosts(attedUser);
   }
 }

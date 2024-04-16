@@ -49,6 +49,7 @@ export class SettingsAccountInfoComponent implements OnInit {
     this.onChangeBio();
 
     this.sidebarCloseOnResize();
+    this.localStorageService.cleanTemporaryLocalStorages();
   }
 
   //closes/opens sidebar if screen width goes above/below 1275 pixels

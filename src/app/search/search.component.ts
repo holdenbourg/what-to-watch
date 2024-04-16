@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserInputService } from '../services/user/user-input.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
+import { FollowerModel } from '../services/models/database-objects/follower-model';
 
 @Component({
   selector: 'app-search',
@@ -32,6 +33,8 @@ export class SearchComponent  implements OnInit {
   public input: string = '';
   public type: string = ''
   public translatedMovies: SearchedFilmModel[] = [];
+
+  public searchedUsers: any[] = []; //set up later
 
 
   ngOnInit() {
@@ -60,6 +63,7 @@ export class SearchComponent  implements OnInit {
     }
 
     this.sidebarCloseOnResize();
+    this.localStorageService.cleanTemporaryLocalStorages();
   }
 
   onSearch() {

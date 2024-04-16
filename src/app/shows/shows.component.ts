@@ -52,6 +52,7 @@ export class ShowsComponent  implements OnInit {
     }
 
     this.sidebarCloseOnResize();
+    this.localStorageService.cleanTemporaryLocalStorages();
   }
 
   //closes/opens sidebar if screen width goes above/below 1275 pixels

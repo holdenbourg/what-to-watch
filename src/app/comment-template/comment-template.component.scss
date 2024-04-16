@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 545px;
-    padding: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
 }
 
 //container for profile-picture and comment-info
@@ -39,6 +39,8 @@
     margin-bottom: 5px;
     font-size: 16.5px;
     line-height: 16.5px;
+    text-decoration: none;
+    color: #fff;
 }
 .actual-comment {
     font-weight: 400;

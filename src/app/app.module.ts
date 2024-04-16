@@ -11,6 +11,7 @@ import { ApiService } from './services/api/api.service';
 import { UserInputService } from './services/user/user-input.service';
 import { FilmInformationService } from './services/film-information/film-information.service';
 import { LocalStorageService } from './services/local-storage/local-storage.service';
+import { ReplyService } from './services/reply/reply.service';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LocalStorageService } from './services/local-storage/local-storage.serv
               ApiService, 
               UserInputService,
               FilmInformationService,
-              LocalStorageService],
+              LocalStorageService,
+              ReplyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

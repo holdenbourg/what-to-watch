@@ -34,6 +34,7 @@ export class PrivacyComponent {
     }
 
     this.sidebarCloseOnResize();
+    this.localStorageService.cleanTemporaryLocalStorages();
   }
 
   OnSwitchPrivacy() {

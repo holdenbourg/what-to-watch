@@ -1428,6 +1428,7 @@ export class LoginRegisterComponent {
       replyId: 'r4af7c4786c9e1',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
+      replyingToUsername: 'HoldenBourg',
       comment: `Reply number 1`,
       likes: [
         'LukasGocke',
@@ -1440,6 +1441,7 @@ export class LoginRegisterComponent {
       replyId: 'r62a5946328fc6',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
+      replyingToUsername: 'HoldenBourg',
       comment: `Reply number 2`,
       likes: [
         'LukasGocke',
@@ -1452,6 +1454,7 @@ export class LoginRegisterComponent {
       replyId: 'rbe90cd2d8512',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
+      replyingToUsername: 'EnriqueLeal',
       comment: `Reply number 1`,
       likes: [
         'LukasGocke',
@@ -1464,6 +1467,7 @@ export class LoginRegisterComponent {
       replyId: 'r5a70870c8b60e',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
+      replyingToUsername: 'EnriqueLeal',
       comment: `Reply number 2`,
       likes: [
         'LukasGocke',
@@ -1476,6 +1480,7 @@ export class LoginRegisterComponent {
       replyId: 'rfe080035d070e',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
+      replyingToUsername: 'CalebHaralson',
       comment: `Reply number 1`,
       likes: [
         'LukasGocke',
@@ -1488,6 +1493,7 @@ export class LoginRegisterComponent {
       replyId: 'r6eae1395ad8d5',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
+      replyingToUsername: 'CalebHaralson',
       comment: `Reply number 2`,
       likes: [
         'LukasGocke',
@@ -1500,6 +1506,7 @@ export class LoginRegisterComponent {
       replyId: 'r2c50dd79ed0d2',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
+      replyingToUsername: 'AshlynnDang',
       comment: `Reply number 1`,
       likes: [
         'LukasGocke',
@@ -1512,6 +1519,7 @@ export class LoginRegisterComponent {
       replyId: 'r421a9201c8fb3',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
+      replyingToUsername: 'AshlynnDang',
       comment: `Reply number 2`,
       likes: [
         'LukasGocke',
@@ -1524,6 +1532,7 @@ export class LoginRegisterComponent {
       replyId: 'r5f09426286745',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
+      replyingToUsername: 'OliverQueen',
       comment: `Reply number 1`,
       likes: [
         'LukasGocke',
@@ -1536,6 +1545,7 @@ export class LoginRegisterComponent {
       replyId: 'r32870e5f29a14',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
+      replyingToUsername: 'OliverQueen',
       comment: `Reply number 2`,
       likes: [
         'LukasGocke',
@@ -1548,6 +1558,7 @@ export class LoginRegisterComponent {
       replyId: 'r73a14c3c5e6d9',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
+      replyingToUsername: 'TommyMerlin',
       comment: `Reply number 1`,
       likes: [
         'LukasGocke',
@@ -1560,6 +1571,7 @@ export class LoginRegisterComponent {
       replyId: 'r557a5628b8698',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
+      replyingToUsername: 'TommyMerlin',
       comment: `Reply number 2`,
       likes: [
         'LukasGocke',
@@ -1572,6 +1584,7 @@ export class LoginRegisterComponent {
       replyId: 'r72f79aa859278',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
+      replyingToUsername: 'FelicitySmoak',
       comment: `Reply number 1`,
       likes: [
         'LukasGocke',
@@ -1584,6 +1597,7 @@ export class LoginRegisterComponent {
       replyId: 'rf6089da30a85f',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
+      replyingToUsername: 'FelicitySmoak',
       comment: `Reply number 2`,
       likes: [
         'LukasGocke',
@@ -1596,6 +1610,7 @@ export class LoginRegisterComponent {
       replyId: 'r4afc159c06a1a',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
+      replyingToUsername: 'JohnDiggle',
       comment: `Reply number 1`,
       likes: [
         'LukasGocke',
@@ -1608,6 +1623,7 @@ export class LoginRegisterComponent {
       replyId: 'r23bfd33e960ad',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
+      replyingToUsername: 'JohnDiggle',
       comment: `Reply number 2`,
       likes: [
         'LukasGocke',
@@ -1620,6 +1636,7 @@ export class LoginRegisterComponent {
       replyId: 'rf1bf1f31f9da7',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
+      replyingToUsername: 'MalcomMerlin',
       comment: `Reply number 1`,
       likes: [
         'LukasGocke',
@@ -1632,6 +1649,7 @@ export class LoginRegisterComponent {
       replyId: 'rfb7f6252ff8ec',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
+      replyingToUsername: 'MalcomMerlin',
       comment: `Reply number 2`,
       likes: [
         'LukasGocke',
@@ -1644,6 +1662,7 @@ export class LoginRegisterComponent {
       replyId: 'ra04671550c12d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
+      replyingToUsername: 'NarutoUzumaki',
       comment: `Reply number 1`,
       likes: [
         'LukasGocke',
@@ -1656,6 +1675,7 @@ export class LoginRegisterComponent {
       replyId: 'r7cde124fce59f',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
+      replyingToUsername: 'NarutoUzumaki',
       comment: `Reply number 2`,
       likes: [
         'LukasGocke',
@@ -1668,6 +1688,7 @@ export class LoginRegisterComponent {
       replyId: 'ra8dd78e88aeb4',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'HoldenBourg',
+      replyingToUsername: 'NarutoUzumaki',
       comment: `Reply number 1`,
       likes: [
         'LukasGocke',
@@ -1680,6 +1701,7 @@ export class LoginRegisterComponent {
       replyId: 'r2c6255f0c2aaf',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'SasukeUchiha',
+      replyingToUsername: 'NarutoUzumaki',
       comment: `Reply number 2`,
       likes: [
         'LukasGocke',
@@ -1692,6 +1714,7 @@ export class LoginRegisterComponent {
       replyId: 'r8f8ad6166b72b',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'AshlynnDang',
+      replyingToUsername: 'NarutoUzumaki',
       comment: `Reply number 3`,
       likes: [
         'LukasGocke',
@@ -1704,6 +1727,7 @@ export class LoginRegisterComponent {
       replyId: 'red0f689dcf755',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'LukasGocke',
+      replyingToUsername: 'NarutoUzumaki',
       comment: `Reply number 4`,
       likes: [
         'LukasGocke',
@@ -1716,6 +1740,7 @@ export class LoginRegisterComponent {
       replyId: 'rad7d5d9ff1a4d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'EnriqueLeal',
+      replyingToUsername: 'NarutoUzumaki',
       comment: `Reply number 5`,
       likes: [
         'LukasGocke',
@@ -1728,6 +1753,7 @@ export class LoginRegisterComponent {
       replyId: 'r7c4712786a0ed',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'CalebHaralson',
+      replyingToUsername: 'NarutoUzumaki',
       comment: `Reply number 6`,
       likes: [
         'LukasGocke',
@@ -1740,6 +1766,7 @@ export class LoginRegisterComponent {
       replyId: 'r75a38949335c5',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'OliverQueen',
+      replyingToUsername: 'CalebHaralson',
       comment: `Reply number 7`,
       likes: [
         'LukasGocke',
@@ -1752,6 +1779,7 @@ export class LoginRegisterComponent {
       replyId: 'r1fd6b02c645fe',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'TommyMerlin',
+      replyingToUsername: 'OliverQueen',
       comment: `Reply number 8`,
       likes: [
         'LukasGocke',
@@ -1764,6 +1792,7 @@ export class LoginRegisterComponent {
       replyId: 'raf690d8a3803a',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'JohnDiggle',
+      replyingToUsername: 'NarutoUzumaki',
       comment: `Reply number 9`,
       likes: [
         'LukasGocke',
@@ -1776,6 +1805,7 @@ export class LoginRegisterComponent {
       replyId: 'rdfbb9ede08f61',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'FelicitySmoak',
+      replyingToUsername: 'JohnDiggle',
       comment: `Reply number 10`,
       likes: [
         'LukasGocke',
@@ -1788,6 +1818,7 @@ export class LoginRegisterComponent {
       replyId: 'r263560adcf974',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ErenJaeger',
+      replyingToUsername: 'FelicitySmoak',
       comment: `Reply number 11`,
       likes: [
         'LukasGocke',
@@ -1800,6 +1831,7 @@ export class LoginRegisterComponent {
       replyId: 'r592731415367f',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ReinerBraun',
+      replyingToUsername: 'ErenJaeger',
       comment: `Reply number 12`,
       likes: [
         'LukasGocke',
@@ -1812,6 +1844,7 @@ export class LoginRegisterComponent {
       replyId: 'r0338ecf855051',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'MikasaAckerman',
+      replyingToUsername: 'ReinerBraun',
       comment: `Reply number 13`,
       likes: [
         'LukasGocke',
@@ -1824,6 +1857,7 @@ export class LoginRegisterComponent {
       replyId: 'rb37571d2d502c',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ErwinSmith',
+      replyingToUsername: 'MikasaAckerman',
       comment: `Reply number 14`,
       likes: [
         'LukasGocke',
@@ -1836,6 +1870,7 @@ export class LoginRegisterComponent {
       replyId: 'rdd6f20da45cbf',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'LeviAckerman',
+      replyingToUsername: 'ErwinSmith',
       comment: `Reply number 15`,
       likes: [
         'LukasGocke',
@@ -1848,6 +1883,7 @@ export class LoginRegisterComponent {
       replyId: 'r6aceaa09a9987',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'KennyAckerman',
+      replyingToUsername: 'LeviAckerman',
       comment: `Reply number 16`,
       likes: [
         'LukasGocke',
@@ -1860,6 +1896,7 @@ export class LoginRegisterComponent {
       replyId: 'r4ddbabf4f4f5d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ItachiUchiha',
+      replyingToUsername: 'KennyAckerman',
       comment: `Reply number 17`,
       likes: [
         'LukasGocke',
@@ -1872,6 +1909,7 @@ export class LoginRegisterComponent {
       replyId: 'r555488e48335',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'JaraiyaTheGallant',
+      replyingToUsername: 'ItachiUchiha',
       comment: `Reply number 18`,
       likes: [
         'LukasGocke',
@@ -1884,6 +1922,7 @@ export class LoginRegisterComponent {
       replyId: 'r5784ce9e17c3b',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ObitoUchiha',
+      replyingToUsername: 'JaraiyaTheGallant',
       comment: `Reply number 19`,
       likes: [
         'LukasGocke',
@@ -1896,6 +1935,7 @@ export class LoginRegisterComponent {
       replyId: 'r2c13645d8646b',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'MadaraUchiha',
+      replyingToUsername: 'ObitoUchiha',
       comment: `Reply number 20`,
       likes: [
         'LukasGocke',
@@ -1908,6 +1948,7 @@ export class LoginRegisterComponent {
       replyId: 'r970279d92bddb',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'MinatoNamikaze',
+      replyingToUsername: 'MadaraUchiha',
       comment: `Reply number 21`,
       likes: [
         'LukasGocke',
@@ -1919,7 +1960,8 @@ export class LoginRegisterComponent {
       commentId: 'ca6bb512e14b58',
       replyId: 'rcb95c8e109119',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
-      username: 'KakashiSensei',
+      username: 'KakashiHatake',
+      replyingToUsername: 'MinatoNamikaze',
       comment: `Reply number 22`,
       likes: [
         'LukasGocke',
@@ -1932,6 +1974,7 @@ export class LoginRegisterComponent {
       replyId: 'r5a58500d9f9e9',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'LightYagami',
+      replyingToUsername: 'KakashiHatake',
       comment: `Reply number 23`,
       likes: [
         'LukasGocke',
@@ -1944,6 +1987,7 @@ export class LoginRegisterComponent {
       replyId: 'rc05b1aa32d957',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'ToddBourg',
+      replyingToUsername: 'LightYagami',
       comment: `Reply number 24`,
       likes: [
         'LukasGocke',
@@ -1956,6 +2000,7 @@ export class LoginRegisterComponent {
       replyId: 're2eb46f1d082d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'AmyBourg',
+      replyingToUsername: 'ToddBourg',
       comment: `@HoldenBourg Reply number 25`,
       likes: [
         'LukasGocke',
@@ -1968,6 +2013,7 @@ export class LoginRegisterComponent {
       replyId: 'r702f62a53e5f2',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
       username: 'JaydenBourg',
+      replyingToUsername: 'AmyBourg',
       comment: `Reply number 26 @HoldenBourg@AshlynnDang @LukasGocke @EnriqueLeal @CalebHaralson EnriqueLealEnriqueLealEnriqueLealEnriqueLealEnriqueLeal`,
       likes: [
         'LukasGocke',
@@ -1984,6 +2030,8 @@ export class LoginRegisterComponent {
         password: this.currentUser.password
       }
     }
+
+    this.localStorageService.cleanTemporaryLocalStorages();
 
     //if(this.localStorageService.getInformation('rememberMe') == true) {
     //  this.onLogin();

@@ -72,8 +72,18 @@
             </a>
         </div>
 
-        <div class="scroll-box">
+        <div class="scroll-box" *ngIf="type != 'users'">
             <div class="searched-films">
+                <app-searched-film-template
+                    *ngFor="let film of translatedMovies"
+                    [filmDetails]="film" 
+                    (click)="onFilmClicked(film.Type, film.imdbID)" 
+                    class="searched-film"
+                ></app-searched-film-template>
+            </div>
+        </div>
+        <div class="scroll-box">
+            <div class="searched-users">
                 <app-searched-film-template
                     *ngFor="let film of translatedMovies"
                     [filmDetails]="film" 

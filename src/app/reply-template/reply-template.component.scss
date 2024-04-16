@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-between;
     width: 455px;
-    padding: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
 }
 
 //container for profile-picture and comment-info
@@ -32,17 +32,24 @@
     color: #fff;
     overflow: hidden;
 }
-.profile-username {
+.username {
+    display: flex;
+    flex-direction: row;
+    line-height: 16.5px;
+}
+.username a {
     font-weight: 600;
     padding-right: 5px;
     margin-top: 2.5px;
     margin-bottom: 0;
     font-size: 16.5px;
     line-height: 16.5px;
+    text-decoration: none;
+    color: #fff;
 }
 .actual-reply {
     font-weight: 400;
-    margin-top: 0;
+    margin-top: 4px;
     margin-bottom: 5px;
     font-size: 16.5px;
     line-height: 19.5px;

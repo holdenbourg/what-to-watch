@@ -10,9 +10,6 @@ import { SeriesResponseModel } from '../services/models/mdb-list-api/series-resp
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { RawAccountInformationModel } from '../services/models/database-objects/raw-account-information-model';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
-import { FollowerModel } from '../services/models/database-objects/follower-model';
-import { UserPostModel } from '../services/models/database-objects/user-post-model';
-import { CommentModel } from '../services/models/database-objects/comment-model';
 
 @Component({
   selector: 'app-home',
@@ -41,6 +38,7 @@ export class HomeComponent implements OnInit {
     this.upcomingFilmList = this.apiService.searchUpcomingFilms();
 
     this.sidebarCloseOnResize();
+    this.localStorageService.cleanTemporaryLocalStorages();
   }
   
   //closes/opens sidebar if screen width goes above/below 1275 pixels

@@ -3,7 +3,11 @@
         <img class="profile-pitcure" [src]="reply.profilePicture" [attr.alt]="reply.username">
         <div class="reply-info">
             <div class="reply">
-                <p class="profile-username">{{ reply.username }}</p>
+                <div class="username">
+                    <a class="profile-username" href="/account/{{ reply.username }}/posts">{{ reply.username }}</a>
+                    <a> > </a>
+                    <a class="atted-username" href="/account/{{ reply.replyingToUsername }}/posts">{{ reply.replyingToUsername }}</a>
+                </div>
                 <p class="actual-reply" id="actual-reply-{{reply.replyId}}">{{ boldAttedUsernames(reply.comment) }}</p>
             </div>
             <div class="reply-options">
