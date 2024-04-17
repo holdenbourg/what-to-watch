@@ -936,20 +936,6 @@ export class AccountComponent  implements OnInit {
     console.log(id);
     console.log(id2);
   }*/
-    
-  //method for creating commentId's
-  /*for(let i = 0; i < 8; i++) {
-    var id = "c" + Math.random().toString(16).slice(2);
-  
-    console.log(id);
-  }*/
-
-  //method for creating replyId's
-  /*for(let i = 0; i < 8; i++) {
-    var id = "r" + Math.random().toString(16).slice(2);
-  
-    console.log(id);
-  }*/
 
 /*   
   //converts the comments db raw output into CommentModel

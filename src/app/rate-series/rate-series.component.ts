@@ -1,15 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RoutingService } from '../services/routing/routing.service';
 import { ExtensiveSearchFilmModel } from '../services/models/omdb-api/extensive-film-api-search-response-model';
 import { ApiService } from '../services/api/api.service';
 import { ActivatedRoute } from '@angular/router';
-import { RateFilmTemplateComponent } from '../rate-film-template/rate-film-template.component';
 
 @Component({
   selector: 'app-rate-show',
   standalone: true,
-  imports: [CommonModule, RateFilmTemplateComponent],
+  imports: [CommonModule],
   templateUrl: './rate-series.component.html',
   styleUrl: './rate-series.component.scss'
 })
@@ -470,5 +468,58 @@ export class RateSeriesComponent {
     } else {
       return Number(number);
     }
+  }
+
+  //turns the given date (18 Dec 2009) into (December 18, 2009)
+  fixRelease(releaseDate: string) {
+    const day = releaseDate.substring(0,2);
+    let month = releaseDate.substring(3,6);
+    const year = releaseDate.substring(7);
+  
+    switch(month) {
+      case 'Jan':
+        month = 'January'
+        break;
+      case 'Feb':
+        month = 'February'
+        break;
+      case 'Mar':
+        month = 'March'
+        break;
+      case 'Apr':
+        month = 'April'
+        break;
+      case 'May':
+        month = 'May'
+        break;
+      case 'Jun':
+        month = 'June'
+        break;
+      case 'Jul':
+        month = 'July'
+        break;
+      case 'Aug':
+        month = 'August'
+        break;
+      case 'Sep':
+        month = 'September'
+        break;
+      case 'Oct':
+        month = 'October'
+        break;
+      case 'Nov':
+        month = 'November'
+        break;
+      case 'Dec':
+        month = 'December'
+        break;
+    }
+      
+    return `${month} ${day}, ${year}`
+  }
+  
+  //changes film type from movie to Movie
+  fixFilmType(filmType: string) {
+    return filmType.charAt(0).toUpperCase() + filmType.slice(1).toLowerCase();
   }
 }

@@ -241,11 +241,14 @@
         </div>
 
         <div class="right-side">
-            <app-rate-film-template
-                *ngFor="let film of filmDetails"
-                [filmDetails]="film"
-                href="javascript:void(0)"  
-            ></app-rate-film-template>
+            <div class="film-information">
+                <div class="film-text">
+                    <p class="title">{{ filmDetails.at(0)!.Title }}</p>
+                    <p class="release">{{ this.fixRelease(filmDetails.at(0)!.Released) }}</p>
+                    <p class="film-type">{{ this.fixFilmType(filmDetails.at(0)!.Type) }}</p>
+                </div>
+                <img class="film-poster" [src]="filmDetails.at(0)!.Poster" [attr.alt]="filmDetails.at(0)!.Title">
+            </div>
             <div class="button-warning">
                 <p class="warning">Must select a rating for each criteria</p>
                 <button type="submit" class="button" (click)="onRate()">Rate {{ ratingAverage }}/10</button>
