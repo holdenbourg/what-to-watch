@@ -243,11 +243,13 @@
         <div class="right-side">
             <div class="film-information">
                 <div class="film-text">
-                    <p class="title">{{ filmDetails.at(0)!.Title }}</p>
-                    <p class="release">{{ this.fixRelease(filmDetails.at(0)!.Released) }}</p>
-                    <p class="film-type">{{ this.fixFilmType(filmDetails.at(0)!.Type) }}</p>
+                    <p class="title">{{ filmDetails.title }}</p>
+                    <p class="release">{{ this.fixRelease(filmDetails.released) }}</p>
+                    <p class="film-type">{{ this.fixFilmType(filmDetails.type) }}</p>
+                    <p class="seasons">{{ this.seasons }}</p>
+                    <p class="episodes">{{ this.episodes }}</p>
                 </div>
-                <img class="film-poster" [src]="filmDetails.at(0)!.Poster" [attr.alt]="filmDetails.at(0)!.Title">
+                <img class="film-poster" [src]="filmDetails.poster" [attr.alt]="filmDetails.title">
             </div>
             <div class="button-warning">
                 <p class="warning">Must select a rating for each criteria</p>

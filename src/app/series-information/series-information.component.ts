@@ -5,6 +5,7 @@ import { RoutingService } from '../services/routing/routing.service';
 import { CombinedFilmApiResponseModel } from '../services/models/combined-film-api-response';
 import { ApiService } from '../services/api/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-series-information',
@@ -17,6 +18,7 @@ export class SeriesInformationComponent implements OnInit {
   private routingService: RoutingService = inject(RoutingService);
   private apiService: ApiService = inject(ApiService);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+  private localStorageService: LocalStorageService = inject(LocalStorageService);
 
   public streamingServices: string[] = [];
   public imdbId: string = '';
@@ -126,7 +128,6 @@ export class SeriesInformationComponent implements OnInit {
     }
 
     this.combinedApiResult = combinedDetails;
-    console.log(this.combinedApiResult);
 
     //calculate seasons/episodes
     this.combinedApiResult.seasons?.forEach((element) => {
@@ -154,11 +155,9 @@ export class SeriesInformationComponent implements OnInit {
   }
   //if the film is a movie route to rate-movie, else rate-series
   onRateThisFilm() {
-    if(this.combinedApiResult.type === "movie") {
-      this.routingService.navigateToRateMovie(this.combinedApiResult.imdbId);
-    } else if(this.combinedApiResult.type === "series"){
-      this.routingService.navigateToRateSeries(this.combinedApiResult.imdbId);
-    }
+    this.localStorageService.setInformation('currentRateSeries', this.combinedApiResult);
+
+    this.routingService.navigateToRateSeries(this.combinedApiResult.imdbId);
   }
 
   //turns the given date (18 Dec 2009) into (December 18, 2009)

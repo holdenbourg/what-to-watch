@@ -166,6 +166,10 @@ body {
     margin-left: 25px;
     text-align: right;
     padding-top: 10px;
+    color: #fff;
+    font-size: 2.19vw;
+    line-height: 2.19vw;
+    font-weight: 500;
 }
 //selected film poster
 .film-poster {
@@ -181,19 +185,7 @@ body {
     font-size: 2.85vw;
     color: #fff;
     font-weight: 600;
-}
-//selected film release/type
-.release {
-    font-size: 2.19vw;
-    line-height: 2.19vw;
-    color: #fff;
-    font-weight: 500;
-}
-.film-type {
-    font-size: 2.19vw;
-    line-height: 2.19vw;
-    color: #fff;
-    font-weight: 500;
+    padding-bottom: 10px;
 }
 
 //rate button and unrated warning

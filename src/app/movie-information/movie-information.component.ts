@@ -137,11 +137,9 @@ export class MovieInformationComponent implements OnInit {
 
   //if the film is a movie route to rate-movie, else rate-series
   onRateThisFilm() {
-    if(this.combinedApiResult.type === "movie") {
-      this.routingService.navigateToRateMovie(this.combinedApiResult.imdbId);
-    } else if(this.combinedApiResult.type === "series"){
-      this.routingService.navigateToRateSeries(this.combinedApiResult.imdbId);
-    }
+    this.localStorageService.setInformation('currentRateMovie', this.combinedApiResult);
+
+    this.routingService.navigateToRateMovie(this.combinedApiResult.imdbId);
   }
 
   //turns the given date (18 Dec 2009) into (December 18, 2009)

@@ -23,5 +23,9 @@ export class LocalStorageService {
     this.clearInformation('currentPostNumber');
     this.clearInformation('currentEditSeries');
     this.clearInformation('currentEditMovie');
+    this.clearInformation('currentPostSeries');
+    this.clearInformation('currentPostMovie');
+    this.clearInformation('currentRateSeries');
+    this.clearInformation('currentRateMovie');
   }
 }

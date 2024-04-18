@@ -1,8 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ExtensiveSearchFilmModel } from '../services/models/omdb-api/extensive-film-api-search-response-model';
 import { ApiService } from '../services/api/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { RatedSeriesModel } from '../services/models/database-objects/rated-series-model';
+import { LocalStorageService } from '../services/local-storage/local-storage.service';
+import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
+import { RoutingService } from '../services/routing/routing.service';
+import { CombinedFilmApiResponseModel } from '../services/models/combined-film-api-response';
 
 @Component({
   selector: 'app-rate-show',
@@ -11,12 +16,14 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './rate-series.component.html',
   styleUrl: './rate-series.component.scss'
 })
-export class RateSeriesComponent {
-  private apiService: ApiService = inject(ApiService);
+export class RateSeriesComponent implements OnInit {
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+  private localStorageService: LocalStorageService = inject(LocalStorageService);
+  private routingService: RoutingService = inject(RoutingService);
+  public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
   public imdbId: string = '';
-  public filmDetails: ExtensiveSearchFilmModel[] =[];
+  public filmDetails: CombinedFilmApiResponseModel = {}
 
   public ratingAverage: number = 0;
   public ratings = {
@@ -27,13 +34,31 @@ export class RateSeriesComponent {
     length: 0,
     ending: 0
   }
+  public seasons: string = '';
+  public episodes: string = '';
+  public numSeasons: number = 0;
+  public numEpisodes: number = 0;
 
 
   ngOnInit() {
     //sets the title for the look up from the url parameter
     this.imdbId = this.activatedRoute.snapshot.params['imdbId'];
 
-    this.filmDetails = this.apiService.search1FilmOmdb(this.imdbId);
+    this.filmDetails = this.localStorageService.getInformation('currentRateSeries');
+
+    this.filmDetails.seasons?.forEach((season) => {
+      this.numEpisodes = this.numEpisodes + season.episode_count;
+
+      if(season.episode_count != 0) this.numSeasons++;
+    });
+
+    if(this.numSeasons == 1) {
+      this.seasons = `${this.numSeasons} Season`;
+      this.episodes = `${this.numEpisodes} Episodes`;
+    } else {
+      this.seasons = `${this.numSeasons} Seasons`;
+      this.episodes = `${this.numEpisodes} Episodes`;
+    }
   }
 
   onRate() {
@@ -46,8 +71,32 @@ export class RateSeriesComponent {
 
     //else submit the rating
     } else {
-      //enter the rating into the users database
-      console.log(this.ratings);
+
+
+      let currentPostSeries: RatedSeriesModel = {
+        postId: this.generateUniqueSeriesPostId(),
+        poster: this.filmDetails.poster!,
+        title: this.filmDetails.title!,
+        releaseDate: this.alterReleaseForDatabase(this.filmDetails.released!),
+        rated: this.filmDetails.rated!,
+        seasons: this.numSeasons,
+        episodes: this.numEpisodes,
+        genres: this.filmDetails.genre!.split(', '),
+        acting: this.ratings.acting,
+        visuals: this.ratings.visuals,
+        story: this.ratings.story,
+        length: this.ratings.length,
+        pacing: this.ratings.pacing,
+        ending: this.ratings.ending,
+        rating: this.ratingAverage,
+        username: this.currentUser.username,
+        dateRated: new Date().toJSON().slice(0, 10)
+      }
+
+      this.localStorageService.setInformation('currentPostSeries', currentPostSeries);
+      this.routingService.navigateToPostSeries(currentPostSeries.postId);
+      
+      console.log(currentPostSeries);
     }
   }
 
@@ -454,6 +503,27 @@ export class RateSeriesComponent {
       return '';
     }
   }
+
+  //generates ratedSeriesId and makes sure it's unique
+  generateUniqueSeriesPostId() {
+    let allRatedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
+
+    let ratedSeriesId: string = 's' + Math.random().toString(16).slice(2);
+    let isUnique: boolean = false;
+
+    while(!isUnique) {
+      for(let i = 0; i < allRatedSeries.length; i++) {
+        if(allRatedSeries[i].postId == ratedSeriesId) {
+          ratedSeriesId = 's' + Math.random().toString(16).slice(2);
+          break;
+        } else if(i == (allRatedSeries.length - 1) && allRatedSeries[i].postId != ratedSeriesId) {
+          isUnique = true;
+        }
+      }
+    }
+
+    return ratedSeriesId;
+  }
   
   //gets the average of the ratings
   getRatingsAverage() {
@@ -517,6 +587,54 @@ export class RateSeriesComponent {
       
     return `${month} ${day}, ${year}`
   }
+
+    //turns the given date (18 Dec 2009) into (2009-12-18)
+    alterReleaseForDatabase(releaseDate: string) {
+      const day = releaseDate.substring(0,2);
+      let month = releaseDate.substring(3,6);
+      const year = releaseDate.substring(7);
+    
+      switch(month) {
+        case 'Jan':
+          month = '01'
+          break;
+        case 'Feb':
+          month = '02'
+          break;
+        case 'Mar':
+          month = '03'
+          break;
+        case 'Apr':
+          month = '04'
+          break;
+        case 'May':
+          month = '05'
+          break;
+        case 'Jun':
+          month = '06'
+          break;
+        case 'Jul':
+          month = '07'
+          break;
+        case 'Aug':
+          month = '08'
+          break;
+        case 'Sep':
+          month = '09'
+          break;
+        case 'Oct':
+          month = '10'
+          break;
+        case 'Nov':
+          month = '11'
+          break;
+        case 'Dec':
+          month = '12'
+          break;
+      }
+        
+      return `${year}-${month}-${day}`
+    }
   
   //changes film type from movie to Movie
   fixFilmType(filmType: string) {

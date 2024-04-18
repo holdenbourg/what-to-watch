@@ -5,6 +5,8 @@ import { ApiService } from '../services/api/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { RatedMovieModel } from '../services/models/database-objects/rated-movie-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
+import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
+import { RoutingService } from '../services/routing/routing.service';
 
 @Component({
   selector: 'app-rate-movie',
@@ -17,7 +19,8 @@ export class RateMovieComponent implements OnInit {
   private apiService: ApiService = inject(ApiService);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   private localStorageService: LocalStorageService = inject(LocalStorageService);
-  public currentUser: string = this.localStorageService.getInformation('currentUser');
+  private routingService: RoutingService = inject(RoutingService);
+  public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
   public imdbId: string = '';
   public filmDetails: ExtensiveSearchFilmModel[] = [];
@@ -48,35 +51,30 @@ export class RateMovieComponent implements OnInit {
       warningMessage?.classList.toggle('active');
       setTimeout(function() {warningMessage?.classList.toggle('active');}, 3500);
 
-      console.log(this.filmDetails.at(0)!.Genre!.split(', '));
-
     } else {
       let currentPostMovie: RatedMovieModel = {
         postId: this.generateUniqueMoviePostId(),
         poster: this.filmDetails.at(0)!.Poster,
         title: this.filmDetails.at(0)!.Title,
-        releaseDate: this.filmDetails.at(0)!.Released,
+        releaseDate: this.alterReleaseForDatabase(this.filmDetails.at(0)!.Released),
         rated: this.filmDetails.at(0)!.Rated,
-        runTime: Number(this.filmDetails.at(0)!.Runtime),
-        genres: this.filmDetails.at(0)!.Genre.split(','),
+        runTime: parseInt(this.filmDetails.at(0)!.Runtime),
+        genres: this.filmDetails.at(0)!.Genre.split(', '),
         acting: this.ratings.acting,
         visuals: this.ratings.visuals,
         story: this.ratings.story,
         climax: this.ratings.climax,
         pacing: this.ratings.pacing,
         ending: this.ratings.ending,
-        rating: this.ratings.acting,
-        username: this.currentUser,
+        rating: this.ratingAverage,
+        username: this.currentUser.username,
         dateRated: new Date().toJSON().slice(0, 10)
       }
 
-      let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
-      ratedMovies.push(currentPostMovie);
+      this.localStorageService.setInformation('currentPostMovie', currentPostMovie);
+      this.routingService.navigateToPostMovie(currentPostMovie.postId);
       
-      this.localStorageService.setInformation('ratedMovies', ratedMovies);
-
-      //enter the rating into the users database
-      console.log(this.ratings);
+      console.log(currentPostMovie);
     }
   }
 
@@ -567,53 +565,53 @@ export class RateMovieComponent implements OnInit {
     return `${month} ${day}, ${year}`
   }
 
-    //turns the given date (18 Dec 2009) into (2009-12-18)
-    alterReleaseForDatabase(releaseDate: string) {
-      const day = releaseDate.substring(0,2);
-      let month = releaseDate.substring(3,6);
-      const year = releaseDate.substring(7);
-    
-      switch(month) {
-        case 'Jan':
-          month = '01'
-          break;
-        case 'Feb':
-          month = '02'
-          break;
-        case 'Mar':
-          month = '03'
-          break;
-        case 'Apr':
-          month = '04'
-          break;
-        case 'May':
-          month = '05'
-          break;
-        case 'Jun':
-          month = '06'
-          break;
-        case 'Jul':
-          month = '07'
-          break;
-        case 'Aug':
-          month = '08'
-          break;
-        case 'Sep':
-          month = '09'
-          break;
-        case 'Oct':
-          month = '10'
-          break;
-        case 'Nov':
-          month = '11'
-          break;
-        case 'Dec':
-          month = '12'
-          break;
-      }
-        
-      return `${year}-${month}-${day}`
+  //turns the given date (18 Dec 2009) into (2009-12-18)
+  alterReleaseForDatabase(releaseDate: string) {
+    const day = releaseDate.substring(0,2);
+    let month = releaseDate.substring(3,6);
+    const year = releaseDate.substring(7);
+  
+    switch(month) {
+      case 'Jan':
+        month = '01'
+        break;
+      case 'Feb':
+        month = '02'
+        break;
+      case 'Mar':
+        month = '03'
+        break;
+      case 'Apr':
+        month = '04'
+        break;
+      case 'May':
+        month = '05'
+        break;
+      case 'Jun':
+        month = '06'
+        break;
+      case 'Jul':
+        month = '07'
+        break;
+      case 'Aug':
+        month = '08'
+        break;
+      case 'Sep':
+        month = '09'
+        break;
+      case 'Oct':
+        month = '10'
+        break;
+      case 'Nov':
+        month = '11'
+        break;
+      case 'Dec':
+        month = '12'
+        break;
     }
+      
+    return `${year}-${month}-${day}`
+  }
   
   //changes film type from movie to Movie
   fixFilmType(filmType: string) {
