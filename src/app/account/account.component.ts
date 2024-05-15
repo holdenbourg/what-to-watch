@@ -193,194 +193,8 @@ export class AccountComponent  implements OnInit {
     if(postNumber != undefined) this.currentPostNumber = postNumber;
   }
 
-  onCommentClick() {
-    const prompt = document.querySelector('.prompt');
 
-    if(!(prompt?.classList.contains('active'))) prompt?.classList.toggle('active'); 
-  }
-  onCommentUnClick() {
-    const prompt = document.querySelector('.prompt');
-
-    if(prompt?.classList.contains('active') && this.commentInput.length == 0) prompt?.classList.toggle('active');
-  }
-  onBackOut() {
-    const postContainer = document.querySelector('.show-post');
-    postContainer?.classList.toggle('active');
-
-    this.localStorageService.clearInformation('currentPostNumber');
-  }
-  onPostClicked(post: UserPostModel, postNumber: number) {
-    if(post.postId.charAt(0) == 'm') {
-      let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
-      let movie: RatedMovieModel = ratedMovies.filter((movie) => movie.postId == post.postId).at(0)!;
-      
-      const moviePostContainer = document.querySelector('.show-post');
-      moviePostContainer?.classList.toggle('active');
-
-      this.localStorageService.setInformation('currentPostNumber', postNumber);
-      this.currentPostNumber = postNumber;
-      this.currentPost = post;
-      this.currentRatedMovie = movie;
-      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId);
-    } else {
-      let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
-      let series: RatedSeriesModel = ratedSeries.filter((series) => series.postId == post.postId).at(0)!;
-            
-      const seriesPostContainer = document.querySelector('.show-post');
-      seriesPostContainer?.classList.toggle('active');
-
-      this.localStorageService.setInformation('currentPostNumber', postNumber);
-      this.currentPostNumber = postNumber;
-      this.currentPost = post;
-      this.currentRatedSeries = series;
-      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId);
-    }
-  }
-  onRightPost() {  
-    if(this.currentPostNumber <= this.usersPosts.length - 1) {
-      if(this.usersPosts.at(this.currentPostNumber + 1)!.postId.charAt(0) == 'm') {
-        this.currentPostNumber = this.currentPostNumber + 1;
-        this.localStorageService.setInformation('currentPostNumber', this.currentPostNumber);
-        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
-        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
-        this.currentRatedMovie = this.ratedMovies.filter((movie) => movie.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
-        
-      } else {
-        this.currentPostNumber = this.currentPostNumber + 1;
-        this.localStorageService.setInformation('currentPostNumber', this.currentPostNumber);
-        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
-        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
-        this.currentRatedSeries = this.ratedSeries.filter((series) => series.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
-      }
-
-      const prompt = document.querySelector(`.prompt`);
-      prompt!.textContent = `Comment`;
-
-      console.log(this.currentPostNumber);
-    }
-  }
-  onLeftPost() {
-    if(this.currentPostNumber > 0) {
-      if(this.usersPosts.at(this.currentPostNumber - 1)!.postId.charAt(0) == 'm') {
-        this.currentPostNumber = this.currentPostNumber - 1;
-        this.localStorageService.setInformation('currentPostNumber', this.currentPostNumber);
-        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
-        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
-        this.currentRatedMovie = this.ratedMovies.filter((movie) => movie.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
-      } else {
-        this.currentPostNumber = this.currentPostNumber - 1;
-        this.localStorageService.setInformation('currentPostNumber', this.currentPostNumber);
-        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
-        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
-        this.currentRatedSeries = this.ratedSeries.filter((series) => series.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
-      }
-      
-      const prompt = document.querySelector(`.prompt`);
-      prompt!.textContent = `Comment`;
-
-      console.log(this.currentPostNumber);
-    }
-  }
-  onPostComment() {
-    if(this.commentInput.length <= 0) {
-      this.commentWarning = `Comment must be between 2 and 150 characters`;
-      setTimeout(() => {this.commentWarning = ``;}, 3000);
-      return;
-    } else if(this.commentInput.length >= 150) {
-      this.commentWarning = `Comment must be between 2 and 150 characters`;
-      setTimeout(() => {this.commentWarning = ``;}, 3000);
-      return;
-    } else if (this.userAttedTwice(this.commentInput)) {
-      this.commentWarning = `Comment can't @ the same user twice`;
-      setTimeout(() => {this.commentWarning = ``;}, 3000);
-      return;
-    } 
-
-    const prompt = document.querySelector(`.prompt`);
-
-    if(prompt!.textContent == 'Comment') {
-      let comment: CommentModel = {
-        postId: this.currentPost.postId,
-        commentId: this.generateUniqueCommentId(),
-        profilePicture: this.currentUser.profilePicture,
-        username: this.currentUser.username,
-        comment: this.commentInput,
-        likes: [],
-        commentDate: new Date().toJSON().slice(0, 10)
-      }
-
-      this.currentComments.push(comment);
-
-      let allComments: CommentModel[] = this.localStorageService.getInformation('comments');
-      allComments.push(comment);
-
-      this.localStorageService.setInformation('comments', allComments);
-    } else {
-      let reply: ReplyModel = {
-        commentId: this.replyService.commentId,
-        replyId: this.generateUniqueReplyId(),
-        profilePicture: this.currentUser.profilePicture,
-        username: this.currentUser.username,
-        replyingToUsername: prompt!.textContent!.split(' ').splice(-1)[0],
-        comment: this.commentInput,
-        likes: [],
-        commentDate: new Date().toJSON().slice(0, 10)
-      }
-
-      let allReplies: ReplyModel[] = this.localStorageService.getInformation('replies');
-      allReplies.push(reply);
-
-      this.localStorageService.setInformation('replies', allReplies);     
-    }
-
-    location.reload();
-  }
-  toggleCommentLabel() {
-  }
-  onSend() {
-  }
-  onLike() {
-    if(this.currentPost.likes.includes(this.currentUser.username)) {
-      const index = this.currentPost.likes.indexOf(this.currentUser.username, 0);
-
-      if (index > -1) {
-        this.currentPost.likes.splice(index, 1);
-      }
-    } else {
-      this.currentPost.likes.push(this.currentUser.username);
-    }    
-
-    //update the likes for that post in database
-    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
-
-    for(let post of rawPosts) {
-      if(post.postId == this.currentPost.postId) {
-        post.likes = this.currentPost.likes;
-      }
-    }
-
-    this.localStorageService.clearInformation('rawPosts');
-    this.localStorageService.setInformation('rawPosts', rawPosts);
-  }
-
-  populatePostsAndComments() {
-    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
-    let rawComments: CommentModel[] = this.localStorageService.getInformation('comments');
-
-    let rawUsersPosts: RawUserPostModel[] = [];
-    let rawUsersComments: CommentModel[] = [];
-
-    for(let i = 0; i < rawPosts.length; i++) {
-      if(this.userAccount.postIds.includes(rawPosts[i].postId)) rawUsersPosts.push(rawPosts[i]);
-    }
-    for(let i = 0; i < rawComments.length; i++) {
-      if(this.userAccount.postIds.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
-    }
-
-    this.usersPosts = this.sortByDate(rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost)));
-    this.postsComments = rawUsersComments;
-  }
-
+  /* TOGGLE SHOWN FOLLOWER LIST */
   toggleFollowers() {
     var activeFollowerType = this.localStorageService.getInformation('follower-type');
 
@@ -448,26 +262,8 @@ export class AccountComponent  implements OnInit {
     }
   }
 
-  //closes/opens sidebar if screen width goes above/below 1275 pixels
-  sidebarCloseOnResize() {  
-    const themeClass = document.querySelector('.sidebar');
-    const container = document.querySelector('.container');
-    var width = window.innerWidth;
 
-    if(width <= 1275 && themeClass?.classList.contains('active')) {
-      themeClass?.classList.toggle('active');
-      container?.classList.toggle('active');  
-    }
-    if(width >= 1275 && !(themeClass?.classList.contains('active'))) {
-      themeClass?.classList.toggle('active');
-      container?.classList.toggle('active');  
-    }
-  }
-
-  onEditProfile() {
-    this.routingService.navigateToSettings();
-  }
-
+  /* CHECKS WHICH TYPE OF ACCOUNT SCREEN TO SHOW */
   //makes sure an account under that username exists
   doesUserExist() {
     let userExistsInDB: boolean = false;
@@ -616,6 +412,8 @@ export class AccountComponent  implements OnInit {
     //message
   }
 
+
+  /* OBJECT CONVERSION FROM DATABASE */
   //converts the users db raw output into AccountInformationModel
   convertRawUserToUser(rawUser: RawAccountInformationModel) {
     let user: AccountInformationModel = {
@@ -672,46 +470,27 @@ export class AccountComponent  implements OnInit {
     return post;
   }
 
-  navigateToHome() {
-    this.routingService.navigateToHome();
-  }
-  navigateToLogin() {
-    this.routingService.navigateToLogin();
-  }
-  navigateToSearchMovies() {
-    this.routingService.navigateToSearchMovies();
-  }  
-  navigateToSearchSeries() {
-    this.routingService.navigateToSearchSeries();
-  }
-  navigateToMovies() {
-    this.routingService.navigateToMovies();
-  }
-  navigateToShows() {
-    this.routingService.navigateToShows();
-  }
-  navigateToSummary() {
-    this.routingService.navigateToSummary();
-  }
-  navigateToPostMovie(postId: string) {
-    this.routingService.navigateToPostMovie(postId);
-  }
-  navigateToPostSeries(postId: string) {
-    this.routingService.navigateToPostSeries(postId);
-  }
-  navigateToAccountsPosts() {
-    this.routingService.navigateToAccountsPosts(this.currentUser.username);
-  }
-  navigateToAccountsTagged() {
-    this.routingService.navigateToAccountsTagged(this.currentUser.username);
-  }
-  navigateToAccountsArchived() {
-    this.routingService.navigateToAccountsArchived(this.currentUser.username);
-  }
-  navigateToSettings() {
-    this.routingService.navigateToSettings();
-  }
+  
+  /* POST LOGIC */
+  //adds all the users posts and post comments to a list to be displayed later
+  populatePostsAndComments() {
+    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
+    let rawComments: CommentModel[] = this.localStorageService.getInformation('comments');
 
+    let rawUsersPosts: RawUserPostModel[] = [];
+    let rawUsersComments: CommentModel[] = [];
+
+    for(let i = 0; i < rawPosts.length; i++) {
+      if(this.userAccount.postIds.includes(rawPosts[i].postId)) rawUsersPosts.push(rawPosts[i]);
+    }
+    for(let i = 0; i < rawComments.length; i++) {
+      if(this.userAccount.postIds.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
+    }
+
+    this.usersPosts = this.sortByDate(rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost)));
+    this.postsComments = rawUsersComments;
+  }
+  
   //checks to see if the same person is atted twice 
   userAttedTwice(comment: string) {
     const count = comment.split('@').length - 1; 
@@ -777,46 +556,11 @@ export class AccountComponent  implements OnInit {
       return;
     }
   }
-  //generates commentId and makes sure it's unique
-  generateUniqueCommentId() {
-    let allComments: CommentModel[] = this.localStorageService.getInformation('comments');
-
-    let commentId: string = 'c' + Math.random().toString(16).slice(2);
-    let isUnique: boolean = false;
-
-    while(!isUnique) {
-      for(let i = 0; i < allComments.length; i++) {
-        if(allComments[i].commentId == commentId) {
-          commentId = 'c' + Math.random().toString(16).slice(2);
-          break;
-        } else if(i == (allComments.length - 1) && allComments[i].commentId != commentId) {
-          isUnique = true;
-        }
-      }
-    }
-
-    return commentId;
+  //routes to the clicked users account
+  attedUserClicked(attedUser: string) {
+    this.routingService.navigateToAccountsPosts(attedUser);
   }
-  //generates replyId and makes sure it's unique
-  generateUniqueReplyId() {
-    let allReplies: ReplyModel[] = this.localStorageService.getInformation('replies');
 
-    let replyId: string = 'r' + Math.random().toString(16).slice(2);
-    let isUnique: boolean = false;
-
-    while(!isUnique) {
-      for(let i = 0; i < allReplies.length; i++) {
-        if(allReplies[i].replyId == replyId) {
-          replyId = 'r' + Math.random().toString(16).slice(2);
-          break;
-        } else if(i == (allReplies.length - 1) && allReplies[i].replyId != replyId) {
-          isUnique = true;
-        }
-      }
-    }
-
-    return replyId;
-  }
   //turns 2009-12-18 into December 18, 2009
   fixCommentDate(commentDate?: string) {    
     if(commentDate == '') {
@@ -880,7 +624,6 @@ export class AccountComponent  implements OnInit {
 
     return posts;
   }
-  //not being used
   sortCommentsByDate(posts: CommentModel[]) {
     posts.sort((a: CommentModel, b: CommentModel) => {
       let aDate: Date = new Date(a.commentDate);
@@ -891,10 +634,49 @@ export class AccountComponent  implements OnInit {
 
     return posts;
   }
-  attedUserClicked(attedUser: string) {
-    this.routingService.navigateToAccountsPosts(attedUser);
+
+  //generates commentId and makes sure it's unique
+  generateUniqueCommentId() {
+    let allComments: CommentModel[] = this.localStorageService.getInformation('comments');
+
+    let commentId: string = 'c' + Math.random().toString(16).slice(2);
+    let isUnique: boolean = false;
+
+    while(!isUnique) {
+      for(let i = 0; i < allComments.length; i++) {
+        if(allComments[i].commentId == commentId) {
+          commentId = 'c' + Math.random().toString(16).slice(2);
+          break;
+        } else if(i == (allComments.length - 1) && allComments[i].commentId != commentId) {
+          isUnique = true;
+        }
+      }
+    }
+
+    return commentId;
+  }
+  //generates replyId and makes sure it's unique
+  generateUniqueReplyId() {
+    let allReplies: ReplyModel[] = this.localStorageService.getInformation('replies');
+
+    let replyId: string = 'r' + Math.random().toString(16).slice(2);
+    let isUnique: boolean = false;
+
+    while(!isUnique) {
+      for(let i = 0; i < allReplies.length; i++) {
+        if(allReplies[i].replyId == replyId) {
+          replyId = 'r' + Math.random().toString(16).slice(2);
+          break;
+        } else if(i == (allReplies.length - 1) && allReplies[i].replyId != replyId) {
+          isUnique = true;
+        }
+      }
+    }
+
+    return replyId;
   }
 
+  //checks if a post was active before browser refresh
   checkPostActive() {
     let currentPostNumber: number = this.localStorageService.getInformation('currentPostNumber');
 
@@ -921,56 +703,243 @@ export class AccountComponent  implements OnInit {
     return false;
   }
 
+  //turns post screen active with the clicked post's information
+  onPostClicked(post: UserPostModel, postNumber: number) {
+    if(post.postId.charAt(0) == 'm') {
+      let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
+      let movie: RatedMovieModel = ratedMovies.filter((movie) => movie.postId == post.postId).at(0)!;
+      
+      const moviePostContainer = document.querySelector('.show-post');
+      moviePostContainer?.classList.toggle('active');
+
+      this.localStorageService.setInformation('currentPostNumber', postNumber);
+      this.currentPostNumber = postNumber;
+      this.currentPost = post;
+      this.currentRatedMovie = movie;
+      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId);
+    } else {
+      let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
+      let series: RatedSeriesModel = ratedSeries.filter((series) => series.postId == post.postId).at(0)!;
+            
+      const seriesPostContainer = document.querySelector('.show-post');
+      seriesPostContainer?.classList.toggle('active');
+
+      this.localStorageService.setInformation('currentPostNumber', postNumber);
+      this.currentPostNumber = postNumber;
+      this.currentPost = post;
+      this.currentRatedSeries = series;
+      this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId);
+    }
+  }
+  //closes the post screen
+  onBackOut() {
+    const postContainer = document.querySelector('.show-post');
+    postContainer?.classList.toggle('active');
+
+    this.localStorageService.clearInformation('currentPostNumber');
+  }
+  //shows next post in line
+  onRightPost() {  
+    if(this.currentPostNumber <= this.usersPosts.length - 1) {
+      if(this.usersPosts.at(this.currentPostNumber + 1)!.postId.charAt(0) == 'm') {
+        this.currentPostNumber = this.currentPostNumber + 1;
+        this.localStorageService.setInformation('currentPostNumber', this.currentPostNumber);
+        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
+        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
+        this.currentRatedMovie = this.ratedMovies.filter((movie) => movie.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
+        
+      } else {
+        this.currentPostNumber = this.currentPostNumber + 1;
+        this.localStorageService.setInformation('currentPostNumber', this.currentPostNumber);
+        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
+        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
+        this.currentRatedSeries = this.ratedSeries.filter((series) => series.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
+      }
+
+      const prompt = document.querySelector(`.prompt`);
+      prompt!.textContent = `Comment`;
+    }
+  }
+  //shows previous post in line
+  onLeftPost() {
+    if(this.currentPostNumber > 0) {
+      if(this.usersPosts.at(this.currentPostNumber - 1)!.postId.charAt(0) == 'm') {
+        this.currentPostNumber = this.currentPostNumber - 1;
+        this.localStorageService.setInformation('currentPostNumber', this.currentPostNumber);
+        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
+        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
+        this.currentRatedMovie = this.ratedMovies.filter((movie) => movie.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
+      } else {
+        this.currentPostNumber = this.currentPostNumber - 1;
+        this.localStorageService.setInformation('currentPostNumber', this.currentPostNumber);
+        this.currentPost = this.usersPosts.at(this.currentPostNumber)!;
+        this.currentComments = this.postsComments.filter((comment) => comment.postId == this.usersPosts.at(this.currentPostNumber)!.postId);
+        this.currentRatedSeries = this.ratedSeries.filter((series) => series.postId == this.usersPosts.at(this.currentPostNumber)!.postId).at(0)!;
+      }
+      
+      const prompt = document.querySelector(`.prompt`);
+      prompt!.textContent = `Comment`;
+    }
+  }
+
+  //toggles the comment input box prompt on and off
+  onCommentClick() {
+    const prompt = document.querySelector('.prompt');
+
+    if(!(prompt?.classList.contains('active'))) prompt?.classList.toggle('active'); 
+  }
+  onCommentUnClick() {
+    const prompt = document.querySelector('.prompt');
+
+    if(prompt?.classList.contains('active') && this.commentInput.length == 0) prompt?.classList.toggle('active');
+  }
+
+  //button to send post to other users
+  onSend() {
+  }
+  //button to like the current post
+  onLike() {
+    if(this.currentPost.likes.includes(this.currentUser.username)) {
+      const index = this.currentPost.likes.indexOf(this.currentUser.username, 0);
+
+      if (index > -1) {
+        this.currentPost.likes.splice(index, 1);
+      }
+    } else {
+      this.currentPost.likes.push(this.currentUser.username);
+    }    
+
+    //update the likes for that post in database
+    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
+
+    for(let post of rawPosts) {
+      if(post.postId == this.currentPost.postId) {
+        post.likes = this.currentPost.likes;
+      }
+    }
+
+    this.localStorageService.clearInformation('rawPosts');
+    this.localStorageService.setInformation('rawPosts', rawPosts);
+  }
+  //button to submit the comment in the comment input box
+  onPostComment() {
+    if(this.commentInput.length <= 0) {
+      this.commentWarning = `Comment must be between 2 and 150 characters`;
+      setTimeout(() => {this.commentWarning = ``;}, 3000);
+      return;
+    } else if(this.commentInput.length >= 150) {
+      this.commentWarning = `Comment must be between 2 and 150 characters`;
+      setTimeout(() => {this.commentWarning = ``;}, 3000);
+      return;
+    } else if (this.userAttedTwice(this.commentInput)) {
+      this.commentWarning = `Comment can't @ the same user twice`;
+      setTimeout(() => {this.commentWarning = ``;}, 3000);
+      return;
+    } 
+
+    const prompt = document.querySelector(`.prompt`);
+
+    if(prompt!.textContent == 'Comment') {
+      let comment: CommentModel = {
+        postId: this.currentPost.postId,
+        commentId: this.generateUniqueCommentId(),
+        profilePicture: this.currentUser.profilePicture,
+        username: this.currentUser.username,
+        comment: this.commentInput,
+        likes: [],
+        commentDate: new Date().toJSON().slice(0, 10)
+      }
+
+      this.currentComments.push(comment);
+
+      let allComments: CommentModel[] = this.localStorageService.getInformation('comments');
+      allComments.push(comment);
+
+      this.localStorageService.setInformation('comments', allComments);
+    } else {
+      let reply: ReplyModel = {
+        commentId: this.replyService.commentId,
+        replyId: this.generateUniqueReplyId(),
+        profilePicture: this.currentUser.profilePicture,
+        username: this.currentUser.username,
+        replyingToUsername: prompt!.textContent!.split(' ').splice(-1)[0],
+        comment: this.commentInput,
+        likes: [],
+        commentDate: new Date().toJSON().slice(0, 10)
+      }
+
+      let allReplies: ReplyModel[] = this.localStorageService.getInformation('replies');
+      allReplies.push(reply);
+
+      this.localStorageService.setInformation('replies', allReplies);     
+    }
+
+    location.reload();
+  }
+
+
+  /* OPEN/CLOSE SIDEBAR */
   toggleActive() {
     const themeClass = document.querySelector('.sidebar');
     themeClass?.classList.toggle('active');
     const container = document.querySelector('.container');
     container?.classList.toggle('active');
   }
+  //closes/opens sidebar if screen width goes above/below 1275 pixels
+  sidebarCloseOnResize() {  
+    const themeClass = document.querySelector('.sidebar');
+    const container = document.querySelector('.container');
+    var width = window.innerWidth;
 
-  //method for creating postId's
-  /*for(let i = 0; i < 8; i++) {
-    var id = "m" + Math.random().toString(16).slice(2);
-    var id2 = "s" + Math.random().toString(16).slice(2);
-  
-    console.log(id);
-    console.log(id2);
-  }*/
-
-/*   
-  //converts the comments db raw output into CommentModel
-  convertRawCommentToComment(rawComment: RawCommentModel) {
-    let comment: CommentModel = {
-      postId: rawComment.postId,
-      profilePicture: rawComment.profilePicture,
-      username: rawComment.username,
-      comment: rawComment.comment,
-      likes: rawComment.likes,
-      replies: this.convertRawRepliesToReplies(rawComment.replies),
-      commentDate: rawComment.commentDate
+    if(width <= 1275 && themeClass?.classList.contains('active')) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
     }
-
-    return comment;
+    if(width >= 1275 && !(themeClass?.classList.contains('active'))) {
+      themeClass?.classList.toggle('active');
+      container?.classList.toggle('active');  
+    }
   }
-  //rawReply: profilePicture.jpg::::HoldenBourg::::I love replying::::22::::04-10-2003
-  convertRawRepliesToReplies(rawReplies: string[]) {
-    let returnArray: ReplyModel[] = [];
 
-    rawReplies.forEach((rawReplyString) => {
-      let splitArray = rawReplyString.split('::::');
 
-      let reply: ReplyModel = {
-        profilePicture: splitArray.at(0)!,
-        username: splitArray.at(1)!,
-        comment: splitArray.at(2)!,
-        likes: splitArray.at(3)!.split(','),
-        commentDate: splitArray.at(4)!
-      }
-
-      returnArray.push(reply);
-    })
-
-    return returnArray;
-  } 
-*/
+  /* ROUTING LOGIC */
+  navigateToHome() {
+    this.routingService.navigateToHome();
+  }
+  navigateToLogin() {
+    this.routingService.navigateToLogin();
+  }
+  navigateToSearchMovies() {
+    this.routingService.navigateToSearchMovies();
+  }  
+  navigateToSearchSeries() {
+    this.routingService.navigateToSearchSeries();
+  }
+  navigateToMovies() {
+    this.routingService.navigateToMovies();
+  }
+  navigateToShows() {
+    this.routingService.navigateToShows();
+  }
+  navigateToSummary() {
+    this.routingService.navigateToSummary();
+  }
+  navigateToPostMovie(postId: string) {
+    this.routingService.navigateToPostMovie(postId);
+  }
+  navigateToPostSeries(postId: string) {
+    this.routingService.navigateToPostSeries(postId);
+  }
+  navigateToAccountsPosts() {
+    this.routingService.navigateToAccountsPosts(this.currentUser.username);
+  }
+  navigateToAccountsTagged() {
+    this.routingService.navigateToAccountsTagged(this.currentUser.username);
+  }
+  navigateToAccountsArchived() {
+    this.routingService.navigateToAccountsArchived(this.currentUser.username);
+  }
+  navigateToSettings() {
+    this.routingService.navigateToSettings();
+  }
 }

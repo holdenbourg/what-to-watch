@@ -21,6 +21,8 @@ export class LocalStorageService {
 
   cleanTemporaryLocalStorages() {
     this.clearInformation('currentPostNumber');
+    this.clearInformation('currentArchivedPostNumber');
+    this.clearInformation('currentTaggedPostNumber');
     this.clearInformation('currentEditSeries');
     this.clearInformation('currentEditMovie');
     this.clearInformation('currentPostSeries');

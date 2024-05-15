@@ -74,7 +74,7 @@
                     <div class="account-information-text">
                         <div class="username-buttons">
                             <p class="username">{{ currentUser.username }}</p>
-                            <button type="submit" class="edit-profile-button" (click)="onEditProfile()">Edit Profile</button>
+                            <button type="submit" class="edit-profile-button" (click)="navigateToSettings()">Edit Profile</button>
                         </div>
                         <div class="posts-followers-following">
                             <p class="num-posts">{{ currentUser.postIds.length }} posts</p>
@@ -307,7 +307,7 @@
 
                         <div class="input-box">
                             <label class="prompt">Comment</label>
-                            <input class="input-enter" type="text" [(ngModel)]="commentInput" name="commentInput" (blur)="onCommentUnClick()" (focus)="onCommentClick()" (keyup.enter)="onPostComment()" (focus)="toggleCommentLabel()" required>    
+                            <input class="input-enter" type="text" [(ngModel)]="commentInput" name="commentInput" (blur)="onCommentUnClick()" (focus)="onCommentClick()" (keyup.enter)="onPostComment()" required>    
                         </div>
 
                         <div class="right-buttons">
@@ -419,7 +419,7 @@
     
                             <div class="input-box">
                                 <label class="prompt">Comment</label>
-                                <input class="input-enter" type="text" [(ngModel)]="commentInput" name="commentInput" (blur)="onCommentUnClick()" (focus)="onCommentClick()" (keyup.enter)="onPostComment()" (focus)="toggleCommentLabel()" required>    
+                                <input class="input-enter" type="text" [(ngModel)]="commentInput" name="commentInput" (blur)="onCommentUnClick()" (focus)="onCommentClick()" (keyup.enter)="onPostComment()" required>    
                             </div>
     
                             <div class="right-buttons">

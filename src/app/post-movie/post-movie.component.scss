@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url('../images/shadedBackground.jpg');
+}
+
+.container {
+    position: absolute;
+    top: 7.15vw;
+    bottom: 7.15vw;
+    left: 5.2vw;
+    right: 5.2vw;
+    //height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.post {
+    display: flex;
+    height: 100%;
+    width: 58%;
+    border: .2vw solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+}
+.film-poster {
+    width: 43%;
+    aspect-ratio: 2/3;
+    border-right: .2vw solid #fff;
+}
+.post-information {
+    display: flex;
+    flex-direction: column;
+    width: 57%;
+}
+
+.current-user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: .15vw solid #fff;
+    color: #fff;
+}
+.pofile-picture-username {
+    display: flex;
+}
+.user-profile-picture {
+    width: 1.65vw;
+    width: 1.65vw;
+    border-radius: 1.65vw;
+    -webkit-filter: invert(100%);
+}
+.user-username {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    font-size: .86vw;
+    font-weight: 500;
+}
+.post-date {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: .86vw;
+    font-weight: 500;
+    padding-right: 5px;
+}
+
+.movie-rating-info {
+    color: #fff;
+    font-size: .86vw;
+    margin-left: 7.5px;
+    margin-right: 7.5px;
+    margin-top: 7.5px;
+    padding: 7.5px 5px 10px 5px;
+    border: .15vw solid #fff;
+    border-radius: 5px;
+}
+.rating-information {
+    font-size: 1.015vw;
+    font-weight: 600;
+    text-align: center;
+}
+.movie-criteria {
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+}
+.movie-criteria p {
+    padding-left: 0;
+    text-wrap: nowrap;
+}
+.overall-rating {
+    padding-top: 2.5px;
+    font-size: .93vw;
+    font-weight: 500;
+    text-align: center;
+}
+
+//container for profile-picture and caption
+.written-caption {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0 0 10px;
+    width: 95%;
+}
+.caption-profile-pitcure {
+    height: 1.65vw;
+    width: 1.65vw;
+    border-radius: 1.65vw;
+    -webkit-filter: invert(100%);
+    margin: 2.5px 12px 5px 0;
+}
+//container for profile-username and the actual-caption
+.caption {
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+}
+.caption-username {
+    font-weight: 600;
+    padding-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: .85vw;
+    line-height: .85vw;
+    text-decoration: none;
+    color: #fff;
+}
+.caption-text {
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: .85vw;
+    line-height: 1vw;
+    overflow-wrap: normal;
+}
+
+.right-side {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+//input/prompt for caption
+.caption-input-box {
+    height: 25%;
+    border: .2vw solid #fff;
+    border-radius: 5px;
+    transition: .5s;
+    backdrop-filter: blur(3px);
+}
+//input prompt for caption
+.caption-input-box label {
+    position: absolute;
+    left: 1.75%;
+    top: 5.6%;
+    font-size: .95vw;
+    color: #fff;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+//makes prompt disapear on click for both caption
+.caption-input-box textarea:focus~label,
+.caption-input-box textarea:valid~label {
+    color: transparent;
+}
+.caption-input-box p {
+    position: absolute;
+    right: 1.75%;
+    bottom: 2%;
+    font-size: .95vw;
+    color: #fff;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+//text area for caption
+.caption-input-box textarea {
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: .95vw;
+    color: #fff;
+    font-weight: 500;
+    padding-left: 1.7%;
+    padding-top: 1.5%;
+    padding-right: 1.7%;
+}
+//caption warning
+.caption-warning {
+    font-size: .85vw;
+    color: red;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+}
+
+.tagged-people {
+    height: 45%;
+    border: .2vw solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+    margin-bottom: 3%;
+}
+
+.buttons {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+//submit button for change-info boxes
+.button {
+    margin-top: 2%;
+    width: 100%;
+    height: 48%;
+    background: transparent;
+    border: .2vw solid #fff;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1vw;
+    color: #fff;
+    font-weight: 500;
+}

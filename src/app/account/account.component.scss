@@ -233,13 +233,6 @@ body {
     border-radius: 32px;
     -webkit-filter: invert(100%);
 }
-.post-date {
-    margin-top: auto;
-    margin-bottom: auto;
-    font-size: 16.5px;
-    font-weight: 500;
-    padding-right: 5px;
-}
 .user-username {
     margin-top: auto;
     margin-bottom: auto;
@@ -247,6 +240,14 @@ body {
     font-size: 16.5px;
     font-weight: 500;
 }
+.post-date {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 16.5px;
+    font-weight: 500;
+    padding-right: 5px;
+}
+
 //container for posts-comments
 .comment-scroll-box {
     overflow: hidden;
@@ -293,6 +294,7 @@ body {
     font-weight: 500;
     text-align: center;
 }
+
 //container for profile-picture and comment-info
 .left-side {
     display: flex;
@@ -306,11 +308,6 @@ body {
     border-radius: 32px;
     -webkit-filter: invert(100%);
     margin: 2.5px 12px 5px 0;
-}
-//contianer for comment and comment-options
-.comment-info {
-    display: flex;
-    flex-direction: column;
 }
 //container for profile-username and the actual-comment
 .comment {
@@ -336,6 +333,7 @@ body {
     font-size: 16.5px;
     line-height: 19.5px;
 }
+
 .commenting-area {
     display: flex;
     height: 10%;
@@ -564,6 +562,12 @@ body {
     background: rgba(255, 255, 255, .2);
     border-radius: 3px;
 }
+.posts-button:hover,
+.tagged-button:hover,
+.archive-button:hover {
+    background: rgba(255, 255, 255, .2);
+    border-radius: 3px;
+}
 //posts/tagged button text
 .posts, .tagged, .archive {
     padding-right: 3px;
@@ -630,7 +634,8 @@ body {
     height: 60px;
     border-bottom: solid .2vw #fff;
 }
-.follower-type i.active {
+.follower-type i.active,
+.follower-type i:hover {
     background: rgba(255, 255, 255, .2);
     border-radius: 3px;
 }

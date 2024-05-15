@@ -197,6 +197,8 @@ body {
 .search-bar i {
     padding-left: 7.5px;
     padding-right: 7.5px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
     font-size: 1.2em;
     color: #fff;
     height: 1.5em;
@@ -204,10 +206,13 @@ body {
     margin-bottom: auto;
     cursor: pointer;
 }
-.search-bar i.active {
+.search-bar i.active,
+.search-bar i:hover {
     padding-left: 7.5px;
     padding-right: 7.5px;
     font-size: 1.2em;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
     height: 1.5em;
     margin-top: auto;
     margin-bottom: auto;

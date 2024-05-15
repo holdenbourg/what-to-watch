@@ -1,1 +1,61 @@
-<p>post-movie works!</p>
+<head>
+    <title>Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="container">
+        <div class="post">
+            <img class="film-poster" [src]="currentPostingMovie.poster" [attr.alt]="currentPostingMovie.poster">
+            <div class="post-information">
+                <div class="current-user-info">
+                    <div class="pofile-picture-username">
+                        <img class="user-profile-picture" [src]="currentUser.profilePicture" [attr.alt]="currentPostingMovie.username">
+                        <p class="user-username">{{ currentPostingMovie.username }}</p>
+                    </div>
+                    <p class="post-date">{{ fixCommentDate(currentPostingMovie.dateRated) }}</p>
+                </div>
+                <div class="movie-rating-info">
+                    <p class="rating-information">{{ currentPostingMovie.title }}</p>
+                    <div class="movie-criteria">
+                        <div class="left-three">
+                            <p class="movie-criteria">Acting: {{ currentPostingMovie.acting }}</p>
+                            <p class="movie-criteria">Visuals: {{ currentPostingMovie.visuals }}</p>
+                            <p class="movie-criteria">Story: {{ currentPostingMovie.story }}</p>
+                        </div>
+                        <div class="right-three">
+                            <p class="movie-criteria">Climax: {{ currentPostingMovie.climax }}</p>
+                            <p class="movie-criteria">Pacing: {{ currentPostingMovie.pacing }}</p>
+                            <p class="movie-criteria">Ending: {{ currentPostingMovie.ending }}</p>
+                        </div>
+                    </div>
+                    <p class="overall-rating">Overall Rating: {{ currentPostingMovie.rating }}</p>
+                </div>
+                <div class="written-caption" *ngIf="caption.length != 0">
+                    <img class="caption-profile-pitcure" [src]="currentUser.profilePicture" [attr.alt]="currentPostingMovie.username">
+                    <div class="caption">
+                        <p class="caption-username">{{ currentUser.username }}</p>
+                        <p class="caption-text" id="caption-text">{{ caption }}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="caption-input-box">
+                <textarea type="text" [(ngModel)]="caption" name="caption" required></textarea>
+                <label>What do you want to caption it?</label>
+                <p>{{ caption.length }}/150</p>
+            </div>
+            <p class="caption-warning">{{ captionWarning }}</p>
+            <div class="tagged-people">
+                
+            </div>
+            <div class="buttons">
+                <button type="submit" class="button" (click)="onPost()">Post</button>
+                <button type="submit" class="button" (click)="onArchive()">Archive</button>
+            </div>
+        </div>
+    </div>
+</body>
+
