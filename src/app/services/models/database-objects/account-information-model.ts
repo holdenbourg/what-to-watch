@@ -1,6 +1,4 @@
-import { CommentModel } from "./comment-model";
 import { FollowerModel } from "./follower-model";
-import { UserPostModel } from "./user-post-model";
 
 export interface AccountInformationModel {
     username: string,

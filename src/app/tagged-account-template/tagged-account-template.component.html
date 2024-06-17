@@ -1,0 +1,7 @@
+<div class="tagged-user">
+    <div class="tagged-info">
+        <img class="profile-picture" [src]="taggedAccount.profilePicture" [attr.alt]="taggedAccount.username">
+        <p class="username" (click)="this.routingService.navigateToAccountsPosts(taggedAccount.username)">{{ taggedAccount.username }}</p>
+    </div>
+    <button type="submit" class="button" (click)="undoTagAccount(taggedAccount)">Undo</button>
+</div>

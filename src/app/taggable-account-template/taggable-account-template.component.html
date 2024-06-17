@@ -1,0 +1,7 @@
+<div class="taggable-user">
+    <div class="taggable-info">
+        <img class="profile-picture" [src]="taggableAccount.profilePicture" [attr.alt]="taggableAccount.username">
+        <p class="username" (click)="this.routingService.navigateToAccountsPosts(taggableAccount.username)">{{ taggableAccount.username }}</p>
+    </div>
+    <button type="submit" class="button" (click)="tagAccount(taggableAccount)">Tag</button>
+</div>

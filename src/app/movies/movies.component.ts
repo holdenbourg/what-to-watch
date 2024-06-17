@@ -247,7 +247,8 @@ export class MoviesComponent  implements OnInit {
     let hours = Math.floor(runtime/60);
     let minutes = runtime - (hours * 60);
 
-    return `${hours} HR ${minutes} MIN`
+    if(hours == 0) return `${minutes} MIN`;
+    else return `${hours} HR ${minutes} MIN`;
   }
 
   navigateToHome() {

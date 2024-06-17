@@ -383,7 +383,7 @@
                                 </div>
                             </ng-template>
                             <ul class="post-comments">
-                                <li>
+                                <li *ngIf="currentPost.caption.length != 0">
                                     <div class="left-side">
                                         <img class="profile-pitcure" [src]="currentUser.profilePicture" [attr.alt]="currentUser.username">
                                         <div class="comment">

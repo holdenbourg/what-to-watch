@@ -140,6 +140,8 @@ export class AccountComponent  implements OnInit {
 
 
   ngOnInit() {    
+    console.log(new Date().toJSON());
+    
     //sets the username from the url parameter
     this.username = this.activatedRoute.snapshot.params['username'];
 
@@ -483,11 +485,42 @@ export class AccountComponent  implements OnInit {
     for(let i = 0; i < rawPosts.length; i++) {
       if(this.userAccount.postIds.includes(rawPosts[i].postId)) rawUsersPosts.push(rawPosts[i]);
     }
+
+    let postsByDate = new Map<string, RawUserPostModel[]>();
+    let postDates: string[] = []
+
+    for(let i = 0; i < rawUsersPosts.length; i++) {
+      let currentRawUserPost: RawUserPostModel = rawUsersPosts.at(i)!;
+
+      if(postsByDate.has(currentRawUserPost.postDate)) {
+        let postsOnDate = postsByDate.get(currentRawUserPost.postDate);
+        postsOnDate!.push(currentRawUserPost);
+
+        postsByDate.set(currentRawUserPost.postDate, postsOnDate!);
+      } else {
+        let newListOfPosts: RawUserPostModel[] = [currentRawUserPost];
+
+        postsByDate.set(currentRawUserPost.postDate, newListOfPosts);
+
+        postDates.push(currentRawUserPost.postDate);
+      }
+    }
+
+    let sortedUserPosts: UserPostModel[] = [];
+    for(let i = 0; i < postDates.length; i++) {
+      let currentDate = this.sortDatesByDate(postDates).at(i)!;
+
+      let currentValues: RawUserPostModel[] = postsByDate.get(currentDate)!;
+      currentValues.forEach((rawPost) => {
+        sortedUserPosts.push(this.convertRawPostToPost(rawPost));
+      });
+    }
+  
     for(let i = 0; i < rawComments.length; i++) {
       if(this.userAccount.postIds.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
     }
 
-    this.usersPosts = this.sortByDate(rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost)));
+    this.usersPosts = sortedUserPosts.reverse();
     this.postsComments = rawUsersComments;
   }
   
@@ -614,6 +647,16 @@ export class AccountComponent  implements OnInit {
       return `${month} ${day}, ${year}`
     }
   }
+  sortDatesByDate(posts: string[]) {
+    posts.sort((a: string, b: string) => {
+      let aDate: Date = new Date(a);
+      let bDate: Date = new Date(b);
+      
+      return aDate.getTime() - bDate.getTime();
+    });
+
+    return posts;
+  }
   sortByDate(posts: UserPostModel[]) {
     posts.sort((a: UserPostModel, b: UserPostModel) => {
       let aDate: Date = new Date(a.postDate);
@@ -624,15 +667,15 @@ export class AccountComponent  implements OnInit {
 
     return posts;
   }
-  sortCommentsByDate(posts: CommentModel[]) {
-    posts.sort((a: CommentModel, b: CommentModel) => {
+  sortCommentsByDate(comments: CommentModel[]) {
+    comments.sort((a: CommentModel, b: CommentModel) => {
       let aDate: Date = new Date(a.commentDate);
       let bDate: Date = new Date(b.commentDate);
       
       return bDate.getTime() - aDate.getTime();
     });
 
-    return posts;
+    return comments;
   }
 
   //generates commentId and makes sure it's unique

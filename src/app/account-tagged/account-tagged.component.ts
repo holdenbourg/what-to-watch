@@ -472,7 +472,7 @@ export class AccountTaggedComponent {
 
 
   /* POST LOGIC */
-  //adds all the users tagged posts and tagged post comments to a list to be displayed late
+  //adds all the users posts and post comments to a list to be displayed later
   populatePostsAndComments() {
     let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
     let rawComments: CommentModel[] = this.localStorageService.getInformation('comments');
@@ -483,11 +483,42 @@ export class AccountTaggedComponent {
     for(let i = 0; i < rawPosts.length; i++) {
       if(this.userAccount.taggedPostIds.includes(rawPosts[i].postId)) rawUsersPosts.push(rawPosts[i]);
     }
-    for(let i = 0; i < rawComments.length; i++) {
-      if(this.userAccount.taggedPostIds.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
+
+    let postsByDate = new Map<string, RawUserPostModel[]>();
+    let postDates: string[] = []
+
+    for(let i = 0; i < rawUsersPosts.length; i++) {
+      let currentRawUserPost: RawUserPostModel = rawUsersPosts.at(i)!;
+
+      if(postsByDate.has(currentRawUserPost.postDate)) {
+        let postsOnDate = postsByDate.get(currentRawUserPost.postDate);
+        postsOnDate!.push(currentRawUserPost);
+
+        postsByDate.set(currentRawUserPost.postDate, postsOnDate!);
+      } else {
+        let newListOfPosts: RawUserPostModel[] = [currentRawUserPost];
+
+        postsByDate.set(currentRawUserPost.postDate, newListOfPosts);
+
+        postDates.push(currentRawUserPost.postDate);
+      }
     }
 
-    this.usersTaggedPosts = rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost));
+    let sortedUserPosts: UserPostModel[] = [];
+    for(let i = 0; i < postDates.length; i++) {
+      let currentDate = this.sortDatesByDate(postDates).at(i)!;
+
+      let currentValues: RawUserPostModel[] = postsByDate.get(currentDate)!;
+      currentValues.forEach((rawPost) => {
+        sortedUserPosts.push(this.convertRawPostToPost(rawPost));
+      });
+    }
+  
+    for(let i = 0; i < rawComments.length; i++) {
+      if(this.userAccount.postIds.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
+    }
+
+    this.usersTaggedPosts = sortedUserPosts.reverse();
     this.taggedPostsComments = rawUsersComments;
   }
 
@@ -613,6 +644,16 @@ export class AccountTaggedComponent {
         
       return `${month} ${day}, ${year}`
     }
+  }
+  sortDatesByDate(posts: string[]) {
+    posts.sort((a: string, b: string) => {
+      let aDate: Date = new Date(a);
+      let bDate: Date = new Date(b);
+      
+      return aDate.getTime() - bDate.getTime();
+    });
+
+    return posts;
   }
   sortByDate(posts: UserPostModel[]) {
     posts.sort((a: UserPostModel, b: UserPostModel) => {

@@ -95,8 +95,6 @@ export class RateSeriesComponent implements OnInit {
 
       this.localStorageService.setInformation('currentPostSeries', currentPostSeries);
       this.routingService.navigateToPostSeries(currentPostSeries.postId);
-      
-      console.log(currentPostSeries);
     }
   }
 

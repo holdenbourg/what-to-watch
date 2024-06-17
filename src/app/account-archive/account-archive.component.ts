@@ -472,6 +472,55 @@ export class AccountArchiveComponent {
 
 
   /* POST LOGIC */
+  //adds all the users posts and post comments to a list to be displayed later
+  populatePostsAndComments() {
+    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
+    let rawComments: CommentModel[] = this.localStorageService.getInformation('comments');
+
+    let rawUsersPosts: RawUserPostModel[] = [];
+    let rawUsersComments: CommentModel[] = [];
+
+    for(let i = 0; i < rawPosts.length; i++) {
+      if(this.userAccount.archivedPostIds.includes(rawPosts[i].postId)) rawUsersPosts.push(rawPosts[i]);
+    }
+
+    let postsByDate = new Map<string, RawUserPostModel[]>();
+    let postDates: string[] = []
+
+    for(let i = 0; i < rawUsersPosts.length; i++) {
+      let currentRawUserPost: RawUserPostModel = rawUsersPosts.at(i)!;
+
+      if(postsByDate.has(currentRawUserPost.postDate)) {
+        let postsOnDate = postsByDate.get(currentRawUserPost.postDate);
+        postsOnDate!.push(currentRawUserPost);
+
+        postsByDate.set(currentRawUserPost.postDate, postsOnDate!);
+      } else {
+        let newListOfPosts: RawUserPostModel[] = [currentRawUserPost];
+
+        postsByDate.set(currentRawUserPost.postDate, newListOfPosts);
+
+        postDates.push(currentRawUserPost.postDate);
+      }
+    }
+
+    let sortedUserPosts: UserPostModel[] = [];
+    for(let i = 0; i < postDates.length; i++) {
+      let currentDate = this.sortDatesByDate(postDates).at(i)!;
+
+      let currentValues: RawUserPostModel[] = postsByDate.get(currentDate)!;
+      currentValues.forEach((rawPost) => {
+        sortedUserPosts.push(this.convertRawPostToPost(rawPost));
+      });
+    }
+  
+    for(let i = 0; i < rawComments.length; i++) {
+      if(this.userAccount.postIds.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
+    }
+
+    this.usersArchivedPosts = sortedUserPosts.reverse();
+    this.archivedPostsComments = rawUsersComments;
+  }
   //checks to see if the same person is atted twice 
   userAttedTwice(comment: string) {
     const count = comment.split('@').length - 1; 
@@ -594,6 +643,16 @@ export class AccountArchiveComponent {
         
       return `${month} ${day}, ${year}`
     }
+  }
+  sortDatesByDate(posts: string[]) {
+    posts.sort((a: string, b: string) => {
+      let aDate: Date = new Date(a);
+      let bDate: Date = new Date(b);
+      
+      return aDate.getTime() - bDate.getTime();
+    });
+
+    return posts;
   }
   sortByDate(posts: UserPostModel[]) {
     posts.sort((a: UserPostModel, b: UserPostModel) => {
@@ -853,24 +912,6 @@ export class AccountArchiveComponent {
     }
 
     location.reload();
-  }
-  //adds all the users posts and post comments to a list to be displayed later
-  populatePostsAndComments() {
-    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
-    let rawComments: CommentModel[] = this.localStorageService.getInformation('comments');
-
-    let rawUsersPosts: RawUserPostModel[] = [];
-    let rawUsersComments: CommentModel[] = [];
-
-    for(let i = 0; i < rawPosts.length; i++) {
-      if(this.userAccount.archivedPostIds.includes(rawPosts[i].postId)) rawUsersPosts.push(rawPosts[i]);
-    }
-    for(let i = 0; i < rawComments.length; i++) {
-      if(this.userAccount.archivedPostIds.includes(rawComments[i].postId)) rawUsersComments.push(rawComments[i]);
-    }
-
-    this.usersArchivedPosts = rawUsersPosts.map((rawPost) => this.convertRawPostToPost(rawPost));
-    this.archivedPostsComments = rawUsersComments;
   }
 
 

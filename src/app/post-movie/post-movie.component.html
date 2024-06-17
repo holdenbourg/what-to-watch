@@ -6,7 +6,10 @@
 <body>
     <div class="container">
         <div class="post">
-            <img class="film-poster" [src]="currentPostingMovie.poster" [attr.alt]="currentPostingMovie.poster">
+            <div id="film-poster" class="film-poster">
+                <img class="poster" [src]="currentPostingMovie.poster" [attr.alt]="currentPostingMovie.poster">
+                <p class="tagged-accounts">{{ watchedWith }}</p>
+            </div>
             <div class="post-information">
                 <div class="current-user-info">
                     <div class="pofile-picture-username">
@@ -38,7 +41,6 @@
                         <p class="caption-text" id="caption-text">{{ caption }}</p>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="right-side">
@@ -48,12 +50,36 @@
                 <p>{{ caption.length }}/150</p>
             </div>
             <p class="caption-warning">{{ captionWarning }}</p>
-            <div class="tagged-people">
-                
+            <div class="taggable-people">
+                <div class="search-bar">
+                    <label class="prompt">Who did you watch it with?</label>
+                    <input class="input-enter" type="text" [(ngModel)]="searchInput" name="searchInput" (keyup.enter)="onSearchAccounts()" (blur)="untoggleSearchLabel()" (focus)="toggleSearchLabel()" (focus)="saveCaption()" required>
+                    <a (click)="onSearchAccounts()">
+                        <i class='bx bx-search'></i>
+                    </a>
+                </div>
+        
+                <div class="scroll-box">
+                    <div class="taggable-accounts">
+                        <div class="already-tagged-accounts" *ngFor="let taggedAccount of taggedAccounts; let i = index">
+                            <app-tagged-account-template
+                                [taggedAccount]="taggedAccount"
+                                class="tagged-account-{{i}}"
+                            ></app-tagged-account-template>
+                        </div>
+                        <div class="taggable-account" *ngFor="let taggableAccount of taggableAccounts; let i = index">
+                            <app-taggable-account-template
+                                [taggableAccount]="taggableAccount"
+                                class="taggable-account-{{i}}"
+                            ></app-taggable-account-template>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <p class="tag-warning"></p>
             <div class="buttons">
-                <button type="submit" class="button" (click)="onPost()">Post</button>
-                <button type="submit" class="button" (click)="onArchive()">Archive</button>
+                <button type="submit" class="post-button" (click)="onPost()">Post</button>
+                <button type="submit" class="archive-button" (click)="onArchive()">Archive</button>
             </div>
         </div>
     </div>

@@ -73,8 +73,6 @@ export class RateMovieComponent implements OnInit {
 
       this.localStorageService.setInformation('currentPostMovie', currentPostMovie);
       this.routingService.navigateToPostMovie(currentPostMovie.postId);
-      
-      console.log(currentPostMovie);
     }
   }
 
