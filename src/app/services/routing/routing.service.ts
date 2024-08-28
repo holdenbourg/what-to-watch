@@ -54,6 +54,9 @@ export class RoutingService {
   navigateToPrivacy() {
     this.router.navigateByUrl(`/settings/privacy`);
   }
+  navigateToLogout() {
+    this.router.navigateByUrl(`/settings/logout`);
+  }
 
   //route once a movie has been selected after search
   navigateToMovieInformation(imdbId: string) {

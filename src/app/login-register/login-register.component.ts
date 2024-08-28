@@ -67,14 +67,15 @@ export class LoginRegisterComponent {
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'SasukeUchiha',
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'ErenJaeger'
       ],
-      following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal'],
+      following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'AshlynnDang'],
       requests: [],
       blocked: [
         'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson',
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal',
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke',
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'AshlynnDang',
-        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'OliverQueen',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'EnriqueLeal'
+      ],
+      isBlockedBy: [
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'CalebHaralson',
+        'https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'LukasGocke'
       ],
       postIds: [
         `m1b114fbe2525b`,
@@ -125,6 +126,7 @@ export class LoginRegisterComponent {
       following: [],
       requests: [],
       blocked: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
+      isBlockedBy: [],
       postIds: [`m6e1657aa83a9a`],
       taggedPostIds: [],
       archivedPostIds: [],
@@ -142,7 +144,8 @@ export class LoginRegisterComponent {
       followers: [],
       following: [],
       requests: [],
-      blocked: [],
+      blocked: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
+      isBlockedBy: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
       postIds: [`mf5b3417fd47a7`],
       taggedPostIds: [],
       archivedPostIds: [],
@@ -161,6 +164,7 @@ export class LoginRegisterComponent {
       following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
       requests: [],
       blocked: [],
+      isBlockedBy: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
       postIds: [`m4ee49fbf13c86`],
       taggedPostIds: [],
       archivedPostIds: [],
@@ -179,6 +183,7 @@ export class LoginRegisterComponent {
       following: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
       requests: [],
       blocked: [],
+      isBlockedBy: [],
       postIds: [`mffab7fbeb34f9`],
       taggedPostIds: [],
       archivedPostIds: [],
@@ -197,6 +202,7 @@ export class LoginRegisterComponent {
       following: [],
       requests: [],
       blocked: [],
+      isBlockedBy: [],
       postIds: [`m30500143dac36`],
       taggedPostIds: [],
       archivedPostIds: [],
@@ -215,6 +221,7 @@ export class LoginRegisterComponent {
       following: [],
       requests: [],
       blocked: [],
+      isBlockedBy: [],
       postIds: [],
       taggedPostIds: [],
       archivedPostIds: [],
@@ -233,6 +240,7 @@ export class LoginRegisterComponent {
       following: [],
       requests: ['https://cdn-icons-png.flaticon.com/512/1144/1144760.png' + '::::' + 'HoldenBourg'],
       blocked: [],
+      isBlockedBy: [],
       postIds: [],
       taggedPostIds: [],
       archivedPostIds: [],
@@ -251,6 +259,7 @@ export class LoginRegisterComponent {
       following: [],
       requests: [],
       blocked: [],
+      isBlockedBy: [],
       postIds: [],
       taggedPostIds: [],
       archivedPostIds: [],
@@ -2033,11 +2042,12 @@ export class LoginRegisterComponent {
 
     this.localStorageService.cleanTemporaryLocalStorages();
 
-    //if(this.localStorageService.getInformation('rememberMe') == true) {
-    //  this.onLogin();
-    //}
+    if(this.localStorageService.getInformation('rememberMe') == true) {
+      this.onLogin();
+    }
 
-    //resets the mock databases in local storage - 
+    //resets the mock databases in local storage -
+    // this.localStorageService.clearInformation('currentUser'); 
     // this.localStorageService.clearInformation('rawUsers');
     // this.localStorageService.setInformation('rawUsers', this.rawMockUsersDatabase);
     // this.localStorageService.clearInformation('ratedMovies');
@@ -2180,6 +2190,7 @@ export class LoginRegisterComponent {
       following: [],
       requests: [],
       blocked: [],
+      isBlockedBy: [],
       postIds: [],
       taggedPostIds: [],
       archivedPostIds: [],
@@ -2487,6 +2498,7 @@ export class LoginRegisterComponent {
       following: this.convertRawFollowersToFollowers(rawUser.following),
       requests: this.convertRawFollowersToFollowers(rawUser.requests),
       blocked: this.convertRawFollowersToFollowers(rawUser.blocked),
+      isBlockedBy: this.convertRawFollowersToFollowers(rawUser.isBlockedBy),
       postIds: rawUser.postIds,
       taggedPostIds: rawUser.taggedPostIds,
       archivedPostIds: rawUser.archivedPostIds,

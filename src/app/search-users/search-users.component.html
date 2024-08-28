@@ -1,0 +1,87 @@
+<head>
+    <title>Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body (window:resize)="sidebarCloseOnResize()">
+    <nav class="sidebar active">
+        <div class="logo-menu">
+            <h2 class="logo">Search</h2>
+            <i class='bx bx-menu toggle-button' (click)="toggleSidebarActive()"></i>
+        </div>
+
+        <ul class="list">
+            <li class="list-item">
+                <a (click)="this.routingService.navigateToHome()">
+                    <i class='bx bx-home-alt'></i>
+                    <span class="link-name" style="--i:2;">Home</span>
+                </a>
+            </li>
+            <li class="list-item active">
+                <a (click)="this.routingService.navigateToSearchMovies()">
+                    <i class='bx bx-search'></i>
+                    <span class="link-name" style="--i:1;">Search</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a (click)="this.routingService.navigateToMovies()">
+                    <i class='bx bx-camera-movie'></i>
+                    <span class="link-name" style="--i:2;">Movies</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a (click)="this.routingService.navigateToShows()">
+                    <i class='bx bx-collection'></i>
+                    <span class="link-name" style="--i:3;">Shows</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a (click)="this.routingService.navigateToSummary()">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name" style="--i:4;">Summary</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a (click)="this.routingService.navigateToAccountsPosts(this.currentUser.username)">
+                    <i class='bx bx-user'></i>
+                    <span class="link-name" style="--i:5;">Account</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a (click)="this.routingService.navigateToSettings()">
+                    <i class='bx bx-cog'></i>
+                    <span class="link-name" style="--i:6;">Settings</span>
+                </a>
+            </li>
+            <li class="username">
+                 <p class="link-name" style="--i:7">Signed in as:</p> 
+                 <p class="link-name" style="--i:7">{{ currentUser.username }}</p>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="search-bar">
+            <label class="prompt">What did you watch?</label>
+            <input class="input-enter" type="text" [(ngModel)]="searchInput" name="searchInput" (keyup.enter)="onSearch(this.searchInput)" (blur)="untoggleSearchLabel()" (focus)="toggleSearchLabel()" required>
+            <i (click)="toggleMoviesActive()" class="movies active">Movies</i>
+            <i (click)="toggleSeriesActive()" class="series">Series</i>
+            <i (click)="toggleUsersActive()" class="users active">Users</i>
+            <a (click)="onSearch(this.searchInput)">
+                <i class='bx bx-search'></i>
+            </a>
+        </div>
+
+        <div class="scroll-box">
+            <p class="search-warning">Nothing Came Up, Try Something Else</p>
+            <div class="searched-users">
+                <app-searched-user-template
+                    *ngFor="let user of searchedAccounts"
+                    [searchedAccount]="user" 
+                    (click)="onAccountClicked(user)" 
+                    class="searched-user"
+                ></app-searched-user-template>
+            </div>
+        </div>
+    </div>
+</body>

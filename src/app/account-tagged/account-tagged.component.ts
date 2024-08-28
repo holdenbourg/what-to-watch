@@ -59,6 +59,7 @@ export class AccountTaggedComponent {
     following: [],
     requests: [],
     blocked: [],
+    isBlockedBy: [],
     postIds: [],
     taggedPostIds: [],
     archivedPostIds: [],
@@ -137,6 +138,8 @@ export class AccountTaggedComponent {
 
   public commentInput: string = '';
   public commentWarning: string = '';
+
+  public watchedWith: string = '';
 
 
   ngOnInit() {   
@@ -428,6 +431,7 @@ export class AccountTaggedComponent {
       following: this.convertRawFollowersToFollowers(rawUser.following),
       requests: this.convertRawFollowersToFollowers(rawUser.requests),
       blocked: this.convertRawFollowersToFollowers(rawUser.blocked),
+      isBlockedBy: this.convertRawFollowersToFollowers(rawUser.isBlockedBy),
       postIds: rawUser.postIds,
       taggedPostIds: rawUser.taggedPostIds,
       archivedPostIds: rawUser.archivedPostIds,
@@ -554,9 +558,12 @@ export class AccountTaggedComponent {
   //bolds the account usernames that are atted(@)
   boldAttedUsernames(caption: string) {
     const count = caption.split('@').length - 1; 
+    const element = document.getElementById("actual-comment")!;
 
     if(count == 0) {
-      return caption;
+      element.innerHTML = caption;
+      
+      return;
     } else {
       let newCaption: string = caption; 
       let usedCaption: string = caption;   
@@ -771,6 +778,8 @@ export class AccountTaggedComponent {
       this.currentRatedSeries = series;
       this.currentComments = this.taggedPostsComments.filter((comment) => comment.postId == post.postId);
     }
+
+    this.generateTaggedPeopleString();
   }
   //closes the post screen
   onBackOut() {
@@ -799,6 +808,8 @@ export class AccountTaggedComponent {
 
       const prompt = document.querySelector(`.prompt`);
       prompt!.textContent = `Comment`;
+
+      this.generateTaggedPeopleString();
     }
   }
   //shows previous post in line
@@ -819,7 +830,9 @@ export class AccountTaggedComponent {
       }
       
       const prompt = document.querySelector(`.prompt`);
-      prompt!.textContent = `Comment`;
+      prompt!.textContent = `Comment`;      
+
+      this.generateTaggedPeopleString();
     }
   }
 
@@ -833,6 +846,38 @@ export class AccountTaggedComponent {
     const prompt = document.querySelector('.prompt');
 
     if(prompt?.classList.contains('active') && this.commentInput.length == 0) prompt?.classList.toggle('active');
+  }
+
+  //formats the tagged people
+  generateTaggedPeopleString() {
+    let title: string = '';
+    let username: string = '';
+
+    if(this.usersTaggedPosts.at(this.currentTaggedPostNumber)!.postId.charAt(0) == 'm') {
+      title = this.currentRatedMovie.title;
+      username = this.currentRatedMovie.username;
+    } else {
+      title = this.currentRatedSeries.title; 
+      username = this.currentRatedSeries.username;
+    }
+
+    this.watchedWith = `${username} watched ${title} with you`;
+
+    let taggedAccounts: FollowerModel[] = this.currentTaggedPost.taggedUsers.filter((taggedUser) => taggedUser.username != this.currentUser.username);
+
+    if(taggedAccounts.length == 1) {
+      this.watchedWith = this.watchedWith + ' and ' + taggedAccounts.at(0)!.username;
+    } else if(taggedAccounts.length > 1) {
+      this.watchedWith = this.watchedWith + ', ';
+
+      for(let i = 0; i < taggedAccounts.length; i++) {
+        if(i == taggedAccounts.length - 1) {
+          this.watchedWith = this.watchedWith + 'and ' + taggedAccounts.at(i)!.username;
+        } else {
+          this.watchedWith = this.watchedWith + taggedAccounts.at(i)!.username + ', ';
+        }
+      }
+    }
   }
 
   //button to send post to other users

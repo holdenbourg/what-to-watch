@@ -19,6 +19,12 @@ import { AccountTaggedComponent } from './account-tagged/account-tagged.componen
 import { AccountArchiveComponent } from './account-archive/account-archive.component';
 import { PostMovieComponent } from './post-movie/post-movie.component';
 import { PostSeriesComponent } from './post-series/post-series.component';
+import { LogoutComponent } from './logout/logout.component';
+import { SearchSeriesComponent } from './search-series/search-series.component';
+import { SearchUsersComponent } from './search-users/search-users.component';
+import { PublicAccountComponent } from './public-account/public-account.component';
+import { PrivateAccountComponent } from './private-account/private-account.component';
+import { BlockedAccountComponent } from './blocked-account/blocked-account.component';
 
 const routes: Routes = [
   {path: '', component: LoginRegisterComponent},
@@ -30,8 +36,16 @@ const routes: Routes = [
   {path: 'edit-series', component: EditSeriesComponent},
   {path: 'settings/account-info', component: SettingsAccountInfoComponent},
   {path: 'settings/privacy', component: PrivacyComponent},
-  {path: 'search/:type', component: SearchComponent},
-  {path: 'search/:type/:input', component: SearchComponent},
+  {path: 'settings/logout', component: LogoutComponent},
+  {path: 'search/movies', component: SearchComponent},
+  {path: 'search/movies/:input', component: SearchComponent},
+  {path: 'search/series', component: SearchSeriesComponent},
+  {path: 'search/series/:input', component: SearchSeriesComponent},
+  {path: 'search/users', component: SearchUsersComponent},
+  {path: 'search/users/:input', component: SearchUsersComponent},
+  {path: 'search/users/public/:input', component: PublicAccountComponent},
+  {path: 'search/users/private/:input', component: PrivateAccountComponent},
+  {path: 'search/users/blocked/:input', component: BlockedAccountComponent},
   {path: 'film-information/movie/:imdbId', component: MovieInformationComponent},
   {path: 'film-information/series/:imdbId', component: SeriesInformationComponent},
   {path: 'rate-movie/:imdbId', component: RateMovieComponent},

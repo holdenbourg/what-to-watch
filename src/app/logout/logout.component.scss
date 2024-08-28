@@ -1,0 +1,375 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: url('../images/shadedBackground.jpg');
+}
+
+//sidebar containing page title and other page redirects
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 100%;
+    background: transparent;
+    backdrop-filter: blur(3px);
+    border-right: .15vw solid rgba(255, 255, 255, .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    padding: 6px 14px;
+    transition: .5s
+}
+.sidebar.active {
+    width: 260px;
+}
+//sidebar icon/page title
+.sidebar .logo-menu {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+}
+//sidebar page title
+.sidebar .logo-menu .logo {
+    font-size: 25px;
+    color: #fff;
+    pointer-events: none;
+    opacity: 0;
+    transition: .3s;
+}
+.sidebar.active .logo-menu .logo {
+    opacity: 1;
+    transition-delay: .2s;
+}
+//sidebar icon
+.sidebar .logo-menu .toggle-button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    transition: .5s;
+}
+.sidebar.active .logo-menu .toggle-button {
+    left: 90%;
+}
+//list of all page redirects
+.sidebar .list {
+    margin-top: 10px;
+}
+//other page redirects icon/title
+.list .list-item {
+    list-style: none;
+    width: 100%;
+    height: 50px;
+    margin: 5px 0;
+    line-height: 50px;
+    cursor: pointer;
+}
+.list .list-item a {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: .5s;
+}
+.list .list-item.active a, 
+.list .list-item a:hover {
+    background: rgba(255, 255, 255, .2);
+}
+//other page redirect icons
+.list .list-item a i {
+    min-width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+//other page redirect titles
+.sidebar .link-name {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+}
+.sidebar.active .link-name {
+    opacity: 1;
+    pointer-events: auto;
+    transition-delay: calc(.1s * var(--i));
+}
+//settings pages redirects icon/title
+.list .settings-item {
+    list-style: none;
+    padding-left: 15px;
+    width: 100%;
+    height: 35px;
+    margin: 5px 0;
+    line-height: 30px;
+    cursor: pointer;
+}
+.list .settings-item a {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: .5s;
+}
+.list .settings-item.active a, 
+.list .settings-item a:hover {
+   background: rgba(255, 255, 255, .2);
+}
+//other page redirect icons
+.list .settings-item a i {
+    opacity: 1;
+    min-width: 50px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    transition: .5s;
+}
+.sidebar .settings-item {
+    padding-left: 0px;
+    transition: .5s;
+}
+.sidebar.active .settings-item {
+    padding-left: 15px;
+}
+//username at the bottom of the dashboard
+.username {
+    position: absolute;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+    list-style: none;
+    bottom: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+}
+
+//container for all 3 panels
+.container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    left: 300px;
+    right: 40px;
+    top: 40px;
+    bottom: 40px;
+    height: auto;
+    width: auto;
+    transition: .5s;
+}
+.container.active {
+    left: 120px;
+}
+
+//all headers
+.title {
+    font-size: 1.56vw;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-left: 25px;
+    margin-right: 23px;
+    color: #fff;
+    border-bottom: .15vw solid #fff;
+}
+
+//container for private/public account
+.account-privacy {
+    width: 100%;
+    height: 48%;
+    border: .2vw solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+}
+
+.public-private {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+.slide-toggle {
+    border: 2px solid #fff;
+    width: 40px;
+    height: 25px;
+    border-radius: 200px;
+    cursor: pointer;
+    position: relative;
+    transition: .2s;
+}
+.slide-toggle::before {
+    position: absolute;
+    content: '';
+    background-color: #fff;
+    width: 19px;
+    height: 19px;
+    border-radius: 200px;
+    margin: 1px;
+    transition: .2s;
+}
+input:checked + .slide-toggle::before {
+    transform: translateX(15px);
+}
+input {
+    display: none;
+}
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title-switch {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 25px;
+}
+.description {
+    color: #fff;
+    font-size: 1vw;
+    font-weight: 400;
+    margin-left: 10px;
+    margin-right: 10px;
+    transition: .5s;
+}
+.description.active {
+    transition: .5s;
+}
+.privacy-mode {
+    color: #fff;
+    font-size: 25px;
+    font-weight: 500;
+    transition: .5s;
+}
+.privacy-mode.active {
+    transition: .5s;
+}
+
+.blocked-users {
+    height: 48%;
+    width: 100%;
+    border: .2vw solid #fff;
+    padding-right: 6.5px;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+}
+.blocked-accounts-title {
+    border-bottom: .15vw solid #fff;
+    margin-left: 25px;
+    margin-right: 25px;
+    color: #fff;
+    font-size: 1.56vw;
+    font-weight: 600;
+    padding-top: 10px;
+    height: 14%;
+}
+//container for blocked accounts
+.scroll-box {
+    margin-right: 10.5px;
+    height: 86%;
+    overflow: hidden;
+    overflow-y: scroll;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    --top-mask-size: 10px;
+    --bottom-mask-size: 0px;
+}
+//contains all the blocked accounts
+.blocked-accounts {
+    margin-left: 25px;
+    padding-right: 6px;
+}
+//scrollbar
+.scroll-box::-webkit-scrollbar {
+    width: 0.5em;
+}
+.scroll-box::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 0.25em;
+}
+.no-blocked-users-message {
+    color: #fff;
+    font-size: 1vw;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-left: 40px;
+}
+
+.logout-screen {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .5);
+    backdrop-filter: blur(5px);
+    font-size: 2.5vw;
+    color: white;
+}
+
+.logout-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 15%;
+    width: 50%;
+}
+
+.buttons {
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.question {
+    text-align: center;
+    height: 50%;
+    font-weight: 600;
+}
+
+//yes/no button
+.buttons button {
+    width: 50%;
+    height: 100%;
+    background: transparent;
+    border: .2vw solid #fff;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .75);
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.5vw;
+    color: #fff;
+    font-weight: 500;
+    margin: 2% 10% 2% 10%;
+}

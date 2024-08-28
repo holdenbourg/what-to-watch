@@ -10,6 +10,7 @@ export interface RawAccountInformationModel {
     following: string[],
     requests: string[],
     blocked: string[],
+    isBlockedBy: string[],
     postIds: string[],
     taggedPostIds: string[],
     archivedPostIds: string[],

@@ -1,1 +1,9 @@
-<p>searched-user-template works!</p>
+<div class="searched-user">
+    <div class="account-info">
+        <img class="profile-picture" [src]="searchedAccount.profilePicture" [attr.alt]="searchedAccount.username">
+        <div class="account-information">
+            <p class="username">{{ searchedAccount.username }}</p>
+            <p class="full-name">{{ searchedAccount.firstName }} {{ searchedAccount.lastName }}</p>
+        </div>
+    </div>
+</div>

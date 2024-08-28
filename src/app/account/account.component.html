@@ -226,7 +226,10 @@
                 </a>
             </div>
             <div class="post">
-                <img class="film-poster" [src]="currentPost.poster" [attr.alt]="currentPost.poster">
+                <div id="film-poster" class="film-poster">
+                    <img class="poster" [src]="currentPost.poster" [attr.alt]="currentPost.poster">
+                    <p class="tagged-accounts">{{ watchedWith }}</p>
+                </div>
                 <div class="post-information">
                     <div class="current-user-info">
                         <div class="pofile-picture-username">
@@ -338,12 +341,15 @@
                     </a>
                 </div>
                 <div class="post">
-                    <img class="film-poster" [src]="currentPost.poster" [attr.alt]="currentPost.poster">
+                    <div id="film-poster" class="film-poster">
+                        <img class="poster" [src]="currentPost.poster" [attr.alt]="currentPost.poster">
+                        <p class="tagged-accounts">{{ watchedWith }}</p>
+                    </div>
                     <div class="post-information">
                         <div class="current-user-info">
                             <div class="pofile-picture-username">
                                 <img class="user-profile-picture" [src]="currentUser.profilePicture" [attr.alt]="currentUser.username">
-                                <p class="user-username">{{ currentUser.username }}</p>
+                                <a class="user-username" href="/account/{{ currentUser.username }}/posts">{{ currentUser.username }}</a>
                             </div>
                             <p class="post-date">{{ fixCommentDate(currentPost.postDate) }}</p>
                         </div>

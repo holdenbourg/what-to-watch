@@ -59,6 +59,7 @@ export class AccountComponent  implements OnInit {
     following: [],
     requests: [],
     blocked: [],
+    isBlockedBy: [],
     postIds: [],
     taggedPostIds: [],
     archivedPostIds: [],
@@ -138,10 +139,10 @@ export class AccountComponent  implements OnInit {
   public commentInput: string = '';
   public commentWarning: string = '';
 
+  public watchedWith: string = '';
 
-  ngOnInit() {    
-    console.log(new Date().toJSON());
-    
+
+  ngOnInit() {        
     //sets the username from the url parameter
     this.username = this.activatedRoute.snapshot.params['username'];
 
@@ -196,7 +197,7 @@ export class AccountComponent  implements OnInit {
   }
 
 
-  /* TOGGLE SHOWN FOLLOWER LIST */
+  /* TOGGLE FOLLOWER LIST */
   toggleFollowers() {
     var activeFollowerType = this.localStorageService.getInformation('follower-type');
 
@@ -430,6 +431,7 @@ export class AccountComponent  implements OnInit {
       following: this.convertRawFollowersToFollowers(rawUser.following),
       requests: this.convertRawFollowersToFollowers(rawUser.requests),
       blocked: this.convertRawFollowersToFollowers(rawUser.blocked),
+      isBlockedBy: this.convertRawFollowersToFollowers(rawUser.isBlockedBy),
       postIds: rawUser.postIds,
       taggedPostIds: rawUser.taggedPostIds,
       archivedPostIds: rawUser.archivedPostIds,
@@ -556,9 +558,12 @@ export class AccountComponent  implements OnInit {
   //bolds the account usernames that are atted(@)
   boldAttedUsernames(caption: string) {
     const count = caption.split('@').length - 1; 
+    const element = document.getElementById("actual-comment")!;
 
     if(count == 0) {
-      return caption;
+      element.innerHTML = caption;
+
+      return;
     } else {
       let newCaption: string = caption; 
       let usedCaption: string = caption;   
@@ -582,8 +587,6 @@ export class AccountComponent  implements OnInit {
 
         usedCaption = usedCaption.substring(1);
       }
-      
-      const element = document.getElementById("actual-comment")!;
       element.innerHTML = newCaption;
 
       return;
@@ -773,6 +776,8 @@ export class AccountComponent  implements OnInit {
       this.currentRatedSeries = series;
       this.currentComments = this.postsComments.filter((comment) => comment.postId == post.postId);
     }
+
+    this.generateTaggedPeopleString();
   }
   //closes the post screen
   onBackOut() {
@@ -801,6 +806,8 @@ export class AccountComponent  implements OnInit {
 
       const prompt = document.querySelector(`.prompt`);
       prompt!.textContent = `Comment`;
+
+      this.generateTaggedPeopleString();
     }
   }
   //shows previous post in line
@@ -822,6 +829,8 @@ export class AccountComponent  implements OnInit {
       
       const prompt = document.querySelector(`.prompt`);
       prompt!.textContent = `Comment`;
+      
+      this.generateTaggedPeopleString();
     }
   }
 
@@ -835,6 +844,40 @@ export class AccountComponent  implements OnInit {
     const prompt = document.querySelector('.prompt');
 
     if(prompt?.classList.contains('active') && this.commentInput.length == 0) prompt?.classList.toggle('active');
+  }
+
+  //formats the tagged people
+  generateTaggedPeopleString() {
+    let title: string = '';
+    let username: string = '';
+
+    if(this.usersPosts.at(this.currentPostNumber)!.postId.charAt(0) == 'm') {
+      title = this.currentRatedMovie.title;
+      username = this.currentRatedMovie.username;
+    } else {
+      title = this.currentRatedSeries.title; 
+      username = this.currentRatedSeries.username;
+    }
+
+    this.watchedWith = `${this.currentUser.firstName} watched ${title} with `;
+
+    let taggedAccounts: FollowerModel[] = this.currentPost.taggedUsers;
+
+    if(taggedAccounts.length == 0) {
+      this.watchedWith = '';
+    } else if(taggedAccounts.length == 1) {
+      this.watchedWith = this.watchedWith + taggedAccounts.at(0)!.username;
+    } else if (taggedAccounts.length == 2) {
+      this.watchedWith = this.watchedWith + taggedAccounts.at(0)!.username + ' and ' + taggedAccounts.at(1)!.username;
+    } else {
+      for(let i = 0; i < taggedAccounts.length; i++) {
+        if(i == taggedAccounts.length - 1) {
+          this.watchedWith = this.watchedWith + 'and ' + taggedAccounts.at(i)!.username;
+        } else {
+          this.watchedWith = this.watchedWith + taggedAccounts.at(i)!.username + ', ';
+        }
+      }
+    }
   }
 
   //button to send post to other users

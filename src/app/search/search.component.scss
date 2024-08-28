@@ -16,6 +16,8 @@ body {
     background: url('../images/shadedBackground.jpg');
 }
 
+
+/* SIDEBAR */
 //sidebar containing page title and other page redirects
 .sidebar {
     position: fixed;
@@ -127,6 +129,8 @@ body {
     color: #fff;
 }
 
+
+/* SEARCH PAGE */
 //conatiner for the search-bar/populated movies
 .container {
     display: flex;
@@ -146,6 +150,9 @@ body {
 .container.active {
     left: 120px;
 }
+
+
+/*  SEARCH BAR */
 //conatiner for input-box/movies/series/search icon
 .search-bar {
     display: flex;
@@ -206,9 +213,21 @@ body {
     margin-bottom: auto;
     cursor: pointer;
 }
-.movies.active, .movies:hover,
-.series.active, .series:hover,
-.users.active, .users:hover {
+.search-warning {
+    transform: scale(0);
+    color: white;
+    font-size: 2vw;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    height: 0;
+}
+.search-warning.active {
+    height: auto;
+    padding-top: 2.5%;
+    transform: scale(1);
+}
+.movies.active, .series:hover, .users:hover {
     padding-left: 7.5px;
     padding-right: 7.5px;
     font-size: 1.2em;
@@ -223,6 +242,8 @@ body {
     border-radius: 3px;
 }
 
+
+/* SEARCHED SHOWS SCROLL BOX */
 //container for searched films
 .scroll-box {
     padding-right: 6.5px;
@@ -239,7 +260,7 @@ body {
     --bottom-mask-size: 0px;
 }
 //contains all the searched films
-.scroll-box.searched-films {
+.scroll-box.searched-movies {
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-color: #fff transparent;
@@ -254,6 +275,6 @@ body {
     border-radius: 0.25em;
 }
 //individual searched film
-.searched-film {
+.searched-movie {
     cursor: pointer;
 }

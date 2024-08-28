@@ -10,17 +10,20 @@ import { UserInputService } from '../services/user/user-input.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
 import { FollowerModel } from '../services/models/database-objects/follower-model';
+import { RawAccountInformationModel } from '../services/models/database-objects/raw-account-information-model';
+import { SearchedUserTemplateComponent } from '../searched-user-template/searched-user-template.component';
+import { ignoreElements } from 'rxjs';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, FormsModule, SearchedFilmTemplateComponent],
+  imports: [CommonModule, FormsModule, SearchedFilmTemplateComponent, SearchedUserTemplateComponent],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss'
 })
 
 export class SearchComponent  implements OnInit {
-  private routingService: RoutingService = inject(RoutingService);
+  public routingService: RoutingService = inject(RoutingService);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   private apiService: ApiService = inject(ApiService);
   private userInputService: UserInputService = inject(UserInputService);
@@ -31,68 +34,79 @@ export class SearchComponent  implements OnInit {
   public currentActiveSearchType: string = '.movies';
   public searchInput: string = '';
   public input: string = '';
-  public type: string = ''
   public translatedMovies: SearchedFilmModel[] = [];
-
-  public searchedUsers: any[] = []; //set up later
+  public searchedAccounts: FollowerModel[] = [];
 
 
   ngOnInit() {
-    //sets the search type/current active search type
-    this.type = this.activatedRoute.snapshot.params['type'];
-    this.currentActiveSearchType = '.' + this.type;
+    this.input = this.activatedRoute.snapshot.params['input'];
+    if(this.input != undefined) {
+      this.toggleSearchLabel(); 
+      this.searchInput = this.input;
     
-    if(this.type == 'movies') {
-      const inputBoxMovies = document.querySelector('.movies');
-      inputBoxMovies?.classList.toggle('active');
-    } else {
-      const inputBoxSeries = document.querySelector('.series');
-      inputBoxSeries?.classList.toggle('active');
-    }
-
-    if (this.input.length < 1) {
-      this.input = this.activatedRoute.snapshot.params['input'];
-    }
-
-    if (this.input != undefined && this.input.length > 1 && this.type == 'movies') {
       this.translatedMovies = [];
-      this.translatedMovies = this.apiService.search10Films(this.input, 'movie');
-    } else if (this.input != undefined && this.input.length > 1 && this.type == 'series') {
-      this.translatedMovies = [];
-      this.translatedMovies = this.apiService.search10Films(this.input, 'series');
+      this.translatedMovies = this.apiService.search10Films(this.input, 'movie')!;
     }
 
     this.sidebarCloseOnResize();
     this.localStorageService.cleanTemporaryLocalStorages();
   }
 
+
   onSearch() {
+    //turns off the 'No Results' message
+    const searchWarning = document.querySelector('.search-warning');
+    if(searchWarning?.classList.contains('active')) searchWarning?.classList.toggle('active');
+
     //clearing previous search
     this.translatedMovies = [];
 
-    //if movies is selected search movies, else search shows
-    if(this.type == 'movies') {
-      this.userInputService.userInput = this.searchInput;
-      this.routingService.navigateToSearchMoviesWithInput(this.searchInput);
-      this.translatedMovies = this.apiService.search10Films(this.searchInput, 'movie');
-    } else if (this.type == 'series') {
-      this.userInputService.userInput = this.searchInput;
-      this.routingService.navigateToSearchSeriesWithInput(this.searchInput);
-      this.translatedMovies = this.apiService.search10Films(this.searchInput, 'series');
+    this.userInputService.userInput = this.searchInput;
+    this.routingService.navigateToSearchMoviesWithInput(this.searchInput);
+
+    this.input = this.searchInput;
+    this.translatedMovies = this.apiService.search10Films(this.searchInput, 'movie')!;
+  }
+
+
+  /* OTHER SEARCH RIBBONS */
+  toggleMoviesActive() {
+    if(this.input == undefined) {
+      this.routingService.navigateToSearchMovies();
     } else {
-      
+      this.routingService.navigateToSearchMoviesWithInput(this.input);
+    }
+  }
+  toggleSeriesActive() {
+    if(this.input == undefined) {
+      this.routingService.navigateToSearchSeries();
+    } else {
+      this.routingService.navigateToSearchSeriesWithInput(this.input);
+    }
+  }
+  toggleUsersActive() {
+    if(this.input == undefined) {
+      this.routingService.navigateToSearchUsers();
+    } else {
+      this.routingService.navigateToSearchUsersWithInput(this.input);
     }
   }
 
-  //if type is 'movie' route to rate-movie, else route to rate-series with film information
-  onFilmClicked(type: string, imdbId: string) {
-    if(type == 'movie') {
-      this.routingService.navigateToMovieInformation(imdbId);
-    } else if(type == 'series') {
-      this.routingService.navigateToSeriesInformation(imdbId);
-    }
+  
+  /* TOGGLE SEARCH PROMPT */
+  toggleSearchLabel() {
+    const prompt = document.querySelector('.prompt');
+
+    if(!(prompt?.classList.contains('active'))) prompt?.classList.toggle('active'); 
+  }
+  untoggleSearchLabel() {
+    const prompt = document.querySelector('.prompt');
+
+    if(prompt?.classList.contains('active') && this.searchInput.length == 0) prompt?.classList.toggle('active');
   }
 
+
+  /* SIDEBAR OPEN/CLOSE */
   //closes/opens sidebar if screen width goes above/below 1275 pixels
   sidebarCloseOnResize() {  
     const themeClass = document.querySelector('.sidebar');
@@ -108,119 +122,11 @@ export class SearchComponent  implements OnInit {
       container?.classList.toggle('active');  
     }
   }
-
   //shifts specific elements to the right when dashboard is opened
   toggleSidebarActive() {
     const sidebar = document.querySelector('.sidebar');
     sidebar?.classList.toggle('active');
     const container = document.querySelector('.container');
     container?.classList.toggle('active');
-  }
-
-  toggleSearchLabel() {
-    const prompt = document.querySelector('.prompt');
-
-    if(!(prompt?.classList.contains('active'))) prompt?.classList.toggle('active'); 
-  }
-  untoggleSearchLabel() {
-    const prompt = document.querySelector('.prompt');
-
-    if(prompt?.classList.contains('active') && this.searchInput.length == 0) prompt?.classList.toggle('active');
-  }
-
-  toggleMoviesActive() {
-    const activeClass = document.querySelector(this.currentActiveSearchType);
-    activeClass?.classList.toggle('active');
-
-    this.currentActiveSearchType = '.movies';
-
-    const movies = document.querySelector('.movies');
-    movies?.classList.toggle('active');
-
-    if(this.searchInput != '') {
-      this.translatedMovies = [];
-      this.routingService.navigateToSearchMoviesWithInput(this.searchInput);
-      this.translatedMovies = this.apiService.search10Films(this.searchInput, 'movie');
-    } else if(this.input != undefined) {
-      this.translatedMovies = [];
-      this.routingService.navigateToSearchMoviesWithInput(this.input);
-      this.translatedMovies = this.apiService.search10Films(this.input, 'movie');
-    } else {
-      this.routingService.navigateToSearchMovies();
-    }
-  }
-  toggleSeriesActive() {
-    const activeClass = document.querySelector(this.currentActiveSearchType);
-    activeClass?.classList.toggle('active');
-
-    this.currentActiveSearchType = '.series';
-
-    const series = document.querySelector('.series');
-    series?.classList.toggle('active');
-
-    if(this.searchInput != '') {
-      this.translatedMovies = [];
-      this.routingService.navigateToSearchSeriesWithInput(this.searchInput);
-      this.translatedMovies = this.apiService.search10Films(this.searchInput, 'series');
-    } else if(this.input != undefined) {
-      this.translatedMovies = [];
-      this.routingService.navigateToSearchSeriesWithInput(this.input);
-      this.translatedMovies = this.apiService.search10Films(this.input, 'series');
-    } else {
-      this.routingService.navigateToSearchSeries();
-    }
-  }
-  toggleUsersActive() {
-    const activeClass = document.querySelector(this.currentActiveSearchType);
-    activeClass?.classList.toggle('active');
-
-    this.currentActiveSearchType = '.users';
-
-    const users = document.querySelector('.users');
-    users?.classList.toggle('active');
-
-    if(this.searchInput != '') {
-      this.translatedMovies = [];
-      this.routingService.navigateToSearchUsersWithInput(this.searchInput);
-      //search the database for users close to the searched name
-    } else if(this.input != undefined) {
-      this.translatedMovies = [];
-      this.routingService.navigateToSearchUsersWithInput(this.input);
-      //search the database for users close to the searched name
-    } else {
-      this.routingService.navigateToSearchUsers();
-    }
-  }
-
-  //controls the routing for the dashboard
-  navigateToHome() {
-    this.routingService.navigateToHome();
-  }
-  navigateToLogin() {
-    this.routingService.navigateToLogin();
-  }
-  navigateToSearchMovies() {
-    this.routingService.navigateToSearchMovies();
-  }  
-  navigateToSearchSeries() {
-    this.routingService.navigateToSearchSeries();
-  }
-  navigateToMovies() {
-    this.routingService.navigateToMovies();
-  }
-  navigateToShows() {
-    this.routingService.navigateToShows();
-  }
-  navigateToSummary() {
-    this.routingService.navigateToSummary();
-  }
-  navigateToAccountsPosts() {
-    this.routingService.navigateToAccountsPosts(this.currentUser.username);
-  }
-  navigateToAccountsTagged() {
-    this.routingService.navigateToAccountsTagged(this.currentUser.username);
-  }
-  navigateToSettings() {
-    this.routingService.navigateToSettings();
   }
 }

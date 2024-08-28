@@ -866,4 +866,7 @@ export class SettingsAccountInfoComponent implements OnInit {
   navigateToPrivacy() {
     this.routingService.navigateToPrivacy();
   }
+  navigateToLogout() {
+    this.routingService.navigateToLogout();
+  }
 }

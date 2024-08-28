@@ -1,0 +1,129 @@
+<head>
+    <title>Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body (window:resize)="sidebarCloseOnResize()">
+    <nav class="sidebar active">
+        <div class="logo-menu">
+            <h2 class="logo">Logout</h2>
+            <i class='bx bx-menu toggle-button' (click)="toggleActive()"></i>
+        </div>
+
+        <ul class="list">
+            <li class="list-item">
+                <a (click)="navigateToHome()">
+                    <i class='bx bx-home-alt'></i>
+                    <span class="link-name" style="--i:7;">Home</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a (click)="navigateToSearchMovies()">
+                    <i class='bx bx-search'></i>
+                    <span class="link-name" style="--i:6;">Search</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a (click)="navigateToMovies()">
+                    <i class='bx bx-camera-movie'></i>
+                    <span class="link-name" style="--i:5;">Movies</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a (click)="navigateToShows()">
+                    <i class='bx bx-collection'></i>
+                    <span class="link-name" style="--i:4;">Shows</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a (click)="navigateToSummary()">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span class="link-name" style="--i:3;">Summary</span>
+                </a>
+            </li>
+            <li class="list-item">
+                <a (click)="navigateToAccountsPosts()">
+                    <i class='bx bx-user'></i>
+                    <span class="link-name" style="--i:2;">Account</span>
+                </a>
+            </li>
+            <li class="list-item active">
+                <a (click)="navigateToSettings()">
+                    <i class='bx bx-cog'></i>
+                    <span class="link-name" style="--i:1;">Settings</span>
+                </a>
+            </li>
+            <li class="settings-item">
+                <a class="account-info-icon" (click)="navigateToSettings()">
+                    <i class='bx bx-info-circle'></i>
+                    <span class="link-name" style="--i:1;">Account Info</span>
+                </a>
+            </li>
+            <li class="settings-item">
+                <a class="privacy-icon" (click)="navigateToPrivacy()">
+                    <i class='bx bx-shield-quarter' ></i>
+                    <span class="link-name" style="--i:1;">Privacy</span>
+                </a>
+            </li>
+            <li class="settings-item active">
+                <a class="logout-icon" (click)="navigateToLogout()">
+                    <i class='bx bx-exit'></i>
+                    <span class="link-name" style="--i:1;">Logout</span>
+                </a>
+            </li>
+            <li class="username">
+                 <p class="link-name" style="--i:2">Signed in as:</p> 
+                 <p class="link-name" style="--i:2">{{ currentUser.username }}</p>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="account-privacy">
+            <p class="title">Account Privacy</p>
+            <div class="public-private">
+                <div class="title-switch">
+                    <p class="privacy-mode">Public</p>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="toggle" (click)="OnSwitchPrivacy()">
+                        <label for="toggle" class="slide-toggle"></label>
+                    </div>
+                </div>
+                <p class="description">When your account is public, your profile can be viewed by anyone who finds your account. This includes the people on both your followers and following list and the posts you've posted yourself or have been tagged in.</p>
+            </div>
+        </div>
+
+        <div class="blocked-users">
+            <div class="blocked-accounts-title">
+                <p>Blocked Accounts</p>
+            </div>
+            <div class="scroll-box">
+                <div class="blocked-accounts" *ngIf="currentUser.blocked.length != 0; else noBlockedUsers">
+                    <div class="blocked-account" *ngFor="let blockedAccount of currentUser.blocked; let i = index">
+                        <app-blocked-account-template
+                            [blockedAccount]="blockedAccount"
+                            class="blocked-account-{{i}}"
+                        ></app-blocked-account-template>
+                    </div>
+                </div>
+                <ng-template #noBlockedUsers>
+                    <div class="no-blocked-users">
+                        <p class="no-blocked-users-message">You haven't blocked any accounts as of yet</p>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+
+    <div class="logout-screen">
+        <div class="logout-info">
+            <div class="question">
+                <p>Are You Sure You Want To Logout?</p>
+            </div>
+            <div class="buttons">
+                <button type="submit" class="yes-button" (click)="onYes()">Yes</button>
+                <button type="submit" class="no-button" (click)="onNo()">No</button>
+            </div>
+        </div>
+    </div>
+</body>

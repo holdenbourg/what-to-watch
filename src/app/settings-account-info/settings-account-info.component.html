@@ -6,7 +6,7 @@
 <body (window:resize)="sidebarCloseOnResize()">
     <nav class="sidebar active">
         <div class="logo-menu">
-            <h2 class="logo">Settings</h2>
+            <h2 class="logo">Account Info</h2>
             <i class='bx bx-menu toggle-button' (click)="toggleActive()"></i>
         </div>
 
@@ -63,6 +63,12 @@
                 <a class="privacy-icon" (click)="navigateToPrivacy()">
                     <i class='bx bx-shield-quarter' ></i>
                     <span class="link-name" style="--i:2;">Privacy</span>
+                </a>
+            </li>
+            <li class="settings-item">
+                <a class="logout-icon" (click)="navigateToLogout()">
+                    <i class='bx bx-exit'></i>
+                    <span class="link-name" style="--i:1;">Logout</span>
                 </a>
             </li>
             <li class="username">

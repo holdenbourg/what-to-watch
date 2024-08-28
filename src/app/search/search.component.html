@@ -12,43 +12,43 @@
 
         <ul class="list">
             <li class="list-item">
-                <a (click)="navigateToHome()">
+                <a (click)="this.routingService.navigateToHome()">
                     <i class='bx bx-home-alt'></i>
                     <span class="link-name" style="--i:2;">Home</span>
                 </a>
             </li>
             <li class="list-item active">
-                <a (click)="navigateToSearchMovies()">
+                <a (click)="this.routingService.navigateToSearchMovies()">
                     <i class='bx bx-search'></i>
                     <span class="link-name" style="--i:1;">Search</span>
                 </a>
             </li>
             <li class="list-item">
-                <a (click)="navigateToMovies()">
+                <a (click)="this.routingService.navigateToMovies()">
                     <i class='bx bx-camera-movie'></i>
                     <span class="link-name" style="--i:2;">Movies</span>
                 </a>
             </li>
             <li class="list-item">
-                <a (click)="navigateToShows()">
+                <a (click)="this.routingService.navigateToShows()">
                     <i class='bx bx-collection'></i>
                     <span class="link-name" style="--i:3;">Shows</span>
                 </a>
             </li>
             <li class="list-item">
-                <a (click)="navigateToSummary()">
+                <a (click)="this.routingService.navigateToSummary()">
                     <i class='bx bx-bar-chart-alt-2'></i>
                     <span class="link-name" style="--i:4;">Summary</span>
                 </a>
             </li>
             <li class="list-item">
-                <a (click)="navigateToAccountsPosts()">
+                <a (click)="this.routingService.navigateToAccountsPosts(this.currentUser.username)">
                     <i class='bx bx-user'></i>
                     <span class="link-name" style="--i:5;">Account</span>
                 </a>
             </li>
             <li class="list-item">
-                <a (click)="navigateToSettings()">
+                <a (click)="this.routingService.navigateToSettings()">
                     <i class='bx bx-cog'></i>
                     <span class="link-name" style="--i:6;">Settings</span>
                 </a>
@@ -64,7 +64,7 @@
         <div class="search-bar">
             <label class="prompt">What did you watch?</label>
             <input class="input-enter" type="text" [(ngModel)]="searchInput" name="searchInput" (keyup.enter)="onSearch()" (blur)="untoggleSearchLabel()" (focus)="toggleSearchLabel()" required>
-            <i (click)="toggleMoviesActive()" class="movies">Movies</i>
+            <i (click)="toggleMoviesActive()" class="movies active">Movies</i>
             <i (click)="toggleSeriesActive()" class="series">Series</i>
             <i (click)="toggleUsersActive()" class="users">Users</i>
             <a (click)="onSearch()">
@@ -72,25 +72,16 @@
             </a>
         </div>
 
-        <div class="scroll-box" *ngIf="type != 'users'">
-            <div class="searched-films">
+        <div class="scroll-box">
+            <p class="search-warning">Nothing Came Up, Try Something Else</p>
+            <div class="searched-movies">
                 <app-searched-film-template
                     *ngFor="let film of translatedMovies"
                     [filmDetails]="film" 
-                    (click)="onFilmClicked(film.Type, film.imdbID)" 
-                    class="searched-film"
+                    (click)="this.routingService.navigateToMovieInformation(film.imdbID)" 
+                    class="searched-movie"
                 ></app-searched-film-template>
             </div>
         </div>
-        <!-- <div class="scroll-box">
-            <div class="searched-users">
-                <app-searched-film-template
-                    *ngFor="let film of translatedMovies"
-                    [filmDetails]="film" 
-                    (click)="onFilmClicked(film.Type, film.imdbID)" 
-                    class="searched-film"
-                ></app-searched-film-template>
-            </div>
-        </div> -->
     </div>
 </body>

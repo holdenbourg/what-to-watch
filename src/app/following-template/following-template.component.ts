@@ -45,6 +45,7 @@ export class FollowingTemplateComponent {
       following: newFollowingUsers,
       requests: this.currentUser.requests,
       blocked: this.currentUser.blocked,
+      isBlockedBy: this.currentUser.isBlockedBy,
       postIds: this.currentUser.postIds,
       taggedPostIds: this.currentUser.taggedPostIds,
       archivedPostIds: this.currentUser.archivedPostIds,

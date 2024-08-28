@@ -7,6 +7,7 @@ import { UpcomingFilmModel } from "../models/upcoming-films/upcoming-film-model"
 import { UpcomingFilmApiResponseModel } from "../models/upcoming-films/upcoming-film-api-response-model";
 import { SeriesResponseModel } from "../models/mdb-list-api/series-response-model";
 import { MovieResponseModel } from "../models/mdb-list-api/movie-response-model";
+import { SafeSubscriber } from "rxjs/internal/Subscriber";
 
 export class ApiService {
   private httpClient: HttpClient = inject(HttpClient);
@@ -18,21 +19,36 @@ export class ApiService {
     let searchedFilms: SearchedFilmModel[] = [];
 
     const url: string = `${this.baseOmdbUrl}s=${title}&type=${type}`
+    
 
-    this.httpClient.get<FilmSearchResposneModel>(url).subscribe({
-      next: (result) => result.Search.forEach(element => {
-        let searchedFilm: SearchedFilmModel = {
-          Title: element.Title,
-          Year: element.Year,
-          imdbID: element.imdbID,
-          Type: element.Type,
-          Poster: element.Poster
-        }
+    try {
+      this.httpClient.get<FilmSearchResposneModel>(url).subscribe({
+        next: (result) => {
+          if(result.Search != undefined) {
+            result.Search.forEach(element => {
+              let searchedFilm: SearchedFilmModel = {
+                Title: element.Title,
+                Year: element.Year,
+                imdbID: element.imdbID,
+                Type: element.Type,
+                Poster: element.Poster
+              }
+      
+              searchedFilms.push(searchedFilm);
+            })
+          } else {
+            const searchWarning = document.querySelector('.search-warning');
+            searchWarning?.classList.toggle('active');
 
-        searchedFilms.push(searchedFilm);
-      }),
-      error: (error: HttpErrorResponse) => console.log(error)
-    });
+            setTimeout(() => {searchWarning?.classList.toggle('active');}, 3000);
+          }
+        },
+        error: (error: HttpErrorResponse) => console.log(error)
+      });
+    } catch (er) {
+      console.log(er);
+      console.log(1);
+    }
 
     return searchedFilms;
   }

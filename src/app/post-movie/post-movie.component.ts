@@ -36,7 +36,7 @@ export class PostMovieComponent implements OnInit {
   public taggedAccounts: FollowerModel[] = this.localStorageService.getInformation('taggedAccounts');
   public taggedAccountsString: string = '';
 
-  public watchedWith: string = `*${this.currentUser.firstName} watched ${this.currentPostingMovie.title} with `;
+  public watchedWith: string = `${this.currentUser.firstName} watched ${this.currentPostingMovie.title} with `;
 
 
   ngOnInit() {
@@ -50,13 +50,13 @@ export class PostMovieComponent implements OnInit {
     if(this.taggedAccounts.length == 0) {
       this.watchedWith = '';
     } else if(this.taggedAccounts.length == 1) {
-      this.watchedWith = this.watchedWith + this.taggedAccounts.at(0)!.username + '*';
+      this.watchedWith = this.watchedWith + this.taggedAccounts.at(0)!.username;
     } else if (this.taggedAccounts.length == 2) {
-      this.watchedWith = this.watchedWith + this.taggedAccounts.at(0)!.username + ' and ' + this.taggedAccounts.at(1)!.username + '*';
+      this.watchedWith = this.watchedWith + this.taggedAccounts.at(0)!.username + ' and ' + this.taggedAccounts.at(1)!.username;
     } else {
       for(let i = 0; i < this.taggedAccounts.length; i++) {
         if(i == this.taggedAccounts.length - 1) {
-          this.watchedWith = this.watchedWith + 'and ' + this.taggedAccounts.at(i)!.username + '*';
+          this.watchedWith = this.watchedWith + 'and ' + this.taggedAccounts.at(i)!.username;
         } else {
           this.watchedWith = this.watchedWith + this.taggedAccounts.at(i)!.username + ', ';
         }
@@ -374,6 +374,7 @@ export class PostMovieComponent implements OnInit {
       following: this.convertFollowersToRawFollowers(rawUser.following),
       requests: this.convertFollowersToRawFollowers(rawUser.requests),
       blocked: this.convertFollowersToRawFollowers(rawUser.blocked),
+      isBlockedBy: this.convertFollowersToRawFollowers(rawUser.isBlockedBy),
       postIds: rawUser.postIds,
       taggedPostIds: rawUser.taggedPostIds,
       archivedPostIds: rawUser.archivedPostIds,

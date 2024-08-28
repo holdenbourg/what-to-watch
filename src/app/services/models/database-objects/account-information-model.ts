@@ -12,6 +12,7 @@ export interface AccountInformationModel {
     following: FollowerModel[],
     requests: FollowerModel[],
     blocked: FollowerModel[],
+    isBlockedBy: FollowerModel[],
     postIds: string[],
     taggedPostIds: string[],
     archivedPostIds: string[],

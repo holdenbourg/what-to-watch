@@ -225,7 +225,10 @@
                 </a>
             </div>
             <div class="post">
-                <img class="film-poster" [src]="currentTaggedPost.poster" [attr.alt]="currentTaggedPost.poster">
+                <div id="film-poster" class="film-poster">
+                    <img class="poster" [src]="currentTaggedPost.poster" [attr.alt]="currentTaggedPost.poster">
+                    <p class="tagged-accounts">{{ watchedWith }}</p>
+                </div>
                 <div class="post-information">
                     <div class="current-user-info">
                         <div class="pofile-picture-username">
@@ -337,12 +340,15 @@
                     </a>
                 </div>
                 <div class="post">
-                    <img class="film-poster" [src]="currentTaggedPost.poster" [attr.alt]="currentTaggedPost.poster">
+                    <div id="film-poster" class="film-poster">
+                        <img class="poster" [src]="currentTaggedPost.poster" [attr.alt]="currentTaggedPost.poster">
+                        <p class="tagged-accounts">{{ watchedWith }}</p>
+                    </div>
                     <div class="post-information">
                         <div class="current-user-info">
                             <div class="pofile-picture-username">
                                 <img class="user-profile-picture" [src]="currentUser.profilePicture" [attr.alt]="currentUser.username">
-                                <p class="user-username">{{ currentUser.username }}</p>
+                                <a class="user-username" href="/account/{{ currentTaggedPost.username }}/posts">{{ currentTaggedPost.username }}</a>
                             </div>
                             <p class="post-date">{{ fixCommentDate(currentTaggedPost.postDate) }}</p>
                         </div>
@@ -386,7 +392,7 @@
                                     <div class="left-side">
                                         <img class="profile-pitcure" [src]="currentUser.profilePicture" [attr.alt]="currentUser.username">
                                         <div class="comment">
-                                            <a class="profile-username" href="/account/{{ currentUser.username }}/posts">{{ currentUser.username }}</a>
+                                            <a class="profile-username" href="/account/{{ currentTaggedPost.username }}/posts">{{ currentTaggedPost.username }}</a>
                                             <p class="actual-comment" id="actual-comment">{{ boldAttedUsernames(currentTaggedPost.caption) }}</p>
                                         </div>
                                     </div>

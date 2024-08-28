@@ -1,0 +1,42 @@
+.searched-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: .15vw solid #fff;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+.account-info {
+    display: flex;
+    flex-direction: row;
+}
+.profile-picture {
+    -webkit-filter: invert(100%);
+    height: 3vw;
+    width: 3vw;
+    border-radius: 3vw;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 15px;
+}
+.username {
+    font-size: 1.15vw;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+.full-name {
+    font-size: .9vw;
+    color: mix(white, black, 80%);
+    font-weight: 500;
+    margin-top: 0;
+}
+.account-information {
+    margin-left: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+}

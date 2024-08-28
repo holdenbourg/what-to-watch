@@ -112,6 +112,8 @@ export class PrivacyComponent {
     container?.classList.toggle('active');
   }
 
+
+  /* ROUTING */
   navigateToHome() {
     this.routingService.navigateToHome();
   }
@@ -144,5 +146,8 @@ export class PrivacyComponent {
   }
   navigateToPrivacy() {
     this.routingService.navigateToPrivacy();
+  }
+  navigateToLogout() {
+    this.routingService.navigateToLogout();
   }
 }
