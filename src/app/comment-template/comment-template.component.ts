@@ -106,6 +106,7 @@ export class CommentTemplateComponent implements OnInit {
     const prompt = document.querySelector(`.prompt`);
     prompt!.textContent = `Replying to ${comment.username}`;
 
+    this.replyService.postId = comment.postId;
     this.replyService.commentId = comment.commentId;
   }
 

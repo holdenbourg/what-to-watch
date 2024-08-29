@@ -944,6 +944,7 @@ export class AccountComponent  implements OnInit {
       this.localStorageService.setInformation('comments', allComments);
     } else {
       let reply: ReplyModel = {
+        postId: this.replyService.postId,
         commentId: this.replyService.commentId,
         replyId: this.generateUniqueReplyId(),
         profilePicture: this.currentUser.profilePicture,

@@ -49,7 +49,7 @@ export class SearchSeriesComponent implements OnInit {
 
   onSearch() {
     //turns off the 'No Results' message
-    const searchWarning = document.querySelector('.search-show-warning');
+    const searchWarning = document.querySelector('.search-warning');
     if(searchWarning?.classList.contains('active')) searchWarning?.classList.toggle('active');
 
     //clearing previous search

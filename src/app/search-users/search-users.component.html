@@ -64,10 +64,10 @@
         <div class="search-bar">
             <label class="prompt">What did you watch?</label>
             <input class="input-enter" type="text" [(ngModel)]="searchInput" name="searchInput" (keyup.enter)="onSearch(this.searchInput)" (blur)="untoggleSearchLabel()" (focus)="toggleSearchLabel()" required>
-            <i (click)="toggleMoviesActive()" class="movies active">Movies</i>
+            <i (click)="toggleMoviesActive()" class="movies">Movies</i>
             <i (click)="toggleSeriesActive()" class="series">Series</i>
             <i (click)="toggleUsersActive()" class="users active">Users</i>
-            <a (click)="onSearch(this.searchInput)">
+            <a (click)="onSearch(this.searchInput)" class="search">
                 <i class='bx bx-search'></i>
             </a>
         </div>

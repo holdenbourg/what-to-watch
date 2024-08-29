@@ -314,6 +314,7 @@ input {
 .scroll-box::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 0.25em;
+    cursor: pointer;
 }
 .no-blocked-users-message {
     color: #fff;

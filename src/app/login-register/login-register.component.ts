@@ -1294,7 +1294,7 @@ export class LoginRegisterComponent {
       postDate: '2023-04-11'
     }
   ];
-  public rawMockCommentsDatabase: CommentModel[] = [
+  public mockCommentsDatabase: CommentModel[] = [
     {
       postId: 'm1b114fbe2525b',
       commentId: 'cf27ae8e50d6f9',
@@ -1431,8 +1431,9 @@ export class LoginRegisterComponent {
       commentDate: '2023-12-10'
     }
   ];
-  public rawMockRepliesDatabase: ReplyModel[] = [
+  public mockRepliesDatabase: ReplyModel[] = [
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'cf27ae8e50d6f9',
       replyId: 'r4af7c4786c9e1',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1446,6 +1447,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-01'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'cf27ae8e50d6f9',
       replyId: 'r62a5946328fc6',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1459,6 +1461,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-02'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c29ef0f5432ee1',
       replyId: 'rbe90cd2d8512',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1472,6 +1475,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-01'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c29ef0f5432ee1',
       replyId: 'r5a70870c8b60e',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1485,6 +1489,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-02'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'cf901da1624394',
       replyId: 'rfe080035d070e',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1498,6 +1503,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-01'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'cf901da1624394',
       replyId: 'r6eae1395ad8d5',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1511,6 +1517,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-02'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c1601ad93a6f0d',
       replyId: 'r2c50dd79ed0d2',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1524,6 +1531,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-01'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c1601ad93a6f0d',
       replyId: 'r421a9201c8fb3',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1537,6 +1545,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-02'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c8ae596289a788',
       replyId: 'r5f09426286745',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1550,6 +1559,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-01'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c8ae596289a788',
       replyId: 'r32870e5f29a14',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1563,6 +1573,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-02'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c75ed8983b2685',
       replyId: 'r73a14c3c5e6d9',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1576,6 +1587,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-01'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c75ed8983b2685',
       replyId: 'r557a5628b8698',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1589,6 +1601,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-02'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c2eb1441cffcc2',
       replyId: 'r72f79aa859278',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1602,6 +1615,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-01'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c2eb1441cffcc2',
       replyId: 'rf6089da30a85f',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1615,6 +1629,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-02'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c9b2e0cd075df2',
       replyId: 'r4afc159c06a1a',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1628,6 +1643,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-01'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c9b2e0cd075df2',
       replyId: 'r23bfd33e960ad',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1641,6 +1657,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-02'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'ceda40daaca3ed',
       replyId: 'rf1bf1f31f9da7',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1654,6 +1671,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-01'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'ceda40daaca3ed',
       replyId: 'rfb7f6252ff8ec',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1667,6 +1685,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-02'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c54b6527bcbb25',
       replyId: 'ra04671550c12d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1680,6 +1699,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-01'
     },
     {
+      postId: 'm1b114fbe2525b',
       commentId: 'c54b6527bcbb25',
       replyId: 'r7cde124fce59f',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1693,6 +1713,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-02'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'ra8dd78e88aeb4',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1706,6 +1727,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-01'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r2c6255f0c2aaf',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1719,6 +1741,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-02'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r8f8ad6166b72b',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1732,6 +1755,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-03'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'red0f689dcf755',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1745,6 +1769,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-04'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'rad7d5d9ff1a4d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1758,6 +1783,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-05'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r7c4712786a0ed',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1771,6 +1797,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-06'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r75a38949335c5',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1784,6 +1811,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-07'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r1fd6b02c645fe',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1797,6 +1825,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-08'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'raf690d8a3803a',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1810,6 +1839,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-09'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'rdfbb9ede08f61',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1823,6 +1853,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-10'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r263560adcf974',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1836,6 +1867,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-11'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r592731415367f',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1849,6 +1881,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-12'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r0338ecf855051',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1862,6 +1895,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-13'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'rb37571d2d502c',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1875,6 +1909,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-14'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'rdd6f20da45cbf',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1888,6 +1923,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-15'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r6aceaa09a9987',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1901,6 +1937,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-16'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r4ddbabf4f4f5d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1914,6 +1951,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-17'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r555488e48335',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1927,6 +1965,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-18'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r5784ce9e17c3b',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1940,6 +1979,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-19'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r2c13645d8646b',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1953,6 +1993,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-20'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r970279d92bddb',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1966,6 +2007,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-21'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'rcb95c8e109119',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1979,6 +2021,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-22'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r5a58500d9f9e9',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -1992,6 +2035,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-23'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'rc05b1aa32d957',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -2005,6 +2049,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-24'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 're2eb46f1d082d',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -2018,6 +2063,7 @@ export class LoginRegisterComponent {
       commentDate: '2023-11-25'
     },
     {
+      postId: 'mc64a0e2ed49d7',
       commentId: 'ca6bb512e14b58',
       replyId: 'r702f62a53e5f2',
       profilePicture: 'https://cdn-icons-png.flaticon.com/512/1144/1144760.png',
@@ -2057,9 +2103,9 @@ export class LoginRegisterComponent {
     // this.localStorageService.clearInformation('rawPosts');
     // this.localStorageService.setInformation('rawPosts', this.rawMockPostsDatabase);
     // this.localStorageService.clearInformation('comments');
-    // this.localStorageService.setInformation('comments', this.rawMockCommentsDatabase);
+    // this.localStorageService.setInformation('comments', this.mockCommentsDatabase);
     // this.localStorageService.clearInformation('replies');
-    // this.localStorageService.setInformation('replies', this.rawMockRepliesDatabase);
+    // this.localStorageService.setInformation('replies', this.mockRepliesDatabase);
   }
 
   onTerms() {

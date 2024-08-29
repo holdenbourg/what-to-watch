@@ -197,11 +197,36 @@ body {
     margin-right: 0px;
     font-size: 1.2em;
     color: #fff;
-    line-height: 57px;
-    height: 40px;
+    padding-top: 5px;
+}
+.search {
+    padding-top: 5px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    font-size: 1.2em;
+    color: #fff;
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}
+.search.active, .search:hover {
+    padding-top: 5px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    font-size: 1.2em;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #fff;
+    cursor: pointer;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 3px;
 }
 //movies/series/users
-.search-bar i {
+.movies, .series, .users {
     padding-left: 7.5px;
     padding-right: 7.5px;
     margin-left: 2.5px;
@@ -212,6 +237,21 @@ body {
     margin-top: auto;
     margin-bottom: auto;
     cursor: pointer;
+}
+.movies.active, .series.active, .users.active,
+.movies:hover, .series:hover, .users:hover {
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    font-size: 1.2em;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    height: 1.5em;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #fff;
+    cursor: pointer;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 3px;
 }
 .search-warning {
     transform: scale(0);
@@ -227,23 +267,9 @@ body {
     padding-top: 2.5%;
     transform: scale(1);
 }
-.movies.active, .series:hover, .users:hover {
-    padding-left: 7.5px;
-    padding-right: 7.5px;
-    font-size: 1.2em;
-    margin-left: 2.5px;
-    margin-right: 2.5px;
-    height: 1.5em;
-    margin-top: auto;
-    margin-bottom: auto;
-    color: #fff;
-    cursor: pointer;
-    background: rgba(255, 255, 255, .2);
-    border-radius: 3px;
-}
 
 
-/* SEARCHED SHOWS SCROLL BOX */
+/* SEARCHED MOVIES SCROLL BOX */
 //container for searched films
 .scroll-box {
     padding-right: 6.5px;
@@ -260,7 +286,7 @@ body {
     --bottom-mask-size: 0px;
 }
 //contains all the searched films
-.scroll-box.searched-movies {
+.scroll-box.searched-films {
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-color: #fff transparent;
@@ -273,6 +299,7 @@ body {
 .scroll-box::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 0.25em;
+    cursor: pointer;
 }
 //individual searched film
 .searched-movie {

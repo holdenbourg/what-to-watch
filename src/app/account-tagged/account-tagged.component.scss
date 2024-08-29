@@ -282,6 +282,7 @@ body {
 .comment-scroll-box::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 0.25em;
+    cursor: pointer;
 }
 .movie-rating-info, .series-rating-info {
     color: #fff;
@@ -531,6 +532,7 @@ body {
 .scroll-box::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 0.25em;
+    cursor: pointer;
 }
 //contains all the user-post's
 .tagged-posts {
@@ -626,6 +628,7 @@ body {
 .follower-scroll-box::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 0.25em;
+    cursor: pointer;
 }
 
 //container for the follower/following/requests (if private) info

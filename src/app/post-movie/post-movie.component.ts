@@ -398,7 +398,7 @@ export class PostMovieComponent implements OnInit {
     return returnArray;
   }
 
-  saveCaption(caption: string) {
+  saveCaption() {
     this.localStorageService.setInformation('currentCaption', this.caption);
   }
 }

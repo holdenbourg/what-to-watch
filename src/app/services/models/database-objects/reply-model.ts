@@ -1,4 +1,5 @@
 export interface ReplyModel {
+    postId: string,
     commentId: string,
     replyId: string,
     profilePicture: string,

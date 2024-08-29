@@ -21,6 +21,7 @@ export class ReplyTemplateComponent {
   
   @Input()
   public reply: ReplyModel = {
+    postId: '',
     commentId: '',
     replyId: '',
     profilePicture: '',
@@ -60,6 +61,7 @@ export class ReplyTemplateComponent {
     const prompt = document.querySelector(`.prompt`);
     prompt!.textContent = `Replying to ${reply.username}`;
 
+    this.replyService.postId = reply.postId;
     this.replyService.commentId = reply.commentId;
   }
 

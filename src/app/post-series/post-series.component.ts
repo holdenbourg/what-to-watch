@@ -398,7 +398,7 @@ export class PostSeriesComponent implements OnInit {
     return returnArray;
   }
 
-  saveCaption(caption: string) {
+  saveCaption() {
     this.localStorageService.setInformation('currentCaption', this.caption);
   }
 }

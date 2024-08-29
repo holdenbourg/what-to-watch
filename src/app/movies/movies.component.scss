@@ -330,6 +330,7 @@ body {
 .scroll-box::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 0.25em;
+    cursor: pointer;
 }
 //individual rated film
 .rated-film {

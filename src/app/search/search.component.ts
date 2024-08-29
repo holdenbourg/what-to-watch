@@ -9,10 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UserInputService } from '../services/user/user-input.service';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
-import { FollowerModel } from '../services/models/database-objects/follower-model';
-import { RawAccountInformationModel } from '../services/models/database-objects/raw-account-information-model';
 import { SearchedUserTemplateComponent } from '../searched-user-template/searched-user-template.component';
-import { ignoreElements } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -31,15 +28,14 @@ export class SearchComponent  implements OnInit {
 
   public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
 
-  public currentActiveSearchType: string = '.movies';
   public searchInput: string = '';
   public input: string = '';
   public translatedMovies: SearchedFilmModel[] = [];
-  public searchedAccounts: FollowerModel[] = [];
 
 
   ngOnInit() {
     this.input = this.activatedRoute.snapshot.params['input'];
+
     if(this.input != undefined) {
       this.toggleSearchLabel(); 
       this.searchInput = this.input;

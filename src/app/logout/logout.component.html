@@ -3,11 +3,11 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body (window:resize)="sidebarCloseOnResize()">
+<body>
     <nav class="sidebar active">
         <div class="logo-menu">
             <h2 class="logo">Logout</h2>
-            <i class='bx bx-menu toggle-button' (click)="toggleActive()"></i>
+            <i class='bx bx-menu toggle-button'></i>
         </div>
 
         <ul class="list">
@@ -85,7 +85,7 @@
                 <div class="title-switch">
                     <p class="privacy-mode">Public</p>
                     <div class="toggle-switch">
-                        <input type="checkbox" id="toggle" (click)="OnSwitchPrivacy()">
+                        <input type="checkbox" id="toggle">
                         <label for="toggle" class="slide-toggle"></label>
                     </div>
                 </div>

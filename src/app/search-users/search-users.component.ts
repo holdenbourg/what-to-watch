@@ -17,7 +17,7 @@ import { RoutingService } from '../services/routing/routing.service';
   styleUrl: './search-users.component.scss'
 })
 export class SearchUsersComponent implements OnInit {
-  private routingService: RoutingService = inject(RoutingService);
+  public routingService: RoutingService = inject(RoutingService);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
   public localStorageService: LocalStorageService = inject(LocalStorageService);
 

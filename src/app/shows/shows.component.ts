@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { RatedSeriesTemplateComponent } from '../rated-series-template/rated-series-template.component';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
+import { RawUserPostModel } from '../services/models/database-objects/raw-user-post-model';
+import { CommentModel } from '../services/models/database-objects/comment-model';
+import { ReplyModel } from '../services/models/database-objects/reply-model';
 
 @Component({
   selector: 'app-shows',
@@ -82,7 +85,7 @@ export class ShowsComponent  implements OnInit {
   }
 
   onDelete(input: RatedSeriesModel) {
-    //delete rating from database
+    //delete rating from  rated shows database
     let ratedSeries: RatedSeriesModel[] = this.localStorageService.getInformation('ratedSeries');
     let returnRatedSeries: RatedSeriesModel[] = [];
 
@@ -92,8 +95,45 @@ export class ShowsComponent  implements OnInit {
       }
     }
 
+
+    //delete the post, post's comments, and post's comment's replies
+    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
+    let returnRawPosts: RawUserPostModel[] = [];
+
+    for(let i = 0; i < rawPosts.length; i++) {
+      if(!(rawPosts[i].postId === input.postId)) {
+        returnRawPosts.push(rawPosts[i]);
+      }
+    }
+
+    let comments: CommentModel[] = this.localStorageService.getInformation('comments');
+    let returnComments: CommentModel[] = [];
+
+    for(let i = 0; i < comments.length; i++) {
+      if(!(comments[i].postId === input.postId)) {
+        returnComments.push(comments[i]);
+      }
+    }
+
+    let replies: ReplyModel[] = this.localStorageService.getInformation('replies');
+    let returnReplies: ReplyModel[] = [];
+
+    for(let i = 0; i < replies.length; i++) {
+      if(!(replies[i].postId === input.postId)) {
+        returnReplies.push(replies[i]);
+      }
+    }
+
+
+    //reset all 4 databases
     this.localStorageService.clearInformation('ratedSeries');
     this.localStorageService.setInformation('ratedSeries', returnRatedSeries);
+    this.localStorageService.clearInformation('rawPosts');
+    this.localStorageService.setInformation('rawPosts', returnRawPosts);
+    this.localStorageService.clearInformation('comments');
+    this.localStorageService.setInformation('comments', returnComments);
+    this.localStorageService.clearInformation('replies');
+    this.localStorageService.setInformation('replies', returnReplies);
 
     window.location.reload();
   }

@@ -19,7 +19,6 @@ export class ApiService {
     let searchedFilms: SearchedFilmModel[] = [];
 
     const url: string = `${this.baseOmdbUrl}s=${title}&type=${type}`
-    
 
     try {
       this.httpClient.get<FilmSearchResposneModel>(url).subscribe({
@@ -35,19 +34,18 @@ export class ApiService {
               }
       
               searchedFilms.push(searchedFilm);
-            })
+            })            
           } else {
             const searchWarning = document.querySelector('.search-warning');
             searchWarning?.classList.toggle('active');
 
-            setTimeout(() => {searchWarning?.classList.toggle('active');}, 3000);
+            //setTimeout(() => {searchWarning?.classList.toggle('active');}, 3000);            
           }
         },
         error: (error: HttpErrorResponse) => console.log(error)
       });
     } catch (er) {
       console.log(er);
-      console.log(1);
     }
 
     return searchedFilms;
