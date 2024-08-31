@@ -177,7 +177,7 @@ body {
     transition: .5s;
 }
 //container for upcoming films
-.scroll-box {
+.upcoming-films-scroll-box {
     overflow: hidden;
     overflow-y: scroll;
     -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
@@ -186,15 +186,69 @@ body {
     --bottom-mask-size: 0px;
 }
 //scrollbar
-.scroll-box::-webkit-scrollbar {
+.upcoming-films-scroll-box::-webkit-scrollbar {
     width: 0.5em;
 }
-.scroll-box::-webkit-scrollbar-thumb {
+.upcoming-films-scroll-box::-webkit-scrollbar-thumb {
     background: white;
     border-radius: 0.25em;
     cursor: pointer;
 }
 //individual rated film
 .upcoming-film {
+    cursor: pointer;
+}
+
+
+
+
+//container for thge user's feed
+.feed-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 71.5%;
+    border: .2vw solid #fff;
+    border-radius: 5px;
+    backdrop-filter: blur(3px);
+    padding-right: 6.5px;
+
+}
+//feed title
+.feed-container p {
+    color: #fff;
+    font-size: 1.75vw;
+    font-weight: 600;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 20px;
+    margin-right: 14px;
+    border-bottom: .15vw solid #fff;
+}
+//contains all the feed posts
+.feed-posts {
+    height: 93%;
+    padding-left: 20px;
+    padding-right: 6px;
+    transition: .5s;
+}
+//container for feed-posts
+.feed-scroll-box {
+    overflow: hidden;
+    overflow-y: scroll;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0, black var(--top-mask-size, 0), black calc(100% - var(--bottom-mask-size, 0)), transparent 100%);
+    --top-mask-size: 10px;
+    --bottom-mask-size: 0px;
+}
+//scrollbar
+.feed-scroll-box::-webkit-scrollbar {
+    width: 0.5em;
+}
+.feed-scroll-box::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 0.25em;
     cursor: pointer;
 }

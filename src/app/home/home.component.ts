@@ -8,13 +8,16 @@ import { UpcomingFilmTemplateComponent } from '../upcoming-film-template/upcomin
 import { ExtensiveSearchFilmModel } from '../services/models/omdb-api/extensive-film-api-search-response-model';
 import { SeriesResponseModel } from '../services/models/mdb-list-api/series-response-model';
 import { LocalStorageService } from '../services/local-storage/local-storage.service';
-import { RawAccountInformationModel } from '../services/models/database-objects/raw-account-information-model';
 import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
+import { FeedPostComponent } from '../feed-post/feed-post.component';
+import { UserPostModel } from '../services/models/database-objects/user-post-model';
+import { RawUserPostModel } from '../services/models/database-objects/raw-user-post-model';
+import { FollowerModel } from '../services/models/database-objects/follower-model';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, UpcomingFilmTemplateComponent],
+  imports: [CommonModule, FormsModule, UpcomingFilmTemplateComponent, FeedPostComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -30,12 +33,17 @@ export class HomeComponent implements OnInit {
   public mdbReturn: SeriesResponseModel[] = [];
 
   public upcomingFilmList: UpcomingFilmModel[] = [];
+  public usersFeedPosts: UserPostModel[] = [];
+
   public searchInput: string = '';
 
   
   ngOnInit() {    
     //sets information for upcoming films
     this.upcomingFilmList = this.apiService.searchUpcomingFilms();
+
+    //sets posts for the users feed
+    this.usersFeedPosts =  this.populateUsersFeed();
 
     this.sidebarCloseOnResize();
     this.localStorageService.cleanTemporaryLocalStorages();
@@ -105,6 +113,13 @@ export class HomeComponent implements OnInit {
     return taggedAccountsString;
   }
 
+  populateUsersFeed() {
+    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
+    let posts: UserPostModel[] = rawPosts.map((rawPost) => this.convertRawPostToPost(rawPost));
+
+    return posts;
+  }
+
   navigateToHome() {
     this.routingService.navigateToHome();
   }
@@ -153,5 +168,38 @@ export class HomeComponent implements OnInit {
     themeClass?.classList.toggle('active');
     const container = document.querySelector('.container');
     container?.classList.toggle('active');
+  }
+
+  //converts the posts db raw output into UserPostModel
+  convertRawPostToPost(rawPost: RawUserPostModel) {
+    let post: UserPostModel = {
+      postId: rawPost.postId,
+      profilePicture: rawPost.profilePicture,
+      username: rawPost.username,
+      poster: rawPost.poster,
+      caption: rawPost.caption,
+      likes: rawPost.likes,
+      taggedUsers: this.convertRawFollowersToFollowers(rawPost.taggedUsers),
+      postDate: rawPost.postDate
+    }
+
+    return post;
+  }
+  //rawFollower: profilePicture.jpg::::HoldenBourg
+  convertRawFollowersToFollowers(rawFollowers: string[]) {
+    let returnArray: FollowerModel[] = [];
+
+    rawFollowers.forEach((rawFollowerString) => {
+      let splitArray = rawFollowerString.split('::::');
+
+      let follower: FollowerModel = {
+        profilePicture: splitArray.at(0)!,
+        username: splitArray.at(1)!
+      }
+
+      returnArray.push(follower);
+    })
+
+    return returnArray;
   }
 }

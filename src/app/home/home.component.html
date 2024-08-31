@@ -60,9 +60,22 @@
         </ul>
     </nav>
     <div class="container">
+        <div class="feed-container">
+            <p>Feed</p>
+            <div class="feed-scroll-box">
+                <div class="feed-posts">
+                    <div class="post" *ngFor="let userFeedPost of usersFeedPosts; let i = index">
+                        <app-feed-post
+                            [feedPost]="userFeedPost"
+                            class="feed-post-{{i}}"
+                        ></app-feed-post>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="upcoming-films-container">
             <p>Upcoming Films</p>
-            <div class="scroll-box">
+            <div class="upcoming-films-scroll-box">
                 <div class="upcoming-films">
                     <div class="upcoming-film" *ngFor="let film of sortByDate(upcomingFilmList); let i = index">
                         <app-upcoming-film-template

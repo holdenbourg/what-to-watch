@@ -1,0 +1,33 @@
+.current-user-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 2px solid #fff;
+    color: #fff;
+}
+.pofile-picture-username {
+    display: flex;
+}
+.user-profile-picture {
+    height: 32px;
+    width: 32px;
+    border-radius: 32px;
+    -webkit-filter: invert(100%);
+}
+.user-username {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    font-size: 16.5px;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+}
+.post-date {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 16.5px;
+    font-weight: 500;
+    padding-right: 5px;
+}

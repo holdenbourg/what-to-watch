@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="current-user-info">
+        <div class="pofile-picture-username">
+            <img class="user-profile-picture" [src]="feedPost.profilePicture" [attr.alt]="feedPost.username">
+            <a class="user-username" href="/account/{{ feedPost.username }}/posts">{{ feedPost.username }}</a>
+        </div>
+        <p class="post-date">{{ fixCommentDate(feedPost.postDate) }}</p>
+    </div>
+    <div class="post-information">
+        <img class="poster" [src]="feedPost.poster" [attr.alt]="feedPost.poster">
+
+    </div>
+
+
+</div>
