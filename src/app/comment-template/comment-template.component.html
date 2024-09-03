@@ -12,7 +12,7 @@
                 <p class="comment-date">{{ fixCommentDate(comment.commentDate) }}</p>
             </div>
             <div class="replies" *ngIf="leftOverReplies.length != 0">
-                <p class="view-replies" (click)="populateReplies(comment)" *ngIf="!(leftOverReplies.length <= 3)"> - View {{ this.leftOverReplies.length }} Replies - </p>
+                <p class="view-replies" (click)="populateReplies(comment)"></p>
                 <ul class="comment-replies">
                     <li *ngFor="let reply of replies let i = index">
                         <app-reply-template
@@ -21,7 +21,7 @@
                         ></app-reply-template>
                     </li>
                 </ul>
-                <p class="view-more-replies" (click)="onPopulateMoreReplies(comment)"></p>
+                <p class="view-more-replies" (click)="onPopulateMoreReplies(comment)" *ngIf="!(leftOverReplies.length <= 3)"> - View {{ this.leftOverReplies.length - 3 }} Replies - </p>
             </div>
         </div>
     </div>

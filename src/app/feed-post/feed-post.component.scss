@@ -1,25 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 35vw;
+    
+}
 .current-user-info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 12px;
-    border-bottom: 2px solid #fff;
+    border-top: 2px solid #fff;
     color: #fff;
+    height: 6.5%;
 }
 .pofile-picture-username {
     display: flex;
 }
 .user-profile-picture {
-    height: 32px;
-    width: 32px;
-    border-radius: 32px;
+    height: 2.25vw;
+    width: 2.25vw;
+    border-radius: 2.25vw;
     -webkit-filter: invert(100%);
 }
 .user-username {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 10px;
-    font-size: 16.5px;
+    font-size: 1.145vw;
     font-weight: 500;
     text-decoration: none;
     color: white;
@@ -27,7 +34,125 @@
 .post-date {
     margin-top: auto;
     margin-bottom: auto;
-    font-size: 16.5px;
+    font-size: 1.145vw;
     font-weight: 500;
     padding-right: 5px;
+}
+.poster {
+    aspect-ratio: 2/3;
+    height: 99% + 1%;
+}
+
+
+
+.bottom {
+    display: flex;
+    height: 88%;
+    width: 100%;
+}
+
+//container for posts-comments
+.comment-scroll-box {
+    border-top: 2px solid #fff;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-right: 2px;
+    padding-left: 12px;
+    height: 100%;
+    width: 100%;
+}
+//scrollbar
+.comment-scroll-box::-webkit-scrollbar {
+    width: 0.5em;
+}
+.comment-scroll-box::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 0.25em;
+    cursor: pointer;
+}
+.movie-rating-info, .series-rating-info {
+    color: #fff;
+    font-size: 1vw;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 7.5px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+.rating-information {
+    padding-top: 10px;
+    font-size: 1.25vw;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.movie-criteria, .series-criteria {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    margin-left: 12.5%;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1vw;
+    line-height: 1vw;
+}
+.movie-criteria p, .series-criteria p {
+    text-wrap: nowrap;
+    width: 6.75vw;
+    text-align: center;
+}
+.overall-rating {
+    padding-bottom: 10px;
+    font-size: 1.2vw;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+//container for profile-picture and comment-info
+.left-side {
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    width: 100%;
+}
+.profile-pitcure {
+    height: 2.25vw;
+    width: 2.25vw;
+    border-radius: 2.25vw;
+    -webkit-filter: invert(100%);
+    margin: 2.5px 12px 5px 0;
+}
+//container for profile-username and the actual-comment
+.comment {
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+}
+.profile-username {
+    font-weight: 600;
+    padding-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.145vw;
+    line-height: 1.145vw;
+    text-decoration: none;
+    color: #fff;
+}
+.actual-comment {
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 1.145vw;
+    line-height: 1.3vw;
+}
+.post-comments {
+    list-style: none;
+    margin: none;
+    margin-top: 0;
+    padding-left: 0;
+    width: 100%;
 }

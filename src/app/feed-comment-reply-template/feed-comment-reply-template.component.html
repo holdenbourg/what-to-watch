@@ -1,0 +1,32 @@
+<div class="whole-reply">
+    <div class="left-side">
+        <img class="profile-pitcure" [src]="reply.profilePicture" [attr.alt]="reply.username">
+        <div class="reply-info">
+            <div class="reply">
+                <div class="username">
+                    <a class="profile-username" href="/account/{{ reply.username }}/posts">{{ reply.username }}</a>
+                    <a> > </a>
+                    <a class="atted-username" href="/account/{{ reply.replyingToUsername }}/posts">{{ reply.replyingToUsername }}</a>
+                </div>
+                <p class="actual-reply" id="actual-reply-{{reply.replyId}}">{{ boldAttedUsernames(reply.comment) }}</p>
+            </div>
+            <div class="reply-options">
+                <p class="reply-likes">{{ reply.likes.length }} likes</p>
+                <p (click)="onReply(reply)" class="reply-button">Reply</p>
+                <p class="reply-date">{{ fixCommentDate(reply.commentDate) }}</p>
+            </div>
+        </div> 
+    </div>
+    <div class="like" id="like-{{reply.replyId}}">
+        <div class="liked" *ngIf="reply.likes.includes(currentUser.username)">
+            <a (click)="onLike()">
+                <i class='bx bxs-like'></i>
+            </a>
+        </div>
+        <div class="unliked" *ngIf="!reply.likes.includes(currentUser.username)">
+            <a (click)="onLike()">
+                <i class='bx bx-like'></i>
+            </a>
+        </div>
+    </div>
+</div>

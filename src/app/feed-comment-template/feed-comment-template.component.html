@@ -1,0 +1,40 @@
+<div class="whole-comment">
+    <div class="left-side">
+        <img class="profile-pitcure" [src]="comment.profilePicture" [attr.alt]="comment.username">
+        <div class="comment-info">
+            <div class="comment">
+                <a class="profile-username" href="/account/{{ comment.username }}/posts">{{ comment.username }}</a>
+                <p class="actual-comment" id="actual-comment-{{comment.commentId}}">{{ boldAttedUsernames(comment.comment) }}</p>    
+            </div>
+            <div class="comment-options">
+                <p class="comment-likes">{{ comment.likes.length }} likes</p>
+                <p (click)="onReply(comment)" class="reply-button">Reply</p>
+                <p class="comment-date">{{ fixCommentDate(comment.commentDate) }}</p>
+            </div>
+            <div class="replies" *ngIf="leftOverReplies.length != 0">
+                <p class="view-replies" (click)="populateReplies(comment)"></p>
+                <ul class="comment-replies">
+                    <li *ngFor="let reply of replies let i = index">
+                        <app-feed-comment-reply-template
+                            [reply]="reply" 
+                            class="comment-reply-{{i}}"
+                        ></app-feed-comment-reply-template>
+                    </li>
+                </ul>
+                <p class="view-more-replies" (click)="onPopulateMoreReplies(comment)" *ngIf="!(leftOverReplies.length <= 3)"> - View {{ this.leftOverReplies.length - 3 }} Replies - </p>
+            </div>
+        </div>
+    </div>
+    <div class="like">
+        <div class="liked" *ngIf="comment.likes.includes(currentUser.username)">
+            <a (click)="onLike()">
+                <i class='bx bxs-like'></i>
+            </a>
+        </div>
+        <div class="unliked" *ngIf="!comment.likes.includes(currentUser.username)">
+            <a (click)="onLike()">
+                <i class='bx bx-like'></i>
+            </a>
+        </div>
+    </div>
+</div>

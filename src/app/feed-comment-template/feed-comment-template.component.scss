@@ -1,0 +1,97 @@
+.whole-comment {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0 10px 0;
+}
+
+//container for profile-picture and comment-info
+.left-side {
+    width: 94%;
+    display: flex;
+    flex-direction: row;
+}
+.profile-pitcure {
+    height: 2.25vw;
+    width: 2.25vw;
+    border-radius: 2.25vw;
+    -webkit-filter: invert(100%);
+    margin: 2.5px 12px 5px 0;
+}
+//contianer for comment and comment-options
+.comment-info {
+    display: flex;
+    flex-direction: column;
+}
+//container for profile-username and the actual-comment
+.comment {
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    overflow: hidden;
+}
+.profile-username {
+    font-weight: 600;
+    padding-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.15vw;
+    line-height: 1.15vw;
+    text-decoration: none;
+    color: #fff;
+}
+.actual-comment {
+    font-weight: 400;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 1.15vw;
+    line-height: 1.375vw;
+}
+//container for the comment-likes, reply-button, and comment-date
+.comment-options {
+    display: flex;
+    flex-direction: row;
+    color: mix(white, black, 80%);
+    font-weight: 400;
+    font-size: 1vw;
+    line-height: 1vw;
+}
+//comment-options individual elements
+.comment-options p {
+    padding-right: 25px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+.reply-button {
+    cursor: pointer;
+    font-weight: 500;
+}
+//container for view-replies button, comment-replies, and view-more-replies button
+.view-replies, .view-more-replies {
+    cursor: pointer;
+    padding-left: 15px;
+    font-weight: 500;
+    font-size: 1vw;
+    line-height: 1vw;
+    color: mix(white, black, 80%);
+}
+.comment-replies {
+    list-style: none;
+    padding-left: 15px;
+    width: 100%;
+}
+
+//container for both liked and unliked
+.like {
+    margin-right: 5px;
+    font-size: 1.475vw;
+    color: #fff;
+}
+.like i {
+    cursor: pointer;
+}
+
+.replies {
+    margin-top: 5px;
+}

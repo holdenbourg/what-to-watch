@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 545px;
+    width: 100%;
     margin: 10px 0 10px 0;
 }
 
 //container for profile-picture and comment-info
 .left-side {
-    width: 515px;
+    width: 94%;
     display: flex;
     flex-direction: row;
 }

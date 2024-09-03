@@ -6,10 +6,53 @@
         </div>
         <p class="post-date">{{ fixCommentDate(feedPost.postDate) }}</p>
     </div>
-    <div class="post-information">
-        <img class="poster" [src]="feedPost.poster" [attr.alt]="feedPost.poster">
-
+    <div class="bottom">
+        <div class="post-information">
+            <img class="poster" [src]="feedPost.poster" [attr.alt]="feedPost.poster">
+        </div>
+        <div class="comment-scroll-box">
+            <div class="movie-rating-info" *ngIf="feedPost.postId.charAt(0) == 'm'; else series">
+                <p class="rating-information">{{ currentRatedMovie.title }}</p>
+                <div class="movie-criteria">
+                    <p class="criteria">Acting: {{ currentRatedMovie.acting }}</p>
+                    <p class="criteria">Visuals: {{ currentRatedMovie.visuals }}</p>
+                    <p class="criteria">Story: {{ currentRatedMovie.story }}</p>
+                    <p class="criteria">Climax: {{ currentRatedMovie.climax }}</p>
+                    <p class="criteria">Pacing: {{ currentRatedMovie.pacing }}</p>
+                    <p class="criteria">Ending: {{ currentRatedMovie.ending }}</p>
+                </div>
+                <p class="overall-rating">Overall Rating: {{ currentRatedMovie.rating }}</p>
+            </div>
+            <ng-template #series>
+                <div class="series-rating-info">
+                    <p class="rating-information">{{ currentRatedSeries.title }}</p>
+                    <div class="series-criteria">
+                        <p class="criteria">Acting: {{ currentRatedSeries.acting }}</p>
+                        <p class="criteria">Visuals: {{ currentRatedSeries.visuals }}</p>
+                        <p class="criteria">Story: {{ currentRatedSeries.story }}</p>
+                        <p class="criteria">Length: {{ currentRatedSeries.length }}</p>
+                        <p class="criteria">Pacing: {{ currentRatedSeries.pacing }}</p>
+                        <p class="criteria">Ending: {{ currentRatedSeries.ending }}</p>
+                    </div>
+                    <p class="overall-rating">Overall Rating: {{ currentRatedSeries.rating }}</p>
+                </div>
+            </ng-template>
+            <ul class="post-comments">
+                <li *ngIf="feedPost.caption.length !== 0">
+                    <div class="left-side">
+                        <img class="profile-pitcure" [src]="feedPost.profilePicture" [attr.alt]="feedPost.username">
+                        <div class="comment">
+                            <a class="profile-username" href="/account/{{ feedPost.username }}/posts">{{ feedPost.username }}</a>
+                            <p class="actual-comment" id="actual-comment-{{feedPost.postId}}">{{ boldAttedUsernames(feedPost.caption) }}</p>
+                        </div>
+                    </div>
+                </li>
+                <li *ngFor="let comment of feedPostComments.reverse() let i = index" class="feed-post-comment-{{feedPost.postId}}-{{i}}">
+                    <app-feed-comment-template
+                        [comment]="comment" 
+                    ></app-feed-comment-template>
+                </li>
+            </ul>
+        </div>
     </div>
-
-
 </div>

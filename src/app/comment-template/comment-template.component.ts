@@ -42,6 +42,8 @@ export class CommentTemplateComponent implements OnInit {
 
     if(this.leftOverReplies.length <= 3) {
       this.replies = this.leftOverReplies;
+    } else {
+      this.replies = this.sortRepliesByDate(replies.filter((reply) => reply.commentId == this.comment.commentId)).splice(0, 3);
     }
   }
 
@@ -64,9 +66,10 @@ export class CommentTemplateComponent implements OnInit {
       this.replies = [];
       viewReplies?.classList.toggle('active');
     } else if (viewReplies!.textContent == ' - Hide Replies - ') {
-      viewReplies!.textContent = ` - View ${this.leftOverReplies.length} Replies - `;
-      viewMoreReplies!.textContent = ``;
-      this.replies = [];
+      viewReplies!.textContent = ``;
+      viewMoreReplies!.textContent = ` - View ${this.leftOverReplies.length - 3} Replies - `;
+      let replies = this.leftOverReplies;
+      this.replies = this.sortRepliesByDate(replies.filter((reply) => reply.commentId == this.comment.commentId)).splice(0, 3);    
     } else if(!viewReplies?.classList.contains('active') && this.leftOverReplies.length <= 10) {
       viewReplies!.textContent = ' - Hide Replies - ';
       this.replies = this.leftOverReplies;
