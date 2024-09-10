@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 35vw;
-    
+    background: black;
 }
 .current-user-info {
     display: flex;
@@ -12,6 +12,7 @@
     border-top: 2px solid #fff;
     color: #fff;
     height: 6.5%;
+    background: salmon;
 }
 .pofile-picture-username {
     display: flex;
@@ -51,14 +52,14 @@
     aspect-ratio: 2/3;
     height: 99% + 1%;
     border: 2px solid #fff;
-    width: 26%;
+    //width: 26%;
 }
 
 .post-information {
 
 }
 
-//container for posts-comments
+//container for posts-comments ------------ width
 .comment-scroll-box {
     border-top: 2px solid #fff;
     border-bottom: 2px solid #fff;
@@ -67,7 +68,7 @@
     margin-right: 2px;
     padding-left: 12px;
     height: 90%;
-    width: 100%;
+    width: 98.5%;
 }
 //scrollbar
 .comment-scroll-box::-webkit-scrollbar {
@@ -167,7 +168,7 @@
 .right-side {
     display: flex;
     flex-direction: column;
-    width: 73%;
+    width: 100%;
     background: blue;
 }
 .interaction-options {
