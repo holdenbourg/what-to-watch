@@ -6,6 +6,8 @@ import { RatedMovieModel } from '../services/models/database-objects/rated-movie
 import { RatedSeriesModel } from '../services/models/database-objects/rated-series-model';
 import { FeedCommentTemplateComponent } from '../feed-comment-template/feed-comment-template.component';
 import { CommentModel } from '../services/models/database-objects/comment-model';
+import { AccountInformationModel } from '../services/models/database-objects/account-information-model';
+import { RawUserPostModel } from '../services/models/database-objects/raw-user-post-model';
 
 @Component({
   selector: 'app-feed-post',
@@ -67,6 +69,9 @@ export class FeedPostComponent implements OnInit {
   public feedPostComments: CommentModel[] = [];
   private localStorageService: LocalStorageService = inject(LocalStorageService);
 
+  public currentUser: AccountInformationModel = this.localStorageService.getInformation('currentUser');
+
+
   ngOnInit() {
     if(this.feedPost.postId.charAt(0) == 'm') {
       let ratedMovies: RatedMovieModel[] = this.localStorageService.getInformation('ratedMovies');
@@ -80,6 +85,31 @@ export class FeedPostComponent implements OnInit {
     this.feedPostComments = comments.filter((comment) => comment.postId === this.feedPost.postId);
   }
 
+
+  //button to like the current post
+  onLike() {
+    if(this.feedPost.likes.includes(this.currentUser.username)) {
+      const index = this.feedPost.likes.indexOf(this.currentUser.username, 0);
+
+      if (index > -1) {
+        this.feedPost.likes.splice(index, 1);
+      }
+    } else {
+      this.feedPost.likes.push(this.currentUser.username);
+    }    
+
+    //update the likes for that post in database
+    let rawPosts: RawUserPostModel[] = this.localStorageService.getInformation('rawPosts');
+
+    for(let post of rawPosts) {
+      if(post.postId == this.feedPost.postId) {
+        post.likes = this.feedPost.likes;
+      }
+    }
+
+    this.localStorageService.clearInformation('rawPosts');
+    this.localStorageService.setInformation('rawPosts', rawPosts);
+  }
   //turns 2009-12-18 into December 18, 2009
   fixCommentDate(commentDate?: string) {    
     if(commentDate == '') {
